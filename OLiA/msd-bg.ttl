@@ -1,0 +1,3119 @@
+@prefix msd-bg: <http://purl.org/olia/mte/msd-bg.owl#>.
+@prefix system: <http://nl.ijs.si/ME/owl/system.owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix olia_system: <http://nl.ijs.si/ME/owl/system.owl#> .
+@prefix mte:   <http://purl.org/olia/mte/multext-east.owl#> .
+
+<http://purl.org/olia/mte/msd-bg.owl> a owl:Ontology ;
+  rdfs:comment  "MSD list extracted from MULTEXT/East v.4 documentation in TEI" ;
+  owl:imports   <http://purl.org/olia/mte/multext-east.owl> .
+
+#################### Individuals
+
+msd-bg:A---p-n_bg a mte:Indefinite , mte:PluralNumber , mte:Adjective ;
+        rdfs:comment         "e.g., ясни/ясен, яростни/яростен, ярки/ярък, японски, яки/як, ядрени/ядрен" ;
+        mte:hasDefiniteness  msd-bg:A---p-n_bg ;
+        mte:hasNumber        msd-bg:A---p-n_bg ;
+        olia_system:hasTag   "A---p-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:A---p-y_bg a mte:Definite , mte:PluralNumber , mte:Adjective ;
+        rdfs:comment         "e.g., ясните/ясен, яркочервените/яркочервен, японските/японски, юридическите/юридически" ;
+        mte:hasDefiniteness  msd-bg:A---p-y_bg ;
+        mte:hasNumber        msd-bg:A---p-y_bg ;
+        olia_system:hasTag   "A---p-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:A--fs-n_bg a mte:Adjective , mte:SingularNumber , mte:FeminineGender , mte:Indefinite ;
+        rdfs:comment         "e.g., ясна/ясен, яркочервена/яркочервен, ярка/ярък, японска/японски" ;
+        mte:hasDefiniteness  msd-bg:A--fs-n_bg ;
+        mte:hasGender        msd-bg:A--fs-n_bg ;
+        mte:hasNumber        msd-bg:A--fs-n_bg ;
+        olia_system:hasTag   "A--fs-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:A--fs-y_bg a mte:Definite , mte:Adjective , mte:FeminineGender , mte:SingularNumber ;
+        rdfs:comment         "e.g., ясната/ясен, яростната/яростен, ярката/ярък, японската/японски" ;
+        mte:hasDefiniteness  msd-bg:A--fs-y_bg ;
+        mte:hasGender        msd-bg:A--fs-y_bg ;
+        mte:hasNumber        msd-bg:A--fs-y_bg ;
+        olia_system:hasTag   "A--fs-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:A--ms-f_bg a mte:SingularNumber , mte:MasculineGender , mte:Adjective , mte:FullArticle ;
+        rdfs:comment         "e.g., юношеският/юношески, югославският/югославски, щастливият/щастлив" ;
+        mte:hasDefiniteness  msd-bg:A--ms-f_bg ;
+        mte:hasGender        msd-bg:A--ms-f_bg ;
+        mte:hasNumber        msd-bg:A--ms-f_bg ;
+        olia_system:hasTag   "A--ms-f" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:A--ms-n_bg a mte:Adjective , mte:MasculineGender , mte:Indefinite , mte:SingularNumber ;
+        rdfs:comment         "e.g., ясен, ярък, яростен, японски, як, ябълков, юридически, юнски" ;
+        mte:hasDefiniteness  msd-bg:A--ms-n_bg ;
+        mte:hasGender        msd-bg:A--ms-n_bg ;
+        mte:hasNumber        msd-bg:A--ms-n_bg ;
+        olia_system:hasTag   "A--ms-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:A--ms-s_bg a mte:Adjective , mte:MasculineGender , mte:SingularNumber , mte:ShortArticle ;
+        rdfs:comment         "e.g., ясния/ясен, яростния/яростен, южноиндийския/южноиндийский, южния/южен" ;
+        mte:hasDefiniteness  msd-bg:A--ms-s_bg ;
+        mte:hasGender        msd-bg:A--ms-s_bg ;
+        mte:hasNumber        msd-bg:A--ms-s_bg ;
+        olia_system:hasTag   "A--ms-s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:A--ns-n_bg a mte:Adjective , mte:SingularNumber , mte:Indefinite , mte:NeuterGender ;
+        rdfs:comment         "e.g., ячко/ячък, ясно/ясен, яростно/яростен, ярко/ярък, яркосиньо/яркосин" ;
+        mte:hasDefiniteness  msd-bg:A--ns-n_bg ;
+        mte:hasGender        msd-bg:A--ns-n_bg ;
+        mte:hasNumber        msd-bg:A--ns-n_bg ;
+        olia_system:hasTag   "A--ns-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:A--ns-y_bg a mte:Definite , mte:SingularNumber , mte:NeuterGender , mte:Adjective ;
+        rdfs:comment         "e.g., яростното/яростен, ядреното/ядрен, юнското/юнски, южното/южен" ;
+        mte:hasDefiniteness  msd-bg:A--ns-y_bg ;
+        mte:hasGender        msd-bg:A--ns-y_bg ;
+        mte:hasNumber        msd-bg:A--ns-y_bg ;
+        olia_system:hasTag   "A--ns-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ccc_bg a mte:CompoundConjunction , mte:CoordinatingConjunction , mte:Conjunction ;
+        rdfs:comment                 "e.g., а_пък" ;
+        mte:hasConjunctionFormation  msd-bg:Ccc_bg ;
+        olia_system:hasTag           "Ccc" ;
+        olia_system:hasTier          "pos" .
+
+msd-bg:Ccs_bg a mte:SimpleConjunction , mte:CoordinatingConjunction , mte:Conjunction ;
+        rdfs:comment                 "e.g., я, що, щото, щом, чий, че, чегато, цър, хем" ;
+        mte:hasConjunctionFormation  msd-bg:Ccs_bg ;
+        olia_system:hasTag           "Ccs" ;
+        olia_system:hasTier          "pos" .
+
+msd-bg:Csc_bg a mte:CompoundConjunction , mte:SubordinatingConjunction , mte:Conjunction ;
+        rdfs:comment                 "e.g., щом_като, тъй_че, тъй_като, така_че, сякаш_че, стига_да, след_като" ;
+        mte:hasConjunctionFormation  msd-bg:Csc_bg ;
+        olia_system:hasTag           "Csc" ;
+        olia_system:hasTier          "pos" .
+
+msd-bg:Css_bg a mte:SimpleConjunction , mte:SubordinatingConjunction , mte:Conjunction ;
+        rdfs:comment                 "e.g., я, щом, че, ту, тогава, сякаш, стига, след, преди" ;
+        mte:hasConjunctionFormation  msd-bg:Css_bg ;
+        olia_system:hasTag           "Css" ;
+        olia_system:hasTier          "pos" .
+
+msd-bg:I-c_bg a mte:CompoundInterjection , mte:Interjection ;
+        rdfs:comment                  "e.g., хайде_де, къде-къде, кой_знае, има-няма" ;
+        mte:hasInterjectionFormation  msd-bg:I-c_bg ;
+        olia_system:hasTag            "I-c" ;
+        olia_system:hasTier           "pos" .
+
+msd-bg:I-s_bg a mte:SimpleInterjection , mte:Interjection ;
+        rdfs:comment                  "e.g., я, ясно, язък, ядец, яаа, ъъ, ъхъ, щрак, шшт" ;
+        mte:hasInterjectionFormation  msd-bg:I-s_bg ;
+        olia_system:hasTag            "I-s" ;
+        olia_system:hasTier           "pos" .
+
+msd-bg:Mc---d_bg a mte:DigitNumeral , mte:CardinalNumeral , mte:Numeral ;
+        rdfs:comment         "e.g., шест, 9-членното, 9_февруари, 9-ти_септември_1944, 9-ти, 9_септември_1944" ;
+        mte:hasNumeralForm   msd-bg:Mc---d_bg ;
+        olia_system:hasTag   "Mc---d" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mc---r_bg a mte:RomanNumeral , mte:CardinalNumeral , mte:Numeral ;
+        rdfs:comment         "e.g., XX, XXI, VII, I, II, III" ;
+        mte:hasNumeralForm   msd-bg:Mc---r_bg ;
+        olia_system:hasTag   "Mc---r" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mc-p-an_bg a mte:Numeral , mte:PluralNumber , mte:ApproxNumeral , mte:CardinalNumeral , mte:Indefinite ;
+        rdfs:comment         "e.g., трийсетина, стотина, петнадесетина, петдесетина, десетина, двамина" ;
+        mte:hasDefiniteness  msd-bg:Mc-p-an_bg ;
+        mte:hasNumber        msd-bg:Mc-p-an_bg ;
+        mte:hasNumeralForm   msd-bg:Mc-p-an_bg ;
+        olia_system:hasTag   "Mc-p-an" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mc-p-ay_bg a mte:PluralNumber , mte:ApproxNumeral , mte:Numeral , mte:CardinalNumeral , mte:Definite ;
+        rdfs:comment         "e.g., четиримата/четирима, петнайсетина/петнайсет, десетината/десетина" ;
+        mte:hasDefiniteness  msd-bg:Mc-p-ay_bg ;
+        mte:hasNumber        msd-bg:Mc-p-ay_bg ;
+        mte:hasNumeralForm   msd-bg:Mc-p-ay_bg ;
+        olia_system:hasTag   "Mc-p-ay" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mc-p-ln_bg a mte:LetterNumeral , mte:Numeral , mte:PluralNumber , mte:Indefinite , mte:CardinalNumeral ;
+        rdfs:comment         "e.g., шест, шестте/шест, шестстотин, шест-седем, шестотин, шестнайсет" ;
+        mte:hasDefiniteness  msd-bg:Mc-p-ln_bg ;
+        mte:hasNumber        msd-bg:Mc-p-ln_bg ;
+        mte:hasNumeralForm   msd-bg:Mc-p-ln_bg ;
+        olia_system:hasTag   "Mc-p-ln" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mc-p-ly_bg a mte:LetterNumeral , mte:CardinalNumeral , mte:Definite , mte:Numeral , mte:PluralNumber ;
+        rdfs:comment         "e.g., шестдесетте/шестдесет, четиридесетте/четиридесет, трийсетте/трийсет" ;
+        mte:hasDefiniteness  msd-bg:Mc-p-ly_bg ;
+        mte:hasNumber        msd-bg:Mc-p-ly_bg ;
+        mte:hasNumeralForm   msd-bg:Mc-p-ly_bg ;
+        olia_system:hasTag   "Mc-p-ly" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mcfp-ln_bg a mte:Numeral , mte:CardinalNumeral , mte:PluralNumber , mte:Indefinite , mte:LetterNumeral , mte:FeminineGender ;
+        rdfs:comment         "e.g., две" ;
+        mte:hasDefiniteness  msd-bg:Mcfp-ln_bg ;
+        mte:hasGender        msd-bg:Mcfp-ln_bg ;
+        mte:hasNumber        msd-bg:Mcfp-ln_bg ;
+        mte:hasNumeralForm   msd-bg:Mcfp-ln_bg ;
+        olia_system:hasTag   "Mcfp-ln" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mcfs-ln_bg a mte:LetterNumeral , mte:FeminineGender , mte:CardinalNumeral , mte:SingularNumber , mte:Indefinite , mte:Numeral ;
+        rdfs:comment         "e.g., хиляда, една-четвърт, една-пета, една, една-единствена/една-единствен" ;
+        mte:hasDefiniteness  msd-bg:Mcfs-ln_bg ;
+        mte:hasGender        msd-bg:Mcfs-ln_bg ;
+        mte:hasNumber        msd-bg:Mcfs-ln_bg ;
+        mte:hasNumeralForm   msd-bg:Mcfs-ln_bg ;
+        olia_system:hasTag   "Mcfs-ln" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mcmp-ln_bg a mte:Numeral , mte:CardinalNumeral , mte:Indefinite , mte:PluralNumber , mte:MasculineGender , mte:LetterNumeral ;
+        rdfs:comment         "e.g., два" ;
+        mte:hasDefiniteness  msd-bg:Mcmp-ln_bg ;
+        mte:hasGender        msd-bg:Mcmp-ln_bg ;
+        mte:hasNumber        msd-bg:Mcmp-ln_bg ;
+        mte:hasNumeralForm   msd-bg:Mcmp-ln_bg ;
+        olia_system:hasTag   "Mcmp-ln" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mcmp-ly_bg a mte:LetterNumeral , mte:MasculineGender , mte:PluralNumber , mte:CardinalNumeral , mte:Definite , mte:Numeral ;
+        rdfs:comment         "e.g., двата/два" ;
+        mte:hasDefiniteness  msd-bg:Mcmp-ly_bg ;
+        mte:hasGender        msd-bg:Mcmp-ly_bg ;
+        mte:hasNumber        msd-bg:Mcmp-ly_bg ;
+        mte:hasNumeralForm   msd-bg:Mcmp-ly_bg ;
+        olia_system:hasTag   "Mcmp-ly" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mcmp-mn_bg a mte:MasculineGender , mte:CardinalNumeral , mte:PluralNumber , mte:Indefinite , mte:Numeral , mte:MFormNumeral ;
+        rdfs:comment         "e.g., двама" ;
+        mte:hasDefiniteness  msd-bg:Mcmp-mn_bg ;
+        mte:hasGender        msd-bg:Mcmp-mn_bg ;
+        mte:hasNumber        msd-bg:Mcmp-mn_bg ;
+        mte:hasNumeralForm   msd-bg:Mcmp-mn_bg ;
+        olia_system:hasTag   "Mcmp-mn" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mcmp-my_bg a mte:MasculineGender , mte:PluralNumber , mte:Numeral , mte:CardinalNumeral , mte:MFormNumeral , mte:Definite ;
+        rdfs:comment         "e.g., четирима, трима, тримата/трима, петимата/петима, двамата/двама" ;
+        mte:hasDefiniteness  msd-bg:Mcmp-my_bg ;
+        mte:hasGender        msd-bg:Mcmp-my_bg ;
+        mte:hasNumber        msd-bg:Mcmp-my_bg ;
+        mte:hasNumeralForm   msd-bg:Mcmp-my_bg ;
+        olia_system:hasTag   "Mcmp-my" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mcms-lf_bg a mte:CardinalNumeral , mte:LetterNumeral , mte:MasculineGender , mte:Numeral , mte:FullArticle , mte:SingularNumber ;
+        rdfs:comment         "e.g., единият/един" ;
+        mte:hasDefiniteness  msd-bg:Mcms-lf_bg ;
+        mte:hasGender        msd-bg:Mcms-lf_bg ;
+        mte:hasNumber        msd-bg:Mcms-lf_bg ;
+        mte:hasNumeralForm   msd-bg:Mcms-lf_bg ;
+        olia_system:hasTag   "Mcms-lf" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mcms-ln_bg a mte:Indefinite , mte:MasculineGender , mte:SingularNumber , mte:Numeral , mte:CardinalNumeral , mte:LetterNumeral ;
+        rdfs:comment         "e.g., един-едничък, един-единствен, един, два-три" ;
+        mte:hasDefiniteness  msd-bg:Mcms-ln_bg ;
+        mte:hasGender        msd-bg:Mcms-ln_bg ;
+        mte:hasNumber        msd-bg:Mcms-ln_bg ;
+        mte:hasNumeralForm   msd-bg:Mcms-ln_bg ;
+        olia_system:hasTag   "Mcms-ln" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mcms-ls_bg a mte:ShortArticle , mte:LetterNumeral , mte:MasculineGender , mte:CardinalNumeral , mte:SingularNumber , mte:Numeral ;
+        rdfs:comment         "e.g., десетия/десет, двайсетия/двайсет" ;
+        mte:hasDefiniteness  msd-bg:Mcms-ls_bg ;
+        mte:hasGender        msd-bg:Mcms-ls_bg ;
+        mte:hasNumber        msd-bg:Mcms-ls_bg ;
+        mte:hasNumeralForm   msd-bg:Mcms-ls_bg ;
+        olia_system:hasTag   "Mcms-ls" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mcnp-ln_bg a mte:CardinalNumeral , mte:Numeral , mte:PluralNumber , mte:NeuterGender , mte:LetterNumeral , mte:Indefinite ;
+        rdfs:comment         "e.g., две" ;
+        mte:hasDefiniteness  msd-bg:Mcnp-ln_bg ;
+        mte:hasGender        msd-bg:Mcnp-ln_bg ;
+        mte:hasNumber        msd-bg:Mcnp-ln_bg ;
+        mte:hasNumeralForm   msd-bg:Mcnp-ln_bg ;
+        olia_system:hasTag   "Mcnp-ln" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mcns-ln_bg a mte:LetterNumeral , mte:Indefinite , mte:SingularNumber , mte:Numeral , mte:CardinalNumeral , mte:NeuterGender ;
+        rdfs:comment         "e.g., едно, едно-единствено, две-три" ;
+        mte:hasDefiniteness  msd-bg:Mcns-ln_bg ;
+        mte:hasGender        msd-bg:Mcns-ln_bg ;
+        mte:hasNumber        msd-bg:Mcns-ln_bg ;
+        mte:hasNumeralForm   msd-bg:Mcns-ln_bg ;
+        olia_system:hasTag   "Mcns-ln" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mcns-ly_bg a mte:SingularNumber , mte:LetterNumeral , mte:Definite , mte:CardinalNumeral , mte:Numeral , mte:NeuterGender ;
+        rdfs:comment         "e.g., едното/един, двете/две" ;
+        mte:hasDefiniteness  msd-bg:Mcns-ly_bg ;
+        mte:hasGender        msd-bg:Mcns-ly_bg ;
+        mte:hasNumber        msd-bg:Mcns-ly_bg ;
+        mte:hasNumeralForm   msd-bg:Mcns-ly_bg ;
+        olia_system:hasTag   "Mcns-ly" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mo-p--n_bg a mte:Indefinite , mte:PluralNumber , mte:OrdinalNumeral , mte:Numeral ;
+        rdfs:comment         "e.g., трети, първи" ;
+        mte:hasDefiniteness  msd-bg:Mo-p--n_bg ;
+        mte:hasNumber        msd-bg:Mo-p--n_bg ;
+        olia_system:hasTag   "Mo-p--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mo-p--y_bg a mte:Definite , mte:PluralNumber , mte:OrdinalNumeral , mte:Numeral ;
+        rdfs:comment         "e.g., третите, първите/първи, вторите/втори" ;
+        mte:hasDefiniteness  msd-bg:Mo-p--y_bg ;
+        mte:hasNumber        msd-bg:Mo-p--y_bg ;
+        olia_system:hasTag   "Mo-p--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mofs--n_bg a mte:Indefinite , mte:FeminineGender , mte:SingularNumber , mte:OrdinalNumeral , mte:Numeral ;
+        rdfs:comment         "e.g., шеста/шести, четиринадесети, трета, седма/седми, първа/първи" ;
+        mte:hasDefiniteness  msd-bg:Mofs--n_bg ;
+        mte:hasGender        msd-bg:Mofs--n_bg ;
+        mte:hasNumber        msd-bg:Mofs--n_bg ;
+        olia_system:hasTag   "Mofs--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mofs--y_bg a mte:OrdinalNumeral , mte:Numeral , mte:FeminineGender , mte:Definite , mte:SingularNumber ;
+        rdfs:comment         "e.g., шестнадесетата/шестнадесети, шестата/шести, третата/трети, първата/първи" ;
+        mte:hasDefiniteness  msd-bg:Mofs--y_bg ;
+        mte:hasGender        msd-bg:Mofs--y_bg ;
+        mte:hasNumber        msd-bg:Mofs--y_bg ;
+        olia_system:hasTag   "Mofs--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Moms--f_bg a mte:SingularNumber , mte:MasculineGender , mte:FullArticle , mte:OrdinalNumeral , mte:Numeral ;
+        rdfs:comment         "e.g., шестия/шести, третият/трети, първият/първи, деветия/девети, дванадесетият/дванадесети" ;
+        mte:hasDefiniteness  msd-bg:Moms--f_bg ;
+        mte:hasGender        msd-bg:Moms--f_bg ;
+        mte:hasNumber        msd-bg:Moms--f_bg ;
+        olia_system:hasTag   "Moms--f" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Moms--n_bg a mte:Indefinite , mte:OrdinalNumeral , mte:Numeral , mte:SingularNumber , mte:MasculineGender ;
+        rdfs:comment         "e.g., шестнадесети, шести, шейсети, четвърти, тринайсети, тринадесети" ;
+        mte:hasDefiniteness  msd-bg:Moms--n_bg ;
+        mte:hasGender        msd-bg:Moms--n_bg ;
+        mte:hasNumber        msd-bg:Moms--n_bg ;
+        olia_system:hasTag   "Moms--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Moms--s_bg a mte:Numeral , mte:SingularNumber , mte:OrdinalNumeral , mte:ShortArticle , mte:MasculineGender ;
+        rdfs:comment         "e.g., четиридесетия/четиридесети, третия/трети, седмия, първия/първи" ;
+        mte:hasDefiniteness  msd-bg:Moms--s_bg ;
+        mte:hasGender        msd-bg:Moms--s_bg ;
+        mte:hasNumber        msd-bg:Moms--s_bg ;
+        olia_system:hasTag   "Moms--s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mons--n_bg a mte:OrdinalNumeral , mte:NeuterGender , mte:SingularNumber , mte:Numeral , mte:Indefinite ;
+        rdfs:comment         "e.g., трето, трето/трети, първо/първи" ;
+        mte:hasDefiniteness  msd-bg:Mons--n_bg ;
+        mte:hasGender        msd-bg:Mons--n_bg ;
+        mte:hasNumber        msd-bg:Mons--n_bg ;
+        olia_system:hasTag   "Mons--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Mons--y_bg a mte:SingularNumber , mte:OrdinalNumeral , mte:Definite , mte:NeuterGender , mte:Numeral ;
+        rdfs:comment         "e.g., шестото/шести, третото/трети, седмото/седми, първото/първи, петото/пети" ;
+        mte:hasDefiniteness  msd-bg:Mons--y_bg ;
+        mte:hasGender        msd-bg:Mons--y_bg ;
+        mte:hasNumber        msd-bg:Mons--y_bg ;
+        olia_system:hasTag   "Mons--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncf-v_bg a mte:VocativeCase , mte:FeminineGender , mte:CommonNoun , mte:Noun ;
+        rdfs:comment         "e.g., устно/устна, тайно/тайна, Сюткйо/Сюткя, Сърбийо/Сърбия, съгласно/съгласна" ;
+        mte:hasCase          msd-bg:Ncf-v_bg ;
+        mte:hasGender        msd-bg:Ncf-v_bg ;
+        olia_system:hasTag   "Ncf-v" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncfp-n_bg a mte:Noun , mte:Indefinite , mte:PluralNumber , mte:FeminineGender , mte:CommonNoun ;
+        rdfs:comment         "e.g., ярки/ярка, японки/японка, яки/яка, ябълки/ябълка, юфки/юфка, югославянки/югославянка" ;
+        mte:hasDefiniteness  msd-bg:Ncfp-n_bg ;
+        mte:hasGender        msd-bg:Ncfp-n_bg ;
+        mte:hasNumber        msd-bg:Ncfp-n_bg ;
+        olia_system:hasTag   "Ncfp-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncfp-y_bg a mte:FeminineGender , mte:Noun , mte:CommonNoun , mte:Definite , mte:PluralNumber ;
+        rdfs:comment         "e.g., югославянките/югославянка, щангите/щанга, шортите/шорти, шнолите/шнола" ;
+        mte:hasDefiniteness  msd-bg:Ncfp-y_bg ;
+        mte:hasGender        msd-bg:Ncfp-y_bg ;
+        mte:hasNumber        msd-bg:Ncfp-y_bg ;
+        olia_system:hasTag   "Ncfp-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncfs-n_bg a mte:Indefinite , mte:CommonNoun , mte:Noun , mte:FeminineGender , mte:SingularNumber ;
+        rdfs:comment         "e.g., яхния, яснота, ярост, ярка, яка, язва, ябълка, югославянка, щука" ;
+        mte:hasDefiniteness  msd-bg:Ncfs-n_bg ;
+        mte:hasGender        msd-bg:Ncfs-n_bg ;
+        mte:hasNumber        msd-bg:Ncfs-n_bg ;
+        olia_system:hasTag   "Ncfs-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncfs-y_bg a mte:Noun , mte:Definite , mte:CommonNoun , mte:FeminineGender , mte:SingularNumber ;
+        rdfs:comment         "e.g., яхнията/яхния, яснотата/яснота, яслата/ясла, яростта/ярост, ярката/ярка" ;
+        mte:hasDefiniteness  msd-bg:Ncfs-y_bg ;
+        mte:hasGender        msd-bg:Ncfs-y_bg ;
+        mte:hasNumber        msd-bg:Ncfs-y_bg ;
+        olia_system:hasTag   "Ncfs-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncm-v_bg a mte:VocativeCase , mte:MasculineGender , mte:CommonNoun , mte:Noun ;
+        rdfs:comment         "e.g., яде/яд, чукане/чукан, човече/човек, цвете/цвят, стане/стан, спомене/спомен" ;
+        mte:hasCase          msd-bg:Ncm-v_bg ;
+        mte:hasGender        msd-bg:Ncm-v_bg ;
+        olia_system:hasTag   "Ncm-v" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncmp-n_bg a mte:CommonNoun , mte:Noun , mte:MasculineGender , mte:PluralNumber , mte:Indefinite ;
+        rdfs:comment         "e.g., ясени/ясен, японци/японец, юристи/юрист, юноши/юноша, юмруци/юмрук" ;
+        mte:hasDefiniteness  msd-bg:Ncmp-n_bg ;
+        mte:hasGender        msd-bg:Ncmp-n_bg ;
+        mte:hasNumber        msd-bg:Ncmp-n_bg ;
+        olia_system:hasTag   "Ncmp-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncmp-y_bg a mte:CommonNoun , mte:Noun , mte:MasculineGender , mte:PluralNumber , mte:Definite ;
+        rdfs:comment         "e.g., юрофилите/юрофили, юношите/юноша, юмруците/юмрук, югославяните/югославянин" ;
+        mte:hasDefiniteness  msd-bg:Ncmp-y_bg ;
+        mte:hasGender        msd-bg:Ncmp-y_bg ;
+        mte:hasNumber        msd-bg:Ncmp-y_bg ;
+        olia_system:hasTag   "Ncmp-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncms-f_bg a mte:FullArticle , mte:SingularNumber , mte:CommonNoun , mte:MasculineGender , mte:Noun ;
+        rdfs:comment         "e.g., язовирът/язовир, югославянинът/югославянин, щатът/щат, щастливецът/щастливец" ;
+        mte:hasDefiniteness  msd-bg:Ncms-f_bg ;
+        mte:hasGender        msd-bg:Ncms-f_bg ;
+        mte:hasNumber        msd-bg:Ncms-f_bg ;
+        olia_system:hasTag   "Ncms-f" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncms-n_bg a mte:CommonNoun , mte:Noun , mte:Indefinite , mte:MasculineGender , mte:SingularNumber ;
+        rdfs:comment         "e.g., ясновидец, ясен, януари, як, язовир, яд, юрофранк, юростерлинг" ;
+        mte:hasDefiniteness  msd-bg:Ncms-n_bg ;
+        mte:hasGender        msd-bg:Ncms-n_bg ;
+        mte:hasNumber        msd-bg:Ncms-n_bg ;
+        olia_system:hasTag   "Ncms-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncms-s_bg a mte:SingularNumber , mte:CommonNoun , mte:ShortArticle , mte:MasculineGender , mte:Noun ;
+        rdfs:comment         "e.g., яка/як, язовира/язовир, яда/яд, юргана/юрган, юношата/юноша, юбилея/юбилей" ;
+        mte:hasDefiniteness  msd-bg:Ncms-s_bg ;
+        mte:hasGender        msd-bg:Ncms-s_bg ;
+        mte:hasNumber        msd-bg:Ncms-s_bg ;
+        olia_system:hasTag   "Ncms-s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncmt_bg a mte:CountNumber , mte:MasculineGender , mte:CommonNoun , mte:Noun ;
+        rdfs:comment         "e.g., яка/як, язовира/язовир, яда/яд, юргана/юрган, юбилея/юбилей, ъгъла/ъгъл" ;
+        mte:hasGender        msd-bg:Ncmt_bg ;
+        mte:hasNumber        msd-bg:Ncmt_bg ;
+        olia_system:hasTag   "Ncmt" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncnp-n_bg a mte:Indefinite , mte:Noun , mte:NeuterGender , mte:CommonNoun , mte:PluralNumber ;
+        rdfs:comment         "e.g., якета/яке, яйца/яйце, ядра/ядро, яденета/ядене, школа/школо, шествия/шествие" ;
+        mte:hasDefiniteness  msd-bg:Ncnp-n_bg ;
+        mte:hasGender        msd-bg:Ncnp-n_bg ;
+        mte:hasNumber        msd-bg:Ncnp-n_bg ;
+        olia_system:hasTag   "Ncnp-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncnp-y_bg a mte:CommonNoun , mte:NeuterGender , mte:Definite , mte:Noun , mte:PluralNumber ;
+        rdfs:comment         "e.g., яйцата/яйце, ъгълчетата/ъгълче, шосетата/шосе, школата/школо" ;
+        mte:hasDefiniteness  msd-bg:Ncnp-y_bg ;
+        mte:hasGender        msd-bg:Ncnp-y_bg ;
+        mte:hasNumber        msd-bg:Ncnp-y_bg ;
+        olia_system:hasTag   "Ncnp-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncns-n_bg a mte:CommonNoun , mte:Indefinite , mte:SingularNumber , mte:NeuterGender , mte:Noun ;
+        rdfs:comment         "e.g., ястие, яке, яйце, ядро, ядене, явяване, щракване, щракане, шумолене" ;
+        mte:hasDefiniteness  msd-bg:Ncns-n_bg ;
+        mte:hasGender        msd-bg:Ncns-n_bg ;
+        mte:hasNumber        msd-bg:Ncns-n_bg ;
+        olia_system:hasTag   "Ncns-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ncns-y_bg a mte:CommonNoun , mte:NeuterGender , mte:Definite , mte:SingularNumber , mte:Noun ;
+        rdfs:comment         "e.g., якето/яке, яйцето/яйце, ядрото/ядро, явяването/явяване, явления/явление" ;
+        mte:hasDefiniteness  msd-bg:Ncns-y_bg ;
+        mte:hasGender        msd-bg:Ncns-y_bg ;
+        mte:hasNumber        msd-bg:Ncns-y_bg ;
+        olia_system:hasTag   "Ncns-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Npfp-n_bg a mte:PluralNumber , mte:ProperNoun , mte:Noun , mte:FeminineGender , mte:Indefinite ;
+        rdfs:comment         "e.g., Шиили, ПАРИ, Дюни, Арбанаси, Алиси" ;
+        mte:hasDefiniteness  msd-bg:Npfp-n_bg ;
+        mte:hasGender        msd-bg:Npfp-n_bg ;
+        mte:hasNumber        msd-bg:Npfp-n_bg ;
+        olia_system:hasTag   "Npfp-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Npfs-n_bg a mte:FeminineGender , mte:Indefinite , mte:ProperNoun , mte:SingularNumber , mte:Noun ;
+        rdfs:comment         "e.g., Япония, Янтра, Янкула, Янка, Яна, Якутия, Ява, ЯВАШЕВА, Юнионбанк" ;
+        mte:hasDefiniteness  msd-bg:Npfs-n_bg ;
+        mte:hasGender        msd-bg:Npfs-n_bg ;
+        mte:hasNumber        msd-bg:Npfs-n_bg ;
+        olia_system:hasTag   "Npfs-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Npfs-y_bg a mte:Definite , mte:Noun , mte:SingularNumber , mte:FeminineGender , mte:ProperNoun ;
+        rdfs:comment         "e.g., Магурата, Катето, Емата, Еврокомисията, ДЕВАТА, Девата, Василиевата" ;
+        mte:hasDefiniteness  msd-bg:Npfs-y_bg ;
+        mte:hasGender        msd-bg:Npfs-y_bg ;
+        mte:hasNumber        msd-bg:Npfs-y_bg ;
+        olia_system:hasTag   "Npfs-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Npmp-n_bg a mte:Noun , mte:PluralNumber , mte:MasculineGender , mte:ProperNoun , mte:Indefinite ;
+        rdfs:comment         "e.g., Чапкънови, Сярови, Сергинови, Секюрити, Рупите, Рангелови, Парсънови" ;
+        mte:hasDefiniteness  msd-bg:Npmp-n_bg ;
+        mte:hasGender        msd-bg:Npmp-n_bg ;
+        mte:hasNumber        msd-bg:Npmp-n_bg ;
+        olia_system:hasTag   "Npmp-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Npmp-y_bg a mte:MasculineGender , mte:ProperNoun , mte:Definite , mte:PluralNumber , mte:Noun ;
+        rdfs:comment         "e.g., Филипините, БАЛКАНИТЕ, Балканите" ;
+        mte:hasDefiniteness  msd-bg:Npmp-y_bg ;
+        mte:hasGender        msd-bg:Npmp-y_bg ;
+        mte:hasNumber        msd-bg:Npmp-y_bg ;
+        olia_system:hasTag   "Npmp-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Npms-f_bg a mte:ProperNoun , mte:FullArticle , mte:Noun , mte:SingularNumber , mte:MasculineGender ;
+        rdfs:comment         "e.g., СКОРПИОНЪТ, Олимпът, Мерцедесът, Западът, Дяконът, Богът" ;
+        mte:hasDefiniteness  msd-bg:Npms-f_bg ;
+        mte:hasGender        msd-bg:Npms-f_bg ;
+        mte:hasNumber        msd-bg:Npms-f_bg ;
+        olia_system:hasTag   "Npms-f" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Npms-n_bg a mte:ProperNoun , mte:Noun , mte:MasculineGender , mte:SingularNumber , mte:Indefinite ;
+        rdfs:comment         "e.g., Яшмаков, Яушевац, Ясуо, Ясенов, Ян, Янчулев, Янкулов, Ян-Кржишчов" ;
+        mte:hasDefiniteness  msd-bg:Npms-n_bg ;
+        mte:hasGender        msd-bg:Npms-n_bg ;
+        mte:hasNumber        msd-bg:Npms-n_bg ;
+        olia_system:hasTag   "Npms-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Npms-s_bg a mte:ShortArticle , mte:Noun , mte:ProperNoun , mte:SingularNumber , mte:MasculineGender ;
+        rdfs:comment         "e.g., Шилигарника, Христа, Интернационала, Иисуса, Изтока, Запада, ВОДОЛЕЯ" ;
+        mte:hasDefiniteness  msd-bg:Npms-s_bg ;
+        mte:hasGender        msd-bg:Npms-s_bg ;
+        mte:hasNumber        msd-bg:Npms-s_bg ;
+        olia_system:hasTag   "Npms-s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Npns-n_bg a mte:Noun , mte:NeuterGender , mte:SingularNumber , mte:ProperNoun , mte:Indefinite ;
+        rdfs:comment         "e.g., Чупето, Чикаго, Черноочане, Черноморие, Черниче, Хърватско, Химко" ;
+        mte:hasDefiniteness  msd-bg:Npns-n_bg ;
+        mte:hasGender        msd-bg:Npns-n_bg ;
+        mte:hasNumber        msd-bg:Npns-n_bg ;
+        olia_system:hasTag   "Npns-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Npns-y_bg a mte:Definite , mte:NeuterGender , mte:Noun , mte:ProperNoun , mte:SingularNumber ;
+        rdfs:comment         "e.g., Черноморието, Лудогорието, Зайченцето" ;
+        mte:hasDefiniteness  msd-bg:Npns-y_bg ;
+        mte:hasGender        msd-bg:Npns-y_bg ;
+        mte:hasNumber        msd-bg:Npns-y_bg ;
+        olia_system:hasTag   "Npns-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pd-------q_bg a mte:QuantitativePronoun , mte:DemonstrativePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., толкова" ;
+        mte:hasReferentType  msd-bg:Pd-------q_bg ;
+        olia_system:hasTag   "Pd-------q" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pd--p----p_bg a mte:PersonalPronoun , mte:PluralNumber , mte:DemonstrativePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., тия, тези, такива/такъв, ония/онзи, онез/онзи, онези/онзи" ;
+        mte:hasNumber        msd-bg:Pd--p----p_bg ;
+        mte:hasReferentType  msd-bg:Pd--p----p_bg ;
+        olia_system:hasTag   "Pd--p----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pd-fs----p_bg a mte:SingularNumber , mte:DemonstrativePronoun , mte:PersonalPronoun , mte:FeminineGender , mte:Pronoun ;
+        rdfs:comment         "e.g., тая, такава/такъв, тази, оная/онзи, онази" ;
+        mte:hasGender        msd-bg:Pd-fs----p_bg ;
+        mte:hasNumber        msd-bg:Pd-fs----p_bg ;
+        mte:hasReferentType  msd-bg:Pd-fs----p_bg ;
+        olia_system:hasTag   "Pd-fs----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pd-ms----p_bg a mte:Pronoun , mte:SingularNumber , mte:DemonstrativePronoun , mte:MasculineGender , mte:PersonalPronoun ;
+        rdfs:comment         "e.g., тоя, този, такъв, оня, онзи" ;
+        mte:hasGender        msd-bg:Pd-ms----p_bg ;
+        mte:hasNumber        msd-bg:Pd-ms----p_bg ;
+        mte:hasReferentType  msd-bg:Pd-ms----p_bg ;
+        olia_system:hasTag   "Pd-ms----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pd-ns----p_bg a mte:Pronoun , mte:SingularNumber , mte:DemonstrativePronoun , mte:NeuterGender , mte:PersonalPronoun ;
+        rdfs:comment         "e.g., туй, това, такова/такъв, онова" ;
+        mte:hasGender        msd-bg:Pd-ns----p_bg ;
+        mte:hasNumber        msd-bg:Pd-ns----p_bg ;
+        mte:hasReferentType  msd-bg:Pd-ns----p_bg ;
+        olia_system:hasTag   "Pd-ns----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg--p----a_bg a mte:AttributivePronoun , mte:PluralNumber , mte:GeneralPronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., всякакви/всякакъв" ;
+        mte:hasNumber        msd-bg:Pg--p----a_bg ;
+        mte:hasReferentType  msd-bg:Pg--p----a_bg ;
+        olia_system:hasTag   "Pg--p----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg--p----p_bg a mte:PersonalPronoun , mte:PluralNumber , mte:GeneralPronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., всякои, всякакви/всякакъв" ;
+        mte:hasNumber        msd-bg:Pg--p----p_bg ;
+        mte:hasReferentType  msd-bg:Pg--p----p_bg ;
+        olia_system:hasTag   "Pg--p----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg--p----q-n_bg a mte:PluralNumber , mte:Pronoun , mte:Indefinite , mte:QuantitativePronoun , mte:GeneralPronoun ;
+        rdfs:comment         "e.g., всички" ;
+        mte:hasDefiniteness  msd-bg:Pg--p----q-n_bg ;
+        mte:hasNumber        msd-bg:Pg--p----q-n_bg ;
+        mte:hasReferentType  msd-bg:Pg--p----q-n_bg ;
+        olia_system:hasTag   "Pg--p----q-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg--p----q-y_bg a mte:Definite , mte:Pronoun , mte:QuantitativePronoun , mte:GeneralPronoun , mte:PluralNumber ;
+        rdfs:comment         "e.g., всичките/всички" ;
+        mte:hasDefiniteness  msd-bg:Pg--p----q-y_bg ;
+        mte:hasNumber        msd-bg:Pg--p----q-y_bg ;
+        mte:hasReferentType  msd-bg:Pg--p----q-y_bg ;
+        olia_system:hasTag   "Pg--p----q-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg-fs----a_bg a mte:Pronoun , mte:AttributivePronoun , mte:SingularNumber , mte:GeneralPronoun , mte:FeminineGender ;
+        rdfs:comment         "e.g., всякаква/всякакъв" ;
+        mte:hasGender        msd-bg:Pg-fs----a_bg ;
+        mte:hasNumber        msd-bg:Pg-fs----a_bg ;
+        mte:hasReferentType  msd-bg:Pg-fs----a_bg ;
+        olia_system:hasTag   "Pg-fs----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg-fs----p_bg a mte:Pronoun , mte:SingularNumber , mte:FeminineGender , mte:GeneralPronoun , mte:PersonalPronoun ;
+        rdfs:comment         "e.g., всяка" ;
+        mte:hasGender        msd-bg:Pg-fs----p_bg ;
+        mte:hasNumber        msd-bg:Pg-fs----p_bg ;
+        mte:hasReferentType  msd-bg:Pg-fs----p_bg ;
+        olia_system:hasTag   "Pg-fs----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg-fs----q-n_bg a mte:Indefinite , mte:FeminineGender , mte:SingularNumber , mte:QuantitativePronoun , mte:Pronoun , mte:GeneralPronoun ;
+        rdfs:comment         "e.g., всичка" ;
+        mte:hasDefiniteness  msd-bg:Pg-fs----q-n_bg ;
+        mte:hasGender        msd-bg:Pg-fs----q-n_bg ;
+        mte:hasNumber        msd-bg:Pg-fs----q-n_bg ;
+        mte:hasReferentType  msd-bg:Pg-fs----q-n_bg ;
+        olia_system:hasTag   "Pg-fs----q-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg-fs----q-y_bg a mte:GeneralPronoun , mte:Pronoun , mte:QuantitativePronoun , mte:Definite , mte:FeminineGender , mte:SingularNumber ;
+        rdfs:comment         "e.g., всичката/всичка" ;
+        mte:hasDefiniteness  msd-bg:Pg-fs----q-y_bg ;
+        mte:hasGender        msd-bg:Pg-fs----q-y_bg ;
+        mte:hasNumber        msd-bg:Pg-fs----q-y_bg ;
+        mte:hasReferentType  msd-bg:Pg-fs----q-y_bg ;
+        olia_system:hasTag   "Pg-fs----q-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg-ms----a_bg a mte:AttributivePronoun , mte:SingularNumber , mte:Pronoun , mte:GeneralPronoun , mte:MasculineGender ;
+        rdfs:comment         "e.g., всякакъв" ;
+        mte:hasGender        msd-bg:Pg-ms----a_bg ;
+        mte:hasNumber        msd-bg:Pg-ms----a_bg ;
+        mte:hasReferentType  msd-bg:Pg-ms----a_bg ;
+        olia_system:hasTag   "Pg-ms----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg-ms----q-f_bg a mte:FullArticle , mte:Pronoun , mte:SingularNumber , mte:QuantitativePronoun , mte:GeneralPronoun , mte:MasculineGender ;
+        rdfs:comment         "e.g., всичкият/всичкия, всичкия" ;
+        mte:hasDefiniteness  msd-bg:Pg-ms----q-f_bg ;
+        mte:hasGender        msd-bg:Pg-ms----q-f_bg ;
+        mte:hasNumber        msd-bg:Pg-ms----q-f_bg ;
+        mte:hasReferentType  msd-bg:Pg-ms----q-f_bg ;
+        olia_system:hasTag   "Pg-ms----q-f" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg-ms----q-s_bg a mte:Pronoun , mte:MasculineGender , mte:GeneralPronoun , mte:QuantitativePronoun , mte:SingularNumber , mte:ShortArticle ;
+        rdfs:comment         "e.g., всичкия" ;
+        mte:hasDefiniteness  msd-bg:Pg-ms----q-s_bg ;
+        mte:hasGender        msd-bg:Pg-ms----q-s_bg ;
+        mte:hasNumber        msd-bg:Pg-ms----q-s_bg ;
+        mte:hasReferentType  msd-bg:Pg-ms----q-s_bg ;
+        olia_system:hasTag   "Pg-ms----q-s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg-msa---p_bg a mte:AccusativeCase , mte:SingularNumber , mte:PersonalPronoun , mte:GeneralPronoun , mte:MasculineGender , mte:Pronoun ;
+        rdfs:comment         "e.g., всекиго/всеки" ;
+        mte:hasCase          msd-bg:Pg-msa---p_bg ;
+        mte:hasGender        msd-bg:Pg-msa---p_bg ;
+        mte:hasNumber        msd-bg:Pg-msa---p_bg ;
+        mte:hasReferentType  msd-bg:Pg-msa---p_bg ;
+        olia_system:hasTag   "Pg-msa---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg-msd---p_bg a mte:SingularNumber , mte:GeneralPronoun , mte:Pronoun , mte:MasculineGender , mte:PersonalPronoun , mte:DativeCase ;
+        rdfs:comment         "e.g., всекиму/всеки" ;
+        mte:hasCase          msd-bg:Pg-msd---p_bg ;
+        mte:hasGender        msd-bg:Pg-msd---p_bg ;
+        mte:hasNumber        msd-bg:Pg-msd---p_bg ;
+        mte:hasReferentType  msd-bg:Pg-msd---p_bg ;
+        olia_system:hasTag   "Pg-msd---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg-msn---p_bg a mte:NominativeCase , mte:Pronoun , mte:MasculineGender , mte:PersonalPronoun , mte:GeneralPronoun , mte:SingularNumber ;
+        rdfs:comment         "e.g., всеки" ;
+        mte:hasCase          msd-bg:Pg-msn---p_bg ;
+        mte:hasGender        msd-bg:Pg-msn---p_bg ;
+        mte:hasNumber        msd-bg:Pg-msn---p_bg ;
+        mte:hasReferentType  msd-bg:Pg-msn---p_bg ;
+        olia_system:hasTag   "Pg-msn---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg-msn--na_bg a mte:AttributivePronoun , mte:Pronoun , mte:SingularNumber , mte:NominativeCase , mte:GeneralPronoun , mte:NoClitic , mte:MasculineGender ;
+        rdfs:comment         "e.g., всякакъв" ;
+        mte:hasCase          msd-bg:Pg-msn--na_bg ;
+        mte:hasClitic        msd-bg:Pg-msn--na_bg ;
+        mte:hasGender        msd-bg:Pg-msn--na_bg ;
+        mte:hasNumber        msd-bg:Pg-msn--na_bg ;
+        mte:hasReferentType  msd-bg:Pg-msn--na_bg ;
+        olia_system:hasTag   "Pg-msn--na" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg-ns----a_bg a mte:GeneralPronoun , mte:AttributivePronoun , mte:NeuterGender , mte:SingularNumber , mte:Pronoun ;
+        rdfs:comment         "e.g., всякакво/всякакъв" ;
+        mte:hasGender        msd-bg:Pg-ns----a_bg ;
+        mte:hasNumber        msd-bg:Pg-ns----a_bg ;
+        mte:hasReferentType  msd-bg:Pg-ns----a_bg ;
+        olia_system:hasTag   "Pg-ns----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg-ns----p_bg a mte:NeuterGender , mte:GeneralPronoun , mte:Pronoun , mte:PersonalPronoun , mte:SingularNumber ;
+        rdfs:comment         "e.g., всяко, всякакво/всякакъв" ;
+        mte:hasGender        msd-bg:Pg-ns----p_bg ;
+        mte:hasNumber        msd-bg:Pg-ns----p_bg ;
+        mte:hasReferentType  msd-bg:Pg-ns----p_bg ;
+        olia_system:hasTag   "Pg-ns----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg-ns----q-n_bg a mte:GeneralPronoun , mte:SingularNumber , mte:Indefinite , mte:QuantitativePronoun , mte:Pronoun , mte:NeuterGender ;
+        rdfs:comment         "e.g., сичко, всичко" ;
+        mte:hasDefiniteness  msd-bg:Pg-ns----q-n_bg ;
+        mte:hasGender        msd-bg:Pg-ns----q-n_bg ;
+        mte:hasNumber        msd-bg:Pg-ns----q-n_bg ;
+        mte:hasReferentType  msd-bg:Pg-ns----q-n_bg ;
+        olia_system:hasTag   "Pg-ns----q-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pg-ns----q-y_bg a mte:QuantitativePronoun , mte:SingularNumber , mte:Definite , mte:Pronoun , mte:GeneralPronoun , mte:NeuterGender ;
+        rdfs:comment         "e.g., всичкото/всичко" ;
+        mte:hasDefiniteness  msd-bg:Pg-ns----q-y_bg ;
+        mte:hasGender        msd-bg:Pg-ns----q-y_bg ;
+        mte:hasNumber        msd-bg:Pg-ns----q-y_bg ;
+        mte:hasReferentType  msd-bg:Pg-ns----q-y_bg ;
+        olia_system:hasTag   "Pg-ns----q-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi-------q_bg a mte:QuantitativePronoun , mte:IndefinitePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., няколко" ;
+        mte:hasReferentType  msd-bg:Pi-------q_bg ;
+        olia_system:hasTag   "Pi-------q" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi--p----a_bg a mte:AttributivePronoun , mte:PluralNumber , mte:IndefinitePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., някакви/някакъв, каквито_и_да_са, еди-какви_си, еди-какви" ;
+        mte:hasNumber        msd-bg:Pi--p----a_bg ;
+        mte:hasReferentType  msd-bg:Pi--p----a_bg ;
+        olia_system:hasTag   "Pi--p----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi--p----p_bg a mte:PersonalPronoun , mte:PluralNumber , mte:IndefinitePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., някои/някой, които_и_да_са" ;
+        mte:hasNumber        msd-bg:Pi--p----p_bg ;
+        mte:hasReferentType  msd-bg:Pi--p----p_bg ;
+        olia_system:hasTag   "Pi--p----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi--p----s_bg a mte:PossessivePronoun , mte:PluralNumber , mte:IndefinitePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., нечии/нечий, нечии" ;
+        mte:hasNumber        msd-bg:Pi--p----s_bg ;
+        mte:hasReferentType  msd-bg:Pi--p----s_bg ;
+        olia_system:hasTag   "Pi--p----s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi--sn--nq-y_bg a mte:Pronoun , mte:SingularNumber , mte:NominativeCase , mte:NoClitic , mte:IndefinitePronoun , mte:QuantitativePronoun , mte:Definite ;
+        rdfs:comment         "e.g., няколкото, неколцина" ;
+        mte:hasCase          msd-bg:Pi--sn--nq-y_bg ;
+        mte:hasClitic        msd-bg:Pi--sn--nq-y_bg ;
+        mte:hasDefiniteness  msd-bg:Pi--sn--nq-y_bg ;
+        mte:hasNumber        msd-bg:Pi--sn--nq-y_bg ;
+        mte:hasReferentType  msd-bg:Pi--sn--nq-y_bg ;
+        olia_system:hasTag   "Pi--sn--nq-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi-fs----a_bg a mte:AttributivePronoun , mte:SingularNumber , mte:FeminineGender , mte:Pronoun , mte:IndefinitePronoun ;
+        rdfs:comment         "e.g., някаква/някакъв, накаква, каквато_и_да_е, еди-каква_си, еди-каква" ;
+        mte:hasGender        msd-bg:Pi-fs----a_bg ;
+        mte:hasNumber        msd-bg:Pi-fs----a_bg ;
+        mte:hasReferentType  msd-bg:Pi-fs----a_bg ;
+        olia_system:hasTag   "Pi-fs----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi-fs----p_bg a mte:SingularNumber , mte:PersonalPronoun , mte:FeminineGender , mte:IndefinitePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., която_и_да_е" ;
+        mte:hasGender        msd-bg:Pi-fs----p_bg ;
+        mte:hasNumber        msd-bg:Pi-fs----p_bg ;
+        mte:hasReferentType  msd-bg:Pi-fs----p_bg ;
+        olia_system:hasTag   "Pi-fs----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi-fs----s_bg a mte:IndefinitePronoun , mte:Pronoun , mte:PossessivePronoun , mte:SingularNumber , mte:FeminineGender ;
+        rdfs:comment         "e.g., нечия, нечия/нечий" ;
+        mte:hasGender        msd-bg:Pi-fs----s_bg ;
+        mte:hasNumber        msd-bg:Pi-fs----s_bg ;
+        mte:hasReferentType  msd-bg:Pi-fs----s_bg ;
+        olia_system:hasTag   "Pi-fs----s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi-fsn---p_bg a mte:SingularNumber , mte:PersonalPronoun , mte:IndefinitePronoun , mte:NominativeCase , mte:Pronoun , mte:FeminineGender ;
+        rdfs:comment         "e.g., някоя/някой" ;
+        mte:hasCase          msd-bg:Pi-fsn---p_bg ;
+        mte:hasGender        msd-bg:Pi-fsn---p_bg ;
+        mte:hasNumber        msd-bg:Pi-fsn---p_bg ;
+        mte:hasReferentType  msd-bg:Pi-fsn---p_bg ;
+        olia_system:hasTag   "Pi-fsn---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi-ms----a_bg a mte:MasculineGender , mte:Pronoun , mte:AttributivePronoun , mte:IndefinitePronoun , mte:SingularNumber ;
+        rdfs:comment         "e.g., някакъв, какъвто_и_да_е, еди-какъв_си, еди-какъв" ;
+        mte:hasGender        msd-bg:Pi-ms----a_bg ;
+        mte:hasNumber        msd-bg:Pi-ms----a_bg ;
+        mte:hasReferentType  msd-bg:Pi-ms----a_bg ;
+        olia_system:hasTag   "Pi-ms----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi-ms----p_bg a mte:PersonalPronoun , mte:Pronoun , mte:MasculineGender , mte:IndefinitePronoun , mte:SingularNumber ;
+        rdfs:comment         "e.g., който_и_да_е" ;
+        mte:hasGender        msd-bg:Pi-ms----p_bg ;
+        mte:hasNumber        msd-bg:Pi-ms----p_bg ;
+        mte:hasReferentType  msd-bg:Pi-ms----p_bg ;
+        olia_system:hasTag   "Pi-ms----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi-ms----s_bg a mte:SingularNumber , mte:Pronoun , mte:MasculineGender , mte:PossessivePronoun , mte:IndefinitePronoun ;
+        rdfs:comment         "e.g., нечий" ;
+        mte:hasGender        msd-bg:Pi-ms----s_bg ;
+        mte:hasNumber        msd-bg:Pi-ms----s_bg ;
+        mte:hasReferentType  msd-bg:Pi-ms----s_bg ;
+        olia_system:hasTag   "Pi-ms----s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi-msa---p_bg a mte:IndefinitePronoun , mte:MasculineGender , mte:PersonalPronoun , mte:AccusativeCase , mte:SingularNumber , mte:Pronoun ;
+        rdfs:comment         "e.g., някого/някой" ;
+        mte:hasCase          msd-bg:Pi-msa---p_bg ;
+        mte:hasGender        msd-bg:Pi-msa---p_bg ;
+        mte:hasNumber        msd-bg:Pi-msa---p_bg ;
+        mte:hasReferentType  msd-bg:Pi-msa---p_bg ;
+        olia_system:hasTag   "Pi-msa---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi-msd---p_bg a mte:IndefinitePronoun , mte:Pronoun , mte:SingularNumber , mte:MasculineGender , mte:DativeCase , mte:PersonalPronoun ;
+        rdfs:comment         "e.g., някому/някой" ;
+        mte:hasCase          msd-bg:Pi-msd---p_bg ;
+        mte:hasGender        msd-bg:Pi-msd---p_bg ;
+        mte:hasNumber        msd-bg:Pi-msd---p_bg ;
+        mte:hasReferentType  msd-bg:Pi-msd---p_bg ;
+        olia_system:hasTag   "Pi-msd---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi-msn---p_bg a mte:IndefinitePronoun , mte:Pronoun , mte:PersonalPronoun , mte:SingularNumber , mte:NominativeCase , mte:MasculineGender ;
+        rdfs:comment         "e.g., някой, еди-кой_си, еди-кой" ;
+        mte:hasCase          msd-bg:Pi-msn---p_bg ;
+        mte:hasGender        msd-bg:Pi-msn---p_bg ;
+        mte:hasNumber        msd-bg:Pi-msn---p_bg ;
+        mte:hasReferentType  msd-bg:Pi-msn---p_bg ;
+        olia_system:hasTag   "Pi-msn---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi-ns----a_bg a mte:SingularNumber , mte:IndefinitePronoun , mte:Pronoun , mte:NeuterGender , mte:AttributivePronoun ;
+        rdfs:comment         "e.g., някакво/някакъв, нещо, каквото_и_да_е, еди-какво_си, еди-какво" ;
+        mte:hasGender        msd-bg:Pi-ns----a_bg ;
+        mte:hasNumber        msd-bg:Pi-ns----a_bg ;
+        mte:hasReferentType  msd-bg:Pi-ns----a_bg ;
+        olia_system:hasTag   "Pi-ns----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi-ns----p_bg a mte:NeuterGender , mte:Pronoun , mte:PersonalPronoun , mte:SingularNumber , mte:IndefinitePronoun ;
+        rdfs:comment         "e.g., което_и_да_е" ;
+        mte:hasGender        msd-bg:Pi-ns----p_bg ;
+        mte:hasNumber        msd-bg:Pi-ns----p_bg ;
+        mte:hasReferentType  msd-bg:Pi-ns----p_bg ;
+        olia_system:hasTag   "Pi-ns----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi-ns----s_bg a mte:PossessivePronoun , mte:NeuterGender , mte:IndefinitePronoun , mte:SingularNumber , mte:Pronoun ;
+        rdfs:comment         "e.g., нечие/нечий, нечие" ;
+        mte:hasGender        msd-bg:Pi-ns----s_bg ;
+        mte:hasNumber        msd-bg:Pi-ns----s_bg ;
+        mte:hasReferentType  msd-bg:Pi-ns----s_bg ;
+        olia_system:hasTag   "Pi-ns----s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pi-nsn---p_bg a mte:IndefinitePronoun , mte:PersonalPronoun , mte:SingularNumber , mte:Pronoun , mte:NeuterGender , mte:NominativeCase ;
+        rdfs:comment         "e.g., някое/някой" ;
+        mte:hasCase          msd-bg:Pi-nsn---p_bg ;
+        mte:hasGender        msd-bg:Pi-nsn---p_bg ;
+        mte:hasNumber        msd-bg:Pi-nsn---p_bg ;
+        mte:hasReferentType  msd-bg:Pi-nsn---p_bg ;
+        olia_system:hasTag   "Pi-nsn---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp1-pa--n_bg a mte:FirstPerson , mte:PluralNumber , mte:PersonalPronoun , mte:AccusativeCase , mte:Pronoun , mte:NoClitic ;
+        rdfs:comment         "e.g., нас_ни, нас" ;
+        mte:hasCase          msd-bg:Pp1-pa--n_bg ;
+        mte:hasClitic        msd-bg:Pp1-pa--n_bg ;
+        mte:hasNumber        msd-bg:Pp1-pa--n_bg ;
+        mte:hasPerson        msd-bg:Pp1-pa--n_bg ;
+        olia_system:hasTag   "Pp1-pa--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp1-pa--y_bg a mte:PluralNumber , mte:AccusativeCase , mte:FirstPerson , mte:PersonalPronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., ни/ние" ;
+        mte:hasCase          msd-bg:Pp1-pa--y_bg ;
+        mte:hasClitic        msd-bg:Pp1-pa--y_bg ;
+        mte:hasNumber        msd-bg:Pp1-pa--y_bg ;
+        mte:hasPerson        msd-bg:Pp1-pa--y_bg ;
+        olia_system:hasTag   "Pp1-pa--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp1-pd--n_bg a mte:FirstPerson , mte:NoClitic , mte:PersonalPronoun , mte:Pronoun , mte:PluralNumber , mte:DativeCase ;
+        rdfs:comment         "e.g., нас_ни, нам" ;
+        mte:hasCase          msd-bg:Pp1-pd--n_bg ;
+        mte:hasClitic        msd-bg:Pp1-pd--n_bg ;
+        mte:hasNumber        msd-bg:Pp1-pd--n_bg ;
+        mte:hasPerson        msd-bg:Pp1-pd--n_bg ;
+        olia_system:hasTag   "Pp1-pd--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp1-pd--y_bg a mte:PersonalPronoun , mte:DativeCase , mte:Pronoun , mte:PluralNumber , mte:FirstPerson ;
+        rdfs:comment         "e.g., ни/ние" ;
+        mte:hasCase          msd-bg:Pp1-pd--y_bg ;
+        mte:hasClitic        msd-bg:Pp1-pd--y_bg ;
+        mte:hasNumber        msd-bg:Pp1-pd--y_bg ;
+        mte:hasPerson        msd-bg:Pp1-pd--y_bg ;
+        olia_system:hasTag   "Pp1-pd--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp1-pn_bg a mte:PluralNumber , mte:PersonalPronoun , mte:FirstPerson , mte:NominativeCase , mte:Pronoun ;
+        rdfs:comment         "e.g., ние" ;
+        mte:hasCase          msd-bg:Pp1-pn_bg ;
+        mte:hasNumber        msd-bg:Pp1-pn_bg ;
+        mte:hasPerson        msd-bg:Pp1-pn_bg ;
+        olia_system:hasTag   "Pp1-pn" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp1-sa--n_bg a mte:SingularNumber , mte:PersonalPronoun , mte:NoClitic , mte:Pronoun , mte:AccusativeCase , mte:FirstPerson ;
+        rdfs:comment         "e.g., мене_ме, мене/аз, мен/аз" ;
+        mte:hasCase          msd-bg:Pp1-sa--n_bg ;
+        mte:hasClitic        msd-bg:Pp1-sa--n_bg ;
+        mte:hasNumber        msd-bg:Pp1-sa--n_bg ;
+        mte:hasPerson        msd-bg:Pp1-sa--n_bg ;
+        olia_system:hasTag   "Pp1-sa--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp1-sa--y_bg a mte:FirstPerson , mte:Pronoun , mte:SingularNumber , mte:AccusativeCase , mte:PersonalPronoun ;
+        rdfs:comment         "e.g., ме/аз" ;
+        mte:hasCase          msd-bg:Pp1-sa--y_bg ;
+        mte:hasClitic        msd-bg:Pp1-sa--y_bg ;
+        mte:hasNumber        msd-bg:Pp1-sa--y_bg ;
+        mte:hasPerson        msd-bg:Pp1-sa--y_bg ;
+        olia_system:hasTag   "Pp1-sa--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp1-sd--n_bg a mte:Pronoun , mte:FirstPerson , mte:NoClitic , mte:SingularNumber , mte:DativeCase , mte:PersonalPronoun ;
+        rdfs:comment         "e.g., мене_ми, мене/аз, мен/аз" ;
+        mte:hasCase          msd-bg:Pp1-sd--n_bg ;
+        mte:hasClitic        msd-bg:Pp1-sd--n_bg ;
+        mte:hasNumber        msd-bg:Pp1-sd--n_bg ;
+        mte:hasPerson        msd-bg:Pp1-sd--n_bg ;
+        olia_system:hasTag   "Pp1-sd--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp1-sd--y_bg a mte:FirstPerson , mte:DativeCase , mte:PersonalPronoun , mte:Pronoun , mte:SingularNumber ;
+        rdfs:comment         "e.g., ми/аз" ;
+        mte:hasCase          msd-bg:Pp1-sd--y_bg ;
+        mte:hasClitic        msd-bg:Pp1-sd--y_bg ;
+        mte:hasNumber        msd-bg:Pp1-sd--y_bg ;
+        mte:hasPerson        msd-bg:Pp1-sd--y_bg ;
+        olia_system:hasTag   "Pp1-sd--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp1-sn_bg a mte:FirstPerson , mte:SingularNumber , mte:Pronoun , mte:NominativeCase , mte:PersonalPronoun ;
+        rdfs:comment         "e.g., аз" ;
+        mte:hasCase          msd-bg:Pp1-sn_bg ;
+        mte:hasNumber        msd-bg:Pp1-sn_bg ;
+        mte:hasPerson        msd-bg:Pp1-sn_bg ;
+        olia_system:hasTag   "Pp1-sn" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp2-p---y_bg a mte:PersonalPronoun , mte:PluralNumber , mte:SecondPerson , mte:Pronoun ;
+        rdfs:comment         "e.g., ви/вие" ;
+        mte:hasClitic        msd-bg:Pp2-p---y_bg ;
+        mte:hasNumber        msd-bg:Pp2-p---y_bg ;
+        mte:hasPerson        msd-bg:Pp2-p---y_bg ;
+        olia_system:hasTag   "Pp2-p---y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp2-pa--n_bg a mte:NoClitic , mte:Pronoun , mte:PluralNumber , mte:PersonalPronoun , mte:SecondPerson , mte:AccusativeCase ;
+        rdfs:comment         "e.g., вас/вие" ;
+        mte:hasCase          msd-bg:Pp2-pa--n_bg ;
+        mte:hasClitic        msd-bg:Pp2-pa--n_bg ;
+        mte:hasNumber        msd-bg:Pp2-pa--n_bg ;
+        mte:hasPerson        msd-bg:Pp2-pa--n_bg ;
+        olia_system:hasTag   "Pp2-pa--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp2-pa--y_bg a mte:PersonalPronoun , mte:PluralNumber , mte:AccusativeCase , mte:Pronoun , mte:SecondPerson ;
+        rdfs:comment         "e.g., ви/вие" ;
+        mte:hasCase          msd-bg:Pp2-pa--y_bg ;
+        mte:hasClitic        msd-bg:Pp2-pa--y_bg ;
+        mte:hasNumber        msd-bg:Pp2-pa--y_bg ;
+        mte:hasPerson        msd-bg:Pp2-pa--y_bg ;
+        olia_system:hasTag   "Pp2-pa--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp2-pd--n_bg a mte:Pronoun , mte:NoClitic , mte:SecondPerson , mte:DativeCase , mte:PluralNumber , mte:PersonalPronoun ;
+        rdfs:comment         "e.g., вам" ;
+        mte:hasCase          msd-bg:Pp2-pd--n_bg ;
+        mte:hasClitic        msd-bg:Pp2-pd--n_bg ;
+        mte:hasNumber        msd-bg:Pp2-pd--n_bg ;
+        mte:hasPerson        msd-bg:Pp2-pd--n_bg ;
+        olia_system:hasTag   "Pp2-pd--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp2-pn_bg a mte:PersonalPronoun , mte:NominativeCase , mte:SecondPerson , mte:Pronoun , mte:PluralNumber ;
+        rdfs:comment         "e.g., вие" ;
+        mte:hasCase          msd-bg:Pp2-pn_bg ;
+        mte:hasNumber        msd-bg:Pp2-pn_bg ;
+        mte:hasPerson        msd-bg:Pp2-pn_bg ;
+        olia_system:hasTag   "Pp2-pn" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp2-sa--n_bg a mte:PersonalPronoun , mte:SingularNumber , mte:Pronoun , mte:SecondPerson , mte:NoClitic , mte:AccusativeCase ;
+        rdfs:comment         "e.g., теб, тебе_те, тебе, вас_ви" ;
+        mte:hasCase          msd-bg:Pp2-sa--n_bg ;
+        mte:hasClitic        msd-bg:Pp2-sa--n_bg ;
+        mte:hasNumber        msd-bg:Pp2-sa--n_bg ;
+        mte:hasPerson        msd-bg:Pp2-sa--n_bg ;
+        olia_system:hasTag   "Pp2-sa--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp2-sa--y_bg a mte:AccusativeCase , mte:Pronoun , mte:SingularNumber , mte:SecondPerson , mte:PersonalPronoun ;
+        rdfs:comment         "e.g., те/ти" ;
+        mte:hasCase          msd-bg:Pp2-sa--y_bg ;
+        mte:hasClitic        msd-bg:Pp2-sa--y_bg ;
+        mte:hasNumber        msd-bg:Pp2-sa--y_bg ;
+        mte:hasPerson        msd-bg:Pp2-sa--y_bg ;
+        olia_system:hasTag   "Pp2-sa--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp2-sd--n_bg a mte:PersonalPronoun , mte:SingularNumber , mte:SecondPerson , mte:NoClitic , mte:Pronoun , mte:DativeCase ;
+        rdfs:comment         "e.g., теб, тебе_ти, тебе, вас_ви" ;
+        mte:hasCase          msd-bg:Pp2-sd--n_bg ;
+        mte:hasClitic        msd-bg:Pp2-sd--n_bg ;
+        mte:hasNumber        msd-bg:Pp2-sd--n_bg ;
+        mte:hasPerson        msd-bg:Pp2-sd--n_bg ;
+        olia_system:hasTag   "Pp2-sd--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp2-sd--y_bg a mte:Pronoun , mte:SingularNumber , mte:PersonalPronoun , mte:DativeCase , mte:SecondPerson ;
+        rdfs:comment         "e.g., ти" ;
+        mte:hasCase          msd-bg:Pp2-sd--y_bg ;
+        mte:hasClitic        msd-bg:Pp2-sd--y_bg ;
+        mte:hasNumber        msd-bg:Pp2-sd--y_bg ;
+        mte:hasPerson        msd-bg:Pp2-sd--y_bg ;
+        olia_system:hasTag   "Pp2-sd--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp2-sn_bg a mte:Pronoun , mte:NominativeCase , mte:SecondPerson , mte:SingularNumber , mte:PersonalPronoun ;
+        rdfs:comment         "e.g., ти" ;
+        mte:hasCase          msd-bg:Pp2-sn_bg ;
+        mte:hasNumber        msd-bg:Pp2-sn_bg ;
+        mte:hasPerson        msd-bg:Pp2-sn_bg ;
+        olia_system:hasTag   "Pp2-sn" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3-pa--n_bg a mte:PluralNumber , mte:NoClitic , mte:ThirdPerson , mte:Pronoun , mte:AccusativeCase , mte:PersonalPronoun ;
+        rdfs:comment         "e.g., тях, тях_ги" ;
+        mte:hasCase          msd-bg:Pp3-pa--n_bg ;
+        mte:hasClitic        msd-bg:Pp3-pa--n_bg ;
+        mte:hasNumber        msd-bg:Pp3-pa--n_bg ;
+        mte:hasPerson        msd-bg:Pp3-pa--n_bg ;
+        olia_system:hasTag   "Pp3-pa--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3-pa--y_bg a mte:AccusativeCase , mte:Pronoun , mte:PersonalPronoun , mte:PluralNumber , mte:ThirdPerson ;
+        rdfs:comment         "e.g., ги/те" ;
+        mte:hasCase          msd-bg:Pp3-pa--y_bg ;
+        mte:hasClitic        msd-bg:Pp3-pa--y_bg ;
+        mte:hasNumber        msd-bg:Pp3-pa--y_bg ;
+        mte:hasPerson        msd-bg:Pp3-pa--y_bg ;
+        olia_system:hasTag   "Pp3-pa--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3-pd--n_bg a mte:DativeCase , mte:ThirdPerson , mte:PluralNumber , mte:PersonalPronoun , mte:NoClitic , mte:Pronoun ;
+        rdfs:comment         "e.g., тях_им, тям" ;
+        mte:hasCase          msd-bg:Pp3-pd--n_bg ;
+        mte:hasClitic        msd-bg:Pp3-pd--n_bg ;
+        mte:hasNumber        msd-bg:Pp3-pd--n_bg ;
+        mte:hasPerson        msd-bg:Pp3-pd--n_bg ;
+        olia_system:hasTag   "Pp3-pd--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3-pd--y_bg a mte:PersonalPronoun , mte:PluralNumber , mte:DativeCase , mte:Pronoun , mte:ThirdPerson ;
+        rdfs:comment         "e.g., им/те" ;
+        mte:hasCase          msd-bg:Pp3-pd--y_bg ;
+        mte:hasClitic        msd-bg:Pp3-pd--y_bg ;
+        mte:hasNumber        msd-bg:Pp3-pd--y_bg ;
+        mte:hasPerson        msd-bg:Pp3-pd--y_bg ;
+        olia_system:hasTag   "Pp3-pd--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3-pn_bg a mte:NominativeCase , mte:ThirdPerson , mte:PersonalPronoun , mte:Pronoun , mte:PluralNumber ;
+        rdfs:comment         "e.g., те" ;
+        mte:hasCase          msd-bg:Pp3-pn_bg ;
+        mte:hasNumber        msd-bg:Pp3-pn_bg ;
+        mte:hasPerson        msd-bg:Pp3-pn_bg ;
+        olia_system:hasTag   "Pp3-pn" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3fsa--n_bg a mte:ThirdPerson , mte:SingularNumber , mte:Pronoun , mte:PersonalPronoun , mte:FeminineGender , mte:NoClitic , mte:AccusativeCase ;
+        rdfs:comment         "e.g., нея_я, нея" ;
+        mte:hasCase          msd-bg:Pp3fsa--n_bg ;
+        mte:hasClitic        msd-bg:Pp3fsa--n_bg ;
+        mte:hasGender        msd-bg:Pp3fsa--n_bg ;
+        mte:hasNumber        msd-bg:Pp3fsa--n_bg ;
+        mte:hasPerson        msd-bg:Pp3fsa--n_bg ;
+        olia_system:hasTag   "Pp3fsa--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3fsa--y_bg a mte:Pronoun , mte:AccusativeCase , mte:SingularNumber , mte:FeminineGender , mte:ThirdPerson , mte:PersonalPronoun ;
+        rdfs:comment         "e.g., я/тя" ;
+        mte:hasCase          msd-bg:Pp3fsa--y_bg ;
+        mte:hasClitic        msd-bg:Pp3fsa--y_bg ;
+        mte:hasGender        msd-bg:Pp3fsa--y_bg ;
+        mte:hasNumber        msd-bg:Pp3fsa--y_bg ;
+        mte:hasPerson        msd-bg:Pp3fsa--y_bg ;
+        olia_system:hasTag   "Pp3fsa--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3fsd--y_bg a mte:Pronoun , mte:ThirdPerson , mte:SingularNumber , mte:PersonalPronoun , mte:FeminineGender , mte:DativeCase ;
+        rdfs:comment         "e.g., й/тя" ;
+        mte:hasCase          msd-bg:Pp3fsd--y_bg ;
+        mte:hasClitic        msd-bg:Pp3fsd--y_bg ;
+        mte:hasGender        msd-bg:Pp3fsd--y_bg ;
+        mte:hasNumber        msd-bg:Pp3fsd--y_bg ;
+        mte:hasPerson        msd-bg:Pp3fsd--y_bg ;
+        olia_system:hasTag   "Pp3fsd--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3fsn_bg a mte:Pronoun , mte:NominativeCase , mte:ThirdPerson , mte:PersonalPronoun , mte:FeminineGender , mte:SingularNumber ;
+        rdfs:comment         "e.g., тя" ;
+        mte:hasCase          msd-bg:Pp3fsn_bg ;
+        mte:hasGender        msd-bg:Pp3fsn_bg ;
+        mte:hasNumber        msd-bg:Pp3fsn_bg ;
+        mte:hasPerson        msd-bg:Pp3fsn_bg ;
+        olia_system:hasTag   "Pp3fsn" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3msa--n_bg a mte:SingularNumber , mte:NoClitic , mte:AccusativeCase , mte:PersonalPronoun , mte:MasculineGender , mte:ThirdPerson , mte:Pronoun ;
+        rdfs:comment         "e.g., него/той, него_го" ;
+        mte:hasCase          msd-bg:Pp3msa--n_bg ;
+        mte:hasClitic        msd-bg:Pp3msa--n_bg ;
+        mte:hasGender        msd-bg:Pp3msa--n_bg ;
+        mte:hasNumber        msd-bg:Pp3msa--n_bg ;
+        mte:hasPerson        msd-bg:Pp3msa--n_bg ;
+        olia_system:hasTag   "Pp3msa--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3msa--y_bg a mte:MasculineGender , mte:SingularNumber , mte:ThirdPerson , mte:AccusativeCase , mte:PersonalPronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., го/той" ;
+        mte:hasCase          msd-bg:Pp3msa--y_bg ;
+        mte:hasClitic        msd-bg:Pp3msa--y_bg ;
+        mte:hasGender        msd-bg:Pp3msa--y_bg ;
+        mte:hasNumber        msd-bg:Pp3msa--y_bg ;
+        mte:hasPerson        msd-bg:Pp3msa--y_bg ;
+        olia_system:hasTag   "Pp3msa--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3msd--n_bg a mte:Pronoun , mte:ThirdPerson , mte:NoClitic , mte:PersonalPronoun , mte:DativeCase , mte:SingularNumber , mte:MasculineGender ;
+        rdfs:comment         "e.g., нему, него_му" ;
+        mte:hasCase          msd-bg:Pp3msd--n_bg ;
+        mte:hasClitic        msd-bg:Pp3msd--n_bg ;
+        mte:hasGender        msd-bg:Pp3msd--n_bg ;
+        mte:hasNumber        msd-bg:Pp3msd--n_bg ;
+        mte:hasPerson        msd-bg:Pp3msd--n_bg ;
+        olia_system:hasTag   "Pp3msd--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3msd--y_bg a mte:ThirdPerson , mte:SingularNumber , mte:PersonalPronoun , mte:Pronoun , mte:DativeCase , mte:MasculineGender ;
+        rdfs:comment         "e.g., нему, му/той" ;
+        mte:hasCase          msd-bg:Pp3msd--y_bg ;
+        mte:hasClitic        msd-bg:Pp3msd--y_bg ;
+        mte:hasGender        msd-bg:Pp3msd--y_bg ;
+        mte:hasNumber        msd-bg:Pp3msd--y_bg ;
+        mte:hasPerson        msd-bg:Pp3msd--y_bg ;
+        olia_system:hasTag   "Pp3msd--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3msn_bg a mte:PersonalPronoun , mte:MasculineGender , mte:ThirdPerson , mte:SingularNumber , mte:NominativeCase , mte:Pronoun ;
+        rdfs:comment         "e.g., той" ;
+        mte:hasCase          msd-bg:Pp3msn_bg ;
+        mte:hasGender        msd-bg:Pp3msn_bg ;
+        mte:hasNumber        msd-bg:Pp3msn_bg ;
+        mte:hasPerson        msd-bg:Pp3msn_bg ;
+        olia_system:hasTag   "Pp3msn" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3nsa--n_bg a mte:AccusativeCase , mte:NeuterGender , mte:PersonalPronoun , mte:SingularNumber , mte:ThirdPerson , mte:Pronoun , mte:NoClitic ;
+        rdfs:comment         "e.g., него/то, него_го" ;
+        mte:hasCase          msd-bg:Pp3nsa--n_bg ;
+        mte:hasClitic        msd-bg:Pp3nsa--n_bg ;
+        mte:hasGender        msd-bg:Pp3nsa--n_bg ;
+        mte:hasNumber        msd-bg:Pp3nsa--n_bg ;
+        mte:hasPerson        msd-bg:Pp3nsa--n_bg ;
+        olia_system:hasTag   "Pp3nsa--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3nsa--y_bg a mte:ThirdPerson , mte:AccusativeCase , mte:SingularNumber , mte:PersonalPronoun , mte:Pronoun , mte:NeuterGender ;
+        rdfs:comment         "e.g., го/то" ;
+        mte:hasCase          msd-bg:Pp3nsa--y_bg ;
+        mte:hasClitic        msd-bg:Pp3nsa--y_bg ;
+        mte:hasGender        msd-bg:Pp3nsa--y_bg ;
+        mte:hasNumber        msd-bg:Pp3nsa--y_bg ;
+        mte:hasPerson        msd-bg:Pp3nsa--y_bg ;
+        olia_system:hasTag   "Pp3nsa--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3nsd--n_bg a mte:NoClitic , mte:SingularNumber , mte:NeuterGender , mte:PersonalPronoun , mte:DativeCase , mte:Pronoun , mte:ThirdPerson ;
+        rdfs:comment         "e.g., него_му" ;
+        mte:hasCase          msd-bg:Pp3nsd--n_bg ;
+        mte:hasClitic        msd-bg:Pp3nsd--n_bg ;
+        mte:hasGender        msd-bg:Pp3nsd--n_bg ;
+        mte:hasNumber        msd-bg:Pp3nsd--n_bg ;
+        mte:hasPerson        msd-bg:Pp3nsd--n_bg ;
+        olia_system:hasTag   "Pp3nsd--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3nsd--y_bg a mte:ThirdPerson , mte:Pronoun , mte:DativeCase , mte:NeuterGender , mte:PersonalPronoun , mte:SingularNumber ;
+        rdfs:comment         "e.g., нему, му/то" ;
+        mte:hasCase          msd-bg:Pp3nsd--y_bg ;
+        mte:hasClitic        msd-bg:Pp3nsd--y_bg ;
+        mte:hasGender        msd-bg:Pp3nsd--y_bg ;
+        mte:hasNumber        msd-bg:Pp3nsd--y_bg ;
+        mte:hasPerson        msd-bg:Pp3nsd--y_bg ;
+        olia_system:hasTag   "Pp3nsd--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pp3nsn_bg a mte:Pronoun , mte:ThirdPerson , mte:SingularNumber , mte:NominativeCase , mte:PersonalPronoun , mte:NeuterGender ;
+        rdfs:comment         "e.g., то" ;
+        mte:hasCase          msd-bg:Pp3nsn_bg ;
+        mte:hasGender        msd-bg:Pp3nsn_bg ;
+        mte:hasNumber        msd-bg:Pp3nsn_bg ;
+        mte:hasPerson        msd-bg:Pp3nsn_bg ;
+        olia_system:hasTag   "Pp3nsn" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pq-------q_bg a mte:QuantitativePronoun , mte:InterrogativePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., колко" ;
+        mte:hasReferentType  msd-bg:Pq-------q_bg ;
+        olia_system:hasTag   "Pq-------q" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pq--p----a_bg a mte:AttributivePronoun , mte:PluralNumber , mte:InterrogativePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., какви/какъв" ;
+        mte:hasNumber        msd-bg:Pq--p----a_bg ;
+        mte:hasReferentType  msd-bg:Pq--p----a_bg ;
+        olia_system:hasTag   "Pq--p----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pq--p----p_bg a mte:PersonalPronoun , mte:PluralNumber , mte:InterrogativePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., кои/кой" ;
+        mte:hasNumber        msd-bg:Pq--p----p_bg ;
+        mte:hasReferentType  msd-bg:Pq--p----p_bg ;
+        olia_system:hasTag   "Pq--p----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pq--p----s_bg a mte:PossessivePronoun , mte:PluralNumber , mte:InterrogativePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., чии" ;
+        mte:hasNumber        msd-bg:Pq--p----s_bg ;
+        mte:hasReferentType  msd-bg:Pq--p----s_bg ;
+        olia_system:hasTag   "Pq--p----s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pq-fs----a_bg a mte:FeminineGender , mte:SingularNumber , mte:Pronoun , mte:InterrogativePronoun , mte:AttributivePronoun ;
+        rdfs:comment         "e.g., каква/какъв" ;
+        mte:hasGender        msd-bg:Pq-fs----a_bg ;
+        mte:hasNumber        msd-bg:Pq-fs----a_bg ;
+        mte:hasReferentType  msd-bg:Pq-fs----a_bg ;
+        olia_system:hasTag   "Pq-fs----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pq-fs----p_bg a mte:Pronoun , mte:InterrogativePronoun , mte:PersonalPronoun , mte:FeminineGender , mte:SingularNumber ;
+        rdfs:comment         "e.g., коя/кой" ;
+        mte:hasGender        msd-bg:Pq-fs----p_bg ;
+        mte:hasNumber        msd-bg:Pq-fs----p_bg ;
+        mte:hasReferentType  msd-bg:Pq-fs----p_bg ;
+        olia_system:hasTag   "Pq-fs----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pq-fs----s_bg a mte:PossessivePronoun , mte:Pronoun , mte:FeminineGender , mte:SingularNumber , mte:InterrogativePronoun ;
+        rdfs:comment         "e.g., чия, чия/чий" ;
+        mte:hasGender        msd-bg:Pq-fs----s_bg ;
+        mte:hasNumber        msd-bg:Pq-fs----s_bg ;
+        mte:hasReferentType  msd-bg:Pq-fs----s_bg ;
+        olia_system:hasTag   "Pq-fs----s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pq-ms----a_bg a mte:InterrogativePronoun , mte:SingularNumber , mte:Pronoun , mte:MasculineGender , mte:AttributivePronoun ;
+        rdfs:comment         "e.g., какъв" ;
+        mte:hasGender        msd-bg:Pq-ms----a_bg ;
+        mte:hasNumber        msd-bg:Pq-ms----a_bg ;
+        mte:hasReferentType  msd-bg:Pq-ms----a_bg ;
+        olia_system:hasTag   "Pq-ms----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pq-ms----s_bg a mte:MasculineGender , mte:PossessivePronoun , mte:Pronoun , mte:InterrogativePronoun , mte:SingularNumber ;
+        rdfs:comment         "e.g., чий" ;
+        mte:hasGender        msd-bg:Pq-ms----s_bg ;
+        mte:hasNumber        msd-bg:Pq-ms----s_bg ;
+        mte:hasReferentType  msd-bg:Pq-ms----s_bg ;
+        olia_system:hasTag   "Pq-ms----s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pq-msa---p_bg a mte:MasculineGender , mte:AccusativeCase , mte:Pronoun , mte:InterrogativePronoun , mte:PersonalPronoun , mte:SingularNumber ;
+        rdfs:comment         "e.g., кого/кой" ;
+        mte:hasCase          msd-bg:Pq-msa---p_bg ;
+        mte:hasGender        msd-bg:Pq-msa---p_bg ;
+        mte:hasNumber        msd-bg:Pq-msa---p_bg ;
+        mte:hasReferentType  msd-bg:Pq-msa---p_bg ;
+        olia_system:hasTag   "Pq-msa---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pq-msd---p_bg a mte:MasculineGender , mte:SingularNumber , mte:InterrogativePronoun , mte:DativeCase , mte:PersonalPronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., кому/кой" ;
+        mte:hasCase          msd-bg:Pq-msd---p_bg ;
+        mte:hasGender        msd-bg:Pq-msd---p_bg ;
+        mte:hasNumber        msd-bg:Pq-msd---p_bg ;
+        mte:hasReferentType  msd-bg:Pq-msd---p_bg ;
+        olia_system:hasTag   "Pq-msd---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pq-msn---p_bg a mte:MasculineGender , mte:PersonalPronoun , mte:NominativeCase , mte:InterrogativePronoun , mte:Pronoun , mte:SingularNumber ;
+        rdfs:comment         "e.g., кой" ;
+        mte:hasCase          msd-bg:Pq-msn---p_bg ;
+        mte:hasGender        msd-bg:Pq-msn---p_bg ;
+        mte:hasNumber        msd-bg:Pq-msn---p_bg ;
+        mte:hasReferentType  msd-bg:Pq-msn---p_bg ;
+        olia_system:hasTag   "Pq-msn---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pq-ns----a_bg a mte:SingularNumber , mte:InterrogativePronoun , mte:NeuterGender , mte:AttributivePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., кво, какво/какъв" ;
+        mte:hasGender        msd-bg:Pq-ns----a_bg ;
+        mte:hasNumber        msd-bg:Pq-ns----a_bg ;
+        mte:hasReferentType  msd-bg:Pq-ns----a_bg ;
+        olia_system:hasTag   "Pq-ns----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pq-ns----p_bg a mte:InterrogativePronoun , mte:SingularNumber , mte:Pronoun , mte:NeuterGender , mte:PersonalPronoun ;
+        rdfs:comment         "e.g., кое/кой" ;
+        mte:hasGender        msd-bg:Pq-ns----p_bg ;
+        mte:hasNumber        msd-bg:Pq-ns----p_bg ;
+        mte:hasReferentType  msd-bg:Pq-ns----p_bg ;
+        olia_system:hasTag   "Pq-ns----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pr-------q_bg a mte:QuantitativePronoun , mte:RelativePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., колкото" ;
+        mte:hasReferentType  msd-bg:Pr-------q_bg ;
+        olia_system:hasTag   "Pr-------q" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pr--p----a_bg a mte:AttributivePronoun , mte:PluralNumber , mte:RelativePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., каквито/какъвто" ;
+        mte:hasNumber        msd-bg:Pr--p----a_bg ;
+        mte:hasReferentType  msd-bg:Pr--p----a_bg ;
+        olia_system:hasTag   "Pr--p----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pr--p----p_bg a mte:PersonalPronoun , mte:PluralNumber , mte:RelativePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., които/който" ;
+        mte:hasNumber        msd-bg:Pr--p----p_bg ;
+        mte:hasReferentType  msd-bg:Pr--p----p_bg ;
+        olia_system:hasTag   "Pr--p----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pr--p----s_bg a mte:PossessivePronoun , mte:PluralNumber , mte:RelativePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., чиито/чийто" ;
+        mte:hasNumber        msd-bg:Pr--p----s_bg ;
+        mte:hasReferentType  msd-bg:Pr--p----s_bg ;
+        olia_system:hasTag   "Pr--p----s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pr-fs----a_bg a mte:RelativePronoun , mte:FeminineGender , mte:SingularNumber , mte:Pronoun , mte:AttributivePronoun ;
+        rdfs:comment         "e.g., каквато/какъвто" ;
+        mte:hasGender        msd-bg:Pr-fs----a_bg ;
+        mte:hasNumber        msd-bg:Pr-fs----a_bg ;
+        mte:hasReferentType  msd-bg:Pr-fs----a_bg ;
+        olia_system:hasTag   "Pr-fs----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pr-fs----p_bg a mte:SingularNumber , mte:FeminineGender , mte:PersonalPronoun , mte:Pronoun , mte:RelativePronoun ;
+        rdfs:comment         "e.g., която/който" ;
+        mte:hasGender        msd-bg:Pr-fs----p_bg ;
+        mte:hasNumber        msd-bg:Pr-fs----p_bg ;
+        mte:hasReferentType  msd-bg:Pr-fs----p_bg ;
+        olia_system:hasTag   "Pr-fs----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pr-fs----s_bg a mte:SingularNumber , mte:PossessivePronoun , mte:RelativePronoun , mte:Pronoun , mte:FeminineGender ;
+        rdfs:comment         "e.g., чиято/чийто" ;
+        mte:hasGender        msd-bg:Pr-fs----s_bg ;
+        mte:hasNumber        msd-bg:Pr-fs----s_bg ;
+        mte:hasReferentType  msd-bg:Pr-fs----s_bg ;
+        olia_system:hasTag   "Pr-fs----s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pr-ms----a_bg a mte:SingularNumber , mte:Pronoun , mte:RelativePronoun , mte:AttributivePronoun , mte:MasculineGender ;
+        rdfs:comment         "e.g., какъвто" ;
+        mte:hasGender        msd-bg:Pr-ms----a_bg ;
+        mte:hasNumber        msd-bg:Pr-ms----a_bg ;
+        mte:hasReferentType  msd-bg:Pr-ms----a_bg ;
+        olia_system:hasTag   "Pr-ms----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pr-ms----s_bg a mte:MasculineGender , mte:Pronoun , mte:RelativePronoun , mte:SingularNumber , mte:PossessivePronoun ;
+        rdfs:comment         "e.g., чийто" ;
+        mte:hasGender        msd-bg:Pr-ms----s_bg ;
+        mte:hasNumber        msd-bg:Pr-ms----s_bg ;
+        mte:hasReferentType  msd-bg:Pr-ms----s_bg ;
+        olia_system:hasTag   "Pr-ms----s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pr-msa---p_bg a mte:PersonalPronoun , mte:RelativePronoun , mte:AccusativeCase , mte:SingularNumber , mte:Pronoun , mte:MasculineGender ;
+        rdfs:comment         "e.g., когото/който" ;
+        mte:hasCase          msd-bg:Pr-msa---p_bg ;
+        mte:hasGender        msd-bg:Pr-msa---p_bg ;
+        mte:hasNumber        msd-bg:Pr-msa---p_bg ;
+        mte:hasReferentType  msd-bg:Pr-msa---p_bg ;
+        olia_system:hasTag   "Pr-msa---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pr-msd---p_bg a mte:DativeCase , mte:SingularNumber , mte:MasculineGender , mte:Pronoun , mte:PersonalPronoun , mte:RelativePronoun ;
+        rdfs:comment         "e.g., комуто/който" ;
+        mte:hasCase          msd-bg:Pr-msd---p_bg ;
+        mte:hasGender        msd-bg:Pr-msd---p_bg ;
+        mte:hasNumber        msd-bg:Pr-msd---p_bg ;
+        mte:hasReferentType  msd-bg:Pr-msd---p_bg ;
+        olia_system:hasTag   "Pr-msd---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pr-msn---p_bg a mte:NominativeCase , mte:PersonalPronoun , mte:SingularNumber , mte:RelativePronoun , mte:Pronoun , mte:MasculineGender ;
+        rdfs:comment         "e.g., който" ;
+        mte:hasCase          msd-bg:Pr-msn---p_bg ;
+        mte:hasGender        msd-bg:Pr-msn---p_bg ;
+        mte:hasNumber        msd-bg:Pr-msn---p_bg ;
+        mte:hasReferentType  msd-bg:Pr-msn---p_bg ;
+        olia_system:hasTag   "Pr-msn---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pr-ns----a_bg a mte:AttributivePronoun , mte:Pronoun , mte:RelativePronoun , mte:SingularNumber , mte:NeuterGender ;
+        rdfs:comment         "e.g., каквото/какъвто" ;
+        mte:hasGender        msd-bg:Pr-ns----a_bg ;
+        mte:hasNumber        msd-bg:Pr-ns----a_bg ;
+        mte:hasReferentType  msd-bg:Pr-ns----a_bg ;
+        olia_system:hasTag   "Pr-ns----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pr-ns----p_bg a mte:RelativePronoun , mte:NeuterGender , mte:Pronoun , mte:PersonalPronoun , mte:SingularNumber ;
+        rdfs:comment         "e.g., което/който" ;
+        mte:hasGender        msd-bg:Pr-ns----p_bg ;
+        mte:hasNumber        msd-bg:Pr-ns----p_bg ;
+        mte:hasReferentType  msd-bg:Pr-ns----p_bg ;
+        olia_system:hasTag   "Pr-ns----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pr-ns----s_bg a mte:SingularNumber , mte:NeuterGender , mte:Pronoun , mte:RelativePronoun , mte:PossessivePronoun ;
+        rdfs:comment         "e.g., чието/чийто" ;
+        mte:hasGender        msd-bg:Pr-ns----s_bg ;
+        mte:hasNumber        msd-bg:Pr-ns----s_bg ;
+        mte:hasReferentType  msd-bg:Pr-ns----s_bg ;
+        olia_system:hasTag   "Pr-ns----s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps1-p---n--n_bg a mte:Indefinite , mte:NoClitic , mte:Pronoun , mte:PluralNumber , mte:FirstPerson , mte:PossessivePronoun ;
+        rdfs:comment         "e.g., наши, мои" ;
+        mte:hasClitic        msd-bg:Ps1-p---n--n_bg ;
+        mte:hasDefiniteness  msd-bg:Ps1-p---n--n_bg ;
+        mte:hasNumber        msd-bg:Ps1-p---n--n_bg ;
+        mte:hasPerson        msd-bg:Ps1-p---n--n_bg ;
+        olia_system:hasTag   "Ps1-p---n--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps1-p---n--y_bg a mte:FirstPerson , mte:Pronoun , mte:NoClitic , mte:PluralNumber , mte:Definite , mte:PossessivePronoun ;
+        rdfs:comment         "e.g., нашите/наши, мойте/мой, моите/мой, моите/мои" ;
+        mte:hasClitic        msd-bg:Ps1-p---n--y_bg ;
+        mte:hasDefiniteness  msd-bg:Ps1-p---n--y_bg ;
+        mte:hasNumber        msd-bg:Ps1-p---n--y_bg ;
+        mte:hasPerson        msd-bg:Ps1-p---n--y_bg ;
+        olia_system:hasTag   "Ps1-p---n--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps1-p---y_bg a mte:PossessivePronoun , mte:PluralNumber , mte:Pronoun , mte:FirstPerson ;
+        rdfs:comment         "e.g., ни/наш, ми/мой" ;
+        mte:hasClitic        msd-bg:Ps1-p---y_bg ;
+        mte:hasNumber        msd-bg:Ps1-p---y_bg ;
+        mte:hasPerson        msd-bg:Ps1-p---y_bg ;
+        olia_system:hasTag   "Ps1-p---y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps1-s---y_bg a mte:Pronoun , mte:PossessivePronoun , mte:SingularNumber , mte:FirstPerson ;
+        rdfs:comment         "e.g., ни/наш, ми/мой" ;
+        mte:hasClitic        msd-bg:Ps1-s---y_bg ;
+        mte:hasNumber        msd-bg:Ps1-s---y_bg ;
+        mte:hasPerson        msd-bg:Ps1-s---y_bg ;
+        olia_system:hasTag   "Ps1-s---y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps1fs---n--n_bg a mte:SingularNumber , mte:Pronoun , mte:NoClitic , mte:PossessivePronoun , mte:Indefinite , mte:FeminineGender , mte:FirstPerson ;
+        rdfs:comment         "e.g., наша, моя" ;
+        mte:hasClitic        msd-bg:Ps1fs---n--n_bg ;
+        mte:hasDefiniteness  msd-bg:Ps1fs---n--n_bg ;
+        mte:hasGender        msd-bg:Ps1fs---n--n_bg ;
+        mte:hasNumber        msd-bg:Ps1fs---n--n_bg ;
+        mte:hasPerson        msd-bg:Ps1fs---n--n_bg ;
+        olia_system:hasTag   "Ps1fs---n--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps1fs---n--y_bg a mte:FirstPerson , mte:FeminineGender , mte:Pronoun , mte:Definite , mte:NoClitic , mte:PossessivePronoun , mte:SingularNumber ;
+        rdfs:comment         "e.g., нашата/наша, моята/моя" ;
+        mte:hasClitic        msd-bg:Ps1fs---n--y_bg ;
+        mte:hasDefiniteness  msd-bg:Ps1fs---n--y_bg ;
+        mte:hasGender        msd-bg:Ps1fs---n--y_bg ;
+        mte:hasNumber        msd-bg:Ps1fs---n--y_bg ;
+        mte:hasPerson        msd-bg:Ps1fs---n--y_bg ;
+        olia_system:hasTag   "Ps1fs---n--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps1ms---n--f_bg a mte:FirstPerson , mte:PossessivePronoun , mte:SingularNumber , mte:FullArticle , mte:NoClitic , mte:Pronoun , mte:MasculineGender ;
+        rdfs:comment         "e.g., нашият/наш, моят/мой" ;
+        mte:hasClitic        msd-bg:Ps1ms---n--f_bg ;
+        mte:hasDefiniteness  msd-bg:Ps1ms---n--f_bg ;
+        mte:hasGender        msd-bg:Ps1ms---n--f_bg ;
+        mte:hasNumber        msd-bg:Ps1ms---n--f_bg ;
+        mte:hasPerson        msd-bg:Ps1ms---n--f_bg ;
+        olia_system:hasTag   "Ps1ms---n--f" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps1ms---n--n_bg a mte:NoClitic , mte:FirstPerson , mte:Indefinite , mte:SingularNumber , mte:Pronoun , mte:MasculineGender , mte:PossessivePronoun ;
+        rdfs:comment         "e.g., наш, мой" ;
+        mte:hasClitic        msd-bg:Ps1ms---n--n_bg ;
+        mte:hasDefiniteness  msd-bg:Ps1ms---n--n_bg ;
+        mte:hasGender        msd-bg:Ps1ms---n--n_bg ;
+        mte:hasNumber        msd-bg:Ps1ms---n--n_bg ;
+        mte:hasPerson        msd-bg:Ps1ms---n--n_bg ;
+        olia_system:hasTag   "Ps1ms---n--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps1ms---n--s_bg a mte:NoClitic , mte:ShortArticle , mte:SingularNumber , mte:FirstPerson , mte:Pronoun , mte:PossessivePronoun , mte:MasculineGender ;
+        rdfs:comment         "e.g., нашия/наш, моя/мой" ;
+        mte:hasClitic        msd-bg:Ps1ms---n--s_bg ;
+        mte:hasDefiniteness  msd-bg:Ps1ms---n--s_bg ;
+        mte:hasGender        msd-bg:Ps1ms---n--s_bg ;
+        mte:hasNumber        msd-bg:Ps1ms---n--s_bg ;
+        mte:hasPerson        msd-bg:Ps1ms---n--s_bg ;
+        olia_system:hasTag   "Ps1ms---n--s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps1ns---n--n_bg a mte:PossessivePronoun , mte:FirstPerson , mte:NeuterGender , mte:Pronoun , mte:NoClitic , mte:SingularNumber , mte:Indefinite ;
+        rdfs:comment         "e.g., наше, мое" ;
+        mte:hasClitic        msd-bg:Ps1ns---n--n_bg ;
+        mte:hasDefiniteness  msd-bg:Ps1ns---n--n_bg ;
+        mte:hasGender        msd-bg:Ps1ns---n--n_bg ;
+        mte:hasNumber        msd-bg:Ps1ns---n--n_bg ;
+        mte:hasPerson        msd-bg:Ps1ns---n--n_bg ;
+        olia_system:hasTag   "Ps1ns---n--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps1ns---n--y_bg a mte:NoClitic , mte:Definite , mte:SingularNumber , mte:PossessivePronoun , mte:FirstPerson , mte:NeuterGender , mte:Pronoun ;
+        rdfs:comment         "e.g., нашето/наше, мойто/мой, моето/мое" ;
+        mte:hasClitic        msd-bg:Ps1ns---n--y_bg ;
+        mte:hasDefiniteness  msd-bg:Ps1ns---n--y_bg ;
+        mte:hasGender        msd-bg:Ps1ns---n--y_bg ;
+        mte:hasNumber        msd-bg:Ps1ns---n--y_bg ;
+        mte:hasPerson        msd-bg:Ps1ns---n--y_bg ;
+        olia_system:hasTag   "Ps1ns---n--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps2-p---n--n_bg a mte:Indefinite , mte:PluralNumber , mte:PossessivePronoun , mte:SecondPerson , mte:NoClitic , mte:Pronoun ;
+        rdfs:comment         "e.g., твои, ваши" ;
+        mte:hasClitic        msd-bg:Ps2-p---n--n_bg ;
+        mte:hasDefiniteness  msd-bg:Ps2-p---n--n_bg ;
+        mte:hasNumber        msd-bg:Ps2-p---n--n_bg ;
+        mte:hasPerson        msd-bg:Ps2-p---n--n_bg ;
+        olia_system:hasTag   "Ps2-p---n--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps2-p---n--y_bg a mte:PossessivePronoun , mte:PluralNumber , mte:Pronoun , mte:SecondPerson , mte:NoClitic , mte:Definite ;
+        rdfs:comment         "e.g., твоите/твои, вашите/ваши" ;
+        mte:hasClitic        msd-bg:Ps2-p---n--y_bg ;
+        mte:hasDefiniteness  msd-bg:Ps2-p---n--y_bg ;
+        mte:hasNumber        msd-bg:Ps2-p---n--y_bg ;
+        mte:hasPerson        msd-bg:Ps2-p---n--y_bg ;
+        olia_system:hasTag   "Ps2-p---n--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps2-p---y_bg a mte:PluralNumber , mte:SecondPerson , mte:PossessivePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., ти, ви/ваш" ;
+        mte:hasClitic        msd-bg:Ps2-p---y_bg ;
+        mte:hasNumber        msd-bg:Ps2-p---y_bg ;
+        mte:hasPerson        msd-bg:Ps2-p---y_bg ;
+        olia_system:hasTag   "Ps2-p---y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps2-s---y_bg a mte:PossessivePronoun , mte:Pronoun , mte:SecondPerson , mte:SingularNumber ;
+        rdfs:comment         "e.g., ти, ви/ваш" ;
+        mte:hasClitic        msd-bg:Ps2-s---y_bg ;
+        mte:hasNumber        msd-bg:Ps2-s---y_bg ;
+        mte:hasPerson        msd-bg:Ps2-s---y_bg ;
+        olia_system:hasTag   "Ps2-s---y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps2fs---n--n_bg a mte:PossessivePronoun , mte:Indefinite , mte:SecondPerson , mte:FeminineGender , mte:NoClitic , mte:Pronoun , mte:SingularNumber ;
+        rdfs:comment         "e.g., твоя, ваша" ;
+        mte:hasClitic        msd-bg:Ps2fs---n--n_bg ;
+        mte:hasDefiniteness  msd-bg:Ps2fs---n--n_bg ;
+        mte:hasGender        msd-bg:Ps2fs---n--n_bg ;
+        mte:hasNumber        msd-bg:Ps2fs---n--n_bg ;
+        mte:hasPerson        msd-bg:Ps2fs---n--n_bg ;
+        olia_system:hasTag   "Ps2fs---n--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps2fs---n--y_bg a mte:Pronoun , mte:SingularNumber , mte:Definite , mte:FeminineGender , mte:NoClitic , mte:SecondPerson , mte:PossessivePronoun ;
+        rdfs:comment         "e.g., твоята/твоя, вашата/ваша" ;
+        mte:hasClitic        msd-bg:Ps2fs---n--y_bg ;
+        mte:hasDefiniteness  msd-bg:Ps2fs---n--y_bg ;
+        mte:hasGender        msd-bg:Ps2fs---n--y_bg ;
+        mte:hasNumber        msd-bg:Ps2fs---n--y_bg ;
+        mte:hasPerson        msd-bg:Ps2fs---n--y_bg ;
+        olia_system:hasTag   "Ps2fs---n--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps2ms---n--f_bg a mte:NoClitic , mte:Pronoun , mte:FullArticle , mte:PossessivePronoun , mte:MasculineGender , mte:SecondPerson , mte:SingularNumber ;
+        rdfs:comment         "e.g., твоят/твой" ;
+        mte:hasClitic        msd-bg:Ps2ms---n--f_bg ;
+        mte:hasDefiniteness  msd-bg:Ps2ms---n--f_bg ;
+        mte:hasGender        msd-bg:Ps2ms---n--f_bg ;
+        mte:hasNumber        msd-bg:Ps2ms---n--f_bg ;
+        mte:hasPerson        msd-bg:Ps2ms---n--f_bg ;
+        olia_system:hasTag   "Ps2ms---n--f" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps2ms---n--n_bg a mte:NoClitic , mte:Pronoun , mte:SecondPerson , mte:SingularNumber , mte:MasculineGender , mte:PossessivePronoun , mte:Indefinite ;
+        rdfs:comment         "e.g., твой, ваш" ;
+        mte:hasClitic        msd-bg:Ps2ms---n--n_bg ;
+        mte:hasDefiniteness  msd-bg:Ps2ms---n--n_bg ;
+        mte:hasGender        msd-bg:Ps2ms---n--n_bg ;
+        mte:hasNumber        msd-bg:Ps2ms---n--n_bg ;
+        mte:hasPerson        msd-bg:Ps2ms---n--n_bg ;
+        olia_system:hasTag   "Ps2ms---n--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps2ms---n--s_bg a mte:ShortArticle , mte:PossessivePronoun , mte:SecondPerson , mte:NoClitic , mte:SingularNumber , mte:Pronoun , mte:MasculineGender ;
+        rdfs:comment         "e.g., твоя/твой, вашия/ваш" ;
+        mte:hasClitic        msd-bg:Ps2ms---n--s_bg ;
+        mte:hasDefiniteness  msd-bg:Ps2ms---n--s_bg ;
+        mte:hasGender        msd-bg:Ps2ms---n--s_bg ;
+        mte:hasNumber        msd-bg:Ps2ms---n--s_bg ;
+        mte:hasPerson        msd-bg:Ps2ms---n--s_bg ;
+        olia_system:hasTag   "Ps2ms---n--s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps2ns---n--n_bg a mte:NoClitic , mte:SecondPerson , mte:Pronoun , mte:Indefinite , mte:PossessivePronoun , mte:NeuterGender , mte:SingularNumber ;
+        rdfs:comment         "e.g., твое, ваше" ;
+        mte:hasClitic        msd-bg:Ps2ns---n--n_bg ;
+        mte:hasDefiniteness  msd-bg:Ps2ns---n--n_bg ;
+        mte:hasGender        msd-bg:Ps2ns---n--n_bg ;
+        mte:hasNumber        msd-bg:Ps2ns---n--n_bg ;
+        mte:hasPerson        msd-bg:Ps2ns---n--n_bg ;
+        olia_system:hasTag   "Ps2ns---n--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps2ns---n--y_bg a mte:SingularNumber , mte:NoClitic , mte:PossessivePronoun , mte:Pronoun , mte:NeuterGender , mte:SecondPerson , mte:Definite ;
+        rdfs:comment         "e.g., твоето/твое, вашето/ваше" ;
+        mte:hasClitic        msd-bg:Ps2ns---n--y_bg ;
+        mte:hasDefiniteness  msd-bg:Ps2ns---n--y_bg ;
+        mte:hasGender        msd-bg:Ps2ns---n--y_bg ;
+        mte:hasNumber        msd-bg:Ps2ns---n--y_bg ;
+        mte:hasPerson        msd-bg:Ps2ns---n--y_bg ;
+        olia_system:hasTag   "Ps2ns---n--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps3-p---n--n_bg a mte:ThirdPerson , mte:Indefinite , mte:Pronoun , mte:PossessivePronoun , mte:PluralNumber , mte:NoClitic ;
+        rdfs:comment         "e.g., техни/техен, нейни, негови" ;
+        mte:hasClitic        msd-bg:Ps3-p---n--n_bg ;
+        mte:hasDefiniteness  msd-bg:Ps3-p---n--n_bg ;
+        mte:hasNumber        msd-bg:Ps3-p---n--n_bg ;
+        mte:hasPerson        msd-bg:Ps3-p---n--n_bg ;
+        olia_system:hasTag   "Ps3-p---n--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps3-p---n--y_bg a mte:ThirdPerson , mte:Pronoun , mte:NoClitic , mte:Definite , mte:PossessivePronoun , mte:PluralNumber ;
+        rdfs:comment         "e.g., техните/техни, нейните/нейни, неговите/негови" ;
+        mte:hasClitic        msd-bg:Ps3-p---n--y_bg ;
+        mte:hasDefiniteness  msd-bg:Ps3-p---n--y_bg ;
+        mte:hasNumber        msd-bg:Ps3-p---n--y_bg ;
+        mte:hasPerson        msd-bg:Ps3-p---n--y_bg ;
+        olia_system:hasTag   "Ps3-p---n--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps3-p---y_bg a mte:ThirdPerson , mte:Pronoun , mte:PluralNumber , mte:PossessivePronoun ;
+        rdfs:comment         "e.g., му/негов, й/неин, им/техен" ;
+        mte:hasClitic        msd-bg:Ps3-p---y_bg ;
+        mte:hasNumber        msd-bg:Ps3-p---y_bg ;
+        mte:hasPerson        msd-bg:Ps3-p---y_bg ;
+        olia_system:hasTag   "Ps3-p---y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps3-s---y_bg a mte:PossessivePronoun , mte:ThirdPerson , mte:Pronoun , mte:SingularNumber ;
+        rdfs:comment         "e.g., му/негов, й/неин, им/техен" ;
+        mte:hasClitic        msd-bg:Ps3-s---y_bg ;
+        mte:hasNumber        msd-bg:Ps3-s---y_bg ;
+        mte:hasPerson        msd-bg:Ps3-s---y_bg ;
+        olia_system:hasTag   "Ps3-s---y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps3fs---n--n_bg a mte:FeminineGender , mte:Pronoun , mte:ThirdPerson , mte:PossessivePronoun , mte:SingularNumber , mte:NoClitic , mte:Indefinite ;
+        rdfs:comment         "e.g., тяхна, нейна, негова" ;
+        mte:hasClitic        msd-bg:Ps3fs---n--n_bg ;
+        mte:hasDefiniteness  msd-bg:Ps3fs---n--n_bg ;
+        mte:hasGender        msd-bg:Ps3fs---n--n_bg ;
+        mte:hasNumber        msd-bg:Ps3fs---n--n_bg ;
+        mte:hasPerson        msd-bg:Ps3fs---n--n_bg ;
+        olia_system:hasTag   "Ps3fs---n--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps3fs---n--y_bg a mte:NoClitic , mte:FeminineGender , mte:Definite , mte:Pronoun , mte:PossessivePronoun , mte:SingularNumber , mte:ThirdPerson ;
+        rdfs:comment         "e.g., тяхната/тяхна, нейната/нейна, неговата/негова" ;
+        mte:hasClitic        msd-bg:Ps3fs---n--y_bg ;
+        mte:hasDefiniteness  msd-bg:Ps3fs---n--y_bg ;
+        mte:hasGender        msd-bg:Ps3fs---n--y_bg ;
+        mte:hasNumber        msd-bg:Ps3fs---n--y_bg ;
+        mte:hasPerson        msd-bg:Ps3fs---n--y_bg ;
+        olia_system:hasTag   "Ps3fs---n--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps3ms---n--f_bg a mte:Pronoun , mte:SingularNumber , mte:ThirdPerson , mte:FullArticle , mte:PossessivePronoun , mte:NoClitic , mte:MasculineGender ;
+        rdfs:comment         "e.g., техният/техен, нейният/неин, неговият/негов" ;
+        mte:hasClitic        msd-bg:Ps3ms---n--f_bg ;
+        mte:hasDefiniteness  msd-bg:Ps3ms---n--f_bg ;
+        mte:hasGender        msd-bg:Ps3ms---n--f_bg ;
+        mte:hasNumber        msd-bg:Ps3ms---n--f_bg ;
+        mte:hasPerson        msd-bg:Ps3ms---n--f_bg ;
+        olia_system:hasTag   "Ps3ms---n--f" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps3ms---n--n_bg a mte:Indefinite , mte:Pronoun , mte:PossessivePronoun , mte:ThirdPerson , mte:MasculineGender , mte:SingularNumber , mte:NoClitic ;
+        rdfs:comment         "e.g., техен, неин, негов" ;
+        mte:hasClitic        msd-bg:Ps3ms---n--n_bg ;
+        mte:hasDefiniteness  msd-bg:Ps3ms---n--n_bg ;
+        mte:hasGender        msd-bg:Ps3ms---n--n_bg ;
+        mte:hasNumber        msd-bg:Ps3ms---n--n_bg ;
+        mte:hasPerson        msd-bg:Ps3ms---n--n_bg ;
+        olia_system:hasTag   "Ps3ms---n--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps3ms---n--s_bg a mte:MasculineGender , mte:Pronoun , mte:NoClitic , mte:SingularNumber , mte:ThirdPerson , mte:ShortArticle , mte:PossessivePronoun ;
+        rdfs:comment         "e.g., техния/техен, нейния/неин, неговия/негов" ;
+        mte:hasClitic        msd-bg:Ps3ms---n--s_bg ;
+        mte:hasDefiniteness  msd-bg:Ps3ms---n--s_bg ;
+        mte:hasGender        msd-bg:Ps3ms---n--s_bg ;
+        mte:hasNumber        msd-bg:Ps3ms---n--s_bg ;
+        mte:hasPerson        msd-bg:Ps3ms---n--s_bg ;
+        olia_system:hasTag   "Ps3ms---n--s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps3ns---n--n_bg a mte:NoClitic , mte:PossessivePronoun , mte:NeuterGender , mte:Indefinite , mte:Pronoun , mte:SingularNumber , mte:ThirdPerson ;
+        rdfs:comment         "e.g., тяхно, нейно, негово" ;
+        mte:hasClitic        msd-bg:Ps3ns---n--n_bg ;
+        mte:hasDefiniteness  msd-bg:Ps3ns---n--n_bg ;
+        mte:hasGender        msd-bg:Ps3ns---n--n_bg ;
+        mte:hasNumber        msd-bg:Ps3ns---n--n_bg ;
+        mte:hasPerson        msd-bg:Ps3ns---n--n_bg ;
+        olia_system:hasTag   "Ps3ns---n--n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Ps3ns---n--y_bg a mte:ThirdPerson , mte:NeuterGender , mte:SingularNumber , mte:Definite , mte:NoClitic , mte:PossessivePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., тяхното/тяхно, нейното/нейно, неговото/негово" ;
+        mte:hasClitic        msd-bg:Ps3ns---n--y_bg ;
+        mte:hasDefiniteness  msd-bg:Ps3ns---n--y_bg ;
+        mte:hasGender        msd-bg:Ps3ns---n--y_bg ;
+        mte:hasNumber        msd-bg:Ps3ns---n--y_bg ;
+        mte:hasPerson        msd-bg:Ps3ns---n--y_bg ;
+        olia_system:hasTag   "Ps3ns---n--y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Px------ys_bg a mte:PossessivePronoun , mte:ReflexivePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., си" ;
+        mte:hasClitic        msd-bg:Px------ys_bg ;
+        mte:hasReferentType  msd-bg:Px------ys_bg ;
+        olia_system:hasTag   "Px------ys" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Px---a--np_bg a mte:ReflexivePronoun , mte:Pronoun , mte:PersonalPronoun , mte:NoClitic , mte:AccusativeCase ;
+        rdfs:comment         "e.g., себе_си, себе" ;
+        mte:hasCase          msd-bg:Px---a--np_bg ;
+        mte:hasClitic        msd-bg:Px---a--np_bg ;
+        mte:hasReferentType  msd-bg:Px---a--np_bg ;
+        olia_system:hasTag   "Px---a--np" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Px---a--yp_bg a mte:PersonalPronoun , mte:ReflexivePronoun , mte:Pronoun , mte:AccusativeCase ;
+        rdfs:comment         "e.g., се" ;
+        mte:hasCase          msd-bg:Px---a--yp_bg ;
+        mte:hasClitic        msd-bg:Px---a--yp_bg ;
+        mte:hasReferentType  msd-bg:Px---a--yp_bg ;
+        olia_system:hasTag   "Px---a--yp" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Px---d--np_bg a mte:ReflexivePronoun , mte:NoClitic , mte:Pronoun , mte:DativeCase , mte:PersonalPronoun ;
+        rdfs:comment         "e.g., себе_си, себе" ;
+        mte:hasCase          msd-bg:Px---d--np_bg ;
+        mte:hasClitic        msd-bg:Px---d--np_bg ;
+        mte:hasReferentType  msd-bg:Px---d--np_bg ;
+        olia_system:hasTag   "Px---d--np" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Px---d--yp_bg a mte:PersonalPronoun , mte:DativeCase , mte:ReflexivePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., си" ;
+        mte:hasCase          msd-bg:Px---d--yp_bg ;
+        mte:hasClitic        msd-bg:Px---d--yp_bg ;
+        mte:hasReferentType  msd-bg:Px---d--yp_bg ;
+        olia_system:hasTag   "Px---d--yp" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Px--p---ns-n_bg a mte:PluralNumber , mte:Indefinite , mte:PossessivePronoun , mte:Pronoun , mte:NoClitic , mte:ReflexivePronoun ;
+        rdfs:comment         "e.g., свои" ;
+        mte:hasClitic        msd-bg:Px--p---ns-n_bg ;
+        mte:hasDefiniteness  msd-bg:Px--p---ns-n_bg ;
+        mte:hasNumber        msd-bg:Px--p---ns-n_bg ;
+        mte:hasReferentType  msd-bg:Px--p---ns-n_bg ;
+        olia_system:hasTag   "Px--p---ns-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Px--p---ns-y_bg a mte:PossessivePronoun , mte:Definite , mte:NoClitic , mte:PluralNumber , mte:ReflexivePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., своите/свои" ;
+        mte:hasClitic        msd-bg:Px--p---ns-y_bg ;
+        mte:hasDefiniteness  msd-bg:Px--p---ns-y_bg ;
+        mte:hasNumber        msd-bg:Px--p---ns-y_bg ;
+        mte:hasReferentType  msd-bg:Px--p---ns-y_bg ;
+        olia_system:hasTag   "Px--p---ns-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Px-fs---ns-n_bg a mte:ReflexivePronoun , mte:Indefinite , mte:Pronoun , mte:PossessivePronoun , mte:NoClitic , mte:FeminineGender , mte:SingularNumber ;
+        rdfs:comment         "e.g., своя" ;
+        mte:hasClitic        msd-bg:Px-fs---ns-n_bg ;
+        mte:hasDefiniteness  msd-bg:Px-fs---ns-n_bg ;
+        mte:hasGender        msd-bg:Px-fs---ns-n_bg ;
+        mte:hasNumber        msd-bg:Px-fs---ns-n_bg ;
+        mte:hasReferentType  msd-bg:Px-fs---ns-n_bg ;
+        olia_system:hasTag   "Px-fs---ns-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Px-fs---ns-y_bg a mte:PossessivePronoun , mte:ReflexivePronoun , mte:Definite , mte:Pronoun , mte:NoClitic , mte:FeminineGender , mte:SingularNumber ;
+        rdfs:comment         "e.g., своята/своя" ;
+        mte:hasClitic        msd-bg:Px-fs---ns-y_bg ;
+        mte:hasDefiniteness  msd-bg:Px-fs---ns-y_bg ;
+        mte:hasGender        msd-bg:Px-fs---ns-y_bg ;
+        mte:hasNumber        msd-bg:Px-fs---ns-y_bg ;
+        mte:hasReferentType  msd-bg:Px-fs---ns-y_bg ;
+        olia_system:hasTag   "Px-fs---ns-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Px-ms---ns-f_bg a mte:ReflexivePronoun , mte:NoClitic , mte:Pronoun , mte:SingularNumber , mte:FullArticle , mte:PossessivePronoun , mte:MasculineGender ;
+        rdfs:comment         "e.g., своят/свой" ;
+        mte:hasClitic        msd-bg:Px-ms---ns-f_bg ;
+        mte:hasDefiniteness  msd-bg:Px-ms---ns-f_bg ;
+        mte:hasGender        msd-bg:Px-ms---ns-f_bg ;
+        mte:hasNumber        msd-bg:Px-ms---ns-f_bg ;
+        mte:hasReferentType  msd-bg:Px-ms---ns-f_bg ;
+        olia_system:hasTag   "Px-ms---ns-f" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Px-ms---ns-n_bg a mte:SingularNumber , mte:MasculineGender , mte:Indefinite , mte:ReflexivePronoun , mte:Pronoun , mte:NoClitic , mte:PossessivePronoun ;
+        rdfs:comment         "e.g., свой" ;
+        mte:hasClitic        msd-bg:Px-ms---ns-n_bg ;
+        mte:hasDefiniteness  msd-bg:Px-ms---ns-n_bg ;
+        mte:hasGender        msd-bg:Px-ms---ns-n_bg ;
+        mte:hasNumber        msd-bg:Px-ms---ns-n_bg ;
+        mte:hasReferentType  msd-bg:Px-ms---ns-n_bg ;
+        olia_system:hasTag   "Px-ms---ns-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Px-ms---ns-s_bg a mte:NoClitic , mte:MasculineGender , mte:ShortArticle , mte:ReflexivePronoun , mte:PossessivePronoun , mte:SingularNumber , mte:Pronoun ;
+        rdfs:comment         "e.g., своя/свой" ;
+        mte:hasClitic        msd-bg:Px-ms---ns-s_bg ;
+        mte:hasDefiniteness  msd-bg:Px-ms---ns-s_bg ;
+        mte:hasGender        msd-bg:Px-ms---ns-s_bg ;
+        mte:hasNumber        msd-bg:Px-ms---ns-s_bg ;
+        mte:hasReferentType  msd-bg:Px-ms---ns-s_bg ;
+        olia_system:hasTag   "Px-ms---ns-s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Px-ns---ns-n_bg a mte:NoClitic , mte:NeuterGender , mte:SingularNumber , mte:Pronoun , mte:PossessivePronoun , mte:ReflexivePronoun , mte:Indefinite ;
+        rdfs:comment         "e.g., свое" ;
+        mte:hasClitic        msd-bg:Px-ns---ns-n_bg ;
+        mte:hasDefiniteness  msd-bg:Px-ns---ns-n_bg ;
+        mte:hasGender        msd-bg:Px-ns---ns-n_bg ;
+        mte:hasNumber        msd-bg:Px-ns---ns-n_bg ;
+        mte:hasReferentType  msd-bg:Px-ns---ns-n_bg ;
+        olia_system:hasTag   "Px-ns---ns-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Px-ns---ns-y_bg a mte:NoClitic , mte:SingularNumber , mte:ReflexivePronoun , mte:NeuterGender , mte:PossessivePronoun , mte:Definite , mte:Pronoun ;
+        rdfs:comment         "e.g., своето/свое" ;
+        mte:hasClitic        msd-bg:Px-ns---ns-y_bg ;
+        mte:hasDefiniteness  msd-bg:Px-ns---ns-y_bg ;
+        mte:hasGender        msd-bg:Px-ns---ns-y_bg ;
+        mte:hasNumber        msd-bg:Px-ns---ns-y_bg ;
+        mte:hasReferentType  msd-bg:Px-ns---ns-y_bg ;
+        olia_system:hasTag   "Px-ns---ns-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pz-------q_bg a mte:QuantitativePronoun , mte:NegativePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., николко" ;
+        mte:hasReferentType  msd-bg:Pz-------q_bg ;
+        olia_system:hasTag   "Pz-------q" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pz--p----a_bg a mte:AttributivePronoun , mte:PluralNumber , mte:NegativePronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., никакви/никакъв" ;
+        mte:hasNumber        msd-bg:Pz--p----a_bg ;
+        mte:hasReferentType  msd-bg:Pz--p----a_bg ;
+        olia_system:hasTag   "Pz--p----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pz-fs----a_bg a mte:Pronoun , mte:FeminineGender , mte:NegativePronoun , mte:AttributivePronoun , mte:SingularNumber ;
+        rdfs:comment         "e.g., никаква/никакъв" ;
+        mte:hasGender        msd-bg:Pz-fs----a_bg ;
+        mte:hasNumber        msd-bg:Pz-fs----a_bg ;
+        mte:hasReferentType  msd-bg:Pz-fs----a_bg ;
+        olia_system:hasTag   "Pz-fs----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pz-fs----p_bg a mte:Pronoun , mte:SingularNumber , mte:PersonalPronoun , mte:NegativePronoun , mte:FeminineGender ;
+        rdfs:comment         "e.g., никоя/никой" ;
+        mte:hasGender        msd-bg:Pz-fs----p_bg ;
+        mte:hasNumber        msd-bg:Pz-fs----p_bg ;
+        mte:hasReferentType  msd-bg:Pz-fs----p_bg ;
+        olia_system:hasTag   "Pz-fs----p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pz-ms----a_bg a mte:NegativePronoun , mte:MasculineGender , mte:AttributivePronoun , mte:SingularNumber , mte:Pronoun ;
+        rdfs:comment         "e.g., никакъв" ;
+        mte:hasGender        msd-bg:Pz-ms----a_bg ;
+        mte:hasNumber        msd-bg:Pz-ms----a_bg ;
+        mte:hasReferentType  msd-bg:Pz-ms----a_bg ;
+        olia_system:hasTag   "Pz-ms----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pz-ms----s_bg a mte:Pronoun , mte:PossessivePronoun , mte:SingularNumber , mte:NegativePronoun , mte:MasculineGender ;
+        rdfs:comment         "e.g., ничий" ;
+        mte:hasGender        msd-bg:Pz-ms----s_bg ;
+        mte:hasNumber        msd-bg:Pz-ms----s_bg ;
+        mte:hasReferentType  msd-bg:Pz-ms----s_bg ;
+        olia_system:hasTag   "Pz-ms----s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pz-msa---p_bg a mte:AccusativeCase , mte:PersonalPronoun , mte:Pronoun , mte:NegativePronoun , mte:MasculineGender , mte:SingularNumber ;
+        rdfs:comment         "e.g., никого/никой" ;
+        mte:hasCase          msd-bg:Pz-msa---p_bg ;
+        mte:hasGender        msd-bg:Pz-msa---p_bg ;
+        mte:hasNumber        msd-bg:Pz-msa---p_bg ;
+        mte:hasReferentType  msd-bg:Pz-msa---p_bg ;
+        olia_system:hasTag   "Pz-msa---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pz-msd---p_bg a mte:SingularNumber , mte:MasculineGender , mte:DativeCase , mte:NegativePronoun , mte:PersonalPronoun , mte:Pronoun ;
+        rdfs:comment         "e.g., никому/никой" ;
+        mte:hasCase          msd-bg:Pz-msd---p_bg ;
+        mte:hasGender        msd-bg:Pz-msd---p_bg ;
+        mte:hasNumber        msd-bg:Pz-msd---p_bg ;
+        mte:hasReferentType  msd-bg:Pz-msd---p_bg ;
+        olia_system:hasTag   "Pz-msd---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pz-msn---p_bg a mte:NegativePronoun , mte:Pronoun , mte:PersonalPronoun , mte:SingularNumber , mte:MasculineGender , mte:NominativeCase ;
+        rdfs:comment         "e.g., никой" ;
+        mte:hasCase          msd-bg:Pz-msn---p_bg ;
+        mte:hasGender        msd-bg:Pz-msn---p_bg ;
+        mte:hasNumber        msd-bg:Pz-msn---p_bg ;
+        mte:hasReferentType  msd-bg:Pz-msn---p_bg ;
+        olia_system:hasTag   "Pz-msn---p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Pz-ns----a_bg a mte:SingularNumber , mte:NegativePronoun , mte:Pronoun , mte:AttributivePronoun , mte:NeuterGender ;
+        rdfs:comment         "e.g., никакво/никакъв" ;
+        mte:hasGender        msd-bg:Pz-ns----a_bg ;
+        mte:hasNumber        msd-bg:Pz-ns----a_bg ;
+        mte:hasReferentType  msd-bg:Pz-ns----a_bg ;
+        olia_system:hasTag   "Pz-ns----a" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Qcs_bg a mte:SimpleParticle , mte:ComparativeParticle , mte:Particle ;
+        rdfs:comment              "e.g., по-, по, най-, най, годе, -годе" ;
+        mte:hasParticleFormation  msd-bg:Qcs_bg ;
+        olia_system:hasTag        "Qcs" ;
+        olia_system:hasTier       "pos" .
+
+msd-bg:Qgc_bg a mte:CompoundParticle , mte:GeneralParticle , mte:Particle ;
+        rdfs:comment              "e.g., ей-тъй, ей-сега, а_бе" ;
+        mte:hasParticleFormation  msd-bg:Qgc_bg ;
+        olia_system:hasTag        "Qgc" ;
+        olia_system:hasTier       "pos" .
+
+msd-bg:Qgs_bg a mte:SimpleParticle , mte:GeneralParticle , mte:Particle ;
+        rdfs:comment              "e.g., я, ще, чисто, че, чак, ц, хубаво, холан, хе" ;
+        mte:hasParticleFormation  msd-bg:Qgs_bg ;
+        olia_system:hasTag        "Qgs" ;
+        olia_system:hasTier       "pos" .
+
+msd-bg:Qos_bg a mte:SimpleParticle , mte:ModalParticle , mte:Particle ;
+        rdfs:comment              "e.g., хайде, уж, нека, нали, дори, де, би, айде" ;
+        mte:hasParticleFormation  msd-bg:Qos_bg ;
+        olia_system:hasTag        "Qos" ;
+        olia_system:hasTier       "pos" .
+
+msd-bg:Qqs_bg a mte:SimpleParticle , mte:InterrogativeParticle , mte:Particle ;
+        rdfs:comment              "e.g., нима, ли, дали" ;
+        mte:hasParticleFormation  msd-bg:Qqs_bg ;
+        olia_system:hasTag        "Qqs" ;
+        olia_system:hasTier       "pos" .
+
+msd-bg:Qvs_bg a mte:SimpleParticle , mte:VerbalParticle , mte:Particle ;
+        rdfs:comment              "e.g., ще, си, се, да" ;
+        mte:hasParticleFormation  msd-bg:Qvs_bg ;
+        olia_system:hasTag        "Qvs" ;
+        olia_system:hasTier       "pos" .
+
+msd-bg:Qzs_bg a mte:SimpleParticle , mte:NegativeParticle , mte:Particle ;
+        rdfs:comment              "e.g., нито, не" ;
+        mte:hasParticleFormation  msd-bg:Qzs_bg ;
+        olia_system:hasTag        "Qzs" ;
+        olia_system:hasTier       "pos" .
+
+msd-bg:Ra_bg a mte:AdjectivalAdverb , mte:Adverb ;
+        rdfs:comment         "e.g., ясно, яростно, ярко, яркосиньо, ядрено, явно, щателно, щастливо" ;
+        olia_system:hasTag   "Ra" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Rg_bg a mte:GeneralAdverb , mte:Adverb ;
+        rdfs:comment         "e.g., ячко, яздешком, яздешката, явно, яве, яваш, южно, що, що-годе" ;
+        olia_system:hasTag   "Rg" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Sp_bg a mte:Preposition , mte:Adposition ;
+        rdfs:comment         "e.g., яко, чрез, у, със, с, срещу, сред, спрямо, спроти" ;
+        olia_system:hasTag   "Sp" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vag_bg a mte:Gerund , mte:AuxiliaryVerb , mte:Verb ;
+        rdfs:comment         "e.g., бидейки/бъда" ;
+        mte:hasVerbForm      msd-bg:Vag_bg ;
+        olia_system:hasTag   "Vag" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaia1p_bg a mte:PluralNumber , mte:FirstPerson , mte:Verb , mte:Indicative , mte:AoristTense , mte:AuxiliaryVerb ;
+        rdfs:comment         "e.g., щяхме/ща, онемяхме/онемея, бяхме/съм, бихме/бъда" ;
+        mte:hasNumber        msd-bg:Vaia1p_bg ;
+        mte:hasPerson        msd-bg:Vaia1p_bg ;
+        mte:hasTense         msd-bg:Vaia1p_bg ;
+        mte:hasVerbForm      msd-bg:Vaia1p_bg ;
+        olia_system:hasTag   "Vaia1p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaia1s_bg a mte:FirstPerson , mte:Indicative , mte:AuxiliaryVerb , mte:AoristTense , mte:Verb , mte:SingularNumber ;
+        rdfs:comment         "e.g., щях/ща, бях/съм, бих/бъда" ;
+        mte:hasNumber        msd-bg:Vaia1s_bg ;
+        mte:hasPerson        msd-bg:Vaia1s_bg ;
+        mte:hasTense         msd-bg:Vaia1s_bg ;
+        mte:hasVerbForm      msd-bg:Vaia1s_bg ;
+        olia_system:hasTag   "Vaia1s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaia2p_bg a mte:Indicative , mte:PluralNumber , mte:Verb , mte:AoristTense , mte:AuxiliaryVerb , mte:SecondPerson ;
+        rdfs:comment         "e.g., щяхте/ща, бяхте/съм, бихте/бъда" ;
+        mte:hasNumber        msd-bg:Vaia2p_bg ;
+        mte:hasPerson        msd-bg:Vaia2p_bg ;
+        mte:hasTense         msd-bg:Vaia2p_bg ;
+        mte:hasVerbForm      msd-bg:Vaia2p_bg ;
+        olia_system:hasTag   "Vaia2p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaia2s_bg a mte:Verb , mte:AoristTense , mte:SingularNumber , mte:AuxiliaryVerb , mte:Indicative , mte:SecondPerson ;
+        rdfs:comment         "e.g., щеше/ща, би/бъда, бе/съм" ;
+        mte:hasNumber        msd-bg:Vaia2s_bg ;
+        mte:hasPerson        msd-bg:Vaia2s_bg ;
+        mte:hasTense         msd-bg:Vaia2s_bg ;
+        mte:hasVerbForm      msd-bg:Vaia2s_bg ;
+        olia_system:hasTag   "Vaia2s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaia3p_bg a mte:ThirdPerson , mte:Indicative , mte:AoristTense , mte:Verb , mte:PluralNumber , mte:AuxiliaryVerb ;
+        rdfs:comment         "e.g., щяха/ща, бяха/съм, биха/бъда" ;
+        mte:hasNumber        msd-bg:Vaia3p_bg ;
+        mte:hasPerson        msd-bg:Vaia3p_bg ;
+        mte:hasTense         msd-bg:Vaia3p_bg ;
+        mte:hasVerbForm      msd-bg:Vaia3p_bg ;
+        olia_system:hasTag   "Vaia3p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaia3s_bg a mte:SingularNumber , mte:AuxiliaryVerb , mte:ThirdPerson , mte:Indicative , mte:AoristTense , mte:Verb ;
+        rdfs:comment         "e.g., щеше/ща, би/бъда, бе/съм" ;
+        mte:hasNumber        msd-bg:Vaia3s_bg ;
+        mte:hasPerson        msd-bg:Vaia3s_bg ;
+        mte:hasTense         msd-bg:Vaia3s_bg ;
+        mte:hasVerbForm      msd-bg:Vaia3s_bg ;
+        olia_system:hasTag   "Vaia3s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaii1p_bg a mte:PluralNumber , mte:FirstPerson , mte:ImperfectTense , mte:Verb , mte:Indicative , mte:AuxiliaryVerb ;
+        rdfs:comment         "e.g., щяхме/ща, онемяхме/онемея, бяхме/съм" ;
+        mte:hasNumber        msd-bg:Vaii1p_bg ;
+        mte:hasPerson        msd-bg:Vaii1p_bg ;
+        mte:hasTense         msd-bg:Vaii1p_bg ;
+        mte:hasVerbForm      msd-bg:Vaii1p_bg ;
+        olia_system:hasTag   "Vaii1p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaii1s_bg a mte:Verb , mte:ImperfectTense , mte:Indicative , mte:FirstPerson , mte:AuxiliaryVerb , mte:SingularNumber ;
+        rdfs:comment         "e.g., щях/ща, бях/съм" ;
+        mte:hasNumber        msd-bg:Vaii1s_bg ;
+        mte:hasPerson        msd-bg:Vaii1s_bg ;
+        mte:hasTense         msd-bg:Vaii1s_bg ;
+        mte:hasVerbForm      msd-bg:Vaii1s_bg ;
+        olia_system:hasTag   "Vaii1s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaii2p_bg a mte:AuxiliaryVerb , mte:Indicative , mte:ImperfectTense , mte:PluralNumber , mte:SecondPerson , mte:Verb ;
+        rdfs:comment         "e.g., щяхте/ща, бяхте/съм" ;
+        mte:hasNumber        msd-bg:Vaii2p_bg ;
+        mte:hasPerson        msd-bg:Vaii2p_bg ;
+        mte:hasTense         msd-bg:Vaii2p_bg ;
+        mte:hasVerbForm      msd-bg:Vaii2p_bg ;
+        olia_system:hasTag   "Vaii2p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaii2s_bg a mte:Verb , mte:SingularNumber , mte:Indicative , mte:AuxiliaryVerb , mte:SecondPerson , mte:ImperfectTense ;
+        rdfs:comment         "e.g., щеше/ща, беше/съм" ;
+        mte:hasNumber        msd-bg:Vaii2s_bg ;
+        mte:hasPerson        msd-bg:Vaii2s_bg ;
+        mte:hasTense         msd-bg:Vaii2s_bg ;
+        mte:hasVerbForm      msd-bg:Vaii2s_bg ;
+        olia_system:hasTag   "Vaii2s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaii3p_bg a mte:Indicative , mte:ThirdPerson , mte:AuxiliaryVerb , mte:Verb , mte:PluralNumber , mte:ImperfectTense ;
+        rdfs:comment         "e.g., щяха/ща, бяха/съм, бъдеха/бъда" ;
+        mte:hasNumber        msd-bg:Vaii3p_bg ;
+        mte:hasPerson        msd-bg:Vaii3p_bg ;
+        mte:hasTense         msd-bg:Vaii3p_bg ;
+        mte:hasVerbForm      msd-bg:Vaii3p_bg ;
+        olia_system:hasTag   "Vaii3p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaii3s_bg a mte:ThirdPerson , mte:ImperfectTense , mte:Verb , mte:AuxiliaryVerb , mte:Indicative , mte:SingularNumber ;
+        rdfs:comment         "e.g., щеше/ща, беше/съм" ;
+        mte:hasNumber        msd-bg:Vaii3s_bg ;
+        mte:hasPerson        msd-bg:Vaii3s_bg ;
+        mte:hasTense         msd-bg:Vaii3s_bg ;
+        mte:hasVerbForm      msd-bg:Vaii3s_bg ;
+        olia_system:hasTag   "Vaii3s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaip1p_bg a mte:Indicative , mte:PluralNumber , mte:AuxiliaryVerb , mte:FirstPerson , mte:PresentTense , mte:Verb ;
+        rdfs:comment         "e.g., сме/съм, бъдем/бъда" ;
+        mte:hasNumber        msd-bg:Vaip1p_bg ;
+        mte:hasPerson        msd-bg:Vaip1p_bg ;
+        mte:hasTense         msd-bg:Vaip1p_bg ;
+        mte:hasVerbForm      msd-bg:Vaip1p_bg ;
+        olia_system:hasTag   "Vaip1p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaip1s_bg a mte:AuxiliaryVerb , mte:Verb , mte:FirstPerson , mte:SingularNumber , mte:PresentTense , mte:Indicative ;
+        rdfs:comment         "e.g., съм, бъда" ;
+        mte:hasNumber        msd-bg:Vaip1s_bg ;
+        mte:hasPerson        msd-bg:Vaip1s_bg ;
+        mte:hasTense         msd-bg:Vaip1s_bg ;
+        mte:hasVerbForm      msd-bg:Vaip1s_bg ;
+        olia_system:hasTag   "Vaip1s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaip2p_bg a mte:PresentTense , mte:SecondPerson , mte:Verb , mte:Indicative , mte:AuxiliaryVerb , mte:PluralNumber ;
+        rdfs:comment         "e.g., щете/ща, сте/съм, бъдете/бъда" ;
+        mte:hasNumber        msd-bg:Vaip2p_bg ;
+        mte:hasPerson        msd-bg:Vaip2p_bg ;
+        mte:hasTense         msd-bg:Vaip2p_bg ;
+        mte:hasVerbForm      msd-bg:Vaip2p_bg ;
+        olia_system:hasTag   "Vaip2p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaip2s_bg a mte:Verb , mte:Indicative , mte:PresentTense , mte:SecondPerson , mte:SingularNumber , mte:AuxiliaryVerb ;
+        rdfs:comment         "e.g., щеш/ща, си/съм, бъдеш/бъда" ;
+        mte:hasNumber        msd-bg:Vaip2s_bg ;
+        mte:hasPerson        msd-bg:Vaip2s_bg ;
+        mte:hasTense         msd-bg:Vaip2s_bg ;
+        mte:hasVerbForm      msd-bg:Vaip2s_bg ;
+        olia_system:hasTag   "Vaip2s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaip3p_bg a mte:ThirdPerson , mte:Indicative , mte:AuxiliaryVerb , mte:PluralNumber , mte:Verb , mte:PresentTense ;
+        rdfs:comment         "e.g., щат/ща, са, бъдат/бъда" ;
+        mte:hasNumber        msd-bg:Vaip3p_bg ;
+        mte:hasPerson        msd-bg:Vaip3p_bg ;
+        mte:hasTense         msd-bg:Vaip3p_bg ;
+        mte:hasVerbForm      msd-bg:Vaip3p_bg ;
+        olia_system:hasTag   "Vaip3p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vaip3s_bg a mte:SingularNumber , mte:PresentTense , mte:Indicative , mte:AuxiliaryVerb , mte:Verb , mte:ThirdPerson ;
+        rdfs:comment         "e.g., ще/ща, е/съм, бъде/бъда" ;
+        mte:hasNumber        msd-bg:Vaip3s_bg ;
+        mte:hasPerson        msd-bg:Vaip3s_bg ;
+        mte:hasTense         msd-bg:Vaip3s_bg ;
+        mte:hasVerbForm      msd-bg:Vaip3s_bg ;
+        olia_system:hasTag   "Vaip3s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vam-2p_bg a mte:Verb , mte:AuxiliaryVerb , mte:Imperative , mte:SecondPerson , mte:PluralNumber ;
+        rdfs:comment         "e.g., щете/ща" ;
+        mte:hasNumber        msd-bg:Vam-2p_bg ;
+        mte:hasPerson        msd-bg:Vam-2p_bg ;
+        mte:hasVerbForm      msd-bg:Vam-2p_bg ;
+        olia_system:hasTag   "Vam-2p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vam-2s_bg a mte:SingularNumber , mte:SecondPerson , mte:Verb , mte:AuxiliaryVerb , mte:Imperative ;
+        rdfs:comment         "e.g., бъди/бъда" ;
+        mte:hasNumber        msd-bg:Vam-2s_bg ;
+        mte:hasPerson        msd-bg:Vam-2s_bg ;
+        mte:hasVerbForm      msd-bg:Vam-2s_bg ;
+        olia_system:hasTag   "Vam-2s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapa-p-a-n_bg a mte:AoristTense , mte:AuxiliaryVerb , mte:Indefinite , mte:ActiveVoice , mte:Verb , mte:PluralNumber , mte:Participle ;
+        rdfs:comment         "e.g., бъдещи/бъда, били/съм, били/бъда" ;
+        mte:hasDefiniteness  msd-bg:Vapa-p-a-n_bg ;
+        mte:hasNumber        msd-bg:Vapa-p-a-n_bg ;
+        mte:hasTense         msd-bg:Vapa-p-a-n_bg ;
+        mte:hasVerbForm      msd-bg:Vapa-p-a-n_bg ;
+        mte:hasVoice         msd-bg:Vapa-p-a-n_bg ;
+        olia_system:hasTag   "Vapa-p-a-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapa-p-a-y_bg a mte:Participle , mte:PluralNumber , mte:Verb , mte:ActiveVoice , mte:AoristTense , mte:AuxiliaryVerb , mte:Definite ;
+        rdfs:comment         "e.g., бъдещите/бъда" ;
+        mte:hasDefiniteness  msd-bg:Vapa-p-a-y_bg ;
+        mte:hasNumber        msd-bg:Vapa-p-a-y_bg ;
+        mte:hasTense         msd-bg:Vapa-p-a-y_bg ;
+        mte:hasVerbForm      msd-bg:Vapa-p-a-y_bg ;
+        mte:hasVoice         msd-bg:Vapa-p-a-y_bg ;
+        olia_system:hasTag   "Vapa-p-a-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapa-sfa-n_bg a mte:Verb , mte:AoristTense , mte:SingularNumber , mte:AuxiliaryVerb , mte:ActiveVoice , mte:Indefinite , mte:Participle , mte:FeminineGender ;
+        rdfs:comment         "e.g., била/съм, била/бъда" ;
+        mte:hasDefiniteness  msd-bg:Vapa-sfa-n_bg ;
+        mte:hasGender        msd-bg:Vapa-sfa-n_bg ;
+        mte:hasNumber        msd-bg:Vapa-sfa-n_bg ;
+        mte:hasTense         msd-bg:Vapa-sfa-n_bg ;
+        mte:hasVerbForm      msd-bg:Vapa-sfa-n_bg ;
+        mte:hasVoice         msd-bg:Vapa-sfa-n_bg ;
+        olia_system:hasTag   "Vapa-sfa-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapa-sma-n_bg a mte:SingularNumber , mte:AoristTense , mte:Indefinite , mte:Verb , mte:AuxiliaryVerb , mte:MasculineGender , mte:ActiveVoice , mte:Participle ;
+        rdfs:comment         "e.g., бил/съм, бил/бъда" ;
+        mte:hasDefiniteness  msd-bg:Vapa-sma-n_bg ;
+        mte:hasGender        msd-bg:Vapa-sma-n_bg ;
+        mte:hasNumber        msd-bg:Vapa-sma-n_bg ;
+        mte:hasTense         msd-bg:Vapa-sma-n_bg ;
+        mte:hasVerbForm      msd-bg:Vapa-sma-n_bg ;
+        mte:hasVoice         msd-bg:Vapa-sma-n_bg ;
+        olia_system:hasTag   "Vapa-sma-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapa-sna-n_bg a mte:SingularNumber , mte:AuxiliaryVerb , mte:Participle , mte:Verb , mte:AoristTense , mte:NeuterGender , mte:ActiveVoice , mte:Indefinite ;
+        rdfs:comment         "e.g., било/съм, било/бъда" ;
+        mte:hasDefiniteness  msd-bg:Vapa-sna-n_bg ;
+        mte:hasGender        msd-bg:Vapa-sna-n_bg ;
+        mte:hasNumber        msd-bg:Vapa-sna-n_bg ;
+        mte:hasTense         msd-bg:Vapa-sna-n_bg ;
+        mte:hasVerbForm      msd-bg:Vapa-sna-n_bg ;
+        mte:hasVoice         msd-bg:Vapa-sna-n_bg ;
+        olia_system:hasTag   "Vapa-sna-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapa-sna-y_bg a mte:ActiveVoice , mte:Definite , mte:AuxiliaryVerb , mte:AoristTense , mte:Verb , mte:SingularNumber , mte:NeuterGender , mte:Participle ;
+        rdfs:comment         "e.g., бъдещото/бъда" ;
+        mte:hasDefiniteness  msd-bg:Vapa-sna-y_bg ;
+        mte:hasGender        msd-bg:Vapa-sna-y_bg ;
+        mte:hasNumber        msd-bg:Vapa-sna-y_bg ;
+        mte:hasTense         msd-bg:Vapa-sna-y_bg ;
+        mte:hasVerbForm      msd-bg:Vapa-sna-y_bg ;
+        mte:hasVoice         msd-bg:Vapa-sna-y_bg ;
+        olia_system:hasTag   "Vapa-sna-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapi-p-a-n_bg a mte:AuxiliaryVerb , mte:PluralNumber , mte:Participle , mte:Indefinite , mte:ActiveVoice , mte:ImperfectTense , mte:Verb ;
+        rdfs:comment         "e.g., били/съм" ;
+        mte:hasDefiniteness  msd-bg:Vapi-p-a-n_bg ;
+        mte:hasNumber        msd-bg:Vapi-p-a-n_bg ;
+        mte:hasTense         msd-bg:Vapi-p-a-n_bg ;
+        mte:hasVerbForm      msd-bg:Vapi-p-a-n_bg ;
+        mte:hasVoice         msd-bg:Vapi-p-a-n_bg ;
+        olia_system:hasTag   "Vapi-p-a-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapi-sfa-n_bg a mte:FeminineGender , mte:SingularNumber , mte:Participle , mte:Verb , mte:AuxiliaryVerb , mte:ImperfectTense , mte:Indefinite , mte:ActiveVoice ;
+        rdfs:comment         "e.g., била/съм" ;
+        mte:hasDefiniteness  msd-bg:Vapi-sfa-n_bg ;
+        mte:hasGender        msd-bg:Vapi-sfa-n_bg ;
+        mte:hasNumber        msd-bg:Vapi-sfa-n_bg ;
+        mte:hasTense         msd-bg:Vapi-sfa-n_bg ;
+        mte:hasVerbForm      msd-bg:Vapi-sfa-n_bg ;
+        mte:hasVoice         msd-bg:Vapi-sfa-n_bg ;
+        olia_system:hasTag   "Vapi-sfa-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapi-sma-n_bg a mte:SingularNumber , mte:MasculineGender , mte:Verb , mte:ImperfectTense , mte:Indefinite , mte:ActiveVoice , mte:Participle , mte:AuxiliaryVerb ;
+        rdfs:comment         "e.g., бил/съм" ;
+        mte:hasDefiniteness  msd-bg:Vapi-sma-n_bg ;
+        mte:hasGender        msd-bg:Vapi-sma-n_bg ;
+        mte:hasNumber        msd-bg:Vapi-sma-n_bg ;
+        mte:hasTense         msd-bg:Vapi-sma-n_bg ;
+        mte:hasVerbForm      msd-bg:Vapi-sma-n_bg ;
+        mte:hasVoice         msd-bg:Vapi-sma-n_bg ;
+        olia_system:hasTag   "Vapi-sma-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapi-sna-n_bg a mte:Verb , mte:SingularNumber , mte:ActiveVoice , mte:ImperfectTense , mte:NeuterGender , mte:AuxiliaryVerb , mte:Indefinite , mte:Participle ;
+        rdfs:comment         "e.g., било/съм" ;
+        mte:hasDefiniteness  msd-bg:Vapi-sna-n_bg ;
+        mte:hasGender        msd-bg:Vapi-sna-n_bg ;
+        mte:hasNumber        msd-bg:Vapi-sna-n_bg ;
+        mte:hasTense         msd-bg:Vapi-sna-n_bg ;
+        mte:hasVerbForm      msd-bg:Vapi-sna-n_bg ;
+        mte:hasVoice         msd-bg:Vapi-sna-n_bg ;
+        olia_system:hasTag   "Vapi-sna-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapp-sfa-n_bg a mte:ActiveVoice , mte:Verb , mte:AuxiliaryVerb , mte:SingularNumber , mte:Indefinite , mte:PresentTense , mte:FeminineGender , mte:Participle ;
+        rdfs:comment         "e.g., бъдеща/бъда" ;
+        mte:hasDefiniteness  msd-bg:Vapp-sfa-n_bg ;
+        mte:hasGender        msd-bg:Vapp-sfa-n_bg ;
+        mte:hasNumber        msd-bg:Vapp-sfa-n_bg ;
+        mte:hasTense         msd-bg:Vapp-sfa-n_bg ;
+        mte:hasVerbForm      msd-bg:Vapp-sfa-n_bg ;
+        mte:hasVoice         msd-bg:Vapp-sfa-n_bg ;
+        olia_system:hasTag   "Vapp-sfa-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapp-sfa-y_bg a mte:ActiveVoice , mte:PresentTense , mte:AuxiliaryVerb , mte:Verb , mte:FeminineGender , mte:Participle , mte:Definite , mte:SingularNumber ;
+        rdfs:comment         "e.g., бъдещата/бъда" ;
+        mte:hasDefiniteness  msd-bg:Vapp-sfa-y_bg ;
+        mte:hasGender        msd-bg:Vapp-sfa-y_bg ;
+        mte:hasNumber        msd-bg:Vapp-sfa-y_bg ;
+        mte:hasTense         msd-bg:Vapp-sfa-y_bg ;
+        mte:hasVerbForm      msd-bg:Vapp-sfa-y_bg ;
+        mte:hasVoice         msd-bg:Vapp-sfa-y_bg ;
+        olia_system:hasTag   "Vapp-sfa-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapp-sma-f_bg a mte:MasculineGender , mte:PresentTense , mte:Verb , mte:SingularNumber , mte:ActiveVoice , mte:FullArticle , mte:Participle , mte:AuxiliaryVerb ;
+        rdfs:comment         "e.g., бъдещият/бъда" ;
+        mte:hasDefiniteness  msd-bg:Vapp-sma-f_bg ;
+        mte:hasGender        msd-bg:Vapp-sma-f_bg ;
+        mte:hasNumber        msd-bg:Vapp-sma-f_bg ;
+        mte:hasTense         msd-bg:Vapp-sma-f_bg ;
+        mte:hasVerbForm      msd-bg:Vapp-sma-f_bg ;
+        mte:hasVoice         msd-bg:Vapp-sma-f_bg ;
+        olia_system:hasTag   "Vapp-sma-f" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapp-sma-n_bg a mte:PresentTense , mte:AuxiliaryVerb , mte:ActiveVoice , mte:Verb , mte:Indefinite , mte:SingularNumber , mte:MasculineGender , mte:Participle ;
+        rdfs:comment         "e.g., бъдещ/бъда" ;
+        mte:hasDefiniteness  msd-bg:Vapp-sma-n_bg ;
+        mte:hasGender        msd-bg:Vapp-sma-n_bg ;
+        mte:hasNumber        msd-bg:Vapp-sma-n_bg ;
+        mte:hasTense         msd-bg:Vapp-sma-n_bg ;
+        mte:hasVerbForm      msd-bg:Vapp-sma-n_bg ;
+        mte:hasVoice         msd-bg:Vapp-sma-n_bg ;
+        olia_system:hasTag   "Vapp-sma-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapp-sma-s_bg a mte:AuxiliaryVerb , mte:MasculineGender , mte:ShortArticle , mte:Verb , mte:Participle , mte:PresentTense , mte:SingularNumber , mte:ActiveVoice ;
+        rdfs:comment         "e.g., бъдещия/бъда" ;
+        mte:hasDefiniteness  msd-bg:Vapp-sma-s_bg ;
+        mte:hasGender        msd-bg:Vapp-sma-s_bg ;
+        mte:hasNumber        msd-bg:Vapp-sma-s_bg ;
+        mte:hasTense         msd-bg:Vapp-sma-s_bg ;
+        mte:hasVerbForm      msd-bg:Vapp-sma-s_bg ;
+        mte:hasVoice         msd-bg:Vapp-sma-s_bg ;
+        olia_system:hasTag   "Vapp-sma-s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vapp-sna-n_bg a mte:PresentTense , mte:SingularNumber , mte:NeuterGender , mte:Participle , mte:AuxiliaryVerb , mte:Indefinite , mte:ActiveVoice , mte:Verb ;
+        rdfs:comment         "e.g., бъдещо/бъда" ;
+        mte:hasDefiniteness  msd-bg:Vapp-sna-n_bg ;
+        mte:hasGender        msd-bg:Vapp-sna-n_bg ;
+        mte:hasNumber        msd-bg:Vapp-sna-n_bg ;
+        mte:hasTense         msd-bg:Vapp-sna-n_bg ;
+        mte:hasVerbForm      msd-bg:Vapp-sna-n_bg ;
+        mte:hasVoice         msd-bg:Vapp-sna-n_bg ;
+        olia_system:hasTag   "Vapp-sna-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmg_bg a mte:Gerund , mte:MainVerb , mte:Verb ;
+        rdfs:comment         "e.g., чакайки/чакам, целувайки/целувам, усещайки/усещам, удряйки/удрям" ;
+        mte:hasVerbForm      msd-bg:Vmg_bg ;
+        olia_system:hasTag   "Vmg" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmia1p_bg a mte:FirstPerson , mte:Indicative , mte:PluralNumber , mte:Verb , mte:AoristTense , mte:MainVerb ;
+        rdfs:comment         "e.g., щракнахме/щракна, чухме/чуя, чувствахме/чувствам, чувахме/чувам" ;
+        mte:hasNumber        msd-bg:Vmia1p_bg ;
+        mte:hasPerson        msd-bg:Vmia1p_bg ;
+        mte:hasTense         msd-bg:Vmia1p_bg ;
+        mte:hasVerbForm      msd-bg:Vmia1p_bg ;
+        olia_system:hasTag   "Vmia1p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmia1s_bg a mte:FirstPerson , mte:AoristTense , mte:Verb , mte:SingularNumber , mte:MainVerb , mte:Indicative ;
+        rdfs:comment         "e.g., ядох/ям, ядосах/ядосам, чух/чуя, чувствувах/чувствувам, чувствах/чувствам" ;
+        mte:hasNumber        msd-bg:Vmia1s_bg ;
+        mte:hasPerson        msd-bg:Vmia1s_bg ;
+        mte:hasTense         msd-bg:Vmia1s_bg ;
+        mte:hasVerbForm      msd-bg:Vmia1s_bg ;
+        olia_system:hasTag   "Vmia1s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmia2p_bg a mte:AoristTense , mte:Verb , mte:MainVerb , mte:SecondPerson , mte:PluralNumber , mte:Indicative ;
+        rdfs:comment         "e.g., чухте/чуя, хвърляхте/хвърлям, уредихте/уредя, ударихте/ударя" ;
+        mte:hasNumber        msd-bg:Vmia2p_bg ;
+        mte:hasPerson        msd-bg:Vmia2p_bg ;
+        mte:hasTense         msd-bg:Vmia2p_bg ;
+        mte:hasVerbForm      msd-bg:Vmia2p_bg ;
+        olia_system:hasTag   "Vmia2p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmia2s_bg a mte:Verb , mte:Indicative , mte:SecondPerson , mte:AoristTense , mte:SingularNumber , mte:MainVerb ;
+        rdfs:comment         "e.g., яка/якам, ядосва/ядосвам, ядоса/ядосам, ядна, яде/ям, явява/явявам" ;
+        mte:hasNumber        msd-bg:Vmia2s_bg ;
+        mte:hasPerson        msd-bg:Vmia2s_bg ;
+        mte:hasTense         msd-bg:Vmia2s_bg ;
+        mte:hasVerbForm      msd-bg:Vmia2s_bg ;
+        olia_system:hasTag   "Vmia2s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmia3p_bg a mte:Indicative , mte:ThirdPerson , mte:AoristTense , mte:Verb , mte:MainVerb , mte:PluralNumber ;
+        rdfs:comment         "e.g., явяваха/явявам, явиха/явя, шпионираха/шпионирам, чуха/чуя, чувстваха/чувствам" ;
+        mte:hasNumber        msd-bg:Vmia3p_bg ;
+        mte:hasPerson        msd-bg:Vmia3p_bg ;
+        mte:hasTense         msd-bg:Vmia3p_bg ;
+        mte:hasVerbForm      msd-bg:Vmia3p_bg ;
+        olia_system:hasTag   "Vmia3p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmia3s_bg a mte:MainVerb , mte:Verb , mte:Indicative , mte:AoristTense , mte:ThirdPerson , mte:SingularNumber ;
+        rdfs:comment         "e.g., яка/якам, ядосва/ядосвам, ядоса/ядосам, ядна, яде/ям, явява/явявам" ;
+        mte:hasNumber        msd-bg:Vmia3s_bg ;
+        mte:hasPerson        msd-bg:Vmia3s_bg ;
+        mte:hasTense         msd-bg:Vmia3s_bg ;
+        mte:hasVerbForm      msd-bg:Vmia3s_bg ;
+        olia_system:hasTag   "Vmia3s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmii1p_bg a mte:ImperfectTense , mte:MainVerb , mte:Indicative , mte:FirstPerson , mte:Verb , mte:PluralNumber ;
+        rdfs:comment         "e.g., ядяхме/ям, шепнехме/шепна, чудехме/чудя, чувствахме/чувствам" ;
+        mte:hasNumber        msd-bg:Vmii1p_bg ;
+        mte:hasPerson        msd-bg:Vmii1p_bg ;
+        mte:hasTense         msd-bg:Vmii1p_bg ;
+        mte:hasVerbForm      msd-bg:Vmii1p_bg ;
+        olia_system:hasTag   "Vmii1p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmii1s_bg a mte:FirstPerson , mte:MainVerb , mte:Verb , mte:SingularNumber , mte:ImperfectTense , mte:Indicative ;
+        rdfs:comment         "e.g., ядосах/ядосам, шиех/шия, шепнех/шепна, чудех/чудя, чувствувах/чувствувам" ;
+        mte:hasNumber        msd-bg:Vmii1s_bg ;
+        mte:hasPerson        msd-bg:Vmii1s_bg ;
+        mte:hasTense         msd-bg:Vmii1s_bg ;
+        mte:hasVerbForm      msd-bg:Vmii1s_bg ;
+        olia_system:hasTag   "Vmii1s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmii2p_bg a mte:MainVerb , mte:PluralNumber , mte:Verb , mte:Indicative , mte:ImperfectTense , mte:SecondPerson ;
+        rdfs:comment         "e.g., хвърляхте/хвърлям, търсехте/търся, спряхте/спра, разпитвахте/разпитвам" ;
+        mte:hasNumber        msd-bg:Vmii2p_bg ;
+        mte:hasPerson        msd-bg:Vmii2p_bg ;
+        mte:hasTense         msd-bg:Vmii2p_bg ;
+        mte:hasVerbForm      msd-bg:Vmii2p_bg ;
+        olia_system:hasTag   "Vmii2p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmii2s_bg a mte:MainVerb , mte:Indicative , mte:SecondPerson , mte:SingularNumber , mte:ImperfectTense , mte:Verb ;
+        rdfs:comment         "e.g., шушукаше/шушукам, шептеше/шептя, шепнеше/шепна, чукаше/чукам" ;
+        mte:hasNumber        msd-bg:Vmii2s_bg ;
+        mte:hasPerson        msd-bg:Vmii2s_bg ;
+        mte:hasTense         msd-bg:Vmii2s_bg ;
+        mte:hasVerbForm      msd-bg:Vmii2s_bg ;
+        olia_system:hasTag   "Vmii2s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmii3p_bg a mte:MainVerb , mte:ThirdPerson , mte:Verb , mte:ImperfectTense , mte:PluralNumber , mte:Indicative ;
+        rdfs:comment         "e.g., ядяха/ям, явяваха/явявам, шпионираха/шпионирам, шиеха/шия, чудеха/чудя" ;
+        mte:hasNumber        msd-bg:Vmii3p_bg ;
+        mte:hasPerson        msd-bg:Vmii3p_bg ;
+        mte:hasTense         msd-bg:Vmii3p_bg ;
+        mte:hasVerbForm      msd-bg:Vmii3p_bg ;
+        olia_system:hasTag   "Vmii3p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmii3s_bg a mte:Verb , mte:MainVerb , mte:ImperfectTense , mte:SingularNumber , mte:Indicative , mte:ThirdPerson ;
+        rdfs:comment         "e.g., шушукаше/шушукам, шептеше/шептя, шепнеше/шепна, чукаше/чукам" ;
+        mte:hasNumber        msd-bg:Vmii3s_bg ;
+        mte:hasPerson        msd-bg:Vmii3s_bg ;
+        mte:hasTense         msd-bg:Vmii3s_bg ;
+        mte:hasVerbForm      msd-bg:Vmii3s_bg ;
+        olia_system:hasTag   "Vmii3s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmip1p_bg a mte:PluralNumber , mte:Indicative , mte:FirstPerson , mte:Verb , mte:PresentTense , mte:MainVerb ;
+        rdfs:comment         "e.g., ядосваме/ядосвам, чукнем/чукна, чуем/чуя, чувстваме/чувствам" ;
+        mte:hasNumber        msd-bg:Vmip1p_bg ;
+        mte:hasPerson        msd-bg:Vmip1p_bg ;
+        mte:hasTense         msd-bg:Vmip1p_bg ;
+        mte:hasVerbForm      msd-bg:Vmip1p_bg ;
+        olia_system:hasTag   "Vmip1p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmip1s_bg a mte:FirstPerson , mte:MainVerb , mte:SingularNumber , mte:PresentTense , mte:Verb , mte:Indicative ;
+        rdfs:comment         "e.g., ядна, явя, щукна, шумна, шмугна, шия, чуя, чукам, чудя" ;
+        mte:hasNumber        msd-bg:Vmip1s_bg ;
+        mte:hasPerson        msd-bg:Vmip1s_bg ;
+        mte:hasTense         msd-bg:Vmip1s_bg ;
+        mte:hasVerbForm      msd-bg:Vmip1s_bg ;
+        olia_system:hasTag   "Vmip1s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmip2p_bg a mte:PresentTense , mte:SecondPerson , mte:Verb , mte:Indicative , mte:PluralNumber , mte:MainVerb ;
+        rdfs:comment         "e.g., шантажирате/шантажирам, чуждите/чуждя, чуете/чуя, чудите/чудя" ;
+        mte:hasNumber        msd-bg:Vmip2p_bg ;
+        mte:hasPerson        msd-bg:Vmip2p_bg ;
+        mte:hasTense         msd-bg:Vmip2p_bg ;
+        mte:hasVerbForm      msd-bg:Vmip2p_bg ;
+        olia_system:hasTag   "Vmip2p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmip2s_bg a mte:Indicative , mte:SingularNumber , mte:SecondPerson , mte:MainVerb , mte:Verb , mte:PresentTense ;
+        rdfs:comment         "e.g., ядеш/ям, чукаш/чукам, чуеш/чуя, чудиш/чудя, чувстваш/чувствам" ;
+        mte:hasNumber        msd-bg:Vmip2s_bg ;
+        mte:hasPerson        msd-bg:Vmip2s_bg ;
+        mte:hasTense         msd-bg:Vmip2s_bg ;
+        mte:hasVerbForm      msd-bg:Vmip2s_bg ;
+        olia_system:hasTag   "Vmip2s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmip3p_bg a mte:Verb , mte:ThirdPerson , mte:PresentTense , mte:MainVerb , mte:PluralNumber , mte:Indicative ;
+        rdfs:comment         "e.g., ядосват/ядосвам, явят/явя, явяват/явявам, шушукат/шушукам, шпионират/шпионирам" ;
+        mte:hasNumber        msd-bg:Vmip3p_bg ;
+        mte:hasPerson        msd-bg:Vmip3p_bg ;
+        mte:hasTense         msd-bg:Vmip3p_bg ;
+        mte:hasVerbForm      msd-bg:Vmip3p_bg ;
+        olia_system:hasTag   "Vmip3p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmip3s_bg a mte:Indicative , mte:SingularNumber , mte:PresentTense , mte:Verb , mte:MainVerb , mte:ThirdPerson ;
+        rdfs:comment         "e.g., яка/якам, ядосва/ядосвам, ядоса/ядосам, яде/ям, явява/явявам" ;
+        mte:hasNumber        msd-bg:Vmip3s_bg ;
+        mte:hasPerson        msd-bg:Vmip3s_bg ;
+        mte:hasTense         msd-bg:Vmip3s_bg ;
+        mte:hasVerbForm      msd-bg:Vmip3s_bg ;
+        olia_system:hasTag   "Vmip3s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmm-2p_bg a mte:Verb , mte:PluralNumber , mte:SecondPerson , mte:MainVerb , mte:Imperative ;
+        rdfs:comment         "e.g., чуйте/чуя, четете/чета, чакайте/чакам, царете/царя, хващайте/хващам" ;
+        mte:hasNumber        msd-bg:Vmm-2p_bg ;
+        mte:hasPerson        msd-bg:Vmm-2p_bg ;
+        mte:hasVerbForm      msd-bg:Vmm-2p_bg ;
+        olia_system:hasTag   "Vmm-2p" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmm-2s_bg a mte:Imperative , mte:MainVerb , mte:SecondPerson , mte:Verb , mte:SingularNumber ;
+        rdfs:comment         "e.g., яви/явя, щети/щетя, шумни/шумна, шуми/шумя, ширни/ширна, шикалкави/шикалкавя" ;
+        mte:hasNumber        msd-bg:Vmm-2s_bg ;
+        mte:hasPerson        msd-bg:Vmm-2s_bg ;
+        mte:hasVerbForm      msd-bg:Vmm-2s_bg ;
+        olia_system:hasTag   "Vmm-2s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpa-p-a-n_bg a mte:ActiveVoice , mte:Indefinite , mte:AoristTense , mte:MainVerb , mte:Participle , mte:Verb , mte:PluralNumber ;
+        rdfs:comment         "e.g., щръкнали/щръкна, щели/ща, чули/чуя, чували/чувам, чели/чета, чакали/чакам" ;
+        mte:hasDefiniteness  msd-bg:Vmpa-p-a-n_bg ;
+        mte:hasNumber        msd-bg:Vmpa-p-a-n_bg ;
+        mte:hasTense         msd-bg:Vmpa-p-a-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmpa-p-a-n_bg ;
+        mte:hasVoice         msd-bg:Vmpa-p-a-n_bg ;
+        olia_system:hasTag   "Vmpa-p-a-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpa-p-a-y_bg a mte:AoristTense , mte:Participle , mte:ActiveVoice , mte:Verb , mte:Definite , mte:MainVerb , mte:PluralNumber ;
+        rdfs:comment         "e.g., явилите/явя, участвалите/участвам, събралите/събера, стеклите/стека" ;
+        mte:hasDefiniteness  msd-bg:Vmpa-p-a-y_bg ;
+        mte:hasNumber        msd-bg:Vmpa-p-a-y_bg ;
+        mte:hasTense         msd-bg:Vmpa-p-a-y_bg ;
+        mte:hasVerbForm      msd-bg:Vmpa-p-a-y_bg ;
+        mte:hasVoice         msd-bg:Vmpa-p-a-y_bg ;
+        olia_system:hasTag   "Vmpa-p-a-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpa-sfa-n_bg a mte:SingularNumber , mte:Participle , mte:Indefinite , mte:MainVerb , mte:ActiveVoice , mte:FeminineGender , mte:AoristTense , mte:Verb ;
+        rdfs:comment         "e.g., щяла/ща, шупнала/шупна, шмугнала/шмугна, шегувала/шегувам, чула/чуя" ;
+        mte:hasDefiniteness  msd-bg:Vmpa-sfa-n_bg ;
+        mte:hasGender        msd-bg:Vmpa-sfa-n_bg ;
+        mte:hasNumber        msd-bg:Vmpa-sfa-n_bg ;
+        mte:hasTense         msd-bg:Vmpa-sfa-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmpa-sfa-n_bg ;
+        mte:hasVoice         msd-bg:Vmpa-sfa-n_bg ;
+        olia_system:hasTag   "Vmpa-sfa-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpa-sfa-y_bg a mte:Definite , mte:ActiveVoice , mte:Participle , mte:AoristTense , mte:SingularNumber , mte:MainVerb , mte:Verb , mte:FeminineGender ;
+        rdfs:comment         "e.g., станалата/стана, смелата/смета, слегналата/слегна, свършилата/свърша" ;
+        mte:hasDefiniteness  msd-bg:Vmpa-sfa-y_bg ;
+        mte:hasGender        msd-bg:Vmpa-sfa-y_bg ;
+        mte:hasNumber        msd-bg:Vmpa-sfa-y_bg ;
+        mte:hasTense         msd-bg:Vmpa-sfa-y_bg ;
+        mte:hasVerbForm      msd-bg:Vmpa-sfa-y_bg ;
+        mte:hasVoice         msd-bg:Vmpa-sfa-y_bg ;
+        olia_system:hasTag   "Vmpa-sfa-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpa-sma-f_bg a mte:FullArticle , mte:MainVerb , mte:SingularNumber , mte:AoristTense , mte:ActiveVoice , mte:MasculineGender , mte:Verb , mte:Participle ;
+        rdfs:comment         "e.g., събралият/събера, призналият/призная, починалият/почина, оказалият/окажа" ;
+        mte:hasDefiniteness  msd-bg:Vmpa-sma-f_bg ;
+        mte:hasGender        msd-bg:Vmpa-sma-f_bg ;
+        mte:hasNumber        msd-bg:Vmpa-sma-f_bg ;
+        mte:hasTense         msd-bg:Vmpa-sma-f_bg ;
+        mte:hasVerbForm      msd-bg:Vmpa-sma-f_bg ;
+        mte:hasVoice         msd-bg:Vmpa-sma-f_bg ;
+        olia_system:hasTag   "Vmpa-sma-f" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpa-sma-n_bg a mte:AoristTense , mte:ActiveVoice , mte:SingularNumber , mte:Participle , mte:MasculineGender , mte:MainVerb , mte:Indefinite , mte:Verb ;
+        rdfs:comment         "e.g., ял/ям, явил/явя, щял/ща, чул/чуя, чудил/чудя, чувствал/чувствам" ;
+        mte:hasDefiniteness  msd-bg:Vmpa-sma-n_bg ;
+        mte:hasGender        msd-bg:Vmpa-sma-n_bg ;
+        mte:hasNumber        msd-bg:Vmpa-sma-n_bg ;
+        mte:hasTense         msd-bg:Vmpa-sma-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmpa-sma-n_bg ;
+        mte:hasVoice         msd-bg:Vmpa-sma-n_bg ;
+        olia_system:hasTag   "Vmpa-sma-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpa-sma-s_bg a mte:ActiveVoice , mte:SingularNumber , mte:AoristTense , mte:ShortArticle , mte:MainVerb , mte:Verb , mte:Participle , mte:MasculineGender ;
+        rdfs:comment         "e.g., хлътналия/хлътна, устремилия/устремя, станалия/стана, приключилия/приключа" ;
+        mte:hasDefiniteness  msd-bg:Vmpa-sma-s_bg ;
+        mte:hasGender        msd-bg:Vmpa-sma-s_bg ;
+        mte:hasNumber        msd-bg:Vmpa-sma-s_bg ;
+        mte:hasTense         msd-bg:Vmpa-sma-s_bg ;
+        mte:hasVerbForm      msd-bg:Vmpa-sma-s_bg ;
+        mte:hasVoice         msd-bg:Vmpa-sma-s_bg ;
+        olia_system:hasTag   "Vmpa-sma-s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpa-sna-n_bg a mte:Indefinite , mte:NeuterGender , mte:Verb , mte:ActiveVoice , mte:AoristTense , mte:SingularNumber , mte:MainVerb , mte:Participle ;
+        rdfs:comment         "e.g., щяло/ща, шурнало/шурна, червило/червя, чело/чета, хрумнало/хрумне" ;
+        mte:hasDefiniteness  msd-bg:Vmpa-sna-n_bg ;
+        mte:hasGender        msd-bg:Vmpa-sna-n_bg ;
+        mte:hasNumber        msd-bg:Vmpa-sna-n_bg ;
+        mte:hasTense         msd-bg:Vmpa-sna-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmpa-sna-n_bg ;
+        mte:hasVoice         msd-bg:Vmpa-sna-n_bg ;
+        olia_system:hasTag   "Vmpa-sna-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpa-sna-y_bg a mte:SingularNumber , mte:Participle , mte:AoristTense , mte:Verb , mte:Definite , mte:ActiveVoice , mte:NeuterGender , mte:MainVerb ;
+        rdfs:comment         "e.g., червилото/червя, челото/чета, станалото/стана, спрялото/спра" ;
+        mte:hasDefiniteness  msd-bg:Vmpa-sna-y_bg ;
+        mte:hasGender        msd-bg:Vmpa-sna-y_bg ;
+        mte:hasNumber        msd-bg:Vmpa-sna-y_bg ;
+        mte:hasTense         msd-bg:Vmpa-sna-y_bg ;
+        mte:hasVerbForm      msd-bg:Vmpa-sna-y_bg ;
+        mte:hasVoice         msd-bg:Vmpa-sna-y_bg ;
+        olia_system:hasTag   "Vmpa-sna-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpi-p-a-n_bg a mte:Verb , mte:PluralNumber , mte:Participle , mte:MainVerb , mte:ActiveVoice , mte:Indefinite , mte:ImperfectTense ;
+        rdfs:comment         "e.g., щели/ща, чували/чувам, чакали/чакам, цензурирали/цензурирам, хранели/храня" ;
+        mte:hasDefiniteness  msd-bg:Vmpi-p-a-n_bg ;
+        mte:hasNumber        msd-bg:Vmpi-p-a-n_bg ;
+        mte:hasTense         msd-bg:Vmpi-p-a-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmpi-p-a-n_bg ;
+        mte:hasVoice         msd-bg:Vmpi-p-a-n_bg ;
+        olia_system:hasTag   "Vmpi-p-a-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpi-sfa-n_bg a mte:ImperfectTense , mte:SingularNumber , mte:Indefinite , mte:ActiveVoice , mte:Participle , mte:FeminineGender , mte:Verb , mte:MainVerb ;
+        rdfs:comment         "e.g., щяла/ща, шегувала/шегувам, чувала/чувам, чакала/чакам, целувала/целувам" ;
+        mte:hasDefiniteness  msd-bg:Vmpi-sfa-n_bg ;
+        mte:hasGender        msd-bg:Vmpi-sfa-n_bg ;
+        mte:hasNumber        msd-bg:Vmpi-sfa-n_bg ;
+        mte:hasTense         msd-bg:Vmpi-sfa-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmpi-sfa-n_bg ;
+        mte:hasVoice         msd-bg:Vmpi-sfa-n_bg ;
+        olia_system:hasTag   "Vmpi-sfa-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpi-sma-n_bg a mte:SingularNumber , mte:Indefinite , mte:ImperfectTense , mte:MasculineGender , mte:MainVerb , mte:ActiveVoice , mte:Verb , mte:Participle ;
+        rdfs:comment         "e.g., щял/ща, чувствал/чувствам, чувал/чувам, членувал/членувам, чакал/чакам" ;
+        mte:hasDefiniteness  msd-bg:Vmpi-sma-n_bg ;
+        mte:hasGender        msd-bg:Vmpi-sma-n_bg ;
+        mte:hasNumber        msd-bg:Vmpi-sma-n_bg ;
+        mte:hasTense         msd-bg:Vmpi-sma-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmpi-sma-n_bg ;
+        mte:hasVoice         msd-bg:Vmpi-sma-n_bg ;
+        olia_system:hasTag   "Vmpi-sma-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpi-sna-n_bg a mte:Participle , mte:Indefinite , mte:SingularNumber , mte:ImperfectTense , mte:NeuterGender , mte:Verb , mte:ActiveVoice , mte:MainVerb ;
+        rdfs:comment         "e.g., щяло/ща, утихвало/утихвам, установявало/установявам, успяло/успя" ;
+        mte:hasDefiniteness  msd-bg:Vmpi-sna-n_bg ;
+        mte:hasGender        msd-bg:Vmpi-sna-n_bg ;
+        mte:hasNumber        msd-bg:Vmpi-sna-n_bg ;
+        mte:hasTense         msd-bg:Vmpi-sna-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmpi-sna-n_bg ;
+        mte:hasVoice         msd-bg:Vmpi-sna-n_bg ;
+        olia_system:hasTag   "Vmpi-sna-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpi-sna-y_bg a mte:MainVerb , mte:Verb , mte:Participle , mte:NeuterGender , mte:SingularNumber , mte:ImperfectTense , mte:Definite , mte:ActiveVoice ;
+        rdfs:comment         "e.g., последвалото/последвам" ;
+        mte:hasDefiniteness  msd-bg:Vmpi-sna-y_bg ;
+        mte:hasGender        msd-bg:Vmpi-sna-y_bg ;
+        mte:hasNumber        msd-bg:Vmpi-sna-y_bg ;
+        mte:hasTense         msd-bg:Vmpi-sna-y_bg ;
+        mte:hasVerbForm      msd-bg:Vmpi-sna-y_bg ;
+        mte:hasVoice         msd-bg:Vmpi-sna-y_bg ;
+        olia_system:hasTag   "Vmpi-sna-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpp-p-a-n_bg a mte:PresentTense , mte:ActiveVoice , mte:Indefinite , mte:MainVerb , mte:Verb , mte:Participle , mte:PluralNumber ;
+        rdfs:comment         "e.g., целещи/целя, хлипащи/хлипам, характеризиращи/характеризирам, финансиращи/финансирам" ;
+        mte:hasDefiniteness  msd-bg:Vmpp-p-a-n_bg ;
+        mte:hasNumber        msd-bg:Vmpp-p-a-n_bg ;
+        mte:hasTense         msd-bg:Vmpp-p-a-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmpp-p-a-n_bg ;
+        mte:hasVoice         msd-bg:Vmpp-p-a-n_bg ;
+        olia_system:hasTag   "Vmpp-p-a-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpp-p-a-y_bg a mte:Verb , mte:MainVerb , mte:ActiveVoice , mte:Participle , mte:PresentTense , mte:Definite , mte:PluralNumber ;
+        rdfs:comment         "e.g., учещите/уча, управляващите/управлявам, търкащите/търкам, тъмнеещите/тъмнея" ;
+        mte:hasDefiniteness  msd-bg:Vmpp-p-a-y_bg ;
+        mte:hasNumber        msd-bg:Vmpp-p-a-y_bg ;
+        mte:hasTense         msd-bg:Vmpp-p-a-y_bg ;
+        mte:hasVerbForm      msd-bg:Vmpp-p-a-y_bg ;
+        mte:hasVoice         msd-bg:Vmpp-p-a-y_bg ;
+        olia_system:hasTag   "Vmpp-p-a-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpp-sfa-n_bg a mte:FeminineGender , mte:ActiveVoice , mte:Participle , mte:SingularNumber , mte:Verb , mte:Indefinite , mte:MainVerb , mte:PresentTense ;
+        rdfs:comment         "e.g., целяща/целя, фрапираща/фрапирам, устремяваща/устремявам, управляваща/управлявам" ;
+        mte:hasDefiniteness  msd-bg:Vmpp-sfa-n_bg ;
+        mte:hasGender        msd-bg:Vmpp-sfa-n_bg ;
+        mte:hasNumber        msd-bg:Vmpp-sfa-n_bg ;
+        mte:hasTense         msd-bg:Vmpp-sfa-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmpp-sfa-n_bg ;
+        mte:hasVoice         msd-bg:Vmpp-sfa-n_bg ;
+        olia_system:hasTag   "Vmpp-sfa-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpp-sfa-y_bg a mte:FeminineGender , mte:SingularNumber , mte:MainVerb , mte:PresentTense , mte:Definite , mte:Verb , mte:ActiveVoice , mte:Participle ;
+        rdfs:comment         "e.g., шумолящата/шумоля, утвърждаващата/утвърждавам, управляващата/управлявам" ;
+        mte:hasDefiniteness  msd-bg:Vmpp-sfa-y_bg ;
+        mte:hasGender        msd-bg:Vmpp-sfa-y_bg ;
+        mte:hasNumber        msd-bg:Vmpp-sfa-y_bg ;
+        mte:hasTense         msd-bg:Vmpp-sfa-y_bg ;
+        mte:hasVerbForm      msd-bg:Vmpp-sfa-y_bg ;
+        mte:hasVoice         msd-bg:Vmpp-sfa-y_bg ;
+        olia_system:hasTag   "Vmpp-sfa-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpp-sma-f_bg a mte:FullArticle , mte:PresentTense , mte:SingularNumber , mte:Participle , mte:Verb , mte:MasculineGender , mte:ActiveVoice , mte:MainVerb ;
+        rdfs:comment         "e.g., управляващият/управлявам, умиращият/умирам, ужасяващият/ужасявам" ;
+        mte:hasDefiniteness  msd-bg:Vmpp-sma-f_bg ;
+        mte:hasGender        msd-bg:Vmpp-sma-f_bg ;
+        mte:hasNumber        msd-bg:Vmpp-sma-f_bg ;
+        mte:hasTense         msd-bg:Vmpp-sma-f_bg ;
+        mte:hasVerbForm      msd-bg:Vmpp-sma-f_bg ;
+        mte:hasVoice         msd-bg:Vmpp-sma-f_bg ;
+        olia_system:hasTag   "Vmpp-sma-f" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpp-sma-n_bg a mte:Verb , mte:Participle , mte:Indefinite , mte:SingularNumber , mte:MainVerb , mte:MasculineGender , mte:PresentTense , mte:ActiveVoice ;
+        rdfs:comment         "e.g., чуващ/чувам, хленчещ/хленча, умиращ/умирам, тълкуващ/тълкувам" ;
+        mte:hasDefiniteness  msd-bg:Vmpp-sma-n_bg ;
+        mte:hasGender        msd-bg:Vmpp-sma-n_bg ;
+        mte:hasNumber        msd-bg:Vmpp-sma-n_bg ;
+        mte:hasTense         msd-bg:Vmpp-sma-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmpp-sma-n_bg ;
+        mte:hasVoice         msd-bg:Vmpp-sma-n_bg ;
+        olia_system:hasTag   "Vmpp-sma-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpp-sma-s_bg a mte:ActiveVoice , mte:Participle , mte:MasculineGender , mte:MainVerb , mte:PresentTense , mte:SingularNumber , mte:ShortArticle , mte:Verb ;
+        rdfs:comment         "e.g., царящия/царя, управляващия/управлявам, терзаещия/терзая, следващия/следвам" ;
+        mte:hasDefiniteness  msd-bg:Vmpp-sma-s_bg ;
+        mte:hasGender        msd-bg:Vmpp-sma-s_bg ;
+        mte:hasNumber        msd-bg:Vmpp-sma-s_bg ;
+        mte:hasTense         msd-bg:Vmpp-sma-s_bg ;
+        mte:hasVerbForm      msd-bg:Vmpp-sma-s_bg ;
+        mte:hasVoice         msd-bg:Vmpp-sma-s_bg ;
+        olia_system:hasTag   "Vmpp-sma-s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpp-sna-n_bg a mte:Participle , mte:SingularNumber , mte:MainVerb , mte:Verb , mte:Indefinite , mte:PresentTense , mte:ActiveVoice , mte:NeuterGender ;
+        rdfs:comment         "e.g., учудващо/учудвам, ухаещо/ухая, упойващо/упойвам, умоляващо/умолявам" ;
+        mte:hasDefiniteness  msd-bg:Vmpp-sna-n_bg ;
+        mte:hasGender        msd-bg:Vmpp-sna-n_bg ;
+        mte:hasNumber        msd-bg:Vmpp-sna-n_bg ;
+        mte:hasTense         msd-bg:Vmpp-sna-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmpp-sna-n_bg ;
+        mte:hasVoice         msd-bg:Vmpp-sna-n_bg ;
+        olia_system:hasTag   "Vmpp-sna-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmpp-sna-y_bg a mte:Verb , mte:SingularNumber , mte:NeuterGender , mte:PresentTense , mte:MainVerb , mte:Definite , mte:Participle , mte:ActiveVoice ;
+        rdfs:comment         "e.g., хранещото/храня, ужасяващото/ужасявам, тържествуващото/тържествувам" ;
+        mte:hasDefiniteness  msd-bg:Vmpp-sna-y_bg ;
+        mte:hasGender        msd-bg:Vmpp-sna-y_bg ;
+        mte:hasNumber        msd-bg:Vmpp-sna-y_bg ;
+        mte:hasTense         msd-bg:Vmpp-sna-y_bg ;
+        mte:hasVerbForm      msd-bg:Vmpp-sna-y_bg ;
+        mte:hasVoice         msd-bg:Vmpp-sna-y_bg ;
+        olia_system:hasTag   "Vmpp-sna-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmps-p-p-n_bg a mte:PastTense , mte:MainVerb , mte:PassiveVoice , mte:Participle , mte:Indefinite , mte:Verb , mte:PluralNumber ;
+        rdfs:comment         "e.g., шити/шия, шибани/шибам, шашнати/шашна, шарени/шаря, чути/чуя" ;
+        mte:hasDefiniteness  msd-bg:Vmps-p-p-n_bg ;
+        mte:hasNumber        msd-bg:Vmps-p-p-n_bg ;
+        mte:hasTense         msd-bg:Vmps-p-p-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmps-p-p-n_bg ;
+        mte:hasVoice         msd-bg:Vmps-p-p-n_bg ;
+        olia_system:hasTag   "Vmps-p-p-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmps-p-p-y_bg a mte:MainVerb , mte:PassiveVoice , mte:Participle , mte:Verb , mte:PluralNumber , mte:PastTense , mte:Definite ;
+        rdfs:comment         "e.g., червените/червя, херметизираните/херметизирам, учените/уча, утвърдените/утвърдя" ;
+        mte:hasDefiniteness  msd-bg:Vmps-p-p-y_bg ;
+        mte:hasNumber        msd-bg:Vmps-p-p-y_bg ;
+        mte:hasTense         msd-bg:Vmps-p-p-y_bg ;
+        mte:hasVerbForm      msd-bg:Vmps-p-p-y_bg ;
+        mte:hasVoice         msd-bg:Vmps-p-p-y_bg ;
+        olia_system:hasTag   "Vmps-p-p-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmps-sfp-n_bg a mte:SingularNumber , mte:MainVerb , mte:PassiveVoice , mte:Verb , mte:FeminineGender , mte:PastTense , mte:Indefinite , mte:Participle ;
+        rdfs:comment         "e.g., щурмувана/щурмувам, шарена/шаря, червена/червя, чакана/чакам" ;
+        mte:hasDefiniteness  msd-bg:Vmps-sfp-n_bg ;
+        mte:hasGender        msd-bg:Vmps-sfp-n_bg ;
+        mte:hasNumber        msd-bg:Vmps-sfp-n_bg ;
+        mte:hasTense         msd-bg:Vmps-sfp-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmps-sfp-n_bg ;
+        mte:hasVoice         msd-bg:Vmps-sfp-n_bg ;
+        olia_system:hasTag   "Vmps-sfp-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmps-sfp-y_bg a mte:PassiveVoice , mte:MainVerb , mte:SingularNumber , mte:FeminineGender , mte:Participle , mte:Verb , mte:Definite , mte:PastTense ;
+        rdfs:comment         "e.g., червената/червя, утроената/утроя, утвърдената/утвърдя, установената/установя" ;
+        mte:hasDefiniteness  msd-bg:Vmps-sfp-y_bg ;
+        mte:hasGender        msd-bg:Vmps-sfp-y_bg ;
+        mte:hasNumber        msd-bg:Vmps-sfp-y_bg ;
+        mte:hasTense         msd-bg:Vmps-sfp-y_bg ;
+        mte:hasVerbForm      msd-bg:Vmps-sfp-y_bg ;
+        mte:hasVoice         msd-bg:Vmps-sfp-y_bg ;
+        olia_system:hasTag   "Vmps-sfp-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmps-smp-f_bg a mte:FullArticle , mte:Participle , mte:PastTense , mte:PassiveVoice , mte:Verb , mte:MainVerb , mte:SingularNumber , mte:MasculineGender ;
+        rdfs:comment         "e.g., уточненият/уточня, търсеният/търся, смутеният/смутя, скопеният/скопя" ;
+        mte:hasDefiniteness  msd-bg:Vmps-smp-f_bg ;
+        mte:hasGender        msd-bg:Vmps-smp-f_bg ;
+        mte:hasNumber        msd-bg:Vmps-smp-f_bg ;
+        mte:hasTense         msd-bg:Vmps-smp-f_bg ;
+        mte:hasVerbForm      msd-bg:Vmps-smp-f_bg ;
+        mte:hasVoice         msd-bg:Vmps-smp-f_bg ;
+        olia_system:hasTag   "Vmps-smp-f" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmps-smp-n_bg a mte:SingularNumber , mte:Indefinite , mte:MasculineGender , mte:Verb , mte:PassiveVoice , mte:Participle , mte:PastTense , mte:MainVerb ;
+        rdfs:comment         "e.g., ядосан/ядосам, чут/чуя, червен/червя, цитиран/цитирам, цивилизован/цивилизовам" ;
+        mte:hasDefiniteness  msd-bg:Vmps-smp-n_bg ;
+        mte:hasGender        msd-bg:Vmps-smp-n_bg ;
+        mte:hasNumber        msd-bg:Vmps-smp-n_bg ;
+        mte:hasTense         msd-bg:Vmps-smp-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmps-smp-n_bg ;
+        mte:hasVoice         msd-bg:Vmps-smp-n_bg ;
+        olia_system:hasTag   "Vmps-smp-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmps-smp-s_bg a mte:ShortArticle , mte:MainVerb , mte:Participle , mte:Verb , mte:SingularNumber , mte:PastTense , mte:MasculineGender , mte:PassiveVoice ;
+        rdfs:comment         "e.g., четения/чета, червения/червя, цитирания/цитирам, формулирания/формулирам" ;
+        mte:hasDefiniteness  msd-bg:Vmps-smp-s_bg ;
+        mte:hasGender        msd-bg:Vmps-smp-s_bg ;
+        mte:hasNumber        msd-bg:Vmps-smp-s_bg ;
+        mte:hasTense         msd-bg:Vmps-smp-s_bg ;
+        mte:hasVerbForm      msd-bg:Vmps-smp-s_bg ;
+        mte:hasVoice         msd-bg:Vmps-smp-s_bg ;
+        olia_system:hasTag   "Vmps-smp-s" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmps-snp-n_bg a mte:Participle , mte:Indefinite , mte:PastTense , mte:NeuterGender , mte:Verb , mte:SingularNumber , mte:PassiveVoice , mte:MainVerb ;
+        rdfs:comment         "e.g., щадено/щадя, шокирано/шокирам, червено/червя, цитирано/цитирам" ;
+        mte:hasDefiniteness  msd-bg:Vmps-snp-n_bg ;
+        mte:hasGender        msd-bg:Vmps-snp-n_bg ;
+        mte:hasNumber        msd-bg:Vmps-snp-n_bg ;
+        mte:hasTense         msd-bg:Vmps-snp-n_bg ;
+        mte:hasVerbForm      msd-bg:Vmps-snp-n_bg ;
+        mte:hasVoice         msd-bg:Vmps-snp-n_bg ;
+        olia_system:hasTag   "Vmps-snp-n" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Vmps-snp-y_bg a mte:MainVerb , mte:Verb , mte:Participle , mte:NeuterGender , mte:PassiveVoice , mte:SingularNumber , mte:PastTense , mte:Definite ;
+        rdfs:comment         "e.g., червеното/червя, цитираното/цитирам, централизираното/централизирам" ;
+        mte:hasDefiniteness  msd-bg:Vmps-snp-y_bg ;
+        mte:hasGender        msd-bg:Vmps-snp-y_bg ;
+        mte:hasNumber        msd-bg:Vmps-snp-y_bg ;
+        mte:hasTense         msd-bg:Vmps-snp-y_bg ;
+        mte:hasVerbForm      msd-bg:Vmps-snp-y_bg ;
+        mte:hasVoice         msd-bg:Vmps-snp-y_bg ;
+        olia_system:hasTag   "Vmps-snp-y" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:X_bg a mte:Residual ;
+        rdfs:comment         "e.g., 2+2=5" ;
+        olia_system:hasTag   "X" ;
+        olia_system:hasTier  "pos" .
+
+msd-bg:Y_bg a mte:Abbreviation ;
+        rdfs:comment         "e.g., Ю., ЮАР, щ.д., ч., ЧССР, чл., ЧЗИБ, Ц., ЦУМ" ;
+        olia_system:hasTag   "Y" ;
+        olia_system:hasTier  "pos" .
+
+#################### External classes/propertoes
+
+mte:Abbreviation a owl:Class .
+
+mte:AccusativeCase a owl:Class .
+
+mte:ActiveVoice a owl:Class .
+
+mte:AdjectivalAdverb a owl:Class .
+
+mte:Adjective a owl:Class .
+
+mte:Adposition a owl:Class .
+
+mte:Adverb a owl:Class .
+
+mte:AoristTense a owl:Class .
+
+mte:ApproxNumeral a owl:Class .
+
+mte:AttributivePronoun a owl:Class .
+
+mte:AuxiliaryVerb a owl:Class .
+
+mte:CardinalNumeral a owl:Class .
+
+mte:CommonNoun a owl:Class .
+
+mte:ComparativeParticle a owl:Class .
+
+mte:CompoundConjunction a owl:Class .
+
+mte:CompoundInterjection a owl:Class .
+
+mte:CompoundParticle a owl:Class .
+
+mte:Conjunction a owl:Class .
+
+mte:CoordinatingConjunction a owl:Class .
+
+mte:CountNumber a owl:Class .
+
+mte:DativeCase a owl:Class .
+
+mte:Definite a owl:Class .
+
+mte:DemonstrativePronoun a owl:Class .
+
+mte:DigitNumeral a owl:Class .
+
+mte:FeminineGender a owl:Class .
+
+mte:FirstPerson a owl:Class .
+
+mte:FullArticle a owl:Class .
+
+mte:GeneralAdverb a owl:Class .
+
+mte:GeneralParticle a owl:Class .
+
+mte:GeneralPronoun a owl:Class .
+
+mte:Gerund a owl:Class .
+
+mte:Imperative a owl:Class .
+
+mte:ImperfectTense a owl:Class .
+
+mte:Indefinite a owl:Class .
+
+mte:IndefinitePronoun a owl:Class .
+
+mte:Indicative a owl:Class .
+
+mte:Interjection a owl:Class .
+
+mte:InterrogativeParticle a owl:Class .
+
+mte:InterrogativePronoun a owl:Class .
+
+mte:LetterNumeral a owl:Class .
+
+mte:MFormNumeral a owl:Class .
+
+mte:MainVerb a owl:Class .
+
+mte:MasculineGender a owl:Class .
+
+mte:ModalParticle a owl:Class .
+
+mte:NegativeParticle a owl:Class .
+
+mte:NegativePronoun a owl:Class .
+
+mte:NeuterGender a owl:Class .
+
+mte:NoClitic a owl:Class .
+
+mte:NominativeCase a owl:Class .
+
+mte:Noun a owl:Class .
+
+mte:Numeral a owl:Class .
+
+mte:OrdinalNumeral a owl:Class .
+
+mte:Participle a owl:Class .
+
+mte:Particle a owl:Class .
+
+mte:PassiveVoice a owl:Class .
+
+mte:PastTense a owl:Class .
+
+mte:PersonalPronoun a owl:Class .
+
+mte:PluralNumber a owl:Class .
+
+mte:PossessivePronoun a owl:Class .
+
+mte:Preposition a owl:Class .
+
+mte:PresentTense a owl:Class .
+
+mte:Pronoun a owl:Class .
+
+mte:ProperNoun a owl:Class .
+
+mte:QuantitativePronoun a owl:Class .
+
+mte:ReflexivePronoun a owl:Class .
+
+mte:RelativePronoun a owl:Class .
+
+mte:Residual a owl:Class .
+
+mte:RomanNumeral a owl:Class .
+
+mte:SecondPerson a owl:Class .
+
+mte:ShortArticle a owl:Class .
+
+mte:SimpleConjunction a owl:Class .
+
+mte:SimpleInterjection a owl:Class .
+
+mte:SimpleParticle a owl:Class .
+
+mte:SingularNumber a owl:Class .
+
+mte:SubordinatingConjunction a owl:Class .
+
+mte:ThirdPerson a owl:Class .
+
+mte:Verb a owl:Class .
+
+mte:VerbalParticle a owl:Class .
+
+mte:VocativeCase a owl:Class .
+
+olia_system:hasTag a owl:DatatypeProperty .
+
+olia_system:hasTier a owl:DatatypeProperty .

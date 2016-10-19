@@ -1,0 +1,54 @@
+@startuml
+hide circles
+hide empty methods
+
+package "Frame definition" {
+  "<i>frame</i>"           : a fn:Frame
+  "<i>lexUnit</i>"         : a fn:LexUnit
+  "<i>frameElement1</i>"   : a fn:FrameElement
+  "<i>frameElementN</i>"   : a fn:FrameElement
+  "<i>frameElementN+1</i>" : a fn:FrameElement
+}
+package "Frame instance" {
+  "<i>annoSet</i>"         : a fn:AnnotationSet
+  "<i>label1</i>"          : a fn:Label
+  "<i>labelN</i>"          : a fn:Label
+  "<i>labelN+1</i>"        : a fn:Label
+  "<i>labelN+1</i>"        : fn:label_itype "CNI"
+  "<i>labelLU</i>"         : a fn:Label
+  "<i>labelLU</i>"         : fn:label_name "Target"
+  "<i>layerLU</i>"         : a fn:Layer
+  "<i>layerLU</i>"         : fn:layer_name "Target"
+  "<i>layerFE</i>"         : a fn:Layer
+  "<i>layerFE</i>"         : fn:layer_name "FE"
+  class "<i>labelLU</i>" <<redundant>>
+  class "<i>layerLU</i>" <<redundant>>
+}
+package "NIF" {
+  "<i>head</i>"            : a nif:Word
+  "<i>word1</i>"           : a nif:Word
+  "<i>wordN</i>"           : a nif:Word
+}
+
+"<i>frame</i>"   -down-> "<i>lexUnit</i>"          : fn:hasLexUnit
+"<i>frame</i>"   -down-> "<i>frameElement1</i>"    : fn:hasFrameElement
+"<i>frame</i>"   -down-> "<i>frameElementN</i>"    : fn:hasFrameElement
+"<i>frame</i>"   -down-> "<i>frameElementN+1</i>"  : fn:hasFrameElement
+
+"<i>annoSet</i>" -up->    "<i>frame</i>"           : fn:annotationSetFrame
+"<i>annoSet</i>" -up->    "<i>lexUnit</i>"         : fn:annotationSetLU
+"<i>annoSet</i>" -down->  "<i>layerLU</i>"         : fn:hasLayer
+"<i>annoSet</i>" -down->  "<i>layerFE</i>"         : fn:hasLayer
+"<i>layerFE</i>" -down->  "<i>label1</i>"          : fn:hasLabel
+"<i>layerFE</i>" -down->  "<i>labelN</i>"          : fn:hasLabel
+"<i>layerFE</i>" -down->  "<i>labelN+1</i>"        : fn:hasLabel
+"<i>layerLU</i>" -down->  "<i>labelLU</i>"         : fn:hasLabel
+"<i>label1</i>"  -up->    "<i>frameElement1</i>"   : fn:label_FE
+"<i>labelN</i>"  -up->    "<i>frameElementN</i>"   : fn:label_FE
+"<i>labelN+1</i>"-up->    "<i>frameElementN+1</i>" : fn:label_FE
+
+"<i>head</i>"    -up->    "<i>annoSet</i>"         : nif:oliaLink
+"<i>head</i>"    -up->    "<i>labelLU</i>"         : nif:oliaLink
+"<i>word1</i>"   -up->    "<i>label1</i>"          : nif:oliaLink
+"<i>wordN</i>"   -up->    "<i>labelN</i>"          : nif:oliaLink
+@enduml

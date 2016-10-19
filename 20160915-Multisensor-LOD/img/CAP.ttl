@@ -1,0 +1,22 @@
+@prefix ms-data: <http://data.multisensorproject.eu/>.
+
+  <http://data.multisensorproject.eu/CAP/123> a oa:Annotation;
+    oa:hasBody        
+      ms-content:e9c304,
+      ms-content:611047;
+    fise:confidence 0.862;
+    oa:motivatedBy ms:linking-similar;
+    oa:annotatedBy <http://data.multisensorproject.eu/agent/CAP>;
+    oa:annotatedAt "2016-01-11T12:00:00"^^xsd:dateTime .
+
+  <http://data.multisensorproject.eu/CAP/124> a oa:Annotation;
+    oa:hasBody        
+      ms-content:e9c304,
+      ms-content:f5c719;
+    fise:confidence 0.795;
+    oa:motivatedBy ms:linking-contradictory;
+    oa:annotatedBy <http://data.multisensorproject.eu/agent/CAP>;
+    oa:annotatedAt "2016-01-12T12:00:00"^^xsd:dateTime .
+
+oa:hasBody puml:arrow puml:up.
+#oa:annotatedBy puml:arrow puml:up.

@@ -1,0 +1,494 @@
+#+COMMENT: -*- fill-column: 100 -*-
+#+STARTUP: showeverything
+#+TITLE: FN goes NIF: Integrating FrameNet in the NLP Interchange Format
+#+DATE: 2016-03-28
+#+AUTHOR: Vladimir Alexiev, Gerard Casamayor
+#+LATEX_HEADER_EXTRA: \address{Ontotext Corp, Universitat Pompeu Fabra\\
+#+LATEX_HEADER_EXTRA:   vladimir.alexiev@ontotext.com, gerard.casamayor@upf.edu}
+#+OPTIONS: ':nil *:t -:t ::t <:t H:5 \n:nil ^:{} arch:headline author:t c:nil
+#+OPTIONS: creator:comment d:(not "LOGBOOK") date:nil e:t email:nil f:t inline:t num:t
+#+OPTIONS: p:nil pri:nil stat:t tags:t tasks:t tex:t timestamp:nil toc:nil todo:t |:t
+#+OPTIONS: texht:t
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [10pt,a4paper]
+#+LATEX_HEADER: \usepackage{lrec2006}
+#+LATEX_HEADER_EXTRA: \lstalias{Turtle}{SPARQL}
+#+LATEX_HEADER_EXTRA: \renewcommand\maketitle\maketitleabstract
+#+LATEX_HEADER_EXTRA: \renewcommand\author\name
+#+LATEX_HEADER_EXTRA: \abstract{
+#+LATEX_HEADER_EXTRA: FrameNet (FN) is a large-scale lexical database for English developed at ICSI Berkeley
+#+LATEX_HEADER_EXTRA: that describes word senses in terms of frame semantics.
+#+LATEX_HEADER_EXTRA: 
+#+LATEX_HEADER_EXTRA: FN has been converted to RDF LOD by ISTC-CNR, together with a large corpus of text annotated with FN.
+#+LATEX_HEADER_EXTRA: 
+#+LATEX_HEADER_EXTRA: NIF is an RDF/OWL format and protocol for exchanging text annotations between NLP tools as Linguistic Linked Data. 
+#+LATEX_HEADER_EXTRA: This paper reviews the FN-LOD representation, compares it to NIF, and describes a simple way to integrate FN in NIF, which does not use any custom classes or properties.
+#+LATEX_HEADER_EXTRA: \\\newline
+#+LATEX_HEADER_EXTRA: \Keywords{FrameNet, NLP Interchange Format, NIF, Linguistic LOD}}
+#+KEYWORDS: FrameNet, NIF, Linguistic LOD
+#+CREATOR: Emacs 24.3.91.1 (Org mode 8.2.7c)
+#+LANGUAGE: en
+#+EXCLUDE_TAGS: noexport
+
+* Introduction
+[[https://framenet.icsi.berkeley.edu/fndrupal/][FrameNet]] (FN) [[[FN-book]]] is a large-scale linguistic resource for English developed at ICSI UC Berkeley.
+It documents the syntactic and semantic combinations (valences) of predicative word senses in terms of frames, lexical units, frame elements, and relations between them. More precisely:
+- *Frames* are conceptual situations along with their participants (e.g. ~frame:Statement~ corresponds to an event in which a statement is made)
+- *Lexical Units* (LU) are phrases or words that evoke frames (e.g. ~lu:announce.v~ and ~lu:declare.v~ both evoke ~frame:Statement~)
+- *Frame Elements* (FE) are roles taken by participants in a frame: things, entities, times, places, etc (e.g. ~fe:Speaker.statement~, ~fe:Message.statement~)
+The FN lexical database also comprises a corpus of annotated sentences that exemplify all the above. FN has been converted to Linked Open Data (LOD) by ISTC-CNR [[[FN-LOD]]], a conversion henceforth refered to as FN-LOD. This conversion covers not only FrameNet's lexical database but also FrameNet's corpus of sentences annotated with frames, FEs and other linguistic information.
+
+The NLP Interchange Format (NIF) [[[NIF]]] is a set of ontologies, specifications and software to enable the exchange of linguistic annotations as RDF/OWL between Natural Language Processing (NLP) tools. The NIF model includes a core ontology to represent textual annotations and binding to text, and reuses NLP vocabularies, such as:
+[[http://www.w3.org/2005/11/its/rdf][ITS]] and [[http://nerd.eurecom.fr/ontology][NERD]] for Named Entity Recognition (NER) (individuals and classes respectively), 
+[[http://acoli.cs.uni-frankfurt.de/resources/olia/][OLIA]] for modeling model tagsets produced by various types of NLP tools, 
+[[http://www.gsi.dit.upm.es/ontologies/marl/][MARL]] for sentiment/opinion, etc. 
+
+In the last years NIF has gained wide-spread adoption in the Linguistic LD community,
+with a variety of linguistic corpora being published as NIF.
+For example, the Manually Annotated Sub-Corpus (MASC) [[[MASC]]] has been published as LOD NIF
+with additional links to linguistic resources in two recent efforts [[[MASC-BN]]][[[MASC-BN-IATE]]].
+
+See [[[LLD-intro]]] for a brief overview of Linguistic LD and related ontologies. 
+An extensive bibliography is [[https://www.zotero.org/groups/linguistic_ld/items][available on Zotero]].
+
+We are not aware of any alignment or example of using FN-LOD and NIF together. 
+While [[[FN-MASC]]] describes plans to interlink FN-LOD and MASC as LOD, 
+neither it nor the two MASC LOD datasets cited above include FN-LOD. 
+
+This paper reviews the FN-LOD representation, compares it to NIF, 
+and describes a simple way to integrate FN in NIF
+so that FrameNet-based annotations can be produced and consumed by NIF-compliant services. 
+Crucially, this integration is achieved without resorting to any custom vocabulary 
+(no new classes or properties). 
+Instead, we align the core items of NIF and FN-LOD.
+
+This FN-NIF integration is an important step towards bulding NIF-compliant pipelines of text analysis and Information Extraction (IE) components capable of producing LOD corpora with rich linguistic and semantic annotations. Such corpora is important for a wide range of tasks ranging from corpora analysis in linguistic research, to downstream applications like semantic indexing and summarization. The FN-NIF model presented here is used in the Multisensor project (MS) [[[MS]]][[[MS-paper]]], which applies semantic technologies to the analysis of multimedia (including news articles and social media) and where NIF has been adopted as the data model for data exchange between text processing components. 
+More precisely, the FN-NIF integration is used to encode the output of a relation extraction implementation that produces annotations of FrameNet-based n-ary relations. By using NIF to store the extracted relations as annotations, it is possible to integrate them with annotations produced by other text analysis services. Thus, for instance, relations in Multisensor can have as arguments entities annotated by NER and concept extraction modules. 
+
+The rest of this paper is structured as follows. 
+First, we introduce an example sentence which we will use through the paper to illustrate discussions. 
+Then we describe FN-LOD in detail and compare it to NIF. The FN-NIF model is presented, followed by sample queries to get information out of it.
+*[[https://github.com/VladimirAlexiev/multisensor/tree/master/FrameNet][Accompanying materials]]* are available for download, including 
+Orgmode source (~org~) and local files 
+referenced in the paper as relative links ~./*~: 
+Turtle RDF (~ttl~), ontologies in Manchester Notation (~omn~), 
+bigger figures in PlantUML (~puml~) and ~png~.
+
+Through this paper we'll use the following sentence to illustrate discussions:
+#+BEGIN_QUOTE
+Electrolux announced today the theme for its design competition.
+#+END_QUOTE
+
+** SEMAFOR
+[[https://framenet.icsi.berkeley.edu/fndrupal/asrl][Some softwares]] are available for automatic FN annotation. 
+We used SEMAFOR [[[SEMAFOR]]] to [[http://demo.ark.cs.cmu.edu/parse?sentence=Electrolux+announced+today+the+theme+for+its+design+competition][annotate the sample sentence]].
+
+SEMAFOR uses a dependency parse (shown on top of Fig \ref{SEMAFOR-horizontal}) 
+to generate candidate frames for the sentence (shown at the bottom). 
+Here we have highlighted the ~Statement~ frame, invoked by ~lu:announce.v~ 
+and having FEs ~Speaker~, ~Time~ and ~Message~.
+The other candidate frames are dimmed out.
+#+ATTR_LATEX: :float multicolumn
+#+CAPTION: SEMAFOR Output, Horizontal Layout
+#+LABEL: SEMAFOR-horizontal
+[[./img/SEMAFOR-horizontal.png]]
+
+It may be easier to see the candidate frames in SEMAFOR's vertical layout (Fig \ref{SEMAFOR-vertical}). 
+Here each column represents a frame.
+#+ATTR_LATEX: :float multicolumn
+#+CAPTION: SEMAFOR Output, Vertical Layout
+#+LABEL: SEMAFOR-vertical
+[[./img/SEMAFOR-vertical.png]]
+
+** SEMAFOR Candidate Frame Filtering
+SEMAFOR offers a JSON format ([[https://github.com/VladimirAlexiev/multisensor/blob/master/FrameNet/SEMAFOR.json][./SEMAFOR.json]]) where one can see the candidate frames and their targets (LUs) and FEs.
+It includes a ~score~ for each frame, which can help us pick the best frames:
+|                | <c>   |
+| Frame          | Score |
+|----------------+-------|
+| Statement      | 113.2 |
+| Competition    | 54.6  |
+| Coming_up_with | 50.7  |
+| Calendric_unit | 30.4  |
+| Topic          | 25.4  |
+
+In this case the two top-scoring candidates (~Statement~ and ~Competition~) are the best frames.
+~Calendric_unit~ is too small (equal to ~lu:Time.statement~), ~Coming_up_with~ is wrong, and ~Topic~ is part of ~Statement~.
+
+We propose a simple approach to filter candidate frames based on score and a dependency tree structure (see Fig \ref{FN-NIF-example}):
+- Order candidate frames by decreasing score
+- Repeat:
+  - Add the highest scoring frame /f/
+  - Discard any frames that are governed by /f/ in the dependency tree
+
+** FrameNet                                                       :noexport:
+Frames are developed from the analysis of sentences containing occurrences of predicative words. 
+E.g. the [[https://framenet2.icsi.berkeley.edu/fnReports/data/lu/lu683.xml?mode=annotation][annotations of ~lu:announce.v~]] include about 80 sentences of varying phrase forms. 
+Colors show the different FE's.
+#+ATTR_LATEX: :float multicolumn
+#+CAPTION: FrameNet Annotation (colored)
+#+LABEL: FN-annotation-colored
+[[./img/FN-annotation-colored.png]]
+
+Frames are extensively documented. E.g. the [[https://framenet2.icsi.berkeley.edu/fnReports/data/frame/Statement.xml][documentation for Statement]] includes:
+- Definitions for each FE (classified as Core, Non-Core and Extra-Thematic)
+- "Coreness sets", i.e. which FE alternatives are required to realize the frame. 
+  In this case there are two core sets: ~{Message, Topic}~ and ~{Medium, Speaker}~.
+  This means that either ~Message~ or ~Topic~ is required; and either ~Medium~ or ~Speaker~ is required.
+- Frame relations, which include inheritance, using, subframe, causative/inchoative, etc. These are similar to Use Case relations but richer.
+
+Frame relations can be visualized with [[https://framenet.icsi.berkeley.edu/fndrupal/FrameGrapher][FrameGrapher]]
+#+ATTR_LATEX: :float multicolumn
+#+CAPTION: FrameNet Grapher
+#+LABEL: FN-grapher
+[[./img/FN-grapher.gif]]
+
+E.g. this figure for ~Statement~ shows that:
+- The frame ~Statement~ is inherited by: ~Complaining, Predicting, Reading_aloud, Recording, Reveal_secret, Telling~ (red arrows)
+- ~Statement~ uses: ~Communication~ (green arrows)
+- ~Statement~ is used by: ~Adducing, Attributed_information, Chatting, Judgment_communication, Renunciation, Unattributed_information~ (green arrows)
+- The FE relations between ~Statement~ and ~Telling~ are also shown, together with their Core (c) or Non-Core (nc) status. 
+  E.g. ~fe:Addressee.statement~ is Non-Core (you can make a statement without addressing anyone in particular), 
+  but ~fe:Addressee.telling~ is Core because you have to tell /someone/. 
+
+* FN-LOD Ontologies
+Major impediments to real world uses of FN-LOD include the complexity of the involved ontologies, the fact that there are two to choose from (see sec [[*fntbox ontology]] and sec [[*framenet ontology]]), the lack of an overall picture of how classes and properties fit together, and the lack of adequate documentation for some ontology elements.
+
+The OWL ontology representation of FN-LOD is described in [[[FN-LOD]]], but it is necessary to be familiar with the documentation of the FrameNet project [[[FN-book]]] in order to understand the ontologies. While there is a partial ontology diagram in [[[FN-LOD]]], it doesn't show all classes and relations. Some elements are commented extensively using texts from the FN Book [[[FN-book]]], but we found these texts more understandable when reading them in the book, since the comments do not capture the context. Many elements are not documented, e.g. class ~fn:Header~, data property ~fn:frame_cBy~ (xsd:string), etc. One can only surmise that ~fn:frame_cBy~ is the ID of the person who created the frame.
+
+In order to understand the FN-LOD ontologies, we diagrammed classes and properties. Sample data (see sec [[*fndata]]) played a crucial role in building this understanding. Since the data is very large, we had to extract smaller connected fragments to be able to understand them. In this section we describe the available FN-LOD ontologies and RDF data files, provide diagrams to facilitate understanding, and derived files that are easier to consume.
+
+** Prefixes
+FN-LOD uses the following prefixes, which we [[http://prefix.cc/fn,frame,fe,lu,st][registered in prefix.cc]], an online prefix registry:
+| prefix | description         |
+|--------+---------------------|
+| [[http://www.ontologydesignpatterns.org/ont/framenet/tbox/][fn:]]    | FN metamodel (tbox) |
+| [[http://www.ontologydesignpatterns.org/ont/framenet/abox/frame/][frame:]] | frame               |
+| [[http://www.ontologydesignpatterns.org/ont/framenet/abox/fe/][fe:]]    | frame element       |
+| [[http://www.ontologydesignpatterns.org/ont/framenet/abox/lu/][lu:]]    | lexical unit        |
+| [[http://www.ontologydesignpatterns.org/ont/framenet/abox/semType/][st:]]    | semantic type       |
+
+** fntbox ontology
+The /FN terminology box/ [[http://www.ontologydesignpatterns.org/ont/framenet/tbox/schema.owl][fntbox]] is the FN-LOD metamodel. It's an OWL ontology that uses Restrictions extensively, and is easiest to understand in Manchester notation (OMN): [[https://github.com/VladimirAlexiev/multisensor/blob/master/FrameNet/fntbox.omn][./fntbox.omn]]. It has 16 Classes, 67 ObjectProperties, 49 DataProperties. [[http://www.ontologydesignpatterns.org/ont/framenet/html/][Online documentation]] (OWLDoc) is available.
+
+Most relations have inverses, but the PROV ontology designers have concluded that [[http://www.w3.org/TR/prov-o/#inverse-names][inverses actually harm interoperability]] by exerting a higher reasoning or querying cost:
+#+BEGIN_QUOTE
+/When all inverses are defined for all properties, modelers may choose from two logically equivalent properties when making each assertion. Although the two options may be logically equivalent, developers consuming the assertions may need to exert extra effort to handle both (e.g., by either adding an OWL reasoner or writing code and queries to handle both cases). This extra effort can be reduced by preferring one inverse over another./
+#+END_QUOTE
+We agree with them and recommend to use exactly the FN-LOD properties shown in Fig \ref{fn-nif}, and *not* their inverses.
+
+Inverses also hinder understanding the /data hierarchy/ implied by the ontology. To aid
+understanding, we made a diagram (Fig \ref{fntbox}) ([[./img/fntbox.png][./fntbox.png]], source [[https://github.com/VladimirAlexiev/multisensor/blob/master/FrameNet/fntbox.puml][./fntbox.puml]]) showing all
+classes, their relations (object properties) and fields (data properties).
+For some properties we had to figure out the range from Restrictions; 
+properties having a Union as domain are shown several times on the diagram.
+#+ATTR_LATEX: :float multicolumn :width \textwidth
+#+CAPTION: fntbox Ontology
+#+LABEL: fntbox
+[[./img/fntbox.png]]
+
+To understand *fntbox* consider the classes in two groups and navigate top-down.
+
+First are classes that represent texts and their annotation with frame instances and other linguistic info:
+- ~Header~ holds together all ~FullTextAnnotation~ and ~CorpDoc~ about the same frame.
+- ~FullTextAnnotation~ represents a mode of annotation where sentences are "preselected" by a given text.
+- ~CorpDoc~ is a corpus comprising of documents and sentences that are carefully chosen by lexicographers to illustrate the possible valences of LUs, i.e. make various frames for each sense of each LU.
+- ~Sentence~ holds the ~text~ being annotated and some identifying information.
+- ~AnnotationSet~ is a set of annotations about one frame. One sentence may have several frames and they may even overlap.
+- ~Layer~ is a subset of annotations with a single purpose, indicated in ~fn:layer_name~. Often used ones:
+  - *Target*: LU that is target of the frame. Such layer has a single label.
+  - *FE*: frame elements
+  - *PENN*: part of speech (e.g. VBD, VVN, dt, nn)
+  - *PT*: phrase type (e.g. NP, AJP, PP, PPing)
+  - *GF*: grammatical function (e.g. Ext, Obj, Dep, Comp)
+  - *NER*: named entity recognition (e.g. person, location)
+- ~Label~ is a word or phrase in an annotated ~Sentence~ (indicated by index ~label_start, label_end~) that:
+  - Plays the role of LU instance. This is indicated by ~fn:label_name~ being "Target", and it's the single ~Label~ in a layer having the same ~fn:layer_name~
+  - Or plays the role of FE instance. In this case ~fn:label_FE~ points to the FE definition (e.g. ~fe:Speaker.statement~) and ~fn:label_name~ corresponds (e.g. "Speaker"),
+  - Or carries a grammatical or POS tag in ~label_name~,
+  - Or indicates a lexically omitted FE (see [[[FN-book]]] sec 3.2.3 Null instantiation) using ~fn:label_itype~ (e.g. "CNI", "DNI", etc), in which case ~label_start, label_end~ are omitted.
+
+Then are frame definition classes:
+- ~Frame~ is a structure that abstracts over real-world situations, obtained through linguistic attestation
+- ~LexUnit~ is the head-word of a sentence or sub-sentence that invokes the frame.
+   An important goal of the FN project is to capture the meaning of words through annotated examples, that's why the LU can point to an ~AnnotationSet~ that supports it.
+   It can also carry simple statistics (~SentenceCount~) used for managing the work of annotators.
+- ~Lexeme~ is the linguistic representation of a LU. One LU can  have several lexemes.
+- ~FrameElement~ are entities (things, actors, times, messages, etc) that participate in a frame. They are classified with ~FE_coreType~ into Core, Core-Unexpressed, Extra-Thematic, Peripheral.
+- ~FECoreSet~ describes a set of alternative FEs, one of which must be present in the frame. A frame can have several core sets.
+- ~SemType~ classifies frames, FEs and LUs by type. E.g. some sem types are:
+  - for Frame: ~Non-perspectivalized_frame~, ~Non-Lexical_Frame~
+  - for FE: ~Sentient~ (an agent), ~Artifact~, ~Message~, ~State_of_affairs~
+
+** framenet ontology
+The [[http://ontologydesignpatterns.org/cp/owl/fn/framenet.owl][framenet]] ontology is an alternative version of *fntbox*.
+It is significantly more complex: 33 Classes, 71 ObjectProperties, 23 DataProperties, and 18 Individuals.
+We converted it to Manchester notation ([[https://github.com/VladimirAlexiev/multisensor/blob/master/FrameNet/framenet.omn][./framenet.omn]]) and made two diagrams:
+- [[https://github.com/VladimirAlexiev/multisensor/blob/master/FrameNet/img/framenet.png][./img/framenet.png]] (source [[https://github.com/VladimirAlexiev/multisensor/blob/master/FrameNet/framenet.puml][./framenet.puml]]). This is nearly unreadable, showing the complexity of this ontology
+- [[https://github.com/VladimirAlexiev/multisensor/blob/master/FrameNet/img/framenet-nolabel.png][./img/framenet-nolabel.png]] (source [[https://github.com/VladimirAlexiev/multisensor/blob/master/FrameNet/framenet-nolabel.puml][./framenet-nolabel.puml]]), which elides edge labels to avoid clutter, but is still too complex to show here.
+
+This ontology perhaps corresponds better to what is described in the FN Book [[[FN-book]]], but since it is not used in the RDF files described below, we do not give it further consideration.
+
+** fnabox ontology
+The FN-LOD /assertion box/ ontology [[http://www.ontologydesignpatterns.org/ont/framenet/abox/cfn.rdf][fnabox]] is an RDF representation of all frame definitions. 
+It includes only individuals, not classes nor property definitions.
+It used some illegal URI chars (spaces and parentheses) that we converted to underscores (e.g. transformed ~lu:swing_(into).v~ to ~lu:swing__into_.v~).
+Then we converted it to [[https://github.com/VladimirAlexiev/multisensor/blob/master/FrameNet/fnabox.ttl][./fnabox.ttl]], which is more readable: all individuals are sorted by name and all statements about an individual are together.
+
+For instance, the triples for ~frame:Statement~ include:
+#+BEGIN_SRC Turtle
+frame:Statement
+  fn:hasFrameElement fe:Time.statement,
+    fe:Iteration.statement... ;
+  fn:hasLexUnit lu:gloat.v, lu:explain.v,
+    lu:declaration.n, lu:talk.v... ;
+  fn:isInheritedBy frame:Telling,
+    frame:Reveal_secret, frame:Recording... ;
+  fn:isUsedBy frame:Unattributed_information,
+    frame:Adducing... ;
+  fn:uses frame:Communication .
+#+END_SRC
+
+And these are the triples for a couple of the core FEs in that frame:
+#+BEGIN_SRC Turtle
+fe:Speaker.statement a fn:FrameElement ;
+  fn:hasSemType st:Sentient ;
+  fn:hasSuperFE fe:Speaker.speak_on_topic...
+fe:Message.statement a fn:FrameElement ;
+  fn:hasSemType st:Message ;
+  fn:hasSuperFE fe:Message.encoding,
+    fe:Message.communication...
+#+END_SRC
+
+** fndata
+[[http://www.ontologydesignpatterns.org/ont/framenet/fndata_v5.rdf.zip][fndata_v5]] is a corpus of FrameNet annotations provided in RDF by ISTC-CNR, consisting of 540Mb of RDF/XML (292Mb Turtle, 1.03Gb NTriples) and comprising 3.8M triples. It includes 5946 sentences and 20361 frame instances (~annotationSetFrame~), i.e. 3.4 frames per sentence. The info about each sentence takes 640 triples on average; about a quarter of these are pure frame instance info (45 triples per frame).
+
+We extracted all triples about /iran_missile_fullTextAnnotation_sentence_52/ into [[https://github.com/VladimirAlexiev/multisensor/blob/master/FrameNet/iran_missile_sentence_52.ttl][./iran_missile_sentence_52.ttl]]. This, for instance, is sentence 3 of paragraph 10 of a fullTextAnnotation corpus named "iran_missile":
+
+/This project was focused on the development of a longer ranged (150-200 km) and more heavily armed version of the Israeli Gabriel anti-ship missile (not as sometimes reported with the development of a ballistic missile based upon Israeli Jericho surface-to-surface missile technology) ./
+
+Extracting the triples was fairly trivial since the URLs of nodes in these triples share the same base. The resulting set of triples for the above sentence played a crucial role in allowing us to understand the structure of FN-LOD data and the meaning of most fields (see Fig \ref{fntbox} and field descriptions above). It includes 6 manually annotated frames: /Gizmo/, Bearing_arms, Cause_to_make_progress (twice), Project and Type. SEMAFOR [[http://demo.ark.cs.cmu.edu/parse?sentence=This%20project%20was%20focused%20on%20the%20development%20of%20a%20longer%20ranged%20%28%20150%20-%20200%20km%20%29%20and%20more%20heavily%20armed%20version%20of%20the%20Israeli%20Gabriel%20anti%20-%20ship%20missile%20%28%20not%20as%20sometimes%20reported%20with%20the%20development%20of%20a%20ballistic%20missile%20based%20upon%20Israeli%20Jericho%20surface%20-%20to%20-%20surface%20missile%20technology%20%29%20][reports these frames]] and a number of smaller frames (often consisting of a single word): Artifact, Cardinal_numbers, Degree, Duration_attribute, Frequency, Increment, Part_inner_outer, Place_weight_on, Range, Statement, Vehicle and Weapon. While /Gizmo/ is invoked by this phrase: "/surface-to-surface missile *technology*/", it is not recognized by SEMAFOR, as it may have an older set of frame definitions.
+
+* Comparing FN-LOD to NIF
+Since our goal is to integrate FN-LOD to NIF, we'll start with a comparison between the two. 
+Compare *fntbox* (Fig \ref{fntbox}) to the [[http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core/nif-core-ontology_web.png][NIF class and property diagram]] (Fig \ref{NIF-schema}).
+#+ATTR_LATEX: :float multicolumn :width 0.75\textwidth
+#+CAPTION: NIF Core Ontology
+#+LABEL: NIF-schema
+[[./img/NIF-schema.png]]
+
+** Text Framing
+The document is the basic level at which there is correspondence between FN-LOD and NIF: ~fn:Document~ and ~nif:Context~. 
+The text is stored in ~fn:text~, respectively ~nif:isString~.
+
+At the level above document, FN-LOD has ~fn:CorpDoc~ or ~fn:FullTextAnnotation~ (two kinds of corpora). 
+NIF uses ~nif:Context~ for this, using ~nif:broaderContext~ to point to higher-level contexts (but we are not aware of NIF data actually using this pattern).
+
+Below document, ~fn:Sentence~ is the basic FN-LOD level to which frames are attached. Then follow ~fn:AnnotationSet, fn:Layer, fn:Label~. 
+Char offsets are attached to ~fn:Label~: ~fn:label_start~, ~fn:label_end~. 
+NIF uses a generic class ~nif:Structure~ with subclasses ~Paragraph~, ~Sentence~, ~Phrase~, ~Word~, etc. 
+Char offsets are specified at each level (~nif:beginIndex~, ~nif:endIndex~). 
+One can also provide the text at this level (~nif:anchorOf~), 
+though this is redundant because ~referenceContext/isString~ is mandatory and contains the full text.
+
+** Text Links
+Every NIF string (~Paragraph~, ~Sentence~, ~Phrase~, ~Word~ etc) must point to the enclosing context (~nif:referenceContext~).
+NIF has property ~nif:subString~ (and inverse ~nif:superString~) that can be used to point uniformly from higher level texts to lower level texts
+(e.g. from Paragraph to Sentence to Phrase to Word). However it is not often used.
+There is also a specialized property ~nif:word~ (inverse ~nif:sentence~) that points from a sentence down to its words; but it is not declared as specialization of ~nif:subString~.
+One can also make chains of sentences (~nif:previousSentence, nif:nextSentence~) and words (~nif:previousWord, nif:nextWord~), and point to the first/last word of a sentence.
+
+In contrast, FN-LOD has non-uniform treatment of links: to navigate from ~Sentence~ to its strings (~Label~), 
+one has to follow the property path ~sentenceInDocument/annoForSentence/~ ~hasLayer/hasLabel~.
+
+** Text Nodes
+FN-LOD doesn't recommend any convention for the URLs of text nodes, but you can see a pattern in sec [[*fndata]].
+E.g. ~iran_missile_fullTextAnnotation_sent-~ ~ence_52_annotationSet_6_layer_2_label_0~ is the URL of label 0 in layer 2 in set 6 of sentence_52 
+(which is actually sentence 3 of paragraph 10 of the fullTextAnnotation corpus. 
+Note: labels, layers and sets use only even numbers in this representation). 
+This label represents the phrase /surface-to-surface missile/ (from offset 282 to 253) representing ~fe:Use.gizmo~ of ~frame:Gizmo~.
+This convention makes labels *relative* to annotation sets (frame instances), and indeed this is borne out by the fntbox class diagram (sec [[*fntbox ontology]]).
+
+In contrast, NIF strongly recommends adopting a URL scheme that is based on character offsets and is thus *global* within the document (~nif:Context~). 
+The class ~nif:RFC5147String~ provides such a scheme. The above phrase would be addressed like this (~<#char=0,2353>~ represents the complete text).
+#+BEGIN_SRC Turtle
+<#char=282,253> a nif:Phrase;
+  nif:referenceContext <#char=0,2353>.
+#+END_SRC
+The reason is to ensure interoperability between different NLP tools that all output NIF format over the same text.
+Using a uniform node addressing scheme ensures that the triples produced by the different tools will "mesh" together.
+
+This is perhaps the most significant difference between FN-LOD and NIF:
+- FN-LOD defines Labels "as needed" by linguistic annotation, and locally.
+  Several Label nodes can point to the same piece of text (offsets in the document). 
+  Labels are not shared between different annotations (NLP features).
+- NIF typically defines Strings for every word and sentence of the document, globally.
+  Each piece of text is represented by one node (but of course, Words overlap their containing Phrases and Phrases overlap their containing Sentences).
+
+Several NLP features can be attached to this node:
+- ~nif:oliaLink~ for syntactic individual
+- ~nif:oliaCategory~ for syntactic class
+- ~its:taIdentRef~ for Named Entity individual
+- ~its:taClassRef~ for Named Entity class; etc
+
+* Integrating FN-LOD in NIF
+As we have seen in the previous section, the FN-LOD and NIF models for representing annotated text are totally different. 
+Therefore we propose to represent the minimum possible FN nodes, and point to them from ~nif:String~ using ~nif:oliaLink~.
+
+We propose a representation that integrates FN-LOD in NIF (Fig \ref{fn-nif}), relying on a dependency parse of the sentence.
+Let /head/ be a head-word that governs /word1..N/ (and by extension, the phrases governed by these words).
+Assume /head/ corresponds to /lexUnit/ that invokes /frame/, 
+and the frame has elements /frameElement1..N/, corresponding to /word1..N/.
+Just for illustration, assume the frame also has a lexically omitted FE /frameElementN+1/ of type CNI (constructional null instantiation).
+#+ATTR_LATEX: :float multicolumn :width \textwidth
+#+CAPTION: FrameNet Integration in NIF
+#+LABEL: fn-nif
+[[./img/fn-nif.png]]
+
+The easiest way to understand the representation is to think of ~fn:AnnotationSet~ as *frame instance* and think of ~fn:Label~ as *FE instance*.
+The representation consists of 3 parts:
+1. *NIF* includes word offset info, as well as the dependency tree from /head/ to /word1..N/ (not shown).
+  ~nif:dependency~ or specific dependency parsing properties are used for that tree.
+  E.g. MS uses ~upf-deep:deepDependency~
+2. *Frame instance* connects ~nif:Words~ to frames.
+3. *Frame definition* is defined in the fnabox ontology (sec [[*fnabox ontology]])
+
+We don't use ~fe:label_start~ and ~fe:label_end~ because those would duplicate ~nif:beginIndex~ and ~nif:endIndex~ unnecessarily.
+The same word could participate in several frames (as LU or FE), in which case it will have multiple ~nif:oliaLink~.
+The lexically omitted FE /labelN+1/ (of type CNI) has no corresponding NIF node. Nevertheless, it is a full participant in the frame.
+
+The nodes /labelLU/ and /layerLU/ are redundant and carry no information (except the fixed string "Target").
+There’s a direct link /nif:oliaLink/ from /head/ to /annoSet/, which itself points to /frame/ and /lexUnit/, 
+so there's little reason to use the indirect path /fn:hasLayer/fn:hasLabel/.
+In fact the indirect path can be considered harmful, since it causes /head/ to have two /nif:oliaLink/,
+which could cause confusion if /head/ participates in several frames.
+We have included these redundant nodes in Fig \ref{fn-nif} to be faithful to the fntbox ontology [[*fntbox ontology]].
+But they can safely be omitted, which we have done in sec [[*Representing the Sample Sentence in FN-NIF]].
+
+The links of /label1..N+1/ (~fn:hasLabel~ and ~fn:label_FE~) are not redundant.
+The former ties the frame *instance* together, while the latter points the specific FE in the frame *definition*.
+
+** Querying FN-NIF
+FN-LOD in NIF involves a fairly complex graph structure.
+In this section we show a few queries to extract data from that graph. We use SPARQL property paths liberally (including inverses ~^~) and indicate the input parameter of a query with ~$~. We don't bother to check the types of intermediate nodes, relying that the specific FN properties will occur only on appropriate nodes.
+
+Find the Frame and LU corresponding to a head-word
+(if indeed it is the head-word of a frame-annotated phrase):
+#+BEGIN_SRC SPARQL
+select * {
+  $head nif:oliaLink ?annoSet.
+  ?annoSet fn:annotationSetLU ?lu;
+    fn:annotationSetFrame ?frame}
+#+END_SRC
+We could also use the round-about path
+#+BEGIN_SRC SPARQL
+select * {
+  $head nif:oliaLink [
+    fn:label_name "Target";
+   ^fn:hasLabel/^fn:hasLayer ?annoSet.
+  ?annoSet fn:annotationSetLU ?lu;
+    fn:annotationSetFrame ?frame]}
+#+END_SRC
+
+After getting the Frame and LU, we'd want to get all FE and the corresponding /word1..N/:
+#+BEGIN_SRC sparql
+select ?fe ?word ?itype {
+  # Find the ?annoSet and ?frame
+  $head nif:oliaLink ?annoSet.
+  ?annoSet fn:annotationSetFrame ?frame.
+  # Get all ?fe, ?label, (optionally) ?word
+  ?frame fn:hasFrameElement ?fe.
+  ?annoSet fn:hasLayer/fn:hasLabel ?label.
+  ?label fn:label_FE ?fe.
+  optional {?word nif:oliaLink ?label}
+  optional {?label fn:label_itype ?itype}}
+#+END_SRC
+Each row of the result-set will have a ~?fe~ of the frame, 
+and either ~?itype~ (for lexically omitted FEs) or the corresponding NIF ~?word~.
+We don't return ~?label~ because it's used only for connectivity but doesn't carry useful info.
+
+Find all frames of a sentence together with the corresponding ~fn:AnnotationSet~.
+Usually ~nif:word~ is used to point out the words of a sentence (that is also the practice in MS):
+#+BEGIN_SRC SPARQL
+select * {
+  $sentence nif:word/nif:oliaLink ?annoSet.
+  ?annoSet fn:annotationSetFrame ?frame}
+#+END_SRC
+
+Find all frames of the complete text (~nif:Context~) together with the corresponding ~fn:AnnotationSet~.
+NIF mandates that ~nif:referenceContext~ is used to connect each word to the complete text:
+#+BEGIN_SRC SPARQL
+select * {
+  $context ^nif:referenceContext/
+           nif:oliaLink ?annoSet.
+  ?annoSet fn:annotationSetFrame ?frame}
+#+END_SRC
+
+** Representing the Sample Sentence in FN-NIF
+Fig \ref{FN-NIF-example} represents the sample sentence as NIF, adding FN-LOD annotations.
+We represent 3 of the 5 candidate frames (Statement, Topic, Competition);
+the filtering described in sec [[*SEMAFOR Candidate Frame Filtering]] would leave only the top frame ~Statement~
+#+ATTR_LATEX: :float multicolumn :width \textwidth
+#+CAPTION: FN-NIF Example
+#+LABEL: FN-NIF-example
+[[./img/FN-NIF-example.png]]
+- The top layer shows Frame definitions (fntbox)
+- The bottom layer shows NIF words and dependency links between them
+- The dotted arrows represent frame instances, connecting words to frames. 
+  For simplicity, we don't show the ~Label~, ~Layer~, ~AnnotationSet~ nodes (see sec [[*Integrating FN-LOD in NIF]])
+
+[[https://github.com/VladimirAlexiev/multisensor/blob/master/FrameNet/fn-nif-example.ttl][./fn-nif-example.ttl]] represents all SEMAFOR candidate frames. 
+Compared to sec [[*Integrating FN in NIF]], we elide the redundant nodes /labelLU/ and /layerLU/.
+
+* Conclusions
+We presented an integration of FN-LOD into NIF that allows us to emit various linguistic info about text corpora in NIF in an integrated way:
+frames (FN), POS tagging (e.g. Penn), morphological, syntactic and dependency parsing (OLIA), named entities (ITS), etc.
+This integrated representation is used by the MS project.
+
+** Future Work
+
+*** Represent Confidence
+Sec [[*SEMAFOR Candidate Frame Filtering]] remarked that SEMAFOR emits a confidence ~score~ for each candidate frame.
+It would be useful to emit this score, allowing clients to select the most probable frames.
+- NIF has a property ~nif:oliaConf~ (confidence of ~nif:oliaLink~ and ~nif:oliaCategory~).
+  But we cannot use it, since the same word may participate in several frames and thus have several ~nif:oliaLink~.
+- We could use the [[http://persistence.uni-leipzig.org/nlp2rdf/specification/stanbol.html][NIF Stanbol]] profile to associate several annotations with the same String and emit confidence for each one. 
+  But compared to NIF Simple, it uses completely different properties, e.g. ~fise:entity-reference~ vs ~its:taIdentRef~ and ~fise:entity-type~ vs ~its:taClassRef~.
+  And there are stability problems: [[http://persistence.uni-leipzig.org/nlp2rdf/specification/stanbol.html][NIF Stanbol]] shows different classes and properties compared to [[[NIF]]] fig.3 and [[http://stanbol.apache.org/docs/trunk/components/enhancer/enhancementstructure.html#fiseentityannotation][Stanbol EntityAnnotation Structure]], e.g.
+| NIF Stanbol          | NIF and Stanbol       |
+|----------------------+-----------------------|
+| nif:EntityAnnotation | fise:EntityAnnotation |
+| nifs:extractedFrom   | fise:extracted-from   |
+| nif:oliaConf         | fise:confidence       |
+- Recently a new proposal [[http://nif.readthedocs.org/en/2.1-rc/prov-and-conf.html][Provenance and Confidence for NIF annotations]] was made, motivated by the FREME project.
+  It is part of a developing NIF 2.1 specification currently at Release Candidate stage (NIF 2.1 RC), see [[https://github.com/NLP2RDF/documentation/tree/2.1-RC/docs][source]].
+  It offers two options: [[http://nif.readthedocs.org/en/2.1-rc/prov-and-conf.html#using-only-generic-provenance-and-confidence-properties][Using only Generic Provenance and Confidence Properties]], or [[http://nif.readthedocs.org/en/2.1-rc/prov-and-conf.html#provenance-and-confidence-using-companion-properties][Using Companion Properties]] (see last 2 columns below).
+  But it is still in flux, e.g. on 14 Mar 2016 a number of properties were split to a separate namespace ~nif-ann:~
+
+*** Create an RDF Shape Description
+Our representation doesn't define any new properties: it only combines FN-LOD and NIF properties in an appropriate way.
+From this point of view, it is not an ontology but an /application profile/, /data pattern/ or /RDF Shape/.
+Recently the [[https://www.w3.org/2014/data-shapes/wiki/Main_Page][W3C RDF Shapes working group]] has made great advances in analyzing requirements for defining data shapes
+and formalizing languages to describe them.
+
+It would be useful to define the FN-NIF integration (Fig \ref{FN-NIF-example}) as an RDF Shape.
+We could use the brief [[http://shex.io/][ShEx]] language or the more formal [[http://w3c.github.io/data-shapes/shacl/][SHACL]] language.
+However, they are still under development.
+
+** Acknowledgements
+This work is part of the MultiSensor project that has received funding from the European Union under grant agreement FP7 610411.
+The 4 anonymous referees made useful suggestions for improving the article.
+Object diagrams are made with [[http://plantuml.sourceforge.net][PlantUML]].
+
+* References
+1. <<LLD-intro>>Alexiev V. [[http://rawgit.com/VladimirAlexiev/multisensor/master/20141008-Linguistic-LD][Linguistic Linked Data presentation]], Multisensor Project Meeting, Bonn, Germany, October 2014. 
+2. <<SEMAFOR>>[[http://demo.ark.cs.cmu.edu/parse][ARK Syntactic & Semantic Parsing]]. Noah’s ARK research group, Carnegie Mellon University. 
+3. <<NIF>>Hellmann S., Lehmann J., Auer S., and Brümmer M. Integrating NLP using Linked Data. In /International Semantic Web Conference/ (ISWC) 2013.
+4. <<FN-MASC>>Ide N., FrameNet and Linked Data. In /Frame Semantics in NLP: A Workshop in Honor of Chuck Fillmore (1929–2014)/, pages 18–21. Baltimore, Maryland USA, 27 June 2014.
+5. <<MASC-BN>>Moro A., Navigli, R., Tucci, F.M., and Passonneau. R.J. [[http://wwwusers.di.uniroma1.it/~moro/MoroEtAL_LREC2014.pdf][Annotating the MASC Corpus with BabelNet]]. In /Language Resources and Evaluation/ (LREC 2014), Reykjavik, Iceland, May 26-31, 2014. [[http://lcl.uniroma1.it/MASC-NEWS/][Download page]], checked 17 Mar 2016.
+6. <<MS>>[[http://www.multisensorproject.eu/][MultiSensor project]]. CERTH, DW, Eurecat, Everis, Linguatec, Ontotext, Pressrelations, UPF. Nov 2013 - Oct 2016. 
+7. <<FN-LOD>>Nuzzolese A.G., Gangemi A., and Presutti V. Gathering lexical linked data and knowledge patterns from FrameNet. In /Knowledge Capture/ (K-CAP'11), pages 41–48. June 26-29, 2011, Banff, Alberta, Canada
+8. <<MASC>>Passonneau R., Baker C., Fellbaum C., and Ide N. The MASC Word Sense Sentence Corpus. In /Language Resources and Evaluation Conference/ (LREC-12), Istanbul, Turkey. [[http://www.anc.org/data/masc/downloads/data-download/][Download page]], checked Jan 2016 (offline on 17 Mar 2016).
+9. <<FN-book>>Ruppenhofer J., Ellsworth M., Petruck M.R.L, Johnson C.R., Scheffczyk J. [[https://framenet.icsi.berkeley.edu/fndrupal/the_book][FrameNet II: Extended Theory and Practice]], Sep 2010
+10. <<MASC-BN-IATE>>Siemoneit, B., McCrae, J. P., and Cimiano, P. [[http://www.aclweb.org/anthology/W15-4207][Linking four heterogeneous language resources as linked data]]. /Workshop on Linked Data in Linguistics: Resources and Applications/ (LDL-2015).  (2015). Beijing, China, 31 July, 2015. [[http://data.lider-project.eu/MASC-NIF/download][Download page]], checked 17 Mar 2016.
+11. <<MS-paper>>Vrochidis, S. et al. MULTISENSOR: Development of multimedia content integration technologies for journalism, media monitoring and international exporting decision support. /IEEE International Conference on Multimedia & Expo Workshops/ (ICME15). Turin, Italy, 2015. doi:10.1109/ICMEW.2015.7169818

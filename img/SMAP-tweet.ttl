@@ -1,0 +1,13 @@
+
+<http://twitter.com/MSR_Future/status/605786079153627136> a sioc:Post;
+  sioc:has_creator <http://twitter.com/MSR_Future>;
+  sioc:content """@UNFCCC @EnergiewendeGER
+   That's great, just a shame it does not
+   translate into lower CO2. #Energiewende""";
+  dct:date "2015-06-02T20:20:00"^^xsd:dateTime;
+  sioc:about ms-content:939468.
+
+<http://twitter.com/MSR_Future> a sioc:UserAccount.
+  
+####################
+<http://twitter.com/MSR_Future> a puml:Inline.

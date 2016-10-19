@@ -1,0 +1,48 @@
+
+# Import
+ms-comtr-dat:2012-IMP-AU-BE-2-USD a qb:Observation;
+  qb:dataSet ms-comtr-dat: ;
+  sdmx-dimension:timePeriod "2012"^^xsd:gYear;
+  sdmx-dimension:freq sdmx-code:freq-A;
+  ms-comtr:indic ms-comtr-indic:IMP;
+  ms-comtr:commod ms-comtr-commod:2;
+  prop:geo eugeo:AT;
+  prop:partner eugeo:BE;
+  prop:unit unit:USD;
+  sdmx-measure:obsValue 123.
+
+# Export
+ms-comtr-dat:2012-EXP-AU-BE-2-USD a qb:Observation;
+  qb:dataSet ms-comtr-dat: ;
+  sdmx-dimension:timePeriod "2012"^^xsd:gYear;
+  sdmx-dimension:freq sdmx-code:freq-A;
+  ms-comtr:indic ms-comtr-indic:EXP;
+  ms-comtr:commod ms-comtr-commod:2;
+  prop:geo eugeo:AT;
+  prop:partner eugeo:BE;
+  prop:unit unit:USD;
+  sdmx-measure:obsValue 456.
+
+# If there is a value for Kilograms: Import
+ms-comtr-dat:2012-IMP-AU-BE-2-KG a qb:Observation;
+  qb:dataSet ms-comtr-dat: ;
+  sdmx-dimension:timePeriod "2012"^^xsd:gYear;
+  sdmx-dimension:freq sdmx-code:freq-A;
+  ms-comtr:indic ms-comtr-indic:IMP;
+  ms-comtr:commod ms-comtr-commod:2;
+  prop:geo eugeo:AT;
+  prop:partner eugeo:BE;
+  prop:unit unit:KG;
+  sdmx-measure:obsValue 12.3.
+
+#########################
+ms-comtr-dat:2012-IMP-AU-BE-2-USD puml:stereotype "Import USD".
+ms-comtr-dat:2012-EXP-AU-BE-2-USD puml:stereotype "Export USD".
+ms-comtr-dat:2012-IMP-AU-BE-2-KG  puml:stereotype "Import KG".
+qb:dataSet puml:arrow puml:up.
+sdmx-code:freq-A a puml:Inline.
+ms-comtr-commod:2 a puml:Inline.
+eugeo:AT a puml:Inline.
+eugeo:BE a puml:Inline.
+#ms-comtr-indic:IMP a puml:Inline.
+#unit:KG a puml:Inline.

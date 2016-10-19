@@ -1,0 +1,125 @@
+@startuml
+hide empty attributes
+hide empty methods
+hide circle
+
+package "Frame instances & text" {
+  class "Header"
+  class AnnotationSet
+  class AnnotationStatus
+  class Corpus
+  class Document
+  class FullText
+  class Label
+  class Layer
+  class Sentence
+  class SubCorpus
+}
+package "Frame definitions" {
+  class Coreness
+  class Governor
+  class FEGroupRealization
+  class FERealization
+  class Frame
+  class FrameElement
+  class FrameElementCoreSet
+  class Lexeme
+  class LexicalUnit
+  class PartOfSpeech
+  class SemType
+  class SemTypeSet
+  class ValencePattern
+  class Valences
+  class ValenceUnit
+}
+
+"Header"             -down- Corpus               : hasCorpus\nisCorpusOf
+"Header"             -down- Frame                : hasFrame
+"Header"             -down- FullText             : hasHeader\nisHeaderOf
+"Header"             -down- LexicalUnit          : hasHeader\nisHeaderOf
+AnnotationSet        -down- AnnotationStatus     : hasAnnotationStatus\nisAnnotationStatusOf
+AnnotationSet        -down- Frame                : hasFrame
+AnnotationSet        -down- Governor             : hasAnnotationSet\nisAnnotationSetOf
+AnnotationSet        -down- Layer                : hasLayer\nisLayerOf
+Corpus               -down- Document             : hasDocument\nisDocumentOf
+Corpus               -down- Sentence             : hasCorpus\nisCorpusOf
+Document             -down- Sentence             : hasDocument\nisDocumentOf
+FEGroupRealization   -down- FrameElement         : hasFrameElement\nisFrameElementOf
+FERealization        -down- FrameElement         : hasFrameElement\nisFrameElementOf
+Frame                -down- Frame                : hasFrameRelation\nseeAlso\nhasSubframe/subframeOf\ninheritsFrom/isInheritedBy\nisCausativeOf\nisInchoativeOf\nisInheritedBy/inheritsFrom\nisPerspectivizedIn/perspectiveOn\nisPrecededBy/precedes\nisUsedBy/uses\nperspectiveOn/isPerspectivizedIn\nprecedes/isPrecededBy\nsubframeOf/hasSubframe\nuses/isUsedBy
+Frame                -down- FrameElement         : hasFrameElement\nisFrameElementOf
+Frame                -down- FrameElementCoreSet  : hasFrameElementCoreSet\nisFrameElementCoreSetOf
+Frame                -left- LexicalUnit          : hasLexicalUnit\nisLexicalUnitOf\nisFrameOf\nhasFrame
+Frame                -down- SemType              : hasSemType\nisSemanticTypeOf
+Frame                -down- SemTypeSet           : hasSemTypeSet\nisSemTypeSetOf
+FrameElement         -down- Coreness             : isCorenessOf\nhasCoreness
+FrameElement         -down- FrameElement         : hasFrameElementRelation\nexclusesFE\nrequiresFE
+FrameElementCoreSet  -down- FrameElement         : hasMember >=2
+FullText             -down- Sentence             : hasSentence\nisSentenceOf
+Governor             -down- Valences             : isGovernorOf\nhasGovernor
+Label                -down- FrameElement         : hasFrameElement\nisFrameElementOf
+Layer                -down- Label                : hasLabel\nisLabelOf
+Lexeme               -down- PartOfSpeech         : hasPartOfSpeech\nisPartOfSpeechOf
+LexicalUnit          -down- FrameElement         : isIncorporatedFrameElementOf\nhasIncorporatedFrameElement
+LexicalUnit          -down- Lexeme               : hasLexeme\nisLexemeOf
+LexicalUnit          -down- PartOfSpeech         : hasPartOfSpeech\nisPartOfSpeechOf
+LexicalUnit          -down- SemType              : hasSemType\nisSemanticTypeOf
+LexicalUnit          -down- SemTypeSet           : hasSemTypeSet\nisSemTypeSetOf
+SubCorpus            -down- LexicalUnit          : hasSubCorpus\nisSubCorpusOf
+Valences             -up-   LexicalUnit          : hasValences\nisValencesOf
+SemType              -down- SemType              : hasSuperType
+SemTypeSet           -down- SemType              : hasMember\nisMemberOf
+Sentence             -down- AnnotationSet        : hasAnnotationSet\nisAnnotationSetOf
+Sentence             -down- SubCorpus            : isSentenceOf\nhasSentence
+ValencePattern       -down- AnnotationSet        : hasAnnotationSet\nisAnnotationSetOf
+ValencePattern       -up-   FEGroupRealization   : hasValencePattern\nIsValencePatternOf
+ValencePattern       -up-   FERealization        : hasValencePattern\nIsValencePatternOf
+ValencePattern       -down- ValenceUnit          : hasValenceUnit\nisValenceUnitOf
+Valences             -down- FEGroupRealization   : isFrameElementGroypRealizationOf\nhasFrameElementGroupRealization
+Valences             -down- FERealization        : hasFrameElementRealization\nisFrameElementRealizationOf
+ValenceUnit          -down- FrameElement         : hasFrameElement\nisFrameElementOf
+
+AnnotationSet       : creationDate dateTime
+AnnotationStatus    : owl:hasValue\l {Manual, Unannotated}
+Coreness            : owl:hasValue\l {Core, Core-Unexpressed,\l  Extra-thematic, Peripheral}
+Corpus              : name
+Document            : name
+FEGroupRealization  : total
+FERealization       : total
+Frame               : abbrev
+Frame               : createdBy integer
+Frame               : creationDate dateTime
+Frame               : definition
+Frame               : name
+FrameElement        : abbrev
+FrameElement        : createdBy integer
+FrameElement        : creationDate dateTime
+Governor            : lemma
+Governor            : type
+Label               : bgColor
+Label               : createdBy integer
+Label               : end
+Label               : fgColor
+Label               : name
+Label               : start
+Layer               : name
+Layer               : rank
+Lexeme              : breakBefore
+Lexeme              : headword
+Lexeme              : name
+Lexeme              : order
+LexicalUnit         : name
+LexicalUnit         : status
+PartOfSpeech        : owl:hasValue\l {Adjective, Adverb, Article,\l  C, ComplexConjunction, Interjections,\l  Noun, Numeral, Preposition, Pronoun,\l  SimpleConjunction, Verb}
+SemType             : abbrev
+SemType             : name
+Sentence            : aPos integer
+Sentence            : paragNo integer
+Sentence            : sentNo integer
+Sentence            : text
+SubCorpus           : name
+ValencePattern      : total
+ValenceUnit         : grammaticalFunction
+ValenceUnit         : phraseType
+
+@enduml

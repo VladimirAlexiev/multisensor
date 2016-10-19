@@ -1,0 +1,432 @@
+@prefix penn-dep:    <http://taln.upf.edu/olia/penn-dep-syntax#> .
+@prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:         <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:         <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:        <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix olia_system: <http://purl.org/olia/system.owl#> .
+
+<http://taln.upf.edu/olia/penn-dep-syntax>
+        a                owl:Ontology ;
+        owl:imports      <http://purl.org/olia/system.owl> ;
+        owl:versionInfo  "Created with TopBraid Composer"^^xsd:string .
+
+#################### Classes
+
+penn-dep:AdjectiveAdverbialModifier a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:Apposition a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:BenefactorComplement a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:Coordination a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:DativeComplement a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:DependencyRelation a owl:Class ;
+        rdfs:subClassOf  olia_system:Feature .
+
+penn-dep:DirectionAdverbial a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:DirectionPredicative a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:DirectionRaisingComplement a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:ExtentAdverbial a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:ExtraposedElement a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingAdjectiveAdverbialModifier a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingAdverbial a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingDative a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingDirection a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingExtentAdverbial a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingExtraposedElement a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingLocative a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingLocativePredicative a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingLogicalSubject a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingManner a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingNominalModifier a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingObject a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingPredicative a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingPrepositionModifier a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingPurpose a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingPutComplement a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingRaisingControlPredicativeComplement a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingSubject a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingSubordinatedClause a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingTemporal a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GappingVerbChain a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:GeneralAdverbial a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:HyphenatedModifier a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:HyphenatedPart a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:InfinitiveVerb a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:LocativeManner a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:LocativeModifier a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:LocativePredicative a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:LocativeRaisingComplement a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:LocativeTemporal a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:LogicalSubject a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:MannerAdverbial a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:MannerPredicative a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:MannerTemporal a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:NameInternalLink a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:NominalModifier a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:Object a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:Parenthetical a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:Particle a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:PossessiveSuffix a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:PosthonorificModifier a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:PredicativeComplement a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:PredicativePurpose a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:PredicativeTemporal a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:PrepositionModifier a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:Punctuation a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:PurposeAdverbial a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:PutComplement a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:RaisingControlPredicativeComplement a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:Root a owl:Class ;
+        rdfs:subClassOf  olia_system:Feature .
+
+penn-dep:SecondConjunct a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:Subject a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:SubordinatedClause a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:TemporalModifier a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:Title a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:Unclassified a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:UnclassifiedGapping a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:VerbChain a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+penn-dep:Vocative a owl:Class ;
+        rdfs:subClassOf penn-dep:DependencyRelation .
+
+#################### Individuals
+
+penn-dep:GAP-TMP a penn-dep:GappingTemporal , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-TMP"^^xsd:string .
+
+penn-dep:ADV a penn-dep:GeneralAdverbial , owl:NamedIndividual ;
+        olia_system:hasTag  "ADV"^^xsd:string .
+
+penn-dep:ADV-GAP a penn-dep:GappingAdverbial , owl:NamedIndividual ;
+        olia_system:hasTag  "ADV-GAP"^^xsd:string .
+
+penn-dep:AMOD a penn-dep:AdjectiveAdverbialModifier , owl:NamedIndividual ;
+        olia_system:hasTag  "AMOD"^^xsd:string .
+
+penn-dep:AMOD-GAP a penn-dep:GappingAdjectiveAdverbialModifier , owl:NamedIndividual ;
+        olia_system:hasTag  "AMOD-GAP"^^xsd:string .
+
+penn-dep:APPO a penn-dep:Apposition , owl:NamedIndividual ;
+        olia_system:hasTag  "APPO"^^xsd:string .
+
+penn-dep:BNF a penn-dep:BenefactorComplement , owl:NamedIndividual ;
+        olia_system:hasTag  "BNF"^^xsd:string .
+
+penn-dep:CONJ a penn-dep:SecondConjunct , owl:NamedIndividual ;
+        olia_system:hasTag  "CONJ"^^xsd:string .
+
+penn-dep:COORD a penn-dep:Coordination , owl:NamedIndividual ;
+        olia_system:hasTag  "COORD"^^xsd:string .
+
+penn-dep:DEP a penn-dep:Unclassified , owl:NamedIndividual ;
+        olia_system:hasTag  "DEP"^^xsd:string .
+
+penn-dep:DEP-GAP a penn-dep:UnclassifiedGapping , owl:NamedIndividual ;
+        olia_system:hasTag  "DEP-GAP"^^xsd:string .
+
+penn-dep:DIR a penn-dep:DirectionAdverbial , owl:NamedIndividual ;
+        olia_system:hasTag  "DIR"^^xsd:string .
+
+penn-dep:DIR-OPRD a penn-dep:DirectionRaisingComplement , owl:NamedIndividual ;
+        olia_system:hasTag  "DIR-OPRD"^^xsd:string .
+
+penn-dep:DIR-PRD a penn-dep:DirectionPredicative , owl:NamedIndividual ;
+        olia_system:hasTag  "DIR-PRD"^^xsd:string .
+
+penn-dep:DTV a penn-dep:DativeComplement , owl:NamedIndividual ;
+        olia_system:hasTag  "DTV"^^xsd:string .
+
+penn-dep:DTV-GAP a penn-dep:GappingDative , owl:NamedIndividual ;
+        olia_system:hasTag  "DTV-GAP"^^xsd:string .
+
+penn-dep:EXT a penn-dep:ExtentAdverbial , owl:NamedIndividual ;
+        olia_system:hasTag  "EXT"^^xsd:string .
+
+penn-dep:EXT-GAP a penn-dep:GappingExtentAdverbial , owl:NamedIndividual ;
+        olia_system:hasTag  "EXT-GAP"^^xsd:string .
+
+penn-dep:EXTR a penn-dep:ExtraposedElement , owl:NamedIndividual ;
+        olia_system:hasTag  "EXTR"^^xsd:string .
+
+penn-dep:EXTR-GAP a penn-dep:GappingExtraposedElement , owl:NamedIndividual ;
+        olia_system:hasTag  "EXTR-GAP"^^xsd:string .
+
+penn-dep:GAP-DIR a penn-dep:GappingDirection , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-DIR"^^xsd:string .
+
+penn-dep:GAP-LGS a penn-dep:GappingLogicalSubject , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-LGS"^^xsd:string .
+
+penn-dep:GAP-LOC a penn-dep:GappingLocative , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-LOC"^^xsd:string .
+
+penn-dep:GAP-LOC-PRD a penn-dep:GappingLocativePredicative , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-LOC-PRD"^^xsd:string .
+
+penn-dep:GAP-MNR a penn-dep:GappingManner , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-MNR"^^xsd:string .
+
+penn-dep:GAP-NMOD a penn-dep:GappingNominalModifier , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-NMOD"^^xsd:string .
+
+penn-dep:GAP-OBJ a penn-dep:GappingObject , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-OBJ"^^xsd:string .
+
+penn-dep:GAP-OPRD a penn-dep:GappingRaisingControlPredicativeComplement , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-OPRD"^^xsd:string .
+
+penn-dep:GAP-PMOD a penn-dep:GappingPrepositionModifier , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-PMOD"^^xsd:string .
+
+penn-dep:GAP-PRD a penn-dep:GappingPredicative , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-PRD"^^xsd:string .
+
+penn-dep:GAP-PRP a penn-dep:GappingPurpose , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-PRP"^^xsd:string .
+
+penn-dep:GAP-PUT a penn-dep:GappingPutComplement , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-PUT"^^xsd:string .
+
+penn-dep:GAP-SBJ a penn-dep:GappingSubject , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-SBJ"^^xsd:string .
+
+penn-dep:GAP-SUB a penn-dep:GappingSubordinatedClause , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-SUB"^^xsd:string .
+
+penn-dep:GAP-VC a penn-dep:GappingVerbChain , owl:NamedIndividual ;
+        olia_system:hasTag  "GAP-VC"^^xsd:string .
+
+penn-dep:HMOD a penn-dep:HyphenatedModifier , owl:NamedIndividual ;
+        olia_system:hasTag  "HMOD"^^xsd:string .
+
+penn-dep:HYPH a penn-dep:HyphenatedPart , owl:NamedIndividual ;
+        olia_system:hasTag  "HYPH"^^xsd:string .
+
+penn-dep:IM a penn-dep:InfinitiveVerb , owl:NamedIndividual ;
+        olia_system:hasTag  "IM"^^xsd:string .
+
+penn-dep:LGS a penn-dep:LogicalSubject , owl:NamedIndividual ;
+        olia_system:hasTag  "LGS"^^xsd:string .
+
+penn-dep:LOC a penn-dep:LocativeModifier , owl:NamedIndividual ;
+        olia_system:hasTag  "LOC"^^xsd:string .
+
+penn-dep:LOC-MNR a penn-dep:LocativeManner , owl:NamedIndividual ;
+        olia_system:hasTag  "LOC-MNR"^^xsd:string .
+
+penn-dep:LOC-OPRD a penn-dep:LocativeRaisingComplement , owl:NamedIndividual ;
+        olia_system:hasTag  "LOC-OPRD"^^xsd:string .
+
+penn-dep:LOC-PRD a penn-dep:LocativePredicative , owl:NamedIndividual ;
+        olia_system:hasTag  "LOC-PRD"^^xsd:string .
+
+penn-dep:LOC-TMP a penn-dep:LocativeTemporal , owl:NamedIndividual ;
+        olia_system:hasTag  "LOC-TMP"^^xsd:string .
+
+penn-dep:MNR a penn-dep:MannerAdverbial , owl:NamedIndividual ;
+        olia_system:hasTag  "MNR"^^xsd:string .
+
+penn-dep:MNR-PRD a penn-dep:MannerPredicative , owl:NamedIndividual ;
+        olia_system:hasTag  "MNR-PRD"^^xsd:string .
+
+penn-dep:MNR-TMP a penn-dep:MannerTemporal , owl:NamedIndividual ;
+        olia_system:hasTag  "MNR-TMP"^^xsd:string .
+
+penn-dep:NAME a penn-dep:NameInternalLink , owl:NamedIndividual ;
+        olia_system:hasTag  "NAME"^^xsd:string .
+
+penn-dep:NMOD a penn-dep:NominalModifier , owl:NamedIndividual ;
+        olia_system:hasTag  "NMOD"^^xsd:string .
+
+penn-dep:OBJ a penn-dep:Object , owl:NamedIndividual ;
+        olia_system:hasTag  "OBJ"^^xsd:string .
+
+penn-dep:OPRD a penn-dep:RaisingControlPredicativeComplement , owl:NamedIndividual ;
+        olia_system:hasTag  "OPRD"^^xsd:string .
+
+penn-dep:P a penn-dep:Punctuation , owl:NamedIndividual ;
+        olia_system:hasTag  "P"^^xsd:string .
+
+penn-dep:PMOD a penn-dep:PrepositionModifier , owl:NamedIndividual ;
+        olia_system:hasTag  "PMOD"^^xsd:string .
+
+penn-dep:POSTHON a penn-dep:PosthonorificModifier , owl:NamedIndividual ;
+        olia_system:hasTag  "POSTHON"^^xsd:string .
+
+penn-dep:PRD a penn-dep:PredicativeComplement , owl:NamedIndividual ;
+        olia_system:hasTag  "PRD"^^xsd:string .
+
+penn-dep:PRD-PRP a penn-dep:PredicativePurpose , owl:NamedIndividual ;
+        olia_system:hasTag  "PRD-PRP"^^xsd:string .
+
+penn-dep:PRD-TMP a penn-dep:PredicativeTemporal , owl:NamedIndividual ;
+        olia_system:hasTag  "PRD-TMP"^^xsd:string .
+
+penn-dep:PRN a penn-dep:Parenthetical , owl:NamedIndividual ;
+        olia_system:hasTag  "PRN"^^xsd:string .
+
+penn-dep:PRP a penn-dep:PurposeAdverbial , owl:NamedIndividual ;
+        olia_system:hasTag  "PRP"^^xsd:string .
+
+penn-dep:PRT a penn-dep:Particle , owl:NamedIndividual ;
+        olia_system:hasTag  "PRT"^^xsd:string .
+
+penn-dep:PUT a penn-dep:PutComplement , owl:NamedIndividual ;
+        olia_system:hasTag  "PUT"^^xsd:string .
+
+penn-dep:SBJ a penn-dep:Subject , owl:NamedIndividual ;
+        olia_system:hasTag  "SBJ"^^xsd:string .
+
+penn-dep:SUB a penn-dep:SubordinatedClause , owl:NamedIndividual ;
+        olia_system:hasTag  "SUB"^^xsd:string .
+
+penn-dep:SUFFIX a penn-dep:PossessiveSuffix , owl:NamedIndividual ;
+        olia_system:hasTag  "SUFFIX"^^xsd:string .
+
+penn-dep:TITLE a penn-dep:Title , owl:NamedIndividual ;
+        olia_system:hasTag  "TITLE"^^xsd:string .
+
+penn-dep:TMP a penn-dep:TemporalModifier , owl:NamedIndividual ;
+        olia_system:hasTag  "TMP"^^xsd:string .
+
+penn-dep:VC a penn-dep:VerbChain , owl:NamedIndividual ;
+        olia_system:hasTag  "VC"^^xsd:string .
+
+penn-dep:VOC a penn-dep:Vocative , owl:NamedIndividual ;
+        olia_system:hasTag  "VOC"^^xsd:string .
+
+penn-dep:root a penn-dep:Root , owl:NamedIndividual ;
+        olia_system:hasTag  "ROOT"^^xsd:string .

@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Multisensor Linked Open Data</title>
+<meta name="author" content="(Vladimir Alexiev, Ontotext Corp)"/>
+<meta name="description" content="The FP7 Multisensor project analyzes and extracts data from mass- and social media documents, including text, images and video, across several languages. It uses a number of ontologies for representing that data: NIF and OLIA for linguistic info, ITSRDF for NER, DBpedia and Babelnet for entities and concepts, MARL for sentiment, OA for image and cross-article annotations, etc. We'll present how all these ontologies fit together, and some innovations like embedding FrameNet in NIF."/>
+<meta name="keywords" content="Multisensor, CUBE, NLP, NLP2RDF, NIF, OLIA, ITSRDF, NERD, MARL, BabelNet, FrameNet, WordNet"/>
+
+<link rel="stylesheet" href="../reveal.js/css/reveal.css"/>
+<link rel="stylesheet" href="../reveal.js/css/theme/solarized.css" id="theme"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style><style>.reveal .slides {text-align:left} h1,h2,h3,h4,h5,h6,.center {text-align:center} img,table {display: block; margin-left:auto!important; margin-right:auto!important} td>img {width:250px; display:block; margin-left:auto!important; margin-right:auto!important; margin-top:0px!important; margin-bottom:0px!important} .reveal section img {border:none} .reveal th, .reveal td {font-size:80%; border: 1px; border-style: solid solid; border-spacing:0; padding:0px 2px} .print-pdf .stretch {max-width:100%}  span.clouditem {padding-left: 0.15em; padding-right: 0.15em; line-height: 90%} #table-of-contents {font-size:80%} </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<p class='center'><img src='img/ontotext.png' style='width:506px'/></p><p/><p/><h2>Multisensor Linked Open Data</h2><h3><a href="mailto:vladimir.alexiev@ontotext.com">vladimir.alexiev@ontotext.com</a></h3><h4>DBpedia Meeting, 2016-09-15, Leipzig, Germany</h4><p class='center'>2D presentation: <a href='javascript:Reveal.toggleOverview()'>O for overview</a>, <a href='../../reveal.js/js/reveal-help.html' target='_blank'>H for help</a>.</p><p class='center'>Made in plain text with <a href='https://github.com/hakimel/reveal.js/'>reveal.js</a>, <a href='https://github.com/yjwen/org-reveal'>org-reveal</a>, <a href='http://orgmode.org'>org-mode</a>, <a href='http://www.gnu.org/s/emacs/'>emacs</a>, <a href='http://vladimiralexiev.github.io/pres/20160514-rdfpuml/'>rdfpuml</a>.</p><p class='center'>Or use <a href='index-full.html'>normal continuous HTML</a></p><p class='center'></p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-sec-1">FP7 Multisensor</a>
+<ul>
+<li><a href="#/slide-sec-1-1">Scope</a></li>
+<li><a href="#/slide-sec-1-2">Linguistic Linked Data</a></li>
+</ul>
+</li>
+<li><a href="#/slide-sec-2">Text Annotation (Article and ASR Transcript)</a></li>
+<li><a href="#/slide-sec-3">Media Annotation: Image, Fusion to Text Annotation</a>
+<ul>
+<li><a href="#/slide-sec-3-1">Media Annotation: Video Frame</a></li>
+</ul>
+</li>
+<li><a href="#/slide-sec-4">Social Media: Influence</a></li>
+<li><a href="#/slide-sec-5">Decision Support: Trade</a>
+<ul>
+<li><a href="#/slide-sec-5-1">Decision Support: Distance</a></li>
+</ul>
+</li>
+<li><a href="#/slide-sec-6">FrameNet Annotation</a>
+<ul>
+<li><a href="#/slide-sec-6-1">Real FN Data (Part 1)</a></li>
+<li><a href="#/slide-sec-6-2">Real FN Data (Part 2)</a></li>
+</ul>
+</li>
+<li><a href="#/slide-sec-7">Data Quality</a>
+<ul>
+<li><a href="#/slide-sec-7-1">QualityAnnotation (Right) vs QualityMeasurement (Wrong)</a></li>
+<li><a href="#/slide-sec-7-2">RDFUnit Validation</a></li>
+</ul>
+</li>
+<li><a href="#/slide-sec-8">Content Alignment</a>
+<ul>
+<li><a href="#/slide-sec-8-1">Content Translation</a></li>
+</ul>
+</li>
+<li><a href="#/slide-sec-9">rdfpuml</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-sec-1">
+<h2 id="sec-1">FP7 Multisensor</h2>
+<p>
+Partners:
+</p>
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">CERTH (GR)</td>
+<td class="left">coordinator, image/video annot</td>
+</tr>
+
+<tr>
+<td class="left">UPF (ES)</td>
+<td class="left">NLP, FrameNet summarization,</td>
+</tr>
+
+<tr>
+<td class="left">Barcelona Media (ES)</td>
+<td class="left">annotation</td>
+</tr>
+
+<tr>
+<td class="left">LinguaTec (DE)</td>
+<td class="left">NER, translation</td>
+</tr>
+
+<tr>
+<td class="left">EVERIS (ES)</td>
+<td class="left">system integration</td>
+</tr>
+
+<tr>
+<td class="left">Ontotext (BG)</td>
+<td class="left">semantics, storage, reasoning</td>
+</tr>
+
+<tr>
+<td class="left">Deutsche Welle Innovation (DE)</td>
+<td class="left">UC1 Journalism</td>
+</tr>
+
+<tr>
+<td class="left">pressrelations (DE)</td>
+<td class="left">UC2 Press Monitoring</td>
+</tr>
+
+<tr>
+<td class="left">PIMEC (ES)</td>
+<td class="left">UC3 Decision Support</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Goals:
+</p>
+<ul>
+<li>content distillation of heterogeneous multimedia and multilingual data;</li>
+<li>sentiment and context analysis of content and social interactions;</li>
+<li>semantic integration of heterogeneous multimedia and multilingual data;</li>
+<li>semantic reasoning and intelligent decision support;</li>
+<li>multilingual and multimodal summarization and presentation of the information to the user.</li>
+
+</ul>
+
+</section>
+<section id="slide-sec-1-1">
+<h3 id="sec-1-1">Scope</h3>
+<p>
+Analyze and extract data from mass- and social media documents, including text, images and video, across several languages.
+</p>
+
+<p>
+Uses a number of ontologies for representing that data:
+</p>
+<ul>
+<li>NIF and OLIA for linguistic info,</li>
+<li>ITSRDF and NERD for NER,</li>
+<li>DBpedia and Babelnet for entities and concepts,</li>
+<li>MARL for sentiment,</li>
+<li>OA for image, video, cross-article annotations</li>
+<li>FrameNet for lexical frames (embedded in NIF)</li>
+
+</ul>
+<p>
+<a href="http://vladimiralexiev.github.io/Multisensor/20141008-Linguistic-LD">Linguistic Linked Data</a>, Multisensor presentation, 2014-11, Bonn
+</p>
+
+<ul>
+<li>Still working on an "RDF Application Profile" for Multisensor, part of</li>
+
+</ul>
+<p>
+D5.4 "Final semantic infrastructure and decision support system"
+</p>
+
+</section>
+<section id="slide-sec-1-2" tagcloud>
+<h3 id="sec-1-2">Linguistic Linked Data</h3>
+Text Annotation
+Lexical Resources
+Corpora
+Semantic Annotation
+Opinion/Sentiment Analysis
+Working Groups:
+OLWG
+OntoLex
+LD4LT
+BPMLOD
+Projects: 
+MultilingualWeb
+LIDER
+FALCON
+Multisensor
+FREME
+XML schemas:
+GRaF
+ITS2
+LAF
+LMF
+UBY
+Linguistic Ontologies:
+FISE
+ITS2
+MARL
+NERD
+NIF
+NLP2RDF
+OLIA
+OntoLing
+OntoTag
+Penn
+Stanford
+FrameNet
+Lexical Ontologies/thesauri:
+LEMON
+LIME
+OntoLex
+GOLD
+ISOcat
+NERD
+Lexical resources:
+BabelNet
+FrameNet
+LemonUBY
+OmegaNet
+VerbNet
+Wiktionary2RDF
+WordNetRDF
+Corpora:
+Multitext
+MASC
+
+
+</section>
+</section>
+<section>
+<section id="slide-sec-2">
+<h2 id="sec-2">Text Annotation (Article and ASR Transcript)</h2>
+
+<div class="figure">
+<p><img src="./img/NIF-ASR.png" alt="NIF-ASR.png" class="stretch" style="width:340px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-sec-3">
+<h2 id="sec-3">Media Annotation: Image, Fusion to Text Annotation</h2>
+
+<div class="figure">
+<p><img src="./img/SIMMO-annot-image.png" alt="SIMMO-annot-image.png" class="stretch" style="width:820px" />
+</p>
+</div>
+
+</section>
+<section id="slide-sec-3-1">
+<h3 id="sec-3-1">Media Annotation: Video Frame</h3>
+
+<div class="figure">
+<p><img src="./img/SIMMO-annot-frame.png" alt="SIMMO-annot-frame.png" class="stretch" style="width:680px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-sec-4">
+<h2 id="sec-4">Social Media: Influence</h2>
+
+<div class="figure">
+<p><img src="./img/SMAP-example.png" alt="SMAP-example.png" class="stretch" style="width:800px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-sec-5">
+<h2 id="sec-5">Decision Support: Trade</h2>
+<p>
+<a href="http://comtrade.un.org/">UN ComTrade</a> data on commercial trade volumes
+</p>
+
+<div class="figure">
+<p><img src="./img/stat-comtrade.png" alt="stat-comtrade.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-sec-5-1">
+<h3 id="sec-5-1">Decision Support: Distance</h3>
+<p>
+Google data on distances and travel time (between capitals)
+</p>
+
+<div class="figure">
+<p><img src="./img/stat-distance.png" alt="stat-distance.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-sec-6">
+<h2 id="sec-6">FrameNet Annotation</h2>
+<p>
+<a href="http://vladimiralexiev.github.io/Multisensor/FrameNet/paper.pdf">FN goes NIF: Integrating FrameNet in the NLP Interchange Format</a>, LREC 2016
+</p>
+
+<div class="figure">
+<p><img src="./img/fn-nif.png" alt="fn-nif.png" class="stretch" style="width:790px" />
+</p>
+</div>
+</section>
+<section id="slide-sec-6-1">
+<h3 id="sec-6-1">Real FN Data (Part 1)</h3>
+
+<div class="figure">
+<p><img src="./img/MS-Frame-complex-part1.png" alt="MS-Frame-complex-part1.png" class="stretch" style="width:1100px" />
+</p>
+</div>
+</section>
+<section id="slide-sec-6-2">
+<h3 id="sec-6-2">Real FN Data (Part 2)</h3>
+
+<div class="figure">
+<p><img src="./img/MS-Frame-complex-part2.png" alt="MS-Frame-complex-part2.png" class="stretch" style="width:1100px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-sec-7">
+<h2 id="sec-7">Data Quality</h2>
+<p>
+W3C <a href="https://www.w3.org/TR/vocab-dqv/">Data Quality Vocabulary</a> <code>dqv:</code>, <a href="https://www.w3.org/TR/vocab-dqv/#DimensionsofZaveri">Linked Data Quality Dimensions</a> <code>ldqd:</code>
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-Turtle"><span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;">Metric</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"Accuracy"</span>@en;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">definition</span> <span style="color: #8b2252;">"Degree to which SIMMO data correctly represents real world facts."</span>@en;
+  <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;">inDimension</span> <span style="color: #228b22;">ldqd:</span><span style="color: #008b8b;">semanticAccuracy</span>;
+  <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;">expectedDataType</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span><span style="color: #228b22;">.</span>
+
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">owl:</span><span style="color: #008b8b;">Class,</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">ConceptScheme</span>;
+  <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">label</span> <span style="color: #8b2252;">"Accuracy values"</span><span style="color: #228b22;">@en.</span>
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy-low</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy,</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">Concept</span>; <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">inScheme</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"Low accuracy"</span><span style="color: #228b22;">@en.</span>
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy-medium</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy,</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">Concept</span>; <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">inScheme</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"Medium accuracy"</span><span style="color: #228b22;">@en.</span>
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy-high</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy,</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">Concept</span>; <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">inScheme</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"High accuracy"</span><span style="color: #228b22;">@en.</span>
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy-curated</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy,</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">Concept</span>; <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">inScheme</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"Manually curated"</span>@en;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">note</span> <span style="color: #8b2252;">"Highest accuracy"</span>@en.
+</pre>
+</div>
+
+</section>
+<section id="slide-sec-7-1">
+<h3 id="sec-7-1">QualityAnnotation (Right) vs QualityMeasurement (Wrong)</h3>
+
+<div class="figure">
+<p><img src="./img/quality.png" alt="quality.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-sec-7-2">
+<h3 id="sec-7-2">RDFUnit Validation</h3>
+
+<div class="figure">
+<p><img src="./img/RDFunit-NIF-tests.png" alt="RDFunit-NIF-tests.png" class="stretch" style="width:1100px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-sec-8">
+<h2 id="sec-8">Content Alignment</h2>
+
+<div class="figure">
+<p><img src="./img/CAP.png" alt="CAP.png" class="stretch" style="width:1000px" />
+</p>
+</div>
+
+</section>
+<section id="slide-sec-8-1">
+<h3 id="sec-8-1">Content Translation</h3>
+
+<div class="figure">
+<p><img src="./img/translation.png" alt="translation.png" class="stretch" style="width:700px" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-sec-9">
+<h2 id="sec-9">rdfpuml</h2>
+<p>
+All diagrams made with rdfpuml from <b>actual Turtle</b>
+</p>
+<ul>
+<li>"<a href="http://vladimiralexiev.github.io/pres/20160514-rdfpuml/">Making True RDF Diagrams with rdfpuml</a>", Ontotext presentation (2016-05)</li>
+<li>"rdfpuml for True RDF Diagrams and R2RML Generation", SWIB 2016 (2016-11), upcoming</li>
+
+</ul>
+
+<p>
+Eg this last diagram was made from Turtle, with these extra triples:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-Turtle"><span style="color: #228b22;">bibo:</span><span style="color: #008b8b;">translationOf</span>   <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">arrow</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">left</span><span style="color: #228b22;">.</span>
+<span style="color: #228b22;">dct:</span><span style="color: #008b8b;">source</span>           <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">arrow</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">up</span><span style="color: #228b22;">.</span>
+<span style="color: #228b22;">nif:</span><span style="color: #008b8b;">sourceUrl</span>        <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">arrow</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">up</span><span style="color: #228b22;">.</span>
+<span style="color: #228b22;">nif:</span><span style="color: #008b8b;">referenceContext</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">arrow</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">up</span><span style="color: #228b22;">.</span>
+<span style="color: #0000ff;">&lt;http://babelfy.org/&gt;</span>  <span style="color: #a020f0;">a</span> <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">Inline</span><span style="color: #228b22;">.</span>
+
+<span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d</span>          <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">stereotype</span> <span style="color: #8b2252;">"&lt;&lt;(S,green)Spanish&gt;&gt;"</span>.
+<span style="color: #0000ff;">&lt;156e0d#char=1199,1224&gt;</span><span style="color: #b22222;">    </span><span style="color: #228b22;">puml:</span><span style="color: #008b8b;">stereotype</span><span style="color: #b22222;"> </span><span style="color: #8b2252;">"&lt;&lt;(S,green)Spanish&gt;&gt;"</span><span style="color: #b22222;">.</span>
+<span style="color: #0000ff;">&lt;156e0d#char=0,2131&gt;</span><span style="color: #b22222;">       </span><span style="color: #228b22;">puml:</span><span style="color: #008b8b;">stereotype</span><span style="color: #b22222;"> </span><span style="color: #8b2252;">"&lt;&lt;(S,green)Spanish&gt;&gt;"</span><span style="color: #228b22;">.</span>
+<span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d-en</span>       <span style="color: #228b22;">puml:</span><span style="color: #008b8b;">stereotype</span> <span style="color: #8b2252;">"&lt;&lt;(E,red)English&gt;&gt;"</span>.
+<span style="color: #0000ff;">&lt;156e0d-en#char=0,1800&gt;</span><span style="color: #b22222;">    </span><span style="color: #228b22;">puml:</span><span style="color: #008b8b;">stereotype</span><span style="color: #b22222;"> </span><span style="color: #8b2252;">"&lt;&lt;(E,red)English&gt;&gt;"</span><span style="color: #b22222;">.</span>
+<span style="color: #0000ff;">&lt;156e0d-en#char=1100,1119&gt;</span><span style="color: #b22222;"> </span><span style="color: #228b22;">puml:</span><span style="color: #008b8b;">stereotype</span><span style="color: #b22222;"> </span><span style="color: #8b2252;">"&lt;&lt;(E,red)English&gt;&gt;"</span><span style="color: #b22222;">.</span>
+</pre>
+</div>
+</section>
+</section>
+</div>
+</div>
+
+<script src="../reveal.js/lib/js/head.min.js"></script>
+<script src="../reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: true,
+rollingLinks: false,
+keyboard: true,
+overview: true,
+width: 1200,
+height: 925,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{src: '../reveal.js/js/reveal-help.js', async: true, condition: function() {return !!document.body.classList}}, {src: '../reveal.js/js/reveal-tagcloud.js', async: true, condition: function() {return !!document.body.classList}},
+ { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+ { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+]
+});
+</script>
+</body>
+</html>

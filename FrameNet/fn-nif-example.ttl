@@ -1,0 +1,254 @@
+@base <http://data.multisensorproject.eu/content/12486u3968u39>> .
+@prefix fe:       <http://www.ontologydesignpatterns.org/ont/framenet/abox/fe/> .
+@prefix fn:       <http://www.ontologydesignpatterns.org/ont/framenet/tbox/> .
+@prefix frame:    <http://www.ontologydesignpatterns.org/ont/framenet/abox/frame/> .
+@prefix its:      <http://www.w3.org/2005/11/its/rdf#> .
+@prefix lu:       <http://www.ontologydesignpatterns.org/ont/framenet/abox/lu/> .
+@prefix ms:       <http://data.multisensorproject.eu/ontology#> .
+@prefix nerd:     <http://nerd.eurecom.fr/ontology#> .
+@prefix nif:      <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> .
+@prefix penn-dep: <http://taln.upf.edu/olia-penn-dep-syntax#> .
+@prefix penn:     <http://purl.org/olia-penn#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix upf-deep: <http://taln.upf.edu/upf-deep#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+<#char=169,322> a nif:Sentence ;
+  # NIF annotation
+    nif:anchorOf "Electrolux announced today the theme for its design competition." ;
+    nif:beginIndex "169"^^xsd:nonNegativeInteger ;
+    nif:endIndex "322"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <#char=0,4396> .
+
+<#char=169,179> a nif:Word ;
+  # NIF annotation
+    nif:anchorOf "Electrolux" ;
+    nif:beginIndex "169"^^xsd:nonNegativeInteger ;
+    nif:endIndex "179"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <#char=0,4396> ;
+  # Reference (NER/NED)
+    its:taClassRef nerd:Organization ;
+    its:taIdentRef <#Organization=Electrolux_Design_Lab> ;
+  # Morphosyntactic information
+    nif:lemma "electrolux" ; # Lemma
+    nif:oliaLink penn:NNP ; # POS tag
+    nif:literalAnnotation "surf=spos=NN" , "deep=spos=NN" ; # Additional ling information not modelled by OLiA models and therefore stored as an unparsed literal
+  # Surface syntactic information
+    nif:dependency <#char=180,189> ; # link to governor in conventional dependency parse tree
+    nif:oliaLink penn-dep:SBJ ; # tag of relation between this word and governor
+  # Deep syntactic information
+    upf-deep:deepDependency <#char=180,189> ; # link to governor in deep dependency parse tree
+    nif:oliaLink upf-deep:I ;  # tag of deep relation between this word and governor
+  # Frame information
+    nif:oliaLink <#char=169,179_fe_1> .
+
+# Frame element annotation
+<#char=169,179_fe_1> a fn:Label ;
+    fn:label_FE fe:Speaker.statement .
+
+<#char=180,189> a nif:Word ;
+  # NIF annotation
+    nif:anchorOf "announced" ;
+    nif:beginIndex "186"^^xsd:nonNegativeInteger ;
+    nif:endIndex "195"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <#char=0,4396> ;
+  # Morphosyntactic information
+    nif:lemma "announce" ;
+    nif:oliaLink penn:VBD ;
+    nif:literalAnnotation "surf=spos=VV" , "deep=spos=VV" ;
+  # Surface syntactic information
+    nif:dependency penn-dep:root ;
+    nif:oliaLink penn-dep:root ;
+  # Deep syntactic information
+    upf-deep:deepDependency upf-deep:ROOT ;
+    nif:oliaLink upf-deep:ROOT ;
+  # Frame information
+    nif:oliaLink <#char=180,189_annoSet_1> .
+
+# Frame annotation
+<#char=180,189_annoSet_1> a fn:AnnotationSet ;
+    fn:annotationSetFrame frame:Statement ;
+    fn:annotationSetLU lu:announce.v ;
+    fn:hasLayer <#char=180,189_layerFE_1> .
+
+<#char=180,189_layerFE_1> a fn:Layer ;
+    fn:layer_name "FE" ;
+    fn:hasLabel <#char=169,179_fe_1> , <#char=190,195_fe_1> , <#char=200,205_fe_1> .
+
+<#char=190,195> a nif:Word ;
+  # NIF annotation
+    nif:anchorOf "today" ;
+    nif:beginIndex "180"^^xsd:nonNegativeInteger ;
+    nif:endIndex "185"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <#char=0,4396> ;
+  # Morphosyntactic information
+    nif:lemma "today" ;
+    nif:oliaLink penn:NN ;
+    nif:literalAnnotation "surf=spos=NN" , "deep=spos=NN" ;
+  # Surface syntactic information
+    nif:dependency <#char=180,189> ;
+    nif:oliaLink penn-dep:TMP ;
+  # Deep syntactic information
+    upf-deep:deepDependency <#char=180,189> ;
+    nif:oliaLink upf-deep:ATTR ;
+  # Frame information
+    nif:oliaLink <#char=190,195_fe_1> ;
+    nif:oliaLink <#char=190,195_annoSet_1> .
+
+# Frame element annotation
+<#char=190,195_fe_1> a fn:Label ;
+    fn:label_FE fe:Time.statement .
+
+# Frame annotation
+<#char=190,195_annoSet_1> a fn:AnnotationSet ;
+    fn:annotationSetFrame frame:Calendric_unit ;
+    fn:annotationSetLU lu:today.n .
+    # this frame has no arguments
+
+<#char=196,199> a nif:Word ;
+  # NIF annotation
+    nif:anchorOf "the" ;
+    nif:beginIndex "196"^^xsd:nonNegativeInteger ;
+    nif:endIndex "199"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <#char=0,4396> ;
+  # Morphosyntactic information
+    nif:lemma "the" ;
+    nif:oliaLink penn:DT ;
+    nif:literalAnnotation "surf=spos=DT" , "deep=spos=DT" ;
+  # Surface syntactic information
+    nif:dependency <#char=200,205> ;
+    nif:oliaLink  penn-dep:NMOD .
+
+<#char=200,205> a nif:Word ;
+  # NIF annotation
+    nif:anchorOf "theme" ;
+    nif:beginIndex "200"^^xsd:nonNegativeInteger ;
+    nif:endIndex "205"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <#char=0,4396> ;
+  # Morphosyntactic information
+    nif:lemma "theme" ;
+    nif:oliaLink penn:NN ;
+    nif:literalAnnotation "surf=spos=NN" , "deep=spos=NN" ;
+  # Surface syntactic information
+    nif:dependency <#char=180,189> ;
+    nif:oliaLink penn-dep:OBJ ;
+  # Deep syntactic information
+    upf-deep:deepDependency <#char=180,189> ;
+    nif:oliaLink upf-deep:II ;
+  # Frame information
+    nif:oliaLink <#char=200,205_annoSet_1> .
+
+# Frame element annotation
+<#char=200,205_fe_1> a fn:Label ;
+    fn:label_FE fe:Message.statement .
+
+# Frame annotation
+<#char=200,205_annoSet_1> a fn:AnnotationSet ;
+    fn:annotationSetFrame frame:Topic ;
+    fn:annotationSetLU lu:theme.n .
+
+<#char=206,209> a nif:Word ;
+  # NIF annotation
+    nif:anchorOf "for" ;
+    nif:beginIndex "206"^^xsd:nonNegativeInteger ;
+    nif:endIndex "209"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <#char=0,4396> ;
+  # Morphosyntactic information
+    nif:lemma "for" ;
+    nif:oliaLink penn:IN ;
+    nif:literalAnnotation "surf=spos=IN" , "deep=spos=IN" ;
+  # Surface syntactic information
+    nif:dependency <#char=200,205> ;
+    nif:oliaLink penn-dep:NMOD ;
+  # Deep syntactic information
+    upf-deep:deepDependency <#char=200,205> ;
+    nif:oliaLink upf-deep:ATTR ;
+  # Frame information
+    nif:oliaLink <#char=206,209_fe_1> .
+
+# Frame element annotation
+<#char=206,209_fe_1> a fn:Label ;
+    fn:label_FE fe:Topic.topic .
+
+<#char=210,213> a nif:Word ;
+  # NIF annotation
+    nif:anchorOf "its" ;
+    nif:beginIndex "210"^^xsd:nonNegativeInteger ;
+    nif:endIndex "213"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <#char=0,4396> ;
+  # Morphosyntactic information
+    nif:lemma "its" ;
+    nif:oliaLink penn:PRPpossessive ;
+    nif:literalAnnotation "surf=spos=PRP$" , "deep=spos=PRP$" ;
+  # Surface syntactic information
+    nif:dependency <#char=221,232> ;
+    nif:oliaLink penn-dep:NMOD ;
+  # Deep syntactic information
+    upf-deep:deepDependency <#char=221,232> ;
+    nif:oliaLink upf-deep:ATTR ;
+  # Frame information
+    nif:oliaLink <#char=210,213_fe_1> .
+
+# Frame element annotation
+<#char=210,213_fe_1> a fn:Label ;
+    fn:label_FE fe:Participant_1.competition  .
+
+<#char=214,220> a nif:Word ;
+  # NIF annotation
+    nif:anchorOf "design" ;
+    nif:beginIndex "229"^^xsd:nonNegativeInteger ;
+    nif:endIndex "235"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <#char=0,4396> ;
+  # Morphosyntactic information
+    nif:lemma "design" ;
+    nif:oliaLink penn:NN ;
+    nif:literalAnnotation "surf=spos=NN" , "deep=spos=NN" ;
+  # Surface syntactic information
+    nif:dependency <#char=221,232> ;
+    nif:oliaLink penn-dep:NMOD ;
+  # Deep syntactic information
+    upf-deep:deepDependency <#char=221,232> ;
+    nif:oliaLink upf-deep:ATTR ;
+  # Frame information
+    nif:oliaLink <#char=214,220_fe_1> ;
+    nif:oliaLink <#char=214,220_annoSet_1> .
+
+# Frame element annotation
+<#char=214,220_fe_1> a fn:Label ;
+    fn:label_FE fe:Competition.competition .
+
+# Frame annotation
+<#char=214,220_annoSet_1> a fn:AnnotationSet ;
+    fn:annotationSetFrame frame:Coming_up_with ;
+    fn:annotationSetLU lu:design.n .
+    # this frame has no arguments
+
+<#char=221,232> a nif:Word ;
+  # NIF annotation
+    nif:anchorOf "competition" ;
+    nif:beginIndex "236"^^xsd:nonNegativeInteger ;
+    nif:endIndex "247"^^xsd:nonNegativeInteger ;
+    nif:referenceContext <#char=0,4396> ;
+  # Morphosyntactic information
+    nif:lemma "competition" ;
+    nif:oliaLink penn:NN ;
+    nif:literalAnnotation "surf=spos=NN" , "deep=spos=NN" ;
+  # Surface syntactic information
+    nif:dependency <#char=206,209> ;
+    nif:oliaLink penn-dep:PMOD ;
+  # Deep syntactic information
+    upf-deep:deepDependency <#char=206,209> ;
+    nif:oliaLink upf-deep:II ;
+  # Frame information
+    nif:oliaLink <#char=221,232_annoSet_1> .
+
+# Frame annotation
+<#char=221,232_annoSet_1> a fn:AnnotationSet ;
+    fn:annotationSetFrame frame:Competition ;
+    fn:annotationSetLU lu:competition.n ;
+    fn:hasLayer <#char=221,232_layerFE_1> .
+
+<#char=221,232_layerFE_1> a fn:Layer ;
+  fn:layer_name "FE";
+  fn:hasLabel <#char=210,213_fe_1> , <#char=214,220_fe_1> .

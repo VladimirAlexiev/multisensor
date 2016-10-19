@@ -1,0 +1,106 @@
+@startuml
+hide empty attributes
+hide empty methods
+hide circle
+
+package "Frame instances & text" {
+  class "Header"
+  class AnnotationSet
+  class CorpDoc
+  class Document
+  class FullTextAnnotation
+  class Label
+  class Layer
+  class Sentence
+}
+package "Frame definitions" {
+  class FECoreSet
+  class Frame
+  class FrameElement
+  class LexUnit
+  class Lexeme
+  class SemType
+  class SentenceCount
+}
+
+AnnotationSet      -right- Frame               : annotationSetFrame\nframeOfAnnotationSet
+Label              -right- FrameElement        : label_FE\nFELabel
+AnnotationSet       -down- Layer               : hasLayer\nlayerAnnoSet
+AnnotationSet       -down- LexUnit             : annotationSetLU\nLUOfAnnotationSet
+Sentence            -down- AnnotationSet       : annoForSentence\nhasAnnotationSet
+CorpDoc             -down- Sentence            : sentenceInCorpDoc\ncorpDocOfSentence
+CorpDoc             -down- Document            : fromCorpDoc\nhasDocument
+Document            -down- Sentence            : sentenceInDocument\ncontainsSentence
+FECoreSet           -down- FrameElement        : hasMember\ninCoreSet
+Frame               -down- FECoreSet           : hasFEcoreSet\nisFECoreSetOf
+Frame               -down- Frame               : hasFrameRelation\nseeAlso\nhasCausative/isCausativeOf\nisInchoativeOf/hasInchoative\nhasSubframe/subframeOf\ninheritsFrom/isInheritedBy\nuses/isUsedBy\nprecedes/isPrecededBy\nperspectiveOn/isPerspectivizedIn
+Frame               -down- FrameElement        : hasFrameElement\nframeElementOf
+"Header"            -down- Frame               : frameHeader\nhasFrame
+Frame               -left- LexUnit             : hasLexUnit\nlexUnitFrame
+Frame               -down- SemType             : hasSemType\nisSemTypeOf
+FrameElement        -down- FrameElement        : hasFERelation\nexcludes/isExcludedBy\nhasSubFE/hasSuperFE\nrequires/isRequiredBy
+FrameElement        -down- SemType             : hasSemType\nisSemTypeOf
+"Header"            -down- FullTextAnnotation  : hasHeader\nheaderFullTextAnno
+FullTextAnnotation  -down- Sentence            : hasSentence\nsentenceFullTextAnno
+"Header"            -down- CorpDoc             : hasCorpDoc\ncorpDocHeader
+Layer               -down- Label               : hasLabel\nlabelLayer
+FrameElement        -down- LexUnit             : incorporatedFE\nincorporatedInLU
+LexUnit             -down- Lexeme              : hasLexeme\nlexemeLU
+LexUnit             -down- SemType             : hasSemType\nisSemTypeOf
+LexUnit             -down- SentenceCount       : hasSentenceCount\nsentenceCountLU
+SemType             -down- SemType             : hasSubType\nhasSuperType
+
+AnnotationSet : annotationSet_cDate
+AnnotationSet : annotationSet_cxnID int
+AnnotationSet : annotationSet_cxnName
+AnnotationSet : annotationSet_ID int
+AnnotationSet : annotationSet_status
+CorpDoc       : corpDoc_ID int
+CorpDoc       : corpDoc_name
+Document      : document_description
+Document      : document_ID int
+Frame         : definition
+Frame         : frame_cBy
+Frame         : frame_cDate
+Frame         : frame_ID int
+Frame         : frame_name
+FrameElement  : definition
+FrameElement  : FE_abbrev
+FrameElement  : FE_cBy
+FrameElement  : FE_cDate
+FrameElement  : FE_coreType
+FrameElement  : FE_ID int
+FrameElement  : FE_name
+Label         : label_cBy
+Label         : label_end int
+Label         : label_itype
+Label         : label_name
+Label         : label_start int
+Layer         : layer_name
+Layer         : layer_rank int
+Lexeme        : lexeme_breakBefore boolean
+Lexeme        : lexeme_headword boolean
+Lexeme        : lexeme_name
+Lexeme        : lexeme_order int
+Lexeme        : lexeme_POS
+LexUnit       : definition
+LexUnit       : LU_cBy
+LexUnit       : LU_cDate
+LexUnit       : LU_ID int
+LexUnit       : LU_lemmaID int
+LexUnit       : LU_name
+LexUnit       : LU_POS
+LexUnit       : LU_status
+SemType       : definition
+SemType       : semType_abbrev
+SemType       : semType_ID int
+SemType       : semType_name
+Sentence      : sentence_aPos
+Sentence      : sentence_ID int
+Sentence      : sentence_paragNo int
+Sentence      : sentence_sentNo int
+Sentence      : text
+SentenceCount : sentenceCount_annotated int
+SentenceCount : sentenceCount_total int
+
+@enduml

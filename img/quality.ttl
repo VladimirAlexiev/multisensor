@@ -1,0 +1,16 @@
+
+ms-content:b3f35 dqv:hasQualityAnnotation ms-content:b3f35-quality.
+ms-content:b3f35-quality a dqv:QualityAnnotation;
+  dqv:inDimension ldqd:semanticAccuracy;
+  oa:motivatedBy dqv:qualityAssessment;
+  oa:hasTarget ms-content:b3f35;
+  oa:hasBody ms:accuracy-curated.
+
+# Note: initially we tried to use dqv:QualityMeasurement but it's for quantitative not qualitative (nominal) values:
+ms-content:b3f36 dqv:hasQualityMeasurement ms-content:b3f36-quality.
+ms-content:b3f36-quality a dqv:QualityMeasurement ;
+   dqv:isMeasurementOf ms:accuracy; dqv:value ms:accuracy-curated.
+
+####################
+oa:hasTarget puml:arrow puml:up.
+ms-content:b3f36-quality puml:stereotype "<<(W,red)Wrong>>".

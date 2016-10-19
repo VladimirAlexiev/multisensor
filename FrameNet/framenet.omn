@@ -1,0 +1,1162 @@
+Prefix: : <http://www.ontologydesignpatterns.org/cp/owl/fn/framenet.owl#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+Ontology: <http://www.ontologydesignpatterns.org/cp/owl/fn/framenet.owl>
+
+Annotations:
+    owl:versionInfo "Created with TopBraid Composer"^^xsd:string
+
+Class: owl:Nothing
+    DisjointWith:
+        Layer, SubCorpus, LexicalUnit, ValencePattern, Label, FrameElement, Frame, Enumeration, Lexeme, AnnotationSet, Sentence, Header, FullText, SemType, Valences, Set
+
+Class: owl:Thing
+
+Class: AnnotationSet
+    Annotations:
+        rdfs:label "Annotation Set"^^xsd:string
+    SubClassOf:
+        creationDate exactly 1 rdfs:Literal,
+        hasLayer only Layer,
+        hasAnnotationStatus exactly 1 owl:Thing,
+        hasLayer some Layer,
+        hasFrame max 1 owl:Thing
+    DisjointWith:
+        Layer, SubCorpus, LexicalUnit, ValencePattern, FrameElement, Label, Frame, Enumeration, Lexeme, owl:Nothing, Header, Sentence, SemType, FullText, Valences, Set
+
+Class: AnnotationStatus
+    Annotations:
+        rdfs:label "Annotation Status"^^xsd:string
+    SubClassOf:
+        Enumeration,
+        owl:hasValue only ({Manual , Unannotated})
+    DisjointWith:
+        FrameElement, Coreness, PartOfSpeech
+
+Class: AnnotationStatusType
+    Annotations:
+        rdfs:label "Annotation Status Type"^^xsd:string
+    SubClassOf:
+        EnumType
+
+Class: Coreness
+    Annotations:
+        rdfs:label "Coreness"^^xsd:string
+    SubClassOf:
+        owl:hasValue only ({Core , Core-Unexpressed , Extra-thematic , Peripheral}),
+        Enumeration
+    DisjointWith:
+        AnnotationStatus, FrameElement, PartOfSpeech
+
+Class: CorenessType
+    Annotations:
+        rdfs:label "Coreness Type"^^xsd:string
+    SubClassOf:
+        EnumType
+
+Class: Corpus
+    Annotations:
+        rdfs:label "Corpus"^^xsd:string
+    SubClassOf:
+        name exactly 1 rdfs:Literal,
+        hasDocument only Document
+
+Class: Document
+    Annotations:
+        rdfs:label "Document"^^xsd:string
+    SubClassOf:
+        name exactly 1 rdfs:Literal
+
+Class: Enumeration
+    Annotations:
+        rdfs:label "Enumeration"^^xsd:string
+    SubClassOf:
+        owl:hasValue exactly 1 EnumType
+    DisjointWith:
+        SubCorpus, Layer, LexicalUnit, ValencePattern, Label, FrameElement, Frame, owl:Nothing, AnnotationSet, Lexeme, Header, Sentence, FullText, SemType, Valences, Set
+
+Class: EnumType
+    Annotations:
+        rdfs:label "Enumeration Type"^^xsd:string
+
+Class: FEGroupRealization
+    Annotations:
+        rdfs:label "Frame Element Group Realization"^^xsd:string
+    SubClassOf:
+        owl:Thing,
+        total exactly 1 rdfs:Literal,
+        hasValencePattern min 1 owl:Thing,
+        hasFrameElement only FrameElement
+    DisjointWith:
+        FrameElement, FERealization
+
+Class: FERealization
+    Annotations:
+        rdfs:label "Frame Element Realization"^^xsd:string
+    SubClassOf:
+        owl:Thing,
+        hasFrameElement max 1 owl:Thing,
+        total exactly 1 rdfs:Literal,
+        hasValencePattern min 1 owl:Thing
+    DisjointWith:
+        FEGroupRealization, FrameElement
+
+Class: Frame
+    Annotations:
+        rdfs:label "Frame"^^xsd:string
+    SubClassOf:
+        hasSemType only SemType,
+        creationDate exactly 1 rdfs:Literal,
+        createdBy exactly 1 rdfs:Literal,
+        name exactly 1 rdfs:Literal,
+        abbrev exactly 1 rdfs:Literal,
+        definition exactly 1 rdfs:Literal,
+        hasFrameElement only FrameElement,
+        hasFrameElement some FrameElement
+    DisjointWith:
+        Layer, SubCorpus, ValencePattern, LexicalUnit, Label, FrameElement, Enumeration, Lexeme, owl:Nothing, AnnotationSet, Sentence, Header, FullText, SemType, Valences, Set
+
+Class: FrameElement
+    Annotations:
+        rdfs:label "Frame Element"^^xsd:string
+    SubClassOf:
+        createdBy some xsd:integer,
+        creationDate some xsd:dateTime,
+        abbrev some xsd:string
+    DisjointWith:
+        SubCorpus, Layer, ValencePattern, LexicalUnit, Label, AnnotationStatus, FEGroupRealization, Frame, Enumeration, Coreness, owl:Nothing, Lexeme, AnnotationSet, Header, Sentence, FERealization, FullText, SemType, Valences, Set, FrameElementCoreSet
+
+Class: FrameElementCoreSet
+    Annotations:
+        rdfs:label "frame element core set"^^xsd:string
+    SubClassOf:
+        hasMember min 2 FrameElement,
+        Set
+    DisjointWith:
+        SemTypeSet, FrameElement
+
+Class: FullText
+    Annotations:
+        rdfs:label "Full Text"^^xsd:string
+    SubClassOf:
+        hasHeader exactly 1 owl:Thing,
+        hasSentence only Sentence
+    DisjointWith:
+        Layer, SubCorpus, LexicalUnit, ValencePattern, Label, FrameElement, Frame, Enumeration, Lexeme, owl:Nothing, AnnotationSet, Sentence, Header, SemType, Valences, Set
+
+Class: Governor
+    Annotations:
+        rdfs:label "Governor"^^xsd:string
+    SubClassOf:
+        hasAnnotationSet min 1 owl:Thing,
+        lemma exactly 1 rdfs:Literal,
+        type exactly 1 rdfs:Literal
+
+Class: Header
+    Annotations:
+        rdfs:label "Header"^^xsd:string
+    SubClassOf:
+        hasCorpus only Corpus,
+        hasFrame max 1 owl:Thing
+    DisjointWith:
+        SubCorpus, Layer, LexicalUnit, ValencePattern, FrameElement, Label, Frame, Enumeration, owl:Nothing, Lexeme, AnnotationSet, Sentence, SemType, FullText, Valences, Set
+
+Class: Label
+    Annotations:
+        rdfs:label "Label"^^xsd:string
+    SubClassOf:
+        name exactly 1 rdfs:Literal,
+        hasFrameElement max 1 owl:Thing,
+        createdBy max 1 rdfs:Literal,
+        end max 1 rdfs:Literal,
+        start max 1 rdfs:Literal,
+        fgColor max 1 rdfs:Literal,
+        bgColor max 1 rdfs:Literal
+    DisjointWith:
+        SubCorpus, Layer, LexicalUnit, ValencePattern, FrameElement, Frame, Enumeration, Lexeme, AnnotationSet, owl:Nothing, Sentence, Header, FullText, SemType, Valences, Set
+
+Class: Layer
+    Annotations:
+        rdfs:label "Layer"^^xsd:string
+    SubClassOf:
+        name exactly 1 rdfs:Literal,
+        rank exactly 1 rdfs:Literal
+    DisjointWith:
+        SubCorpus, LexicalUnit, ValencePattern, FrameElement, Label, Frame, Enumeration, AnnotationSet, owl:Nothing, Lexeme, Sentence, Header, SemType, FullText, Valences, Set
+
+Class: Lexeme
+    Annotations:
+        rdfs:label "is sub corpus of"^^xsd:string
+    SubClassOf:
+        breakBefore max 1 rdfs:Literal,
+        name exactly 1 rdfs:Literal,
+        headword max 1 rdfs:Literal,
+        hasPartOfSpeech exactly 1 owl:Thing,
+        order max 1 rdfs:Literal
+    DisjointWith:
+        SubCorpus, Layer, ValencePattern, LexicalUnit, Label, FrameElement, Frame, Enumeration, owl:Nothing, AnnotationSet, Header, Sentence, FullText, SemType, Valences, Set
+
+Class: LexicalUnit
+    Annotations:
+        rdfs:label "Lexical Unit"^^xsd:string
+    SubClassOf:
+        hasSemType only SemType,
+        name exactly 1 rdfs:Literal,
+        hasHeader exactly 1 owl:Thing,
+        hasIncorporatedFrameElement max 1 owl:Thing,
+        hasPartOfSpeech exactly 1 owl:Thing,
+        status max 1 rdfs:Literal,
+        hasValences only Valences,
+        hasSemType some SemType,
+        hasLexeme some Lexeme
+    DisjointWith:
+        SubCorpus, Layer, ValencePattern, Label, FrameElement, Frame, Enumeration, AnnotationSet, Lexeme, owl:Nothing, Header, Sentence, FullText, SemType, Valences, Set
+
+Class: PartOfSpeachType
+    Annotations:
+        rdfs:label "Part of Speach Type"^^xsd:string
+    SubClassOf:
+        EnumType
+
+Class: PartOfSpeech
+    Annotations:
+        rdfs:label "POS"^^xsd:string
+    SubClassOf:
+        owl:hasValue only ({Adjective , Adverb , Article , C , ComplexConjunction , Interjections , Noun , Numeral , Preposition , Pronoun , SimpleConjunction , Verb}),
+        Enumeration
+    DisjointWith:
+        AnnotationStatus, Coreness
+
+Class: SemType
+    Annotations:
+        rdfs:label "Semantic Type"^^xsd:string
+    SubClassOf:
+        name exactly 1 rdfs:Literal,
+        abbrev exactly 1 rdfs:Literal
+    DisjointWith:
+        SubCorpus, Layer, ValencePattern, LexicalUnit, Label, FrameElement, Frame, Enumeration, owl:Nothing, AnnotationSet, Lexeme, Header, Sentence, FullText, Valences, Set
+
+Class: SemTypeSet
+    Annotations:
+        rdfs:label "Sem Type Set"^^xsd:string
+    SubClassOf:
+        Set,
+        hasMember only SemType
+    DisjointWith:
+        FrameElementCoreSet
+
+Class: Sentence
+    Annotations:
+        rdfs:label "Sub Corpus"^^xsd:string
+    SubClassOf:
+        owl:Thing,
+        text exactly 1 rdfs:Literal,
+        hasAnnotationSet only AnnotationSet,
+        hasCorpus max 1 owl:Thing,
+        hasDocument max 1 owl:Thing
+    DisjointWith:
+        Layer, SubCorpus, ValencePattern, LexicalUnit, FrameElement, Label, Frame, Enumeration, owl:Nothing, Lexeme, AnnotationSet, Header, SemType, FullText, Valences, Set
+
+Class: Set
+    Annotations:
+        rdfs:label "Set"^^xsd:string
+    DisjointWith:
+        SubCorpus, Layer, ValencePattern, LexicalUnit, FrameElement, Label, Frame, Enumeration, owl:Nothing, Lexeme, AnnotationSet, Header, Sentence, SemType, FullText, Valences
+
+Class: SubCorpus
+    Annotations:
+        rdfs:label "Sub Corpus"^^xsd:string
+    SubClassOf:
+        name exactly 1 rdfs:Literal,
+        hasSentence only Sentence
+    DisjointWith:
+        Layer, LexicalUnit, ValencePattern, Label, FrameElement, Frame, Enumeration, Lexeme, owl:Nothing, AnnotationSet, Header, Sentence, SemType, FullText, Valences, Set
+
+Class: ValencePattern
+    Annotations:
+        rdfs:label "Valence Pattern"^^xsd:string
+    SubClassOf:
+        owl:Thing,
+        hasAnnotationSet min 1 owl:Thing,
+        hasValenceUnit exactly 1 owl:Thing,
+        total exactly 1 rdfs:Literal
+    DisjointWith:
+        SubCorpus, Layer, LexicalUnit, FrameElement, Label, Frame, Enumeration, Lexeme, AnnotationSet, owl:Nothing, Sentence, Header, SemType, FullText, Valences, Set
+
+Class: Valences
+    Annotations:
+        rdfs:label "has frame element relation"^^xsd:string
+    DisjointWith:
+        Layer, SubCorpus, LexicalUnit, ValencePattern, FrameElement, Label, Frame, Enumeration, owl:Nothing, AnnotationSet, Lexeme, Sentence, Header, SemType, FullText, Set
+
+Class: ValenceUnit
+    Annotations:
+        rdfs:label "Valence Unit"^^xsd:string
+    SubClassOf:
+        grammaticalFunction exactly 1 rdfs:Literal,
+        hasFrameElement exactly 1 owl:Thing,
+        phraseType exactly 1 rdfs:Literal
+
+ObjectProperty: exclusesFE
+    Annotations:
+        rdfs:label "excluses frame element"^^xsd:string
+    SubPropertyOf:
+        hasFrameElementRelation
+    Range:
+        FrameElement
+
+ObjectProperty: hasAnnotationSet
+    Annotations:
+        rdfs:label "has annotation set"^^xsd:string
+    Range:
+        AnnotationSet
+    InverseOf:
+        isAnnotationSetOf
+
+ObjectProperty: hasAnnotationStatus
+    Annotations:
+        rdfs:label "has annotation status"^^xsd:string
+    Domain:
+        AnnotationSet
+    Range:
+        AnnotationStatus
+    InverseOf:
+        isAnnotationStatusOf
+
+ObjectProperty: hasCoreness
+    Annotations:
+        rdfs:label "hasCoreness"^^xsd:string
+    Range:
+        Coreness
+    InverseOf:
+        isCorenessOf
+
+ObjectProperty: hasCorpus
+    Annotations:
+        rdfs:label "has corpus"^^xsd:string
+    Range:
+        Corpus
+    InverseOf:
+        isCorpusOf
+
+ObjectProperty: hasDocument
+    Annotations:
+        rdfs:label "has document"^^xsd:string
+    Range:
+        Document
+    InverseOf:
+        isDocumentOf
+
+ObjectProperty: hasFrame
+    Annotations:
+        rdfs:label "has frame"^^xsd:string
+    Domain:
+        LexicalUnit
+    Range:
+        Frame
+    InverseOf:
+        isFrameOf
+
+ObjectProperty: hasFrameElement
+    Annotations:
+        rdfs:label "has Frame Element"^^xsd:string
+    Range:
+        FrameElement
+    InverseOf:
+        isFrameElementOf
+
+ObjectProperty: hasFrameElementCoreSet
+    Annotations:
+        rdfs:label "has frame element core set"^^xsd:string
+    Domain:
+        Frame
+    Range:
+        FrameElementCoreSet
+    InverseOf:
+        isFrameElementCoreSetOf
+
+ObjectProperty: hasFrameElementGroupRealization
+    Annotations:
+        rdfs:label "has frame element group realization"^^xsd:string
+    Domain:
+        Valences
+    Range:
+        FEGroupRealization
+    InverseOf:
+        isFrameElementGroypRealizationOf
+
+ObjectProperty: hasFrameElementRealization
+    Annotations:
+        rdfs:label "has frame element realization"^^xsd:string
+    Domain:
+        Valences
+    Range:
+        FERealization
+    InverseOf:
+        isFrameElementRealizationOf
+
+ObjectProperty: hasFrameElementRelation
+    Annotations:
+        rdfs:label "has frame element relation"^^xsd:string
+    Domain:
+        FrameElement
+    Range:
+        FrameElement
+
+ObjectProperty: hasFrameRelation
+    Annotations:
+        rdfs:label "frame to frame relation"^^xsd:string
+    Domain:
+        Frame
+    Range:
+        Frame
+
+ObjectProperty: hasHeader
+    Annotations:
+        rdfs:label "hasHeader"^^xsd:string
+    Range:
+        Header
+    InverseOf:
+        isHeaderOf
+
+ObjectProperty: hasIncorporatedFrameElement
+    Annotations:
+        rdfs:label "has incorporated frame element"^^xsd:string
+    SubPropertyOf:
+        hasFrameElement
+    Domain:
+        LexicalUnit
+    InverseOf:
+        isIncorporatedFrameElementOf
+
+ObjectProperty: hasLabel
+    Annotations:
+        rdfs:label "has label"^^xsd:string
+    Domain:
+        Layer
+    Range:
+        Label
+    InverseOf:
+        isLabelOf
+
+ObjectProperty: hasLayer
+    Annotations:
+        rdfs:label "has layer"^^xsd:string
+    Range:
+        Layer
+    InverseOf:
+        isLayerOf
+
+ObjectProperty: hasLexeme
+    Annotations:
+        rdfs:label "has lexeme"^^xsd:string
+    Domain:
+        LexicalUnit
+    Range:
+        Lexeme
+    InverseOf:
+        isLexemeOf
+
+ObjectProperty: hasLexicalUnit
+    Annotations:
+        rdfs:label "has Lexical Unit"^^xsd:string
+    Domain:
+        Frame
+    Range:
+        LexicalUnit
+    InverseOf:
+        isLexicalUnitOf
+
+ObjectProperty: hasMember
+    Annotations:
+        rdfs:label "has member"^^xsd:string
+    Domain:
+        Set
+    Range:
+        owl:Thing
+    InverseOf:
+        isMemberOf
+
+ObjectProperty: hasPartOfSpeech
+    Annotations:
+        rdfs:label "has part of speech"^^xsd:string
+    Range:
+        PartOfSpeech
+    InverseOf:
+        isPartOfSpeechOf
+
+ObjectProperty: hasSemType
+    Annotations:
+        rdfs:label "has semantic type"^^xsd:string
+    Range:
+        SemType
+    InverseOf:
+        isSemanticTypeOf
+
+ObjectProperty: hasSemTypeSet
+    Annotations:
+        rdfs:label "has sem type set"^^xsd:string
+    Range:
+        SemTypeSet
+    InverseOf:
+        isSemTypeSetOf
+
+ObjectProperty: hasSentence
+    Annotations:
+        rdfs:label "has sentence"^^xsd:string
+    Range:
+        Sentence
+    InverseOf:
+        isSentenceOf
+
+ObjectProperty: hasSubCorpus
+    Annotations:
+        rdfs:label "has sub corpus"^^xsd:string
+    Domain:
+        LexicalUnit
+    Range:
+        SubCorpus
+    InverseOf:
+        isSubCorpusOf
+
+ObjectProperty: hasSubframe
+    Annotations:
+        rdfs:label "has subframe"^^xsd:string
+    SubPropertyOf:
+        hasFrameRelation
+    InverseOf:
+        subframeOf
+
+ObjectProperty: hasSuperType
+    Annotations:
+        rdfs:label "has super type"^^xsd:string
+    Domain:
+        SemType
+    Range:
+        SemType
+
+ObjectProperty: hasValencePattern
+    Annotations:
+        rdfs:label "has valence pattern"^^xsd:string
+    Range:
+        ValencePattern
+    InverseOf:
+        IsValencePatternOf
+
+ObjectProperty: hasValences
+    Annotations:
+        rdfs:label "has valence"^^xsd:string
+    Domain:
+        LexicalUnit
+    Range:
+        Valences
+    InverseOf:
+        isValencesOf
+
+ObjectProperty: hasValenceUnit
+    Annotations:
+        rdfs:label "has valence unit"^^xsd:string
+    Domain:
+        ValencePattern
+    Range:
+        ValenceUnit
+    InverseOf:
+        isValenceUnitOf
+
+ObjectProperty: inheritsFrom
+    Annotations:
+        rdfs:label "inherits from"^^xsd:string
+    SubPropertyOf:
+        hasFrameRelation
+    InverseOf:
+        isInheritedBy
+
+ObjectProperty: isAnnotationSetOf
+    Annotations:
+        rdfs:label "is annotation set of"^^xsd:string
+    Domain:
+        AnnotationSet
+    InverseOf:
+        hasAnnotationSet
+
+ObjectProperty: isAnnotationStatusOf
+    Annotations:
+        rdfs:label "is annotation status of"^^xsd:string
+    Domain:
+        AnnotationStatus
+    Range:
+        AnnotationSet
+    InverseOf:
+        hasAnnotationStatus
+
+ObjectProperty: isCausativeOf
+    Annotations:
+        rdfs:label "is causative of"^^xsd:string
+    SubPropertyOf:
+        hasFrameRelation
+
+ObjectProperty: isCorenessOf
+    Annotations:
+        rdfs:label "is coreness of"^^xsd:string
+    Domain:
+        Coreness
+    Range:
+        FrameElement
+    InverseOf:
+        hasCoreness
+
+ObjectProperty: isCorpusOf
+    Annotations:
+        rdfs:label "is corpus of"^^xsd:string
+    Domain:
+        Corpus
+    InverseOf:
+        hasCorpus
+
+ObjectProperty: isDocumentOf
+    Annotations:
+        rdfs:label "is document of"^^xsd:string
+    Domain:
+        Document
+    InverseOf:
+        hasDocument
+
+ObjectProperty: isFrameElementCoreSetOf
+    Annotations:
+        rdfs:label "is frame element core set of"^^xsd:string
+    InverseOf:
+        hasFrameElementCoreSet
+
+ObjectProperty: isFrameElementGroypRealizationOf
+    Annotations:
+        rdfs:label "is frame element group realization of"^^xsd:string
+    Domain:
+        FEGroupRealization
+    Range:
+        Valences
+    InverseOf:
+        hasFrameElementGroupRealization
+
+ObjectProperty: isFrameElementOf
+    Annotations:
+        rdfs:label "is Frame Element of"^^xsd:string
+    Domain:
+        FrameElement
+    InverseOf:
+        hasFrameElement
+
+ObjectProperty: isFrameElementRealizationOf
+    Annotations:
+        rdfs:label "is frame element realization of"^^xsd:string
+    Domain:
+        FERealization
+    Range:
+        Valences
+    InverseOf:
+        hasFrameElementRealization
+
+ObjectProperty: isFrameOf
+    Annotations:
+        rdfs:label "is frame of"^^xsd:string
+    Domain:
+        Frame
+    Range:
+        LexicalUnit
+    InverseOf:
+        hasFrame
+
+ObjectProperty: isGovernorOf
+    Annotations:
+        rdfs:label "is governor of"^^xsd:string
+    Domain:
+        Governor
+    Range:
+        Valences
+    InverseOf:
+        hasGovernor
+
+ObjectProperty: isHeaderOf
+    Annotations:
+        rdfs:label "isHeaderOf"^^xsd:string
+    Domain:
+        Header
+    InverseOf:
+        hasHeader
+
+ObjectProperty: isInchoativeOf
+    Annotations:
+        rdfs:label "is inchoative of"^^xsd:string
+    SubPropertyOf:
+        hasFrameRelation
+
+ObjectProperty: isIncorporatedFrameElementOf
+    Annotations:
+        rdfs:label "is incorporated frame element of"^^xsd:string
+    SubPropertyOf:
+        isFrameElementOf
+    Domain:
+        FrameElement
+    Range:
+        LexicalUnit
+    InverseOf:
+        hasIncorporatedFrameElement
+
+ObjectProperty: isInheritedBy
+    Annotations:
+        rdfs:label "is inherited by"^^xsd:string
+    SubPropertyOf:
+        hasFrameRelation
+    InverseOf:
+        inheritsFrom
+
+ObjectProperty: isLabelOf
+    Annotations:
+        rdfs:label "is label of"^^xsd:string
+    Domain:
+        Label
+    Range:
+        Layer
+    InverseOf:
+        hasLabel
+
+ObjectProperty: isLayerOf
+    Annotations:
+        rdfs:label "is layer of"^^xsd:string
+    Domain:
+        Layer
+    InverseOf:
+        hasLayer
+
+ObjectProperty: isLexemeOf
+    Annotations:
+        rdfs:label "is lexeme of"^^xsd:string
+    Domain:
+        Lexeme
+    Range:
+        LexicalUnit
+    InverseOf:
+        hasLexeme
+
+ObjectProperty: isLexicalUnitOf
+    Annotations:
+        rdfs:label "is Lexical Unit of"^^xsd:string
+    Domain:
+        LexicalUnit
+    Range:
+        Frame
+    InverseOf:
+        hasLexicalUnit
+
+ObjectProperty: isMemberOf
+    Annotations:
+        rdfs:label "isMemberOf"^^xsd:string
+    Range:
+        Set
+    InverseOf:
+        hasMember
+
+ObjectProperty: isPartOfSpeechOf
+    Annotations:
+        rdfs:label "is part of speech of"^^xsd:string
+    Domain:
+        PartOfSpeech
+    InverseOf:
+        hasPartOfSpeech
+
+ObjectProperty: isPerspectivizedIn
+    Annotations:
+        rdfs:label "is perspectivized in"^^xsd:string
+    SubPropertyOf:
+        hasFrameRelation
+    InverseOf:
+        perspectiveOn
+
+ObjectProperty: isPrecededBy
+    Annotations:
+        rdfs:label "is preceded by"^^xsd:string
+    SubPropertyOf:
+        hasFrameRelation
+    InverseOf:
+        precedes
+
+ObjectProperty: isSemanticTypeOf
+    Annotations:
+        rdfs:label "Semantic Type"^^xsd:string
+    InverseOf:
+        hasSemType
+
+ObjectProperty: isSemTypeSetOf
+    Annotations:
+        rdfs:label "is sem type set of"^^xsd:string
+    Domain:
+        SemTypeSet
+    InverseOf:
+        hasSemTypeSet
+
+ObjectProperty: isSentenceOf
+    Annotations:
+        rdfs:label "is sentence of"^^xsd:string
+    Domain:
+        Sentence
+    Range:
+        SubCorpus
+    InverseOf:
+        hasSentence
+
+ObjectProperty: isSubCorpusOf
+    Annotations:
+        rdfs:label "is sub corpus of"^^xsd:string
+    Domain:
+        SubCorpus
+    Range:
+        LexicalUnit
+    InverseOf:
+        hasSubCorpus
+
+ObjectProperty: isUsedBy
+    Annotations:
+        rdfs:label "is used by"^^xsd:string
+    SubPropertyOf:
+        hasFrameRelation
+    InverseOf:
+        uses
+
+ObjectProperty: IsValencePatternOf
+    Annotations:
+        rdfs:label "is valence pattern of"^^xsd:string
+    Domain:
+        ValencePattern
+    InverseOf:
+        hasValencePattern
+
+ObjectProperty: isValencesOf
+    Annotations:
+        rdfs:label "is valence of"^^xsd:string
+    Domain:
+        Valences
+    Range:
+        LexicalUnit
+    InverseOf:
+        hasValences
+
+ObjectProperty: isValenceUnitOf
+    Annotations:
+        rdfs:label "is valence unit of"^^xsd:string
+    Domain:
+        ValenceUnit
+    Range:
+        ValencePattern
+    InverseOf:
+        hasValenceUnit
+
+ObjectProperty: owl:hasValue
+ObjectProperty: hasGovernor
+    Annotations:
+        rdfs:label "has governor"^^xsd:string
+    Domain:
+        Valences
+    Range:
+        Governor
+    InverseOf:
+        isGovernorOf
+
+ObjectProperty: perspectiveOn
+    Annotations:
+        rdfs:label "perspective on"^^xsd:string
+    SubPropertyOf:
+        hasFrameRelation
+    InverseOf:
+        isPerspectivizedIn
+
+ObjectProperty: precedes
+    Annotations:
+        rdfs:label "precedes"^^xsd:string
+    SubPropertyOf:
+        hasFrameRelation
+    InverseOf:
+        isPrecededBy
+
+ObjectProperty: requiresFE
+    Annotations:
+        rdfs:label "requires frame element"^^xsd:string
+    SubPropertyOf:
+        hasFrameElementRelation
+
+ObjectProperty: seeAlso
+    Annotations:
+        rdfs:label "see also"^^xsd:string
+    SubPropertyOf:
+        hasFrameRelation
+
+ObjectProperty: subframeOf
+    Annotations:
+        rdfs:label "subframe of"^^xsd:string
+    SubPropertyOf:
+        hasFrameRelation
+    InverseOf:
+        hasSubframe
+
+ObjectProperty: uses
+    Annotations:
+        rdfs:label "uses"^^xsd:string
+    SubPropertyOf:
+        hasFrameRelation
+    InverseOf:
+        isUsedBy
+
+DataProperty: abbrev
+    Annotations:
+        rdfs:label "abbreviation"^^xsd:string
+    Range:
+        xsd:string
+
+DataProperty: aPos
+    Annotations:
+        rdfs:label "aPos"^^xsd:string
+    Domain:
+        Sentence
+    Range:
+        xsd:integer
+
+DataProperty: bgColor
+    Annotations:
+        rdfs:label "background color"^^xsd:string
+
+DataProperty: breakBefore
+    Annotations:
+        rdfs:label "break before"^^xsd:string
+    Range:
+        xsd:boolean
+
+DataProperty: createdBy
+    Annotations:
+        rdfs:label "created by"^^xsd:string
+    Range:
+        xsd:integer
+
+DataProperty: creationDate
+    Annotations:
+        rdfs:label "creation date"^^xsd:string
+    Range:
+        xsd:dateTime
+
+DataProperty: definition
+    Annotations:
+        rdfs:label "definition"^^xsd:string
+    Range:
+        xsd:string
+
+DataProperty: end
+    Annotations:
+        rdfs:label "end"^^xsd:string
+    Range:
+        xsd:integer
+
+DataProperty: fgColor
+    Annotations:
+        rdfs:label "foreground color"^^xsd:string
+
+DataProperty: grammaticalFunction
+    Annotations:
+        rdfs:label "has grammatical function"^^xsd:string
+    Range:
+        xsd:string
+
+DataProperty: headword
+    Annotations:
+        rdfs:label "headword"^^xsd:string
+    Range:
+        xsd:boolean
+
+DataProperty: lemma
+    Annotations:
+        rdfs:label "lemma"^^xsd:string
+    Domain:
+        Governor
+    Range:
+        xsd:string
+
+DataProperty: name
+    Annotations:
+        rdfs:label "name"^^xsd:string
+    Range:
+        xsd:string
+
+DataProperty: order
+    Annotations:
+        rdfs:label "order"^^xsd:string
+    Range:
+        xsd:integer
+
+DataProperty: paragNo
+    Annotations:
+        rdfs:label "paragraph number"^^xsd:string
+    Domain:
+        Sentence
+    Range:
+        xsd:integer
+
+DataProperty: phraseType
+    Annotations:
+        rdfs:label "has phrase type"^^xsd:string
+    Range:
+        xsd:string
+
+DataProperty: rank
+    Annotations:
+        rdfs:label "rank"^^xsd:string
+    Range:
+        xsd:integer
+
+DataProperty: sentNo
+    Annotations:
+        rdfs:label "sent number"^^xsd:string
+    Domain:
+        Sentence
+    Range:
+        xsd:integer
+
+DataProperty: start
+    Annotations:
+        rdfs:label "start"^^xsd:string
+    Range:
+        xsd:integer
+
+DataProperty: status
+    Annotations:
+        rdfs:label "status"^^xsd:string
+    Range:
+        xsd:string
+
+DataProperty: text
+    Annotations:
+        rdfs:label "text"^^xsd:string
+    Domain:
+        Sentence
+    Range:
+        xsd:string
+
+DataProperty: total
+    Annotations:
+        rdfs:label "total"^^xsd:string
+    Range:
+        xsd:integer
+
+DataProperty: type
+    Annotations:
+        rdfs:label "type"^^xsd:string
+    Domain:
+        Governor
+    Range:
+        xsd:string
+
+Individual: Adjective
+    Annotations:
+        rdfs:label "Adjective"^^xsd:string
+    Types:
+        PartOfSpeachType
+
+Individual: Adverb
+    Annotations:
+        rdfs:label "Adverb"^^xsd:string
+    Types:
+        PartOfSpeachType
+
+Individual: Article
+    Annotations:
+        rdfs:label "Article"^^xsd:string
+    Types:
+        PartOfSpeachType
+
+Individual: C
+    Annotations:
+        rdfs:label "C"^^xsd:string
+    Types:
+        PartOfSpeachType
+
+Individual: ComplexConjunction
+    Annotations:
+        rdfs:label "Complex Conjunction"^^xsd:string
+    Types:
+        PartOfSpeachType
+
+Individual: Core
+    Annotations:
+        rdfs:label "Enumeration"^^xsd:string
+    Types:
+        CorenessType
+
+Individual: Core-Unexpressed
+    Annotations:
+        rdfs:label "Core-Unexpressed"^^xsd:string
+    Types:
+        CorenessType
+
+Individual: Extra-thematic
+    Annotations:
+        rdfs:label "Extra-thematic"^^xsd:string
+    Types:
+        CorenessType
+
+Individual: Interjections
+    Annotations:
+        rdfs:label "Interjections"^^xsd:string
+    Types:
+        PartOfSpeachType
+
+Individual: Manual
+    Annotations:
+        rdfs:label "Manual"^^xsd:string
+    Types:
+        AnnotationStatusType
+
+Individual: Noun
+    Annotations:
+        rdfs:label "Noun"^^xsd:string
+    Types:
+        PartOfSpeachType
+
+Individual: Numeral
+    Annotations:
+        rdfs:label "Numeral"^^xsd:string
+    Types:
+        PartOfSpeachType
+
+Individual: Peripheral
+    Annotations:
+        rdfs:label "Peripheral"^^xsd:string
+    Types:
+        CorenessType
+
+Individual: Preposition
+    Annotations:
+        rdfs:label "Preposition"^^xsd:string
+    Types:
+        PartOfSpeachType
+
+Individual: Pronoun
+    Annotations:
+        rdfs:label "Pronoun"^^xsd:string
+    Types:
+        PartOfSpeachType
+
+Individual: SimpleConjunction
+    Annotations:
+        rdfs:label "Simple Conjunction"^^xsd:string
+    Types:
+        PartOfSpeachType
+
+Individual: Unannotated
+    Annotations:
+        rdfs:label "Unannotated"^^xsd:string
+    Types:
+        AnnotationStatusType
+
+Individual: Verb
+    Annotations:
+        rdfs:label "Verb"^^xsd:string
+    Types:
+        PartOfSpeachType

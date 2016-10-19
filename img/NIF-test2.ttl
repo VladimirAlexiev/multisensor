@@ -1,0 +1,106 @@
+# Representation of Guardian-built.txt by LinguaTec
+@base <http://www.multisensorproject.eu/content/Guardian-built>.
+
+# Get a lot of the used prefixes from:
+# http://prefix.cc/dbo,dc,dct,foaf,itsrdf,nerd,nif,olia,owl,time,xsd.ttl  # dbr,fise,penn,yago
+@prefix dbo:      <http://dbpedia.org/ontology/>.
+@prefix dbp:      <http://dbpedia.org/resource/>.
+@prefix dc:       <http://purl.org/dc/elements/1.1/>.
+@prefix dct:      <http://purl.org/dc/terms/>.
+@prefix foaf:     <http://xmlns.com/foaf/0.1/>.
+@prefix itsrdf:   <http://www.w3.org/2005/11/its/rdf#>.
+@prefix nerd:     <http://nerd.eurecom.fr/ontology#>.
+@prefix nif:      <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#>.
+@prefix olia:     <http://purl.org/olia/olia.owl#>.
+@prefix owl:      <http://www.w3.org/2002/07/owl#>.
+@prefix time:     <http://www.w3.org/2006/time#>.
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#>.
+
+## MAYBE OMIT
+# - nif:anchorOf: superfluous, can be obtained from referenceContext/isString.
+#   Else every text will be repeated many times through sentences and words
+# - Sentences, since UPF also catches them and provides more info (dependency parse)
+# - Words for which no Named Entity is recognized
+
+## FILE
+<> a foaf:Document;
+  dct:language <http://www.lexvo.org/page/iso639-3/eng>.
+
+<#char=0,6603> a nif:Context; # the complete text
+  nif:isString "Goodbye nuclear power... And fast.";
+  nif:sourceUrl <>. # Where the text came from, same as the @base
+
+## SENTENCES
+<#char=0,22> a nif:Sentence; nif:referenceContext <#char=0,6603>;
+  # May also include a nif:Title to indicate the role
+  nif:beginIndex "0"^^xsd:nonNegativeInteger;  nif:endIndex "22"^^xsd:nonNegativeInteger;
+  nif:nextSentence <#char=23,60>; # not strictly necessary, can be computed by ordering by beginIndex
+  nif:word <#char=0,7> , <#char=8,15>. # enumerate all words in the sentence
+
+<#char=23,60> a nif:Sentence; nif:referenceContext <#char=0,6603>;
+  # nif:anchorOf "Germany's renewable energy revolution";
+  nif:beginIndex "23"^^xsd:nonNegativeInteger;  nif:endIndex "60"^^xsd:nonNegativeInteger;
+  nif:previousSentence <#char=0,22>; nif:nextSentence <#char=61,142>.
+
+# ... more sentences
+
+## TOKENS. Called nif:Word but may also include punctuation
+
+<#char=0,7> a nif:Word; nif:referenceContext <#char=0,6603>;
+  # nif:anchorOf "Goodbye";
+  nif:beginIndex "0"^^xsd:nonNegativeInteger;  nif:endIndex "7"^^xsd:nonNegativeInteger;
+  nif:sentence <#char=23,60>; # !!! Maybe useful to link to the enclosing sentence
+  nif:nextWord <#char=8,15>. # can be computed by ordering by beginIndex.
+    # But last word in sentence shouldn't have nextWord
+
+# ... 1 more word
+
+<#char=0,7> a nif:Word; nif:referenceContext <#char=0,6603>;
+  # nif:anchorOf "Goodbye";
+  nif:beginIndex "0"^^xsd:nonNegativeInteger;  nif:endIndex "7"^^xsd:nonNegativeInteger;
+  nif:sentence <#char=23,60>; # !!! Maybe useful to link to the enclosing sentence
+  nif:previousWord <#char=8,15>.
+  # last word in sentence: no nextWord
+
+# ... words from more sentences
+
+## ENTITIES
+# If we can't yet link to DBpedia, we should make our own URLs.
+# These below are LOCAL to the document!
+
+## Person
+
+<#person=AngelaMerkel> a dbo:Person, foaf:Person;
+  # the props below are from foaf:, or we could use pure dbo: !!! should decide
+  foaf:name "Angela Merkel";
+  foaf:firstName "Angela"; foaf:lastName "Merkel";
+  dbo:gender dbp:Female.
+  # no "count" I'm afraid, but can be obtained with a query:
+  # select (count(?x) as ?c) {?c itsrdf:taIdentRef <person/AngelaMerkel>}
+
+<#char=800,813> a nif:Phrase; nif:referenceContext <#char=0,6603>;
+  nif:beginIndex "800"^^xsd:nonNegativeInteger;  nif:endIndex "813"^^xsd:nonNegativeInteger;
+  # nif:anchorOf "Angela Merkel"; # skip occurence text
+  # nif:sentence <#char=796,879>; # Is the enclosing sentence useful???
+  itsrdf:taClassRef nerd:Person;
+  itsrdf:taIdentRef <#person=AngelaMerkel>;
+  # these below may be useful eg for a published corpus. Simple case: only one tool
+  itsrdf:taAnnotatorsRef "NER-extraction|http://linguatec.com";
+  itsrdf:confidence 1.0. # means "1.0"^^xsd:double
+
+## Time
+
+<#time=2050> a time:Instant;
+  time:inXSDDateTime "2050"^^xsd:gYear. # or xsd:gYearMonth or xsd:date
+
+<#char=593,597> a nif:Word; nif:referenceContext <#char=0,6603>;
+  nif:beginIndex "593"^^xsd:nonNegativeInteger;  nif:endIndex "597"^^xsd:nonNegativeInteger;
+  nif:anchorOf "2050";
+  itsrdf:taClassRef nerd:Time;
+  itsrdf:taIdentRef <time/2050>.
+
+<#char=655,659> a nif:Word; nif:referenceContext <#char=0,6603>;
+  nif:beginIndex "655"^^xsd:nonNegativeInteger;  nif:endIndex "659"^^xsd:nonNegativeInteger;
+  nif:anchorOf "2050";
+  itsrdf:taClassRef nerd:Time;
+  itsrdf:taIdentRef <#time=2050>.

@@ -1,0 +1,97 @@
+@prefix :      <http://purl.org/olia/system.owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix olia_system: <http://purl.org/olia/system.owl#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+olia_system:hasTarget
+        a             owl:ObjectProperty ;
+        rdfs:comment  "A Relation is a directed edge between a source and a target concept."^^<http://www.w3.org/2001/XMLSchema#string> ;
+        rdfs:domain   olia_system:Relation ;
+        rdfs:range    olia_system:UnitOfAnnotation .
+
+olia_system:hasTagContaining
+        a                   owl:DatatypeProperty ;
+        rdfs:comment        "As opposed to hasTag proper, the string representation defines a substring of a concrete annotation.\nThe respective linguistic annotation then applies to every element whose annotation (tag) contains this substring."^^<http://www.w3.org/2001/XMLSchema#string> ;
+        rdfs:subPropertyOf  olia_system:hasTag .
+
+olia_system:hasTag  a  owl:DatatypeProperty ;
+        rdfs:comment  "Assigns a Linguistic Annotation a String representation, e.g., a particular Part of Speech tag, the respective abbreviation of the grammatical cases used in an annotation scheme, etc.\nimplicit semantics: hasTag is to be used if the tag is equal to the string value, otherwise use hasTagContaining, hasTagStartingWith, hasTagEndingWith"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        rdfs:domain   olia_system:LinguisticAnnotation .
+
+_:b0    a                   owl:Restriction ;
+        owl:minCardinality  "1"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        owl:onProperty      olia_system:hasTarget .
+
+olia_system:UnitOfAnnotation
+        a                owl:Class ;
+        rdfs:comment     "A UnitOfAnnotation is a structural entity that can be annotated, e.g., a word, token, constituent, or another types of markable.\nWord classes, etc., are then modelled as indirect children of UnitOfAnnotation. The division between Features and classes of UnitsOfAnnotation follows conventional standards.\n    "^^<http://www.w3.org/2001/XMLSchema#string> ;
+        rdfs:subClassOf  olia_system:LinguisticAnnotation .
+
+olia_system:hasTier  a  owl:DatatypeProperty ;
+        rdfs:comment  "Assigns a linguistic annotation a string representation of the annotation layer (\"tier\", \"level\") where it is to be found, e.g., \"pos\" for Part of Speech annotation, \"gloss\" for linguistic glosses, etc."^^<http://www.w3.org/2001/XMLSchema#string> ;
+        rdfs:domain   olia_system:LinguisticAnnotation .
+
+olia_system:AnnotationProcess
+        a                owl:Class ;
+        owl:versionInfo  "DCR annotation and editing operations ignored, e.g., add first vowel  http://www.isocat.org/datcat/DC-2199\t\t \n\t\t" , "categories for annotation and editing operations added to account for the \"Processes\" profile in the DCR" .
+
+olia_system:hasFeature
+        a             owl:ObjectProperty ;
+        rdfs:comment  "A UnitOfAnnotation or a Relation can carry Features that express annotations attached to them. By convention, (tags that represent) Features can be linked with Feature individuals, as well. Because of this reflexivity, a predicate like hasDegree(positive) allows to retrieve the individual positive as well. (This is necessary if positive represents a tag on its own, rather than being a property of a complex tag.)"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        rdfs:domain   olia_system:LinguisticAnnotation ;
+        rdfs:range    olia_system:Feature .
+
+<http://purl.org/olia/system.owl>
+        a                owl:Ontology ;
+        rdfs:comment     "OLiA core concepts for linguistic annotations." ;
+        owl:versionInfo  "\n      2008-01-13 created\n      2010-04-06 removed deprecated Category (equiv UnitOfAnnotation) category\n\t  2010-04-14 added AnnotationProcess (cf. DCR process directory)\n\t  2011-07-15 replaced base url by purl\n\t  2011-07-27 added hasTagMatching with full support for XSLT-style regular expressions\n\t  2013-06-27 added ISOcat reference for LinguisticAnnotation\n\t  \n      Christian Chiarcos, chiarcos@uni-potsdam.de\n    " , "TODO: LinguisticAnnotation disjoint" .
+
+_:b1    a                   owl:Restriction ;
+        owl:minCardinality  "1"^^<http://www.w3.org/2001/XMLSchema#int> ;
+        owl:onProperty      olia_system:hasSource .
+
+olia_system:Feature  a   owl:Class ;
+        rdfs:comment     "UnitsOfAnnotation and Relations can be described in a more detailed way by the features that are attached to them, e.g., case, number, or aspect. Features are, however, not subject to further annotations (by means of hasFeature), they are thus disjoint from Relations and UnitsOfAnnotation."^^<http://www.w3.org/2001/XMLSchema#string> ;
+        rdfs:subClassOf  olia_system:LinguisticAnnotation .
+
+olia_system:LinguisticAnnotation
+        a                 owl:Class ;
+        rdfs:comment      "Linguistic annotations pertain to either structural entities (words, tokens, constituents, sentences => UnitOfAnnotation), relations between these (dependency, dominance, coreference, etc. => Relation), or grammatical features attached to these (case, gender, number, agreement, tense, mood, aspect, ... => Feature)."^^<http://www.w3.org/2001/XMLSchema#string> , "label: Text attached to an element" ;
+        rdfs:isDefinedBy  "http://www.isocat.org/datcat/DC-1857" .
+
+olia_system:hasTagMatching
+        a                   owl:DatatypeProperty ;
+        rdfs:comment        "hasTagMatching is a subproperty of hasTag, so that results can be retrieved if the regular expression match is requested, but an exact value with reserved characters is defined\n\t" , "hasTagMatching allows to provide regular expressions as those used in XSLT and XPath, see http://www.w3.org/TR/xquery-operators/#func-matches"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        rdfs:subPropertyOf  olia_system:hasTag .
+
+olia_system:hasTagStartingWith
+        a                   owl:DatatypeProperty ;
+        rdfs:comment        "As opposed to hasTag proper, the string representation specifies only the beginning of a concrete annotation.\nThe respective linguistic annotation then applies to every element whose annotation (tag) startsWith this substring."^^<http://www.w3.org/2001/XMLSchema#string> ;
+        rdfs:subPropertyOf  olia_system:hasTag .
+
+olia_system:Relation  a      owl:Class ;
+        rdfs:comment         "Between instances of two Categories, a Relation can be established that links these together, e.g., a dominance relation (constituent X is grammatical subject of sentence Y), a dependency relation (token X is a modifier of token Y), a discourse relation (discourse unit X is in contrast to discourse unit Y), an anaphoric relation (referring expression X is coreferent with referring expressing Y), an alignment relation (word X expresses the same meaning as word Y).\nNote that Relation and UnitOfAnnotation are not disjoint, because in some approaches, establishing a Relation between two concepts entails that a structural entity is formed, consisting of Relation and the Categories connected by the Relation, e.g., in Rhetorical Structure Theory (Mann and Thompson 1987)."^^<http://www.w3.org/2001/XMLSchema#string> ;
+        rdfs:subClassOf      olia_system:LinguisticAnnotation ;
+        rdfs:subClassOf      [ a                owl:Restriction ;
+                               owl:cardinality  "1"^^<http://www.w3.org/2001/XMLSchema#int> ;
+                               owl:onProperty   olia_system:hasTarget
+                             ] ;
+        rdfs:subClassOf      [ a                owl:Restriction ;
+                               owl:cardinality  "1"^^<http://www.w3.org/2001/XMLSchema#int> ;
+                               owl:onProperty   olia_system:hasSource
+                             ] ;
+        owl:equivalentClass  [ a            owl:Class ;
+                               owl:unionOf  ( _:b0 _:b1 )
+                             ] .
+
+olia_system:hasSource
+        a             owl:ObjectProperty ;
+        rdfs:comment  "A Relation is a directed edge between a source and a target concept."^^<http://www.w3.org/2001/XMLSchema#string> ;
+        rdfs:domain   olia_system:Relation ;
+        rdfs:range    olia_system:UnitOfAnnotation .
+
+olia_system:hasTagEndingWith
+        a                   owl:DatatypeProperty ;
+        rdfs:comment        "As opposed to hasTag proper, the string representation defines the final subsequence of a concrete annotation.\nThe respective linguistic annotation then applies to every element whose annotation (tag) ends with this substring."^^<http://www.w3.org/2001/XMLSchema#string> ;
+        rdfs:subPropertyOf  olia_system:hasTag .

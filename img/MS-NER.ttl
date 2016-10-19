@@ -1,0 +1,124 @@
+
+# Various kinds of Named Entities as per Multisensor-NER-Mapping
+
+@base <http://data.multisensorproject.eu/content/12486u3968u39>.
+
+<#char=1,2> nif:anchorOf "Angela Merkel";
+  its:taClassRef nerd:Person;
+  its:taIdentRef <#person=Angela_Merkel>.
+<#person=Angela_Merkel> a dbo:Person, foaf:Person;
+  foaf:name "Angela Merkel";
+  foaf:firstName "Angela"; foaf:lastName "Merkel";
+  dbo:gender dbp:Female;
+  rdau:professionOrOccupation "Bundeskanzlerin"@de.
+
+<#char=3,4> nif:anchorOf "Germany";
+  its:taClassRef nerd:Country;
+  its:taIdentRef <#location=Germany>.
+<#location=Germany> a dbo:Country;
+  foaf:name "Germany".
+
+<#char=5,6> nif:anchorOf "Hesse region";
+  its:taClassRef nerd:AdministrativeRegion;
+  its:taIdentRef <#location=Hesse>.
+<#location=Hesse> a dbo:Region;
+  foaf:name "Hesse".
+
+<#char=7,8> nif:anchorOf "Darmstadt";
+  its:taClassRef nerd:City;
+  its:taIdentRef <#location=Darmstadt>.
+<#location=Darmstadt> a dbo:City;
+  foaf:name "Darmstadt".
+
+<#char=9,10> nif:anchorOf "135 Tsarigradsko Shosse Blvd.";
+  its:taClassRef nerd:Location;
+  its:taIdentRef <#location=135_Tsarigradsko_Shosse_Blvd>.
+<#location=135_Tsarigradsko_Shosse_Blvd> a schema:PostalAddress;
+  schema:streetAddress "135 Tsarigradsko Shosse Blvd.".
+
+<#char=11,12> nif:anchorOf "the dark side of the Moon";
+  its:taClassRef nerd:Location.
+
+<#char=13,14> nif:anchorOf "The United Nations";
+  its:taClassRef nerd:Organization;
+  its:taIdentRef <#organisation=The_United_Nations>.
+<#organisation=The_United_Nations> a dbo:Organisation, foaf:Organization;
+  foaf:name "The United Nations".
+
+<#char=15,16> nif:anchorOf "Ontotext Corp";
+  its:taClassRef nerd:Company;
+  its:taIdentRef <#organisation=Ontotext_Corp>.
+<#organisation=Ontotext_Corp> a dbo:Company, foaf:Company;
+  foaf:name "Ontotext Corp".
+
+<#char=17,18> nif:anchorOf "AEG Smart-Freeze Refrigerator";
+  its:taClassRef nerd:Product.
+
+<#char=19,20> nif:anchorOf "2050";
+  its:taClassRef nerd:Time;
+  its:taIdentRef <#time=2050>.
+<#time=2050> a time:Instant;
+  time:inXSDDateTime "2050"^^xsd:gYear.
+
+<#char=21,22> nif:anchorOf "May 2050";
+  its:taClassRef nerd:Time;
+  its:taIdentRef <#time=May_2050>.
+<#time=May_2050> a time:Instant;
+  time:inXSDDateTime "2050-05-01"^^xsd:gYearMonth;
+  rdfs:comment "The correct value is 2050-05 but my JSONLD convertor throws exception";
+  rdfs:seeAlso <https://github.com/jsonld-java/jsonld-java/issues/130>.
+
+<#char=41,42> nif:anchorOf "Mei";
+  its:taClassRef nerd:Time;
+  its:taIdentRef dbp:May.
+dbp:May a yago:Months;
+  rdfs:label "May"@en, "Mei"@de.
+
+<#char=23,24> nif:anchorOf "15 May 2050";
+  its:taClassRef nerd:Time;
+  its:taIdentRef <#time=15_May_2050>.
+<#time=15_May_2050> a time:Instant;
+  time:inXSDDateTime "2050-05-15"^^xsd:date.
+
+<#char=25,26> nif:anchorOf "1:34pm";
+  its:taClassRef nerd:Time;
+  its:taIdentRef <#time=1_34pm>.
+<#time=1_34pm> a time:Instant;
+  rdfs:comment "Convert to xsd:time, which means complete it to minutes";
+  time:inXSDDateTime "13:34:00"^^xsd:time.
+
+<#char=39,40> nif:anchorOf "15 May 2050 1:34pm";
+  its:taClassRef nerd:Time;
+  its:taIdentRef <#time=15_May_2050_1_34pm>.
+<#time=15_May_2050_1_34pm> a time:Instant;
+  time:inXSDDateTime "2050-05-15T13:34:00"^^xsd:datetime.
+  
+<#char=27,28> nif:anchorOf "Zondag";
+  its:taClassRef nerd:Time;
+  its:taIdentRef dbp:Sunday.
+dbp:Sunday a yago:DaysOfTheWeek;
+  rdfs:label "Sunday"@en, "Zondag"@de.
+
+<#char=29,30> nif:anchorOf "the last three days";
+  its:taClassRef nerd:Time.
+
+<#char=31,32> nif:anchorOf "Valentine's day";
+  its:taClassRef nerd:Time.
+
+<#char=33,34> nif:anchorOf "123,40 EUR";
+  its:taClassRef nerd:Amount;
+  its:taIdentRef <#amount=123_40_EUR>.
+<#amount=123_40_EUR> a schema:PriceSpecification;
+  schema:priceCurrency "EUR";
+  schema:price 123.40.
+
+<#char=35,36> nif:anchorOf "123,40 meters";
+  its:taClassRef nerd:Amount;
+  its:taIdentRef <#amount=123_40_meters>.
+<#amount=123_40_meters> a schema:QuantitativeValue;
+  schema:unitCode "MTR";
+  schema:value 123.40.
+
+<#char=37,38> nif:anchorOf "Dodo";
+  its:taClassRef nerd:Thing;
+  dc:type "mythical creature".

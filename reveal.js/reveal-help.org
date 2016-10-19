@@ -1,0 +1,37 @@
+#+TITLE: reveal.js bindings
+#+EMAIL: vladimir.alexiev@ontotext.com
+#+OPTIONS: toc:nil
+#+STARTUP: showeverything
+#+BIND: org-html-table-use-header-tags-for-first-column t
+#+HTML_HEAD_EXTRA: <style>.title {display:none}</style>
+#+HTML_HEAD_EXTRA: <style>th, td {border: 1px; border-style: none solid; border-spacing:0; padding:0px 2px}</style>
+
+This presentation is proudly made in plain text with [[https://github.com/hakimel/reveal.js/][reveal.js]], [[https://github.com/yjwen/org-reveal][org-reveal]], [[http://orgmode.org][org-mode]] and [[http://www.gnu.org/s/emacs/][emacs]].\\
+The presentation is 2-dimensional: press 'o' to see the overview. Click or Enter to go into a slide\\
+| *Key*                     | *Action*                                                            |
+|---------------------------+---------------------------------------------------------------------|
+| h                         | this keyboard help                                                  |
+| p, page up, mwheel up     | prev slide (left then up)                                           |
+| n, page down, mwheel down | next slide (down then right)                                        |
+| home                      | first slide                                                         |
+| end                       | last slide                                                          |
+| left                      | go left                                                             |
+| right                     | go right                                                            |
+| up                        | go up                                                               |
+| down                      | go down                                                             |
+| enter                     | stop overview, go into slide                                        |
+| space                     | next slide (or stop overview)                                       |
+| shift-space               | prev slide (or stop overview)                                       |
+| b, period                 | blank/unblank screen                                                |
+| f, F11                    | full screen (Esc or F11 to exit)                                    |
+| Esc, o                    | toggle overview                                                     |
+| s                         | speaker window: notes, next slide, timer, controls the presentation |
+| u                         | toggle showing slide number in URL and in browser history           |
+| progress bar              | (bottom of window) move to that approximate slide                   |
+| search bar                | (top of window) highlight word across slides (see overview!)        |
+
+#+BEGIN_COMMENT
+| <url>?print-pdf | Go to this URL in Chrome, then press control-P to print to PDF |
+| control-plus    | increase size                                                  |
+| control-minus   | decrease size                                                  |
+#+END_COMMENT

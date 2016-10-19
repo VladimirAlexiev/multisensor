@@ -1,0 +1,675 @@
+@prefix upf-dep-spa:      <http://taln.upf.edu/upf-dep-spa#> .
+@prefix system: <http://purl.org/olia/system.owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://taln.upf.edu/upf-dep-spa> a owl:Ontology ;
+        owl:imports  <http://purl.org/olia/system.owl> .
+
+#################### Classes
+
+upf-dep-spa:Abbreviation a owl:Class .
+
+upf-dep-spa:AbsolutePredicative a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:NominalModifier .
+
+upf-dep-spa:Adverb a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Modifier .
+
+upf-dep-spa:AdverbialModifier a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Copredicate .
+
+upf-dep-spa:Agent a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:ObliqueObject .
+
+upf-dep-spa:AnalyticalFuture a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Auxiliar .
+
+upf-dep-spa:AnalyticalPassive a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Auxiliar .
+
+upf-dep-spa:AnalyticalPerfect a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Auxiliar .
+
+upf-dep-spa:AnalyticalProgressive a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Auxiliar .
+
+upf-dep-spa:Appositive a owl:Class .
+
+upf-dep-spa:Argument a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Subordinated .
+
+upf-dep-spa:Attributive a owl:Class .
+
+upf-dep-spa:Auxiliar a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Argument .
+
+upf-dep-spa:AuxiliarPhrase a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Name .
+
+upf-dep-spa:AuxiliarReflexive a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Argument .
+
+upf-dep-spa:AuxiliarReflexiveDirect a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:AuxiliarReflexive .
+
+upf-dep-spa:AuxiliarReflexiveIndirect a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:AuxiliarReflexive .
+
+upf-dep-spa:AuxiliarReflexiveLexical a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:AuxiliarReflexive .
+
+upf-dep-spa:AuxiliarReflexivePassive a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:AuxiliarReflexive .
+
+upf-dep-spa:Binary a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Modifier .
+
+upf-dep-spa:BinaryJunction a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Binary .
+
+upf-dep-spa:Comparison a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:ObliqueObject .
+
+upf-dep-spa:ComparisonConjunctive a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Conjunctive .
+
+upf-dep-spa:Complement a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:ObliqueObject .
+
+upf-dep-spa:Complement1 a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Complement .
+
+upf-dep-spa:Complement2 a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Complement .
+
+upf-dep-spa:ComplementAdNominal a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:NominalModifier .
+
+upf-dep-spa:Conjunctive a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Prepositional .
+
+upf-dep-spa:Coordination a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:NotSubordinated .
+
+upf-dep-spa:CoordinationConjunctive a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Prepositional .
+
+upf-dep-spa:Copredicate a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Adverb .
+
+upf-dep-spa:Copulative a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Object .
+
+upf-dep-spa:CopulativeClitic a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Copulative .
+
+upf-dep-spa:CopulativeQuote a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Copulative .
+
+upf-dep-spa:DEP a upf-dep-spa:Dependent ;
+        system:hasFeature          upf-dep-spa:Set1Relation ;
+        system:hasTagContaining    "DEP"^^xsd:string ;
+        system:hasTagStartingWith  "DEP"^^xsd:string .
+
+upf-dep-spa:DOBJ a upf-dep-spa:DirectObject ;
+        system:hasFeature          upf-dep-spa:Set15Relations ;
+        system:hasTagContaining    "DOBJ"^^xsd:string ;
+        system:hasTagStartingWith  "DOBJ"^^xsd:string .
+
+upf-dep-spa:DependencyLabel a owl:Class ;
+        rdfs:subClassOf  system:Feature .
+
+upf-dep-spa:DependencyRelation a owl:Class ;
+        rdfs:subClassOf  system:Relation ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:onProperty      system:hasTarget ;
+                           owl:someValuesFrom  upf-dep-spa:Token
+                         ] ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:onProperty      system:hasSource ;
+                           owl:someValuesFrom  upf-dep-spa:Token
+                         ] .
+
+upf-dep-spa:DependencyTagset a owl:Class ;
+        rdfs:subClassOf  system:Feature .
+
+upf-dep-spa:Dependent a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:DependencyLabel .
+
+upf-dep-spa:Determiner a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:NominalModifier .
+
+upf-dep-spa:DirectObject a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Object .
+
+upf-dep-spa:DirectObjectClitic a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:DirectObject .
+
+upf-dep-spa:DirectObjectQuote a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:DirectObject .
+
+upf-dep-spa:Election a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:ObliqueObject .
+
+upf-dep-spa:IndirectObject a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Object .
+
+upf-dep-spa:IndirectObjectClitic a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:IndirectObject .
+
+upf-dep-spa:Juxtaposition a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Coordination .
+
+upf-dep-spa:Miscellaneous a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:NotSubordinated .
+
+upf-dep-spa:Modal a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Auxiliar .
+
+upf-dep-spa:Modifier a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Subordinated .
+
+upf-dep-spa:Name a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Miscellaneous .
+
+upf-dep-spa:NominalModifier a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Modifier .
+
+upf-dep-spa:NotSubordinated a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Dependent .
+
+upf-dep-spa:NumeralJunction a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Coordination .
+
+upf-dep-spa:Object a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Argument .
+
+upf-dep-spa:ObjectCopredicate a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Copredicate .
+
+upf-dep-spa:ObliqueComplement a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:ObliqueObject .
+
+upf-dep-spa:ObliqueObject a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Object .
+
+upf-dep-spa:Prepositional a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Object .
+
+upf-dep-spa:PrepositionalQuote a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Prepositional .
+
+upf-dep-spa:Prolepsis a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Copredicate .
+
+upf-dep-spa:Punctuation a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Miscellaneous .
+
+upf-dep-spa:PunctuationInitial a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Punctuation .
+
+upf-dep-spa:Quantifier a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:NominalModifier .
+
+upf-dep-spa:QuasiCoordination a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Juxtaposition .
+
+upf-dep-spa:QuasiSubject a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Subject .
+
+upf-dep-spa:Relative a owl:Class .
+
+upf-dep-spa:Restrictive a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Copredicate .
+
+upf-dep-spa:Root a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:DependencyLabel .
+
+upf-dep-spa:Sequential a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Binary .
+
+upf-dep-spa:SubConjunctive a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Conjunctive .
+
+upf-dep-spa:Subject a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Argument .
+
+upf-dep-spa:SubjectCopredicate a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Copredicate .
+
+upf-dep-spa:Subordinated a owl:Class ;
+        rdfs:subClassOf  upf-dep-spa:Dependent .
+
+upf-dep-spa:Token a owl:Class ;
+        rdfs:subClassOf  system:UnitOfAnnotation .
+
+#################### Individuals
+
+upf-dep-spa:ADV a upf-dep-spa:Adverb ;
+        system:hasFeature          upf-dep-spa:Set15Relations ;
+        system:hasTagContaining    "ADV"^^xsd:string ;
+        system:hasTagStartingWith  "ADV"^^xsd:string .
+
+upf-dep-spa:ARG a upf-dep-spa:Argument ;
+        system:hasFeature          upf-dep-spa:Set4Relations ;
+        system:hasTagContaining    "ARG"^^xsd:string ;
+        system:hasTagStartingWith  "ARG"^^xsd:string .
+
+upf-dep-spa:AUX a upf-dep-spa:Auxiliar ;
+        system:hasFeature          upf-dep-spa:Set15Relations , upf-dep-spa:Set8Relations ;
+        system:hasTagContaining    "AUX"^^xsd:string ;
+        system:hasTagStartingWith  "AUX"^^xsd:string .
+
+upf-dep-spa:AUX_REFL a upf-dep-spa:AuxiliarReflexive ;
+        system:hasFeature          upf-dep-spa:Set15Relations , upf-dep-spa:Set8Relations ;
+        system:hasTagContaining    "AUX_REFL"^^xsd:string ;
+        system:hasTagStartingWith  "AUX_REFL"^^xsd:string .
+
+upf-dep-spa:BIN a upf-dep-spa:Binary ;
+        system:hasFeature          upf-dep-spa:Set15Relations ;
+        system:hasTagContaining    "BIN"^^xsd:string ;
+        system:hasTagStartingWith  "BIN"^^xsd:string .
+
+upf-dep-spa:COORD a upf-dep-spa:Coordination ;
+        system:hasFeature          upf-dep-spa:Set15Relations , upf-dep-spa:Set8Relations , upf-dep-spa:Set4Relations ;
+        system:hasTagContaining    "COORD"^^xsd:string ;
+        system:hasTagStartingWith  "COORD"^^xsd:string .
+
+upf-dep-spa:COPUL a upf-dep-spa:Copulative ;
+        system:hasFeature          upf-dep-spa:Set15Relations ;
+        system:hasTagContaining    "COPUL"^^xsd:string ;
+        system:hasTagStartingWith  "COPUL"^^xsd:string .
+
+upf-dep-spa:IOBJ a upf-dep-spa:IndirectObject ;
+        system:hasFeature          upf-dep-spa:Set15Relations ;
+        system:hasTagContaining    "IOBJ"^^xsd:string ;
+        system:hasTagStartingWith  "IOBJ"^^xsd:string .
+
+upf-dep-spa:MISC a upf-dep-spa:Miscellaneous ;
+        system:hasFeature          upf-dep-spa:Set4Relations ;
+        system:hasTagContaining    "MISC"^^xsd:string ;
+        system:hasTagStartingWith  "MISC"^^xsd:string .
+
+upf-dep-spa:MOD a upf-dep-spa:Modifier ;
+        system:hasFeature          upf-dep-spa:Set8Relations , upf-dep-spa:Set4Relations ;
+        system:hasTagContaining    "MOD"^^xsd:string ;
+        system:hasTagStartingWith  "MOD"^^xsd:string .
+
+upf-dep-spa:NAME a upf-dep-spa:Name ;
+        system:hasFeature          upf-dep-spa:Set15Relations , upf-dep-spa:Set8Relations ;
+        system:hasTagContaining    "NAME"^^xsd:string ;
+        system:hasTagStartingWith  "NAME"^^xsd:string .
+
+upf-dep-spa:NMOD a upf-dep-spa:NominalModifier ;
+        system:hasFeature          upf-dep-spa:Set15Relations ;
+        system:hasTagContaining    "NMOD"^^xsd:string ;
+        system:hasTagStartingWith  "NMOD"^^xsd:string .
+
+upf-dep-spa:NOTSUBORD a upf-dep-spa:NotSubordinated ;
+        system:hasFeature          upf-dep-spa:Set2Relations ;
+        system:hasTagContaining    "¬SUBORD"^^xsd:string ;
+        system:hasTagStartingWith  "¬SUBORD"^^xsd:string .
+
+upf-dep-spa:OBJ a upf-dep-spa:Object ;
+        system:hasFeature          upf-dep-spa:Set8Relations ;
+        system:hasTagContaining    "OBJ"^^xsd:string ;
+        system:hasTagStartingWith  "OBJ"^^xsd:string .
+
+upf-dep-spa:OOBJ a upf-dep-spa:ObliqueObject ;
+        system:hasFeature          upf-dep-spa:Set15Relations ;
+        system:hasTagContaining    "OOBJ"^^xsd:string ;
+        system:hasTagStartingWith  "OOBJ"^^xsd:string .
+
+upf-dep-spa:PREPOS a upf-dep-spa:Prepositional ;
+        system:hasFeature          upf-dep-spa:Set15Relations ;
+        system:hasTagContaining    "PREPOS"^^xsd:string ;
+        system:hasTagStartingWith  "PREPOS"^^xsd:string .
+
+upf-dep-spa:PUNC a upf-dep-spa:Punctuation ;
+        system:hasFeature          upf-dep-spa:Set15Relations , upf-dep-spa:Set8Relations ;
+        system:hasTagContaining    "PUNC"^^xsd:string ;
+        system:hasTagStartingWith  "PUNC"^^xsd:string .
+
+upf-dep-spa:QSUBJ a upf-dep-spa:QuasiSubject ;
+        system:hasFeature          upf-dep-spa:Set15Relations ;
+        system:hasTagContaining    "QSUBJ"^^xsd:string ;
+        system:hasTagStartingWith  "QSUBJ"^^xsd:string .
+
+upf-dep-spa:ROOT a upf-dep-spa:Root ;
+        system:hasFeature          upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations , upf-dep-spa:Set8Relations , upf-dep-spa:Set4Relations , upf-dep-spa:Set2Relations , upf-dep-spa:Set1Relation , upf-dep-spa:Set15Relations , upf-dep-spa:Set43Relations ;
+        system:hasTagContaining    "ROOT"^^xsd:string ;
+        system:hasTagStartingWith  "ROOT"^^xsd:string .
+
+upf-dep-spa:SUBJ a upf-dep-spa:Subject ;
+        system:hasFeature          upf-dep-spa:Set15Relations , upf-dep-spa:Set8Relations ;
+        system:hasTagContaining    "SUBJ"^^xsd:string ;
+        system:hasTagStartingWith  "SUBJ"^^xsd:string .
+
+upf-dep-spa:SUBORD a upf-dep-spa:Subordinated ;
+        system:hasFeature          upf-dep-spa:Set2Relations ;
+        system:hasTagContaining    "SUBORD"^^xsd:string ;
+        system:hasTagStartingWith  "SUBORD"^^xsd:string .
+
+upf-dep-spa:abbrev a upf-dep-spa:Abbreviation ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "abbrev"^^xsd:string ;
+        system:hasTagStartingWith  "abbrev"^^xsd:string .
+
+upf-dep-spa:abs_pred a upf-dep-spa:AbsolutePredicative ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "abs_pred"^^xsd:string ;
+        system:hasTagStartingWith  "abs_pred"^^xsd:string .
+
+upf-dep-spa:adv a upf-dep-spa:Adverb ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "adv"^^xsd:string ;
+        system:hasTagStartingWith  "adv"^^xsd:string .
+
+upf-dep-spa:adv_mod a upf-dep-spa:AdverbialModifier ;
+        system:hasFeature          upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "adv_mod"^^xsd:string ;
+        system:hasTagStartingWith  "adv_mod"^^xsd:string .
+
+upf-dep-spa:agent a upf-dep-spa:Agent ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "agent"^^xsd:string ;
+        system:hasTagStartingWith  "agent"^^xsd:string .
+
+upf-dep-spa:analyt_fut a upf-dep-spa:AnalyticalFuture ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "analyt_fut"^^xsd:string ;
+        system:hasTagStartingWith  "analyt_fut"^^xsd:string .
+
+upf-dep-spa:analyt_pass a upf-dep-spa:AnalyticalPassive ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "analyt_pass"^^xsd:string ;
+        system:hasTagStartingWith  "analyt_pass"^^xsd:string .
+
+upf-dep-spa:analyt_perf a upf-dep-spa:AnalyticalPerfect ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "analyt_perf"^^xsd:string ;
+        system:hasTagStartingWith  "analyt_perf"^^xsd:string .
+
+upf-dep-spa:analyt_progr a upf-dep-spa:AnalyticalProgressive ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "analyt_progr"^^xsd:string ;
+        system:hasTagStartingWith  "analyt_progr"^^xsd:string .
+
+upf-dep-spa:appos a upf-dep-spa:Appositive ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "appos"^^xsd:string ;
+        system:hasTagStartingWith  "appos"^^xsd:string .
+
+upf-dep-spa:attr a upf-dep-spa:Attributive ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "attr"^^xsd:string ;
+        system:hasTagStartingWith  "attr"^^xsd:string .
+
+upf-dep-spa:aux_phras a upf-dep-spa:AuxiliarPhrase ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "aux_phras"^^xsd:string ;
+        system:hasTagStartingWith  "aux_phras"^^xsd:string .
+
+upf-dep-spa:aux_refl a upf-dep-spa:AuxiliarReflexive ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "aux_refl"^^xsd:string ;
+        system:hasTagStartingWith  "aux_refl"^^xsd:string .
+
+upf-dep-spa:aux_refl_dir a upf-dep-spa:AuxiliarReflexiveDirect ;
+        system:hasFeature          upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "aux_refl_dir"^^xsd:string ;
+        system:hasTagStartingWith  "aux_refl_dir"^^xsd:string .
+
+upf-dep-spa:aux_refl_indir a upf-dep-spa:AuxiliarReflexiveIndirect ;
+        system:hasFeature          upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "aux_refl_indir"^^xsd:string ;
+        system:hasTagStartingWith  "aux_refl_indir"^^xsd:string .
+
+upf-dep-spa:aux_refl_lex a upf-dep-spa:AuxiliarReflexiveLexical ;
+        system:hasFeature      upf-dep-spa:Set55Relations ;
+        system:hasTag          "aux_refl_lex"^^xsd:string ;
+        system:hasTagMatching  "aux_refl_lex"^^xsd:string .
+
+upf-dep-spa:aux_refl_pass a upf-dep-spa:AuxiliarReflexivePassive ;
+        system:hasFeature          upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "aux_refl_pass"^^xsd:string ;
+        system:hasTagStartingWith  "aux_refl_pass"^^xsd:string .
+
+upf-dep-spa:bin_junct a upf-dep-spa:BinaryJunction ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "bin_junct"^^xsd:string ;
+        system:hasTagStartingWith  "bin_junct"^^xsd:string .
+
+upf-dep-spa:compar a upf-dep-spa:Comparison ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "compar"^^xsd:string ;
+        system:hasTagStartingWith  "compar"^^xsd:string .
+
+upf-dep-spa:compar_conj a upf-dep-spa:ComparisonConjunctive ;
+        system:hasFeature          upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "compar_conj"^^xsd:string ;
+        system:hasTagStartingWith  "compar_conj"^^xsd:string .
+
+upf-dep-spa:compl a upf-dep-spa:Complement ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "compl"^^xsd:string ;
+        system:hasTagStartingWith  "compl"^^xsd:string .
+
+upf-dep-spa:compl1 a upf-dep-spa:Complement1 ;
+        system:hasFeature          upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "compl1"^^xsd:string ;
+        system:hasTagStartingWith  "compl1"^^xsd:string .
+
+upf-dep-spa:compl2 a upf-dep-spa:Complement2 ;
+        system:hasFeature          upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "compl2"^^xsd:string ;
+        system:hasTagStartingWith  "compl2"^^xsd:string .
+
+upf-dep-spa:compl_adnom a upf-dep-spa:ComplementAdNominal ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "compl_adnom"^^xsd:string ;
+        system:hasTagStartingWith  "compl_adnom"^^xsd:string .
+
+upf-dep-spa:conj a upf-dep-spa:Conjunctive ;
+        system:hasFeature          upf-dep-spa:Set43Relations ;
+        system:hasTagContaining    "conj"^^xsd:string ;
+        system:hasTagStartingWith  "conj"^^xsd:string .
+
+upf-dep-spa:coord a upf-dep-spa:Coordination ;
+        system:hasFeature          upf-dep-spa:Set55Relations , upf-dep-spa:Set43Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "coord"^^xsd:string ;
+        system:hasTagStartingWith  "coord"^^xsd:string .
+
+upf-dep-spa:coord_conj a upf-dep-spa:CoordinationConjunctive ;
+        system:hasFeature          upf-dep-spa:Set55Relations , upf-dep-spa:Set43Relations ;
+        system:hasTagContaining    "coord_conj"^^xsd:string ;
+        system:hasTagStartingWith  "coord_conj"^^xsd:string .
+
+upf-dep-spa:copred a upf-dep-spa:Copredicate ;
+        system:hasFeature          upf-dep-spa:Set43Relations ;
+        system:hasTagContaining    "copred"^^xsd:string ;
+        system:hasTagStartingWith  "copred"^^xsd:string .
+
+upf-dep-spa:copul a upf-dep-spa:Copulative ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "copul"^^xsd:string ;
+        system:hasTagStartingWith  "copul"^^xsd:string .
+
+upf-dep-spa:copul_clitic a upf-dep-spa:CopulativeClitic ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "copul_clitic"^^xsd:string ;
+        system:hasTagStartingWith  "copul_clitic"^^xsd:string .
+
+upf-dep-spa:copul_quot a upf-dep-spa:CopulativeQuote ;
+        system:hasFeature          upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "copul_quot"^^xsd:string ;
+        system:hasTagStartingWith  "copul_quot"^^xsd:string .
+
+upf-dep-spa:det a upf-dep-spa:Determiner ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "det"^^xsd:string ;
+        system:hasTagStartingWith  "det"^^xsd:string .
+
+upf-dep-spa:dobj a upf-dep-spa:DirectObject ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "dobj"^^xsd:string ;
+        system:hasTagStartingWith  "dobj"^^xsd:string .
+
+upf-dep-spa:dobj_clitic a upf-dep-spa:DirectObjectClitic ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "dobj_clitic"^^xsd:string ;
+        system:hasTagStartingWith  "dobj_clitic"^^xsd:string .
+
+upf-dep-spa:dobj_quot a upf-dep-spa:DirectObjectQuote ;
+        system:hasFeature          upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "dobj_quot"^^xsd:string ;
+        system:hasTagStartingWith  "dobj_quot"^^xsd:string .
+
+upf-dep-spa:elect a upf-dep-spa:Election ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "elect"^^xsd:string ;
+        system:hasTagStartingWith  "elect"^^xsd:string .
+
+upf-dep-spa:iobj a upf-dep-spa:IndirectObject ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "iobj"^^xsd:string ;
+        system:hasTagStartingWith  "iobj"^^xsd:string .
+
+upf-dep-spa:iobj_clitic a upf-dep-spa:IndirectObjectClitic ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "iobj_clitic"^^xsd:string ;
+        system:hasTagStartingWith  "iobj_clitic"^^xsd:string .
+
+upf-dep-spa:juxtapos a upf-dep-spa:Juxtaposition ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "juxtapos"^^xsd:string ;
+        system:hasTagStartingWith  "juxtapos"^^xsd:string .
+
+upf-dep-spa:modal a upf-dep-spa:Modal ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "modal"^^xsd:string ;
+        system:hasTagStartingWith  "modal"^^xsd:string .
+
+upf-dep-spa:modif a upf-dep-spa:NominalModifier ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "modif"^^xsd:string ;
+        system:hasTagStartingWith  "modif"^^xsd:string .
+
+upf-dep-spa:num_junct a upf-dep-spa:NumeralJunction ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "num_junct"^^xsd:string ;
+        system:hasTagStartingWith  "num_junct"^^xsd:string .
+
+upf-dep-spa:obj_copred a upf-dep-spa:ObjectCopredicate ;
+        system:hasFeature          upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "obj_copred"^^xsd:string ;
+        system:hasTagStartingWith  "obj_copred"^^xsd:string .
+
+upf-dep-spa:obl_compl a upf-dep-spa:ObliqueComplement ;
+        system:hasFeature          upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "obl_compl"^^xsd:string ;
+        system:hasTagStartingWith  "obl_compl"^^xsd:string .
+
+upf-dep-spa:obl_obj a upf-dep-spa:ObliqueObject ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "obl_obj"^^xsd:string ;
+        system:hasTagStartingWith  "obl_obj"^^xsd:string .
+
+upf-dep-spa:prepos a upf-dep-spa:Prepositional ;
+        system:hasFeature          upf-dep-spa:Set55Relations , upf-dep-spa:Set43Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "prepos"^^xsd:string ;
+        system:hasTagStartingWith  "prepos"^^xsd:string .
+
+upf-dep-spa:prepos_quot a upf-dep-spa:PrepositionalQuote ;
+        system:hasFeature          upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "prepos_quot"^^xsd:string ;
+        system:hasTagStartingWith  "prepos_quot"^^xsd:string .
+
+upf-dep-spa:prolep a upf-dep-spa:Prolepsis ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "prolep"^^xsd:string ;
+        system:hasTagStartingWith  "prolep"^^xsd:string .
+
+upf-dep-spa:punc a upf-dep-spa:Punctuation ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "punc"^^xsd:string ;
+        system:hasTagStartingWith  "punc"^^xsd:string .
+
+upf-dep-spa:punc_init a upf-dep-spa:PunctuationInitial ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "punc_init"^^xsd:string ;
+        system:hasTagStartingWith  "punc_init"^^xsd:string .
+
+upf-dep-spa:quant a upf-dep-spa:Quantifier ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "quant"^^xsd:string ;
+        system:hasTagStartingWith  "quant"^^xsd:string .
+
+upf-dep-spa:quasi_coord a upf-dep-spa:QuasiCoordination ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "quasi_coord"^^xsd:string ;
+        system:hasTagStartingWith  "quasi_coord"^^xsd:string .
+
+upf-dep-spa:quasi_subj a upf-dep-spa:QuasiSubject ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "quasi_subj"^^xsd:string ;
+        system:hasTagStartingWith  "quasi_subj"^^xsd:string .
+
+upf-dep-spa:relat a upf-dep-spa:Relative ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "relat"^^xsd:string ;
+        system:hasTagStartingWith  "relat"^^xsd:string .
+
+upf-dep-spa:restr a upf-dep-spa:Restrictive ;
+        system:hasFeature          upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "restr"^^xsd:string ;
+        system:hasTagStartingWith  "restr"^^xsd:string .
+
+upf-dep-spa:sequent a upf-dep-spa:Sequential ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "sequent"^^xsd:string ;
+        system:hasTagStartingWith  "sequent"^^xsd:string .
+
+upf-dep-spa:sub_conj a upf-dep-spa:SubConjunctive ;
+        system:hasFeature          upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "sub_conj"^^xsd:string ;
+        system:hasTagStartingWith  "sub_conj"^^xsd:string .
+
+upf-dep-spa:subj a upf-dep-spa:Subject ;
+        system:hasFeature          upf-dep-spa:Set43Relations , upf-dep-spa:Set55Relations , upf-dep-spa:Set31Relations ;
+        system:hasTagContaining    "subj"^^xsd:string ;
+        system:hasTagStartingWith  "subj"^^xsd:string .
+
+upf-dep-spa:subj_copred a upf-dep-spa:SubjectCopredicate ;
+        system:hasFeature          upf-dep-spa:Set55Relations ;
+        system:hasTagContaining    "subj_copred"^^xsd:string ;
+        system:hasTagStartingWith  "subj_copred"^^xsd:string .
+
+#################### Relation sets
+
+upf-dep-spa:Set15Relations a upf-dep-spa:DependencyTagset ;
+        system:hasTag  "15"^^xsd:string .
+
+upf-dep-spa:Set1Relation a upf-dep-spa:DependencyTagset ;
+        system:hasTag  "1"^^xsd:string .
+
+upf-dep-spa:Set2Relations a upf-dep-spa:DependencyTagset ;
+        system:hasTag  "2"^^xsd:string .
+
+upf-dep-spa:Set31Relations a upf-dep-spa:DependencyTagset ;
+        system:hasTag  "31"^^xsd:string .
+
+upf-dep-spa:Set43Relations a upf-dep-spa:DependencyTagset ;
+        system:hasTag  "43"^^xsd:string .
+
+upf-dep-spa:Set4Relations a upf-dep-spa:DependencyTagset ;
+        system:hasTag  "4"^^xsd:string .
+
+upf-dep-spa:Set55Relations a upf-dep-spa:DependencyTagset ;
+        system:hasTag  "55"^^xsd:string .
+
+upf-dep-spa:Set8Relations a upf-dep-spa:DependencyTagset ;
+        system:hasTag  "8"^^xsd:string .

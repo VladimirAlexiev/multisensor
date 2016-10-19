@@ -1,0 +1,298 @@
+@prefix olia-top:    <http://purl.org/olia/olia-top.owl#> .
+@prefix olia_system: <http://purl.org/olia/system.owl#> .
+@prefix rdfs:        <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:         <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:         <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/olia-top.owl> a owl:Ontology ;
+        rdfs:comment     "Top categories of the OLiA Reference Model\n    2010/01/19 created \n    2010/04/08 removed NPFunction (=> SyntacticRole) \n\t2010/04/13 added MorphologicalProcess, MorphologicalFeature, DiscourseFeature, AnimacyFeature, \n\t\t\tReferentTypeFeature, RegisterFeature, UsageAndFrequencyFeature\n\t2010/04/14 validation, PossessiveFeature removed (see olia:hasOwnerNumber), moved olia:NarrativeType and olia:PolarityFeature here\n\t2010/04/15 additions in accordance to the PTB Bracketing Guidelines: NullElement, SentenceTypeFeature (Santorini 1991, Bies et al. 1995)\n\t2010/11/30 added TopologicalField in accordance to the TueDa-D/Z annotation guidelines (Telljohann et al. 2009)\n\t2011/07/29 replace url by purl\n\t2011/07/31 added ProximityFeature\n\t2011/08/03 added SpecificityFeature\n\t2011/08/04 SubordTypeFeature, CoordTypeFeature deprecated, added NumeralAgreementClass\n\t2011/08/11 StrengthFeature recast as MorphologicalFeature rather than MorphosyntacticFeature\n\t2011/08/15 EmphasisFeature added\n\t2011/08/15 PhonologicalProcess added (for Elision and Apocope, formerly both classified as MorphologicalProcess)\n\t2013/06/25 EvidentialityFeature, ClusivityFeature added (from ISOcat), intensity as new label to EmphasisFeature\n\t\t\t   LexicalRelation for labels for relations holding between lexemes\n\t2013/06/27 AgreementFeature (from ISOcat, as superclass of NominalAgreementClass, Person, Gender, Number; not as a relation between words)\t\n\t2013/06/28 EvaluativeFeature (for ISOcat PreferredEvaluative and PejorativeEvaluative), ModalityFeature (Modality and Mood distinction revised)\n\n    Christian Chiarcos, chiarcos@uni-potsdam.de"^^xsd:string ;
+        owl:imports      <http://purl.org/olia/system.owl> ;
+        owl:versionInfo  "TODO: check upper level organization, remodel strength as categories (as in DCR), rename UsageAndFrequencyFeature to UsageFeature" .
+
+#################### Classes
+
+olia-top:AgreementFeature a owl:Class ;
+        rdfs:comment      "Agreement: Formal relationship whereby a word (or a sub-part of a word) requires a corresponding form of another word (or sub-part of a word) (http://www.isocat.org/datcat/DC-2188)\n\t  \n\t  PVAGR: agreement as shown (stem + affix) in inflected forms of a finite verb (http://www.isocat.org/datcat/DC-4973)" ;
+        rdfs:isDefinedBy  <http://www.isocat.org/datcat/DC-2188> , <http://www.isocat.org/datcat/DC-4973> ;
+        rdfs:label        "agreement" , "PVAGR" ;
+        rdfs:subClassOf   olia-top:MorphosyntacticFeature .
+
+olia-top:AnimacyFeature a owl:Class ;
+        rdfs:comment     "\n                            The characteristic of a word indicating that in a given discourse community, its referent is considered to be alive or to possess a quality of volition or consciousness.\n                                (ISO12620; http://www.isocat.org/datcat/DC-1902)\n      " ;
+        rdfs:label       "animacy" ;
+        rdfs:subClassOf  olia-top:SemanticFeature ;
+        owl:versionInfo  "http://www.isocat.org/datcat/DC-1902, extended to cover http://purl.org/olia/mte/multext-east.owl#Humanness" .
+
+olia-top:AspectFeature a owl:Class ;
+        rdfs:comment      "Category associated to verbs and referring to the way the grammar marks the duration or type of temporal activity. (http://www.isocat.org/datcat/DC-1242)\n\t  \n\t  Aspect is a grammatical category associated with verbs that expresses a temporal view of the event or state expressed by the verb. (http://www.sil.org/linguistics/glossaryoflinguisticterms/WhatIsAspect.htm  17.11.06)\n\nThe in Eagles optional attribute Aspect is needed for Greek and Slavonic verbs. It corresponds also to the Past Simple/Imperfect distinction of Romance languages. (http://www.ilc.cnr.it/EAGLES96/annotate/node18.html#oav1av  17.11.06)" ;
+        rdfs:isDefinedBy  <http://www.isocat.org/datcat/DC-1242> ;
+        rdfs:label        "aspect" ;
+        rdfs:subClassOf   olia-top:MorphosyntacticFeature .
+
+olia-top:CaseFeature a owl:Class ;
+        rdfs:comment     "Case is a grammatical category determined by the syntactic or semantic function of a noun or pronoun. The term case has traditionally been restricted to apply to only those languages which indicate certain functions by the inflection of nouns, pronouns, or noun phrase constituents, such as adjectives and numerals. (http://www.sil.org/linguistics/glossaryoflinguisticterms/WhatIsCase.htm  17.11.06)"^^xsd:string ;
+        rdfs:subClassOf  olia-top:MorphosyntacticFeature .
+
+olia-top:ClusivityFeature a owl:Class ;
+        rdfs:comment      "The category that encodes \"whether the addressee (addressees) are included in or excluded from the set of referents which also contains the speaker\"." ;
+        rdfs:isDefinedBy  <http://www.isocat.org/datcat/DC-3031> ;
+        rdfs:label        "clusivity" ;
+        rdfs:subClassOf   olia-top:MorphosyntacticFeature .
+
+olia-top:Constituent a owl:Class ;
+        rdfs:subClassOf  olia-top:SyntacticCategory .
+
+olia-top:CoordTypeFeature a owl:Class ;
+        rdfs:comment     "The CoordType attribute subclassifies coordinating conjunctions. (http://www.ilc.cnr.it/EAGLES96/annotate/node18.html#oav1av  17.11.06)"^^xsd:string ;
+        rdfs:subClassOf  olia-top:MorphosyntacticFeature ;
+        owl:deprecated   "reimplemented as subhierarchy of CoordinatingConjunction" .
+
+olia-top:CountabilityFeature a owl:Class ;
+        rdfs:comment     "Represents the difference between countable and uncountable nouns, e.g., in English" ;
+        rdfs:subClassOf  olia-top:SemanticFeature ;
+        owl:versionInfo  "EAGLES" .
+
+olia-top:DefinitenessFeature a owl:Class ;
+        rdfs:comment      "In grammatical theory, definiteness is a feature of noun phrases, distinguishing between entities which are specific and identifiable in a given context (definite noun phrases) and entities which are not (indefinite noun phrases).\n(http://en.wikipedia.org/wiki/Definiteness 02.05.07)\n\n\tProperty about the possiblity to identify an entity. (http://www.isocat.org/datcat/DC-1926)\n\nAn in Eagles additional language-specific attribute for nouns/ noun phrases is Definiteness.\n(http://www.ilc.cnr.it/EAGLES96/annotate/node19.html#oav2  16.11.06)"^^xsd:string ;
+        rdfs:isDefinedBy  <http://www.isocat.org/datcat/DC-1926> ;
+        rdfs:label        "definiteness" ;
+        rdfs:subClassOf   olia-top:MorphosyntacticFeature .
+
+olia-top:DegreeFeature a owl:Class ;
+        rdfs:comment      "Property concerning comparison. (http://www.isocat.org/datcat/DC-1419) \n\t  \n\t  The Eagles-recommended attribute Degree applies only to inflectional comparatives and superlatives. In some languages, e.g. Spanish, the number of such adjectives is very small. (http://www.ilc.cnr.it/EAGLES96/annotate/node17.html#recn)" ;
+        rdfs:isDefinedBy  <http://www.isocat.org/datcat/DC-1419> ;
+        rdfs:label        "degree" ;
+        rdfs:subClassOf   olia-top:MorphosyntacticFeature .
+
+olia-top:DependencyRelation a owl:Class ;
+        rdfs:subClassOf  olia-top:SyntacticRelation .
+
+olia-top:DiscourseEntity a owl:Class ;
+        rdfs:subClassOf  olia-top:LinguisticConcept .
+
+olia-top:DiscourseFeature a owl:Class ;
+        rdfs:comment     ""^^xsd:string ;
+        rdfs:subClassOf  olia-top:LinguisticConcept , olia_system:Feature .
+
+olia-top:DominanceRelation a owl:Class ;
+        rdfs:subClassOf  olia-top:SyntacticRelation .
+
+olia-top:EmphasisFeature a owl:Class ;
+        rdfs:comment      "Applies to grammatical (morphosyntactic) markers of emphasis for languages where emphatic expressions are distinguished from non-emphatic forms.\n      In Irish Gaelic, for example, the unmarked personal pronouns (e.g., sé, é ‘he, him’) is distinguished from the emphatic pronoun (e.g., seisean, eisean ‘he, him’). \n      Beyond pronouns, also nouns can be emphatically marked, e.g., by adding a clitic reflexive element to them. (Mulkern 2007).\n      \n      (Ann E. Mulkern. Knowing who’s important: Relative discourse salience and Irish pronominal forms. In Nancy A. Hedberg and Ron Zacharski, editors, The Grammar-Pragmatics Interface: Essays in honor of Jeanette K. Gundel, pages 113–142. John Benjamins, Amsterdam and Philadelphia, 2007.)\n    " , "Quality of being felt very strongly or having a strong effect (intensity, http://www.isocat.org/datcat/DC-2197)" ;
+        rdfs:isDefinedBy  <http://www.isocat.org/datcat/DC-2197> ;
+        rdfs:label        "intensity" , "emphasis" ;
+        rdfs:subClassOf   olia-top:MorphosyntacticFeature ;
+        owl:versionInfo   "adopted from ILPOSTS, there a property of Adverb, Classifier, Demonstrative, Noun, Particle, Adposition, Quantifier, Verb, identified with http://www.isocat.org/datcat/DC-2197 \"intensity\"" .
+
+olia-top:EvaluativeFeature a owl:Class ;
+        rdfs:comment     "generalization over PreferredEvaluative and PejorativeEvaluative in ISOcat" ;
+        rdfs:subClassOf  olia-top:SemanticFeature .
+
+olia-top:EvidentialityFeature a owl:Class ;
+        rdfs:comment      "Evidentiality denotes the basis that the speaker\n                        has for claiming that the event has occurred (or is going to take place).\n                        Appear to show a greater number of distinctions in the realis mood\n                        (especially in the past tense) than the irrealis mood. [Bhat 1999: 63-64,\n                        70]" ;
+        rdfs:isDefinedBy  <http://www.isocat.org/datcat/DC-3185> ;
+        rdfs:subClassOf   olia-top:MorphosyntacticFeature ;
+        owl:versionInfo   "isoCat ID: http://www.isocat.org/datcat/DC-3185" .
+
+olia-top:GenderFeature a owl:Class ;
+        rdfs:comment     "The term gender refers to various forms of expressing biological or sociological gender by inflecting words.  Nouns, pronouns, articles and the adjectives denote the gender of their referent. (http://en.wikipedia.org/wiki/Grammatical_gender  17.11.06)\n\t\n\tCategory based on (depending on languages) the natural distinction between sex and formal criteria.\n    (http://www.isocat.org/datcat/DC-1297)\n\t"^^xsd:string ;
+        rdfs:subClassOf  olia-top:AgreementFeature .
+
+olia-top:InflectionTypeFeature a owl:Class ;
+        rdfs:comment     "InflectionType is in Eagles an optional attribute for adjectives. Weak and Strong are values for adjectival inflection in the Germanic languages German, Dutch and Danish. (http://www.ilc.cnr.it/EAGLES96/annotate/node18.html#oav1av  14.11.06)"^^xsd:string ;
+        rdfs:subClassOf  olia-top:MorphologicalFeature .
+
+olia-top:LexicalRelation a owl:Class ;
+        rdfs:subClassOf  olia-top:LinguisticConcept ;
+        owl:versionInfo  "introduced for relation labels such as homonym. These label relations holding between two lexemes." .
+
+olia-top:LinguisticConcept a owl:Class ;
+        rdfs:comment     "The OLiA ontology specifies linguistic concepts on a theoretical basis, as for concepts used in annotations, see system.owl.\nThere is a great extent of overlap between LinguisticCategories/LinguisticFeatures and Categories/Features as defined in system.owl."^^xsd:string ;
+        owl:versionInfo  "Note that olia_system:LinguisticAnnotation, olia_system:UnitOfAnnotation and olia_system:Feature pertain to the usage of type labels and annotated features according to a particular annotation scheme, whereas, here, category and feature mean linguistic concepts. Thus, an olia:MorphosyntacticCategory (etc.) is not necessarily represented by a olia_system:UnitOfAnnotation."^^xsd:string .
+
+olia-top:ModalityFeature a owl:Class ;
+        rdfs:comment     "\n\t\t\tModality is a facet of illocutionary point or general intent of a speaker, \n\t\t\tor a speaker's degree of commitment to the expressed proposition's believability, \n\t\t\tobligatoriness, desirability or reality.\n            (ISO12620; http://www.isocat.org/datcat/DC-1427)\n\n\t\t\tThe term „mood“ is used by some authors in the same sense as „modality“, while \n\t\t\tothers distinguish the two (...) using „mood“ to refer to the contrastive \n\t\t\tgrammatical expressions of different modalities, and thus reserving „modality“ \n\t\t\tto refer to the meanings so expressed. >A grammatical category is related to \n\t\t\ta variety of factors affecting the nature of a predication, such as factors include \n\t\t\tfactivity, certainty (evidentials), attitudes, speaker’s knowledge/beliefs/desires, \n\t\t\tagent’s ability/volitionality, etc.; a set of distinctive forms used to express \n\t\t\tmodality (as verbal inflections or a set of auxiliarys, each signaling a modality). \n\t\t\t(http://www.uni-erfurt.de/sprachwissenschaft/proxy.php?port=8080&file=lido/servlet/Lido_Servlet Modus 14.05.07)\n\t" ;
+        rdfs:label       "mood" , "modality" ;
+        rdfs:subClassOf  olia-top:MorphosyntacticFeature ;
+        owl:versionInfo  <http://www.isocat.org/datcat/DC-1427> .
+
+olia-top:MoodFeature a owl:Class ;
+        rdfs:comment     "\n\t\t\tModality is a facet of illocutionary point or general intent of a speaker, \n\t\t\tor a speaker's degree of commitment to the expressed proposition's believability, \n\t\t\tobligatoriness, desirability or reality.\n            (ISO12620; http://www.isocat.org/datcat/DC-1427)\n\n\t\t\tThe term „mood“ is used by some authors in the same sense as „modality“, while \n\t\t\tothers distinguish the two (...) using „mood“ to refer to the contrastive \n\t\t\tgrammatical expressions of different modalities, and thus reserving „modality“ \n\t\t\tto refer to the meanings so expressed. >A grammatical category is related to \n\t\t\ta variety of factors affecting the nature of a predication, such as factors include \n\t\t\tfactivity, certainty (evidentials), attitudes, speaker’s knowledge/beliefs/desires, \n\t\t\tagent’s ability/volitionality, etc.; a set of distinctive forms used to express \n\t\t\tmodality (as verbal inflections or a set of auxiliarys, each signaling a modality). \n\t\t\t(http://www.uni-erfurt.de/sprachwissenschaft/proxy.php?port=8080&file=lido/servlet/Lido_Servlet Modus 14.05.07)\n\t" ;
+        rdfs:label       "verb form mood" , "mood" ;
+        rdfs:subClassOf  olia-top:MorphosyntacticFeature ;
+        owl:versionInfo  <http://www.isocat.org/datcat/DC-1427> .
+
+olia-top:MorphologicalCategory a owl:Class ;
+        rdfs:subClassOf  olia-top:LinguisticConcept .
+
+olia-top:MorphologicalFeature a owl:Class ;
+        rdfs:comment     "\n                            Property attached to a given inflected form that usually permits to distinguish this form from the generic lemmatised form of the word.\n                                (http://www.isocat.org/datcat/DC-1425)\n                            " ;
+        rdfs:subClassOf  olia_system:Feature , olia-top:LinguisticConcept ;
+        owl:versionInfo  <http://www.isocat.org/datcat/DC-1425> .
+
+olia-top:MorphologicalProcess a owl:Class ;
+        rdfs:subClassOf  olia-top:LinguisticConcept .
+
+olia-top:MorphosyntacticCategory a owl:Class ;
+        rdfs:comment         "partOfSpeech: Term used to describe how a particular word is used in a sentence. (http://www.isocat.org/datcat/DC-1345)" ;
+        rdfs:isDefinedBy     <http://www.isocat.org/datcat/DC-1345> ;
+        rdfs:label           "morphosyntactic category" , "part of speech" ;
+        rdfs:subClassOf      olia-top:LinguisticConcept ;
+        owl:equivalentClass  olia-top:Word ;
+        owl:versionInfo      "\"extended\" EAGLES\n\n- saubere Definitionen statt form-basierter Zusammenlegung von Kategorien\n\n- VerbalNoun in der Schnittmenge von NonfiniteVerb und CommonNoun\n- Classifier zunächst als top-level-konzept\n- AuxiliaryVerb aufgespalten in StrictAuxiliarVerb, ModalVerb, Copula\n- neues Konzept Quantifier, da jedoch eher semantisch als syntaktisch definiert, mit Numeral zu einem neuen top-level-node zusammengefasst (entsprechend die Definbition bei Bußmann: Quantor enthält ausdrücklich Numerale, diverse Determinierer und Pronomen)\n  \n  => sfb:PRONQUANT -> eagles:Quantifier & eagles:PronounOrDeterminer & !eagles:Numeral\n     sfb:PRONQUANT_AT -> eagles:Quantifier & eagles:IndefiniteDeterminer & !eagles:Numeral\n     sfb:PRONQUANT_SU -> eagles:Quantifier & eagles:IndefinitePronoun & !eagles:Numeral\n  => Numeral als Subkonzept von Quantifier"^^xsd:string , "TODO: saubere definition statt form-baseierten kategorien"^^xsd:string .
+
+olia-top:MorphosyntacticFeature a owl:Class ;
+        rdfs:comment     "Morphosyntactic and morphological features."^^xsd:string ;
+        rdfs:subClassOf  olia-top:LinguisticConcept , olia_system:Feature .
+
+olia-top:NarrativeType a owl:Class ;
+        rdfs:subClassOf  olia-top:DiscourseFeature .
+
+olia-top:NullElement a owl:Class ;
+        rdfs:comment     "Modelled like tokens, Santorini (1991, Â§4.2), Bies (1995, Â§2.3, Â§2.5)"^^xsd:string ;
+        rdfs:subClassOf  olia-top:SyntacticCategory ;
+        owl:versionInfo  "added in accordance with PTB bracketing guidelines ,Santorini (1991, Â§4.2), Bies (1995, Â§2.3, Â§2.5)" .
+
+olia-top:NumberFeature a owl:Class ;
+        rdfs:comment     "\n            Grammatical category for the variation in form of nouns, pronouns, and any words agreeing \n\t\t\twith them, depending on how many persons or things are referred to.\n            (www.wordreference.com/English/definition.asp?en=number 12; http://www.isocat.org/datcat/DC-1298)\n\n\t\t\tA grammatical number is a morphological category characterized by the expression of quantity \n\t\t\tthrough inflection or agreement. (http://en.wikipedia.org/wiki/Grammatical_number  17.11.06)" ;
+        rdfs:subClassOf  olia-top:AgreementFeature ;
+        owl:versionInfo  <http://www.isocat.org/datcat/DC-1298> .
+
+olia-top:NumeralAgreementClass a owl:Class ;
+        rdfs:comment     "In most Slavic languages, Numerals and Quantifiers involve specific agreement patterns, e.g., in Russian:<br/>\n      \n      (a) SingularQuantifier (MTE v4: Numeral/Class=\"definite1\"): requires noun in nominative singular, e.g., один год \"one year\"\n      (b) PaucalQuantifier (MTE v4: Numeral/Class=\"definite234\"): requires noun in genitive singular, e.g., два/три/четыре года \"two/three/four years\"\n      (c) PluralQuantifier (MTE v4: Numeral/Class=\"definite\"):requires noun in genitive plural, e.g., пять/много/сколько/столько лет \"five/many/how many/that many years\"<br/>\n      \n      Bulgarian has done away with the distinction between 4 and 5, and generalised the 2-4 form to all numerals (and some other quantifiers), but the others generally keep it.  Also Slovene has a living dual (both Sorbians likewise, but they haven't been MTEd).<br/>\n      \n      Some Czech feminine and neuter body parts have preserved dual forms, and if the noun is dual, so are its attributes (adjectives, pronouns).  So 2 differs formally from 3-4. The corresponding agreement pattern is a DualQuantifier (MTE v4: Numeral/Class=\"definite2\").\n      (Ivan A. Derzhanski & Christian Chiarcos, http://purl.org/olia/mte/multext-east.owl#NumeralAgreementClass)" ;
+        rdfs:subClassOf  olia-top:AgreementFeature ;
+        owl:versionInfo  "http://purl.org/olia/mte/multext-east.owl#NumeralAgreementClass" .
+
+olia-top:OrthographicEntity a owl:Class ;
+        rdfs:subClassOf  olia-top:LinguisticConcept ;
+        owl:versionInfo  "introduced to account for DCR space, etc." .
+
+olia-top:PersonFeature a owl:Class ;
+        rdfs:comment     "The grammatical person is deictic reference to the participant role of a referent, such as the speaker, the addressee, and others. Grammatical person typically defines a language's set of personal pronouns. It also frequently affects verbs, sometimes nouns, and possessive relationships as well. (http://en.wikipedia.org/wiki/Grammatical_person  17.11.06)\n\t\n\tIndication of grammatical person (1st, 2nd, 3rd, etc.) associated with a given inflected form.\n    (ISO12620; http://www.isocat.org/datcat/DC-1328)\n    "^^xsd:string ;
+        rdfs:subClassOf  olia-top:AgreementFeature .
+
+olia-top:PhonologicalProcess a owl:Class ;
+        rdfs:subClassOf  olia-top:LinguisticConcept .
+
+olia-top:PolarityFeature a owl:Class ;
+        rdfs:subClassOf  olia-top:SemanticFeature .
+
+olia-top:ProximityFeature a owl:Class ;
+        rdfs:comment     "In many Indo-European languages, proximity is a relevant feature of pronominal systems (e.g., Macedonian proximal vs. distal determiners, cf. English this vs. that). \n      In several indigeneous languages of North America, proximity is represented by verbal agreement (then also known as obviation, e.g., Blackfoot third [proximal] and \"fourth\" [distal 3rd] person).\n      As defined here, proximity is considered a morphosyntactic feature, because it applies to morphosyntactic *markers* of proximity.\n      (Chiarcos)\n    " ;
+        rdfs:label       "proximity" , "distance" , "obviation" ;
+        rdfs:subClassOf  olia-top:MorphosyntacticFeature ;
+        owl:versionInfo  "distinguishes for distal and proximal determiners, e.g., in Macedonian (MULTEXT-East, see http://purl.org/olia/mte/multext-east.owl#CliticDistalDeterminer and http://purl.org/olia/mte/multext-east.owl#CliticProximalDeterminer)" .
+
+olia-top:ReduplicationTypeFeature a owl:Class ;
+        rdfs:comment     "\n                            type of reduplication\n                                (http://www.isocat.org/datcat/DC-2240)\n                            " ;
+        rdfs:label       "reduplication type" ;
+        rdfs:subClassOf  olia-top:MorphologicalFeature ;
+        owl:versionInfo  "http://www.isocat.org/datcat/DC-2240 (reduplication type, no values given)" .
+
+olia-top:ReferentTypeFeature a owl:Class ;
+        rdfs:comment     "\n                            Type of concrete object or concept (the referent) that an expression represents (the reference).\n                                (DFKI; http://www.isocat.org/datcat/DC-1376)\n                            " ;
+        rdfs:label       "referent type" ;
+        rdfs:subClassOf  olia-top:DiscourseFeature ;
+        owl:versionInfo  "http://www.isocat.org/datcat/DC-1376 (referent type)" .
+
+olia-top:ReflexivityFeature a owl:Class ;
+        rdfs:comment     "The optional attribute Reflexivity is applied to main verbs in French, German, Dutch, etc., and determines the selection of \"avoir\" or \"être\", etc., as auxiliary for the Perfect. \n(http://www.ilc.cnr.it/EAGLES96/annotate/node18.html#oav1c 15.11.06)"^^xsd:string ;
+        rdfs:subClassOf  olia-top:MorphosyntacticFeature .
+
+olia-top:RegisterFeature a owl:Class ;
+        rdfs:comment     "\n                            Classification indicating the relative level of language individually assigned to a lexeme or term or to a text type.\n                                (ISO12620; http://www.isocat.org/datcat/DC-1988)\n                            " ;
+        rdfs:label       "register" ;
+        rdfs:subClassOf  olia-top:DiscourseFeature ;
+        owl:versionInfo  <http://www.isocat.org/datcat/DC-1988> .
+
+olia-top:SemanticFeature a owl:Class ;
+        rdfs:comment     ""^^xsd:string ;
+        rdfs:subClassOf  olia_system:Feature , olia-top:LinguisticConcept .
+
+olia-top:SemanticRole a owl:Class ;
+        rdfs:comment     "\n        In linguistics, a theta role or θ-role is the semantic role a noun \n        phrase plays in a sentence. The term Thematic role denotes the same \n        concept. As such it is a semantic rather than a syntactic feature, in \n        contrast to such notions as the subject of a sentence or a \n        prepositional object. \n        (http://en.wikipedia.org/wiki/Subject_(linguistics).\n\t\t\n\t\tOriginally, semantic roles were referred to as \"case roles\", leading to\n\t\tan unfortunate name clash with grammatical case (e.g. in GOLD CaseValue)\n\t"^^xsd:string ;
+        rdfs:subClassOf  olia-top:SemanticFeature .
+
+olia-top:SemanticUnit a owl:Class ;
+        rdfs:subClassOf  olia-top:LinguisticConcept .
+
+olia-top:SentenceTypeFeature a owl:Class ;
+        rdfs:subClassOf  olia-top:SyntacticFeature ;
+        owl:versionInfo  "classification of sentences according to their function, e.g., illocutionary act" .
+
+olia-top:SeparabilityFeature a owl:Class ;
+        rdfs:comment     "The optional Eagles attribute Separability is relevant for German compound verbs (\"fängt ...an\", \"anfangen\") and also to phrasal verbs in Danish and English. \n(http://www.ilc.cnr.it/EAGLES96/annotate/node18.html#oav1c 15.11.06)"^^xsd:string ;
+        rdfs:subClassOf  olia-top:MorphologicalFeature .
+
+olia-top:SpecificityFeature a owl:Class ;
+        rdfs:comment     "\n      \"By ʻspecificʼ and ʻnon-specificʼ I intend the difference between the\n      two readings of English indefinites like (3):\n      \n      (3) Iʼm looking for a deer.\n      \n      In the specific reading there is a particular deer, say Bambi, that I am\n      looking for. In the non-specific reading I will be happy to find any deer.\n      Von Heusinger (2002) likes the test in English of inserting ʻcertainʼ after the\n      ʻaʼ to fix the specific reading. In either reading of (3) a deer is being\n      introduced as a new discourse referent. This is opposed to ʻdefiniteʼ which\n      requires a previous pragmatic instantiation as in ʻIʼm looking for the deer.ʼ\n      In English both the readings of (3) are indefinite. In Klallam, the specific\n      demonstratives are neither definite nor indefinite.\"\n      (Montler, Timothy. 2007. Klallam demonstratives. Papers ICSNL XLVII. The 42nd International Conference on Salish and Neighbouring Language, pp. 409-425. University of British Columbia Working Papers in Linguistics, Volume 20; on specific vs. nonspecific determiners in Klallam, a Salish language, http://montler.net/papers/KlallamDemons.pdf)\n    " ;
+        rdfs:label       "specificity" , "genericity" ;
+        rdfs:subClassOf  olia-top:MorphosyntacticFeature ;
+        owl:versionInfo  "distinguishes specific and nonspecific determiners, e.g., in Klallam (Salish, see olia:SpecificArticle, olia:NonspecificArticle), or in Persian (http://purl.org/olia/mte/multext-east.owl#CliticSpecificDeterminer)" .
+
+olia-top:StrengthFeature a owl:Class ;
+        rdfs:subClassOf  olia-top:MorphologicalFeature ;
+        owl:versionInfo  "In EAGLES, Strength is a language-specific attribute for pronouns and determiners to characterize weak (reduced) and strong (full) forms (http://www.ilc.cnr.it/EAGLES96/annotate/node19.html#oav2av  20.11.06).\n      Here, it is extended to full and reduced adjective inflection in Slavic languages (cf. MULTEXT-East). May be renamed to ReductionFeature." .
+
+olia-top:SubordTypeFeature a owl:Class ;
+        rdfs:comment     "The SubordType is in Eagles an additional language-specific attribute, applying to subordinating conjunctions only.  (http://www.ilc.cnr.it/EAGLES96/annotate/node19.html#oav2u  17.11.06)"^^xsd:string ;
+        rdfs:subClassOf  olia-top:MorphosyntacticFeature ;
+        owl:deprecated   "reimplemented within SubordinatingConjunction taxonomy" .
+
+olia-top:SyntacticCategory a owl:Class ;
+        rdfs:subClassOf  olia-top:LinguisticConcept .
+
+olia-top:SyntacticConstruction a owl:Class ;
+        rdfs:comment     "Syntactic constructions that involve multiple constituents, or that are independent of the concept of constituent, e.g., word order phenomena, non-canonical sentences , ..."^^xsd:string ;
+        rdfs:subClassOf  olia-top:SyntacticCategory .
+
+olia-top:SyntacticFeature a owl:Class ;
+        rdfs:subClassOf  olia_system:Feature , olia-top:LinguisticConcept .
+
+olia-top:SyntacticFunction a owl:Class ;
+        rdfs:comment     "\n\t\t\tRelation to be used when the syntactic function of a constituent is different from its morphosyntactic type, \n\t\t\tcf. FormFunctionDiscrepancy in the PTB bracketing guidelines, Bies et al. (1995, §2.2.1)\n\t\t" ;
+        rdfs:subClassOf  olia-top:SyntacticFeature ;
+        owl:versionInfo  "Bies et al 1995" .
+
+olia-top:SyntacticRelation a owl:Class ;
+        rdfs:subClassOf  olia-top:LinguisticConcept .
+
+olia-top:SyntacticRole a owl:Class ;
+        rdfs:comment     "Traditionally, \"grammatical relations\" or \"grammatical roles\" are specifically those between the verb (clause) and its arguments/adjunct/complementizer.\n      In modern corpus research, however, a broad variety of relations between nominal heads, their arguments, modifiers, etc. are distinguished and the scope of \"Grammatical Relation\" has extended here to cover these as well.\n      (http://purl.org/linguistics/gold/syntacticRole)"^^xsd:string ;
+        rdfs:subClassOf  olia-top:SyntacticFeature .
+
+olia-top:TenseFeature a owl:Class ;
+        rdfs:comment      "verb tense: property referring to the way the grammar marks (via affixes and/or suppletion) the time at which the action denoted by the verb took place. (http://www.isocat.org/datcat/DC-4964)\n\t  \n\t  Tense is a grammatical category, typically marked on the verb, that deictically refers to the time of the event or state denoted by the verb in relation to some other temporal reference point. (http://www.sil.org/linguistics/glossaryoflinguisticterms/WhatIsTense.htm  17.11.06)" ;
+        rdfs:isDefinedBy  <http://www.isocat.org/datcat/DC-4964> ;
+        rdfs:label        "verb tense" , "tense" ;
+        rdfs:subClassOf   olia-top:MorphosyntacticFeature .
+
+olia-top:TopologicalField a owl:Class ;
+        rdfs:subClassOf  olia-top:SyntacticCategory .
+
+olia-top:UsageAndFrequencyFeature a owl:Class ;
+        rdfs:comment     "\n\t\t\tFrequency: The relative commonness with which a term occurs.\n            (ISO12620; http://www.isocat.org/datcat/DC-1965)\n            \n\t\t\tDating: Indication specifying whether the usage is old or modern.\n            (http://www.isocat.org/datcat/DC-1959)\n\t  " ;
+        rdfs:subClassOf  olia-top:DiscourseFeature ;
+        owl:versionInfo  "http://www.isocat.org/datcat/DC-1965 (frequency), http://www.isocat.org/datcat/DC-1959 (dating)" .
+
+olia-top:ValencyFeature a owl:Class ;
+        rdfs:comment     "\n\t\tSyntactic valency pertains to the number of syntactic arguments a verb requires. \n\t\tSemantic valency pertains to the number of arguments of a semantic predicate.\n\t\tIf syntactic valency is greater than the semantic valency, an expletive pronoun may be used, \n\t\tcf. van Valin and LaPolla (1997) on the distinction between syntactic valency and semantic valency.\n\t" ;
+        rdfs:subClassOf  olia-top:SyntacticFeature ;
+        owl:versionInfo  "EAGLES" .
+
+olia-top:VoiceFeature a owl:Class ;
+        rdfs:comment     "The voice of a verb describes the relationship between the action (or state) that the verb expresses and the participants identified by its arguments (subject, object, etc.). (http://en.wikipedia.org/wiki/Grammatical_voice  17.11.06)"^^xsd:string ;
+        rdfs:subClassOf  olia-top:MorphosyntacticFeature .
+
+olia-top:Word a owl:Class ;
+        rdfs:comment         "Terminal nodes of syntactic annotations, termed \"Word\" here, are the same structural entities that are subject to morphosyntactic (Part of Speech) annotations.\n\t\t\n\t\tcf. http://www.isocat.org/datcat/DC-1415 \"word\": Linguistic unit composed of at least a part of speech and a lemma."^^xsd:string , "\n\t\tSyntacticWord is the class of syntactic units occupying the lowest position in \n\t\ta syntactic construction. They are the largest units resistant to insertion of \n\t\tnew constituents within their boundaries; or they are the smallest constituents \n\t\tthat can be moved within a sentence without making the sentence ungrammatical.\n\t\t(http://www.linguistics-ontology.org/gold/2008/SyntacticWord)\n\t\t\n\t\tLinguistic unit composed of at least a part of speech and a lemma.\n        (Gil Francopoulo; http://www.isocat.org/datcat/DC-1415)\n\t" ;
+        rdfs:isDefinedBy     <http://www.isocat.org/datcat/DC-1415> ;
+        rdfs:label           "word" ;
+        rdfs:subClassOf      olia-top:SyntacticCategory ;
+        owl:equivalentClass  olia-top:MorphosyntacticCategory ;
+        owl:versionInfo      "http://www.isocat.org/datcat/DC-1415, cf. GOLD SyntacticWord" .
+
+#################### External elements
+
+olia_system:Feature a owl:Class .

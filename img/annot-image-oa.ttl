@@ -1,0 +1,50 @@
+
+ms-annot:1234153426
+  a oa:Annotation;
+  oa:hasTarget <http://images.zeit.de/...-540x304.jpg>;
+  oa:hasBody
+    ms-annot:1234153426-Concepts3_Or_More_People,
+    ms-annot:1234153426-Amateur_Video,
+    ms-annot:1234153426-Armed_Person;
+  oa:motivatedBy oa:tagging;
+  oa:annotatedBy <http://data.multisensorproject.eu/agent/imageAnnotator>;
+  oa:annotatedAt "2015-10-01T12:34:56"^^xsd:dateTime.
+
+<http://images.zeit.de/...-540x304.jpg>
+  a dctype:Image;
+  dc:format "image/jpeg".
+
+<http://data.multisensorproject.eu/agent/imageAnnotator>
+  a prov:SoftwareAgent;
+  foaf:name "CERTH Image Annotator v1.0".
+
+ms-annot:1234153426-Concepts3_Or_More_People
+  a oa:SemanticTag;
+  skos:related ms-concept:Concepts3_Or_More_People;
+  ms:confidence 0.731893.
+ms-annot:1234153426-Amateur_Video
+  a oa:SemanticTag;
+  skos:related ms-concept:Amateur_Video;
+  ms:confidence 0.884379.
+ms-annot:1234153426-Armed_Person
+  a oa:SemanticTag;
+  skos:related ms-concept:Armed_Person;
+  ms:confidence 0.35975.
+
+ms-concept:Concepts3_Or_More_People
+  a skos:Concept;
+  skos:inScheme ms-concept: ;
+  skos:prefLabel "Concepts: 3 or More People".
+ms-concept:Amateur_Video
+  a skos:Concept, oa:SemanticTag;
+  skos:inScheme ms-concept: ;
+  skos:prefLabel "Amateur Video".
+ms-concept:Armed_Person
+  a skos:Concept, oa:SemanticTag;
+  skos:inScheme ms-concept: ;
+  skos:prefLabel "Armed Person".
+
+####################
+oa:tagging a puml:Inline.
+ms-annot:1234153426 puml:right <http://data.multisensorproject.eu/agent/imageAnnotator>.
+ms-annot:1234153426 puml:left <http://images.zeit.de/...-540x304.jpg>.

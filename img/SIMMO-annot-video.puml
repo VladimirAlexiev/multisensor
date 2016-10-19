@@ -1,0 +1,53 @@
+@startuml
+hide empty methods
+hide empty attributes
+hide circle
+skinparam classAttributeIconSize 0
+class ms_concept_Concepts3_Or_More_People as "ms-concept:Concepts3_Or_More_People"
+ms_concept_Concepts3_Or_More_People : a skos:Concept
+ms_concept_Concepts3_Or_More_People : skos:inScheme ms-concept:
+ms_concept_Concepts3_Or_More_People : skos:prefLabel "Concepts: 3 or More People"
+class ms_content_fb086c_char_17_21 as "ms-content:fb086c#char=17,21"
+ms_content_fb086c_char_17_21 : a nif:Word
+class ms_content_fb086c_char_0_24 as "ms-content:fb086c#char=0,24"
+ms_content_fb086c_char_17_21 -up-> ms_content_fb086c_char_0_24 : nif:referenceContext
+class dbr_SWAT as "dbr:SWAT"
+ms_content_fb086c_char_17_21 --> dbr_SWAT : its:taIdentRef
+ms_content_fb086c_char_17_21 : nif:anchorOf "SWAT"
+ms_content_fb086c_char_17_21 : nif:beginIndex "17"^^xsd:nonNegativeInteger
+ms_content_fb086c_char_17_21 : nif:endIndex "21"^^xsd:nonNegativeInteger
+class _http___data_multisensorproject_eu_agent_imageAnnotator_ as "<http://data.multisensorproject.eu/agent/imageAnnotator>"
+_http___data_multisensorproject_eu_agent_imageAnnotator_ : a prov:SoftwareAgent
+_http___data_multisensorproject_eu_agent_imageAnnotator_ : foaf:name "CERTH Image Annotator v1.0"
+class ms_annot_1234153426_SWAT as "ms-annot:1234153426-SWAT"
+ms_annot_1234153426_SWAT : a fise:TopicAnnotation, oa:SemanticTag
+ms_annot_1234153426_SWAT --> dbr_SWAT : skos:related
+ms_annot_1234153426_SWAT : fise:confidence 0.9
+class ms_content_fb086c as "ms-content:fb086c"
+ms_content_fb086c : a foaf:Document
+class _http___blog_hgtv_com_terror_2014_09_08_video_mp4_ as "<http://blog.hgtv.com/terror/2014/09/08/video.mp4>"
+ms_content_fb086c --> _http___blog_hgtv_com_terror_2014_09_08_video_mp4_ : dct:hasPart
+ms_content_fb086c : dc:creator "John Smith"
+ms_content_fb086c : dc:date "2014-09-08T17:15:34.000+02:00"^^xsd:dateTime
+ms_content_fb086c : dct:source <http://blog.hgtv.com/terror/2014/09/08/article>
+class ms_annot_1234153426_Concepts3_Or_More_People as "ms-annot:1234153426-Concepts3_Or_More_People"
+ms_annot_1234153426_Concepts3_Or_More_People : a oa:SemanticTag, fise:TopicAnnotation
+ms_annot_1234153426_Concepts3_Or_More_People --> ms_concept_Concepts3_Or_More_People : skos:related
+ms_annot_1234153426_Concepts3_Or_More_People : fise:confidence 0.3
+dbr_SWAT : a skos:Concept
+dbr_SWAT : skos:prefLabel "SWAT"
+class ms_annot_1234153426 as "ms-annot:1234153426"
+ms_annot_1234153426 : a oa:Annotation
+ms_annot_1234153426 --> ms_annot_1234153426_SWAT : oa:hasBody
+ms_annot_1234153426 -right-> _http___data_multisensorproject_eu_agent_imageAnnotator_ : oa:annotatedBy
+ms_annot_1234153426 -up-> _http___blog_hgtv_com_terror_2014_09_08_video_mp4_ : oa:hasTarget
+ms_annot_1234153426 --> ms_annot_1234153426_Concepts3_Or_More_People : oa:hasBody
+ms_annot_1234153426 : oa:annotatedAt "2015-10-01T12:34:56"^^xsd:dateTime
+ms_annot_1234153426 : oa:motivatedBy oa:tagging
+_http___blog_hgtv_com_terror_2014_09_08_video_mp4_ : a dctype:MovingImage
+_http___blog_hgtv_com_terror_2014_09_08_video_mp4_ : dc:format "video/mp4"
+ms_content_fb086c_char_0_24 : a nif:Context
+ms_content_fb086c_char_0_24 -up-> ms_content_fb086c : nif:sourceUrl
+ms_content_fb086c_char_0_24 : nif:beginIndex "0"^^xsd:nonNegativeInteger
+ms_content_fb086c_char_0_24 : nif:endIndex "24"^^xsd:nonNegativeInteger
+@enduml

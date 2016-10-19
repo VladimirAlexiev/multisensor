@@ -1,0 +1,26 @@
+@startuml
+hide empty methods
+hide empty attributes
+hide circle
+skinparam classAttributeIconSize 0
+class ms_content_b3f36_quality as "ms-content:b3f36-quality"
+class ms_content_b3f36_quality <<<<(W,red)Wrong>>>>
+show ms_content_b3f36_quality circle
+class ms_content_b3f36 as "ms-content:b3f36"
+ms_content_b3f36 --> ms_content_b3f36_quality : dqv:hasQualityMeasurement
+class ms_content_b3f35_quality as "ms-content:b3f35-quality"
+ms_content_b3f35_quality : a dqv:QualityAnnotation
+class ldqd_semanticAccuracy as "ldqd:semanticAccuracy"
+ms_content_b3f35_quality --> ldqd_semanticAccuracy : dqv:inDimension
+class dqv_qualityAssessment as "dqv:qualityAssessment"
+ms_content_b3f35_quality --> dqv_qualityAssessment : oa:motivatedBy
+class ms_content_b3f35 as "ms-content:b3f35"
+ms_content_b3f35_quality -up-> ms_content_b3f35 : oa:hasTarget
+class ms_accuracy_curated as "ms:accuracy-curated"
+ms_content_b3f35_quality --> ms_accuracy_curated : oa:hasBody
+ms_content_b3f35 --> ms_content_b3f35_quality : dqv:hasQualityAnnotation
+ms_content_b3f36_quality : a dqv:QualityMeasurement
+ms_content_b3f36_quality --> ms_accuracy_curated : dqv:value
+class ms_accuracy as "ms:accuracy"
+ms_content_b3f36_quality --> ms_accuracy : dqv:isMeasurementOf
+@enduml

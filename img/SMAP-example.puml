@@ -1,0 +1,40 @@
+@startuml
+hide empty methods
+hide empty attributes
+hide circle
+skinparam classAttributeIconSize 0
+class twitter_johnSmith as "twitter:johnSmith"
+twitter_johnSmith : a sioc:UserAccount
+class ms_soc_cars_johnSmith as "ms-soc:cars_johnSmith"
+twitter_johnSmith --> ms_soc_cars_johnSmith : sioc:has_function
+ms_soc_cars_johnSmith : a sioc:Role
+class ms_soc_cars as "ms-soc:cars"
+ms_soc_cars_johnSmith --> ms_soc_cars : sioc:has_scope
+ms_soc_cars_johnSmith : ms:has_global_influence 8.2
+ms_soc_cars_johnSmith : ms:has_page_rank 8.5
+ms_soc_cars_johnSmith : ms:has_reachability 8.0
+class ms_soc_RDF as "ms-soc:RDF"
+ms_soc_RDF : a sioc:Forum
+class twitter_ as "twitter:"
+ms_soc_RDF --> twitter_ : sioc:has_host
+ms_soc_RDF : dc:subject "RDF"
+ms_soc_cars : a sioc:Forum
+ms_soc_cars --> twitter_ : sioc:has_host
+ms_soc_cars : dc:subject "cars"
+class ms_soc_RDF_valexiev1 as "ms-soc:RDF_valexiev1"
+ms_soc_RDF_valexiev1 : a sioc:Role
+ms_soc_RDF_valexiev1 --> ms_soc_RDF : sioc:has_scope
+ms_soc_RDF_valexiev1 : ms:has_global_influence 7200.0
+ms_soc_RDF_valexiev1 : ms:has_page_rank 7500.0
+ms_soc_RDF_valexiev1 : ms:has_reachability 7000.0
+class twitter_valexiev1 as "twitter:valexiev1"
+twitter_valexiev1 : a sioc:UserAccount
+class ms_soc_cars_valexiev1 as "ms-soc:cars_valexiev1"
+twitter_valexiev1 --> ms_soc_cars_valexiev1 : sioc:has_function
+twitter_valexiev1 --> ms_soc_RDF_valexiev1 : sioc:has_function
+ms_soc_cars_valexiev1 : a sioc:Role
+ms_soc_cars_valexiev1 --> ms_soc_cars : sioc:has_scope
+ms_soc_cars_valexiev1 : ms:has_global_influence 0.72
+ms_soc_cars_valexiev1 : ms:has_page_rank 0.75
+ms_soc_cars_valexiev1 : ms:has_reachability 0.70
+@enduml

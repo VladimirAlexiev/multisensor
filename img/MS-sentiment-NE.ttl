@@ -1,0 +1,32 @@
+
+@base <http://data.multisensorproject.eu/content/9e9c304>.
+
+<#char=0,50> a nif:Context;
+  nif:isString "Consumers are very unhappy with the new Porsche".
+
+<#char=43,50> a nif:Word;
+  nif:referenceContext <#char=0,50>;
+  nif:beginOffset 43;
+  nif:endOffset 50;
+  nif:anchorOf "Porsche";
+  nif:taIdentRef dbr:Porsche.
+
+<#sentiment=dbr_Porsche> a marl:Opinion;
+  marl:extractedFrom <#char=0,50>;
+  marl:describesObject dbr:Porsche;
+  marl:minPolarityValue -5;
+  marl:maxPolarityValue 5;
+  ms:negativePolarityValue -5;
+  ms:positivePolarityValue 0;
+  marl:polarityValue -5;
+  ms:sentimentalityValue -5.
+
+# If we can pin-point the sentiment-bearing words (in this case "very unhappy"):
+<#char=29,38> a nif:Word;
+  nif:referenceContext <#char=0,50>;
+  nif:beginOffset 29;
+  nif:endOffset 38;
+  nif:anchorOf "very unhappy".
+
+<#sentiment=dbr_Porsche> 
+  marl:opinionText <#char=29,38>.

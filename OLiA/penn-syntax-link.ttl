@@ -1,0 +1,451 @@
+@prefix penn:  <http://purl.org/olia/penn-syntax.owl#>.
+@prefix :      <http://purl.org/olia/penn-syntax-link.rdf#> .
+@prefix olia:  <http://purl.org/olia/olia.owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/penn-syntax-link.rdf> a owl:Ontology ;
+        rdfs:comment     "Provisional Penn-OLiA-Linking for syntax (concepts only, no properties)\nCh. Chiarcos, 10/04/18, chiarcos@uni-potsdam.de"^^xsd:string ;
+        owl:imports      <http://purl.org/olia/penn-syntax.owl> , <http://purl.org/olia/olia.owl> ;
+        owl:versionInfo  "TODO: link properties" .
+
+penn:AdjectivePhrase a owl:Class ;
+        rdfs:subClassOf  olia:AdjectivePhrase ;
+        owl:versionInfo  "automatically linked" .
+
+penn:Adjunct a owl:Class ;
+        rdfs:subClassOf  olia:SyntacticAdjunct ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:AdverbPhrase a owl:Class ;
+        rdfs:subClassOf  olia:AdverbPhrase ;
+        owl:versionInfo  "automatically linked" .
+
+penn:Adverbial a owl:Class ;
+        rdfs:subClassOf  olia:Adverbial ;
+        owl:versionInfo  "automatically linked" .
+
+penn:BenefactiveAdverbial a owl:Class ;
+        rdfs:subClassOf  olia:BenefactorRole , olia:AdverbialModifier ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:Clause a owl:Class ;
+        rdfs:subClassOf  olia:Clause ;
+        owl:versionInfo  "automatically linked" .
+
+penn:ComplementClause a owl:Class ;
+        rdfs:subClassOf  olia:ComplementClause ;
+        owl:versionInfo  "automatically linked" .
+
+penn:ConjunctionPhrase a owl:Class ;
+        rdfs:subClassOf  olia:ConjunctionPhrase ;
+        owl:versionInfo  "automatically linked" .
+
+penn:Dative a owl:Class ;
+        owl:versionInfo  "no linking" , "TODO: BenefactorRole " .
+
+penn:DirectQuestion a owl:Class ;
+        rdfs:subClassOf  olia:DirectQuestion ;
+        owl:versionInfo  "automatically linked" .
+
+penn:DirectWHQuestion a owl:Class ;
+        rdfs:subClassOf  olia:DirectWHQuestion ;
+        owl:versionInfo  "automatically linked" .
+
+penn:DirectionAdverbial a owl:Class ;
+        rdfs:subClassOf  olia:DirectionRole , olia:AdverbialModifier ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:DiscontinuousDependency a owl:Class ;
+        owl:versionInfo  "no linking" .
+
+penn:Ellipsis a owl:Class ;
+        rdfs:subClassOf  olia:Ellipsis ;
+        owl:versionInfo  "automatically linked" .
+
+penn:ExpletiveOfExtraposition a owl:Class ;
+        rdfs:subClassOf  olia:ExpletivePronoun ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:ExtentAdverbial a owl:Class ;
+        rdfs:subClassOf  olia:ExtentRole , olia:AdverbialModifier ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:FormFunctionDiscrepancy a owl:Class ;
+        owl:versionInfo  "no linking" .
+
+penn:Fragment a owl:Class ;
+        rdfs:subClassOf  olia:Fragment .
+
+penn:Gapping a owl:Class ;
+        rdfs:subClassOf  olia:Gapping .
+
+penn:GrammaticalRole a owl:Class ;
+        owl:versionInfo  "no linking" .
+
+penn:HeadOfNP a owl:Class ;
+        rdfs:subClassOf  olia:HeadOfNP ;
+        owl:versionInfo  "automatically linked" .
+
+penn:Headline a owl:Class ;
+        rdfs:subClassOf  olia:Headline .
+
+penn:InfinitivalRelative a owl:Class ;
+        owl:versionInfo  "no linking" , "TODO: EmbeddedInfinitive " .
+
+penn:Interjection a owl:Class ;
+        rdfs:subClassOf  olia:Interjection ;
+        owl:versionInfo  "automatically linked" .
+
+penn:InvertedDeclarativeSentence a owl:Class ;
+        rdfs:subClassOf  olia:DeclarativeSentence ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:ItCleft a owl:Class ;
+        rdfs:subClassOf  olia:ItCleft ;
+        owl:versionInfo  "automatically linked" .
+
+penn:ItExtraposition a owl:Class ;
+        rdfs:subClassOf  olia:Extraposition ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:LeftAngleBracket a owl:Class ;
+        rdfs:subClassOf  olia:OpenAngleBracket ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:LeftCurlyBracket a owl:Class ;
+        rdfs:subClassOf  olia:OpenCurlyBracket ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:LeftRoundBracket a owl:Class ;
+        rdfs:subClassOf  olia:OpenBracket ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:LeftSquareBracket a owl:Class ;
+        rdfs:subClassOf  olia:CloseSquareBracket ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:ListMarker a owl:Class ;
+        rdfs:subClassOf  olia:ListMarker ;
+        owl:versionInfo  "automatically linked" .
+
+penn:LocativeAdverbial a owl:Class ;
+        rdfs:subClassOf  olia:AdverbialModifier , olia:LocationRole ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:LocativeComplementOfPut a owl:Class ;
+        owl:versionInfo  "no linking" , "TODO: LocationRole " .
+
+penn:LogicalSubject a owl:Class ;
+        rdfs:subClassOf  olia:ActorMacroRole , olia:SyntacticAdjunct ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:MannerAdverbial a owl:Class ;
+        rdfs:subClassOf  olia:MannerRole , olia:AdverbialModifier ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:Nominal a owl:Class ;
+        rdfs:subClassOf  olia:Nominal ;
+        owl:versionInfo  "automatically linked" .
+
+penn:NotAConstituent a owl:Class ;
+        owl:versionInfo  "no linking" .
+
+penn:NounPhrase a owl:Class ;
+        rdfs:subClassOf  olia:NounPhrase ;
+        owl:versionInfo  "automatically linked" .
+
+penn:NullElement a owl:Class ;
+        owl:versionInfo  "no linking" .
+
+penn:Parenthesis a owl:Class ;
+        owl:versionInfo  "no linking" .
+
+penn:Parenthetical a owl:Class ;
+        rdfs:subClassOf  olia:ParentheticalPunctuation ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:ParentheticalNode a owl:Class ;
+        rdfs:subClassOf  olia:ParentheticalPunctuation ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:Particle a owl:Class ;
+        rdfs:subClassOf  olia:Particle ;
+        owl:versionInfo  "automatically linked" .
+
+penn:Phrase a owl:Class ;
+        rdfs:subClassOf  olia:Phrase ;
+        owl:versionInfo  "automatically linked" .
+
+penn:Predicate a owl:Class ;
+        rdfs:subClassOf  olia:Predicate ;
+        owl:versionInfo  "automatically linked" .
+
+penn:PrepositionalPhrase a owl:Class ;
+        rdfs:subClassOf  olia:PrepositionalPhrase ;
+        owl:versionInfo  "automatically linked" .
+
+penn:ProperNounPhrase a owl:Class ;
+        rdfs:subClassOf  olia:NounPhrase ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:PurposeAdverbial a owl:Class ;
+        rdfs:subClassOf  olia:PurposeRole , olia:AdverbialModifier ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:QuantifierPhrase a owl:Class ;
+        rdfs:subClassOf  olia:Quantifier ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:Question a owl:Class ;
+        rdfs:subClassOf  olia:Question ;
+        owl:versionInfo  "automatically linked" .
+
+penn:QuestionPredicate a owl:Class ;
+        rdfs:subClassOf  olia:QuestionPredicate ;
+        owl:versionInfo  "automatically linked" .
+
+penn:ReducedRelativeClause a owl:Class ;
+        rdfs:subClassOf  olia:ReducedRelativeClause ;
+        owl:versionInfo  "automatically linked" .
+
+penn:RelativeClause a owl:Class ;
+        rdfs:subClassOf  olia:RelativeClause ;
+        owl:versionInfo  "automatically linked" .
+
+penn:RightAngleBracket a owl:Class ;
+        rdfs:subClassOf  olia:CloseAngleBracket ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:RightCurlyBracket a owl:Class ;
+        rdfs:subClassOf  olia:OpenCurlyBracket ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:RightRoundBracket a owl:Class ;
+        rdfs:subClassOf  olia:CloseBracket ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:RightSquareBracket a owl:Class ;
+        rdfs:subClassOf  olia:CloseSquareBracket ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:SimpleDeclarativeClause a owl:Class ;
+        rdfs:subClassOf  olia:DeclarativeSentence ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:SubordinateClause a owl:Class ;
+        rdfs:subClassOf  olia:SubordinateClause ;
+        owl:versionInfo  "automatically linked" .
+
+penn:SurfaceSubject a owl:Class ;
+        rdfs:subClassOf  olia:SyntacticSubject ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:TemporalAdverbial a owl:Class ;
+        rdfs:subClassOf  olia:AdverbialModifier , olia:TimeRole ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:ThatRelativeClause a owl:Class ;
+        owl:versionInfo  "no linking" .
+
+penn:Title a owl:Class ;
+        rdfs:comment  "= headline or title of an individual ???" .
+
+penn:TokenLikeElement a owl:Class ;
+        rdfs:subClassOf  olia:Token ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:Topicalized a owl:Class ;
+        rdfs:subClassOf  olia:Topicalization ;
+        rdfs:subClassOf  [ a                 owl:Class ;
+                           owl:complementOf  olia:Subject
+                         ] .
+
+penn:Trace a owl:Class ;
+        rdfs:subClassOf  olia:Trace ;
+        owl:versionInfo  "automatically linked" .
+
+penn:Unit a owl:Class ;
+        rdfs:subClassOf  olia:OmittedUnit ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:UnknownConstituentType a owl:Class ;
+        owl:versionInfo  "no linking" .
+
+penn:UnlikeCoordinatedPhrase a owl:Class ;
+        rdfs:subClassOf  olia:ConjunctionPhrase ;
+        owl:versionInfo  "linking confirmed" .
+
+penn:VerbPhrase a owl:Class ;
+        rdfs:subClassOf  olia:VerbPhrase ;
+        owl:versionInfo  "automatically linked" .
+
+penn:Vocative a owl:Class ;
+        owl:versionInfo  "no linking" , "TODO: AddresseeRole " .
+
+penn:WHAdjectivePhrase a owl:Class ;
+        rdfs:subClassOf  olia:WHAdjectivePhrase ;
+        owl:versionInfo  "automatically linked" .
+
+penn:WHAdverbPhrase a owl:Class ;
+        rdfs:subClassOf  olia:WHAdverbPhrase ;
+        owl:versionInfo  "automatically linked" .
+
+penn:WHCleft a owl:Class ;
+        rdfs:subClassOf  olia:WHCleft ;
+        owl:versionInfo  "automatically linked" .
+
+penn:WHNounPhrase a owl:Class ;
+        rdfs:subClassOf  olia:WHNounPhrase ;
+        owl:versionInfo  "automatically linked" .
+
+penn:WHPrepositionalPhrase a owl:Class ;
+        rdfs:subClassOf  olia:WHPrepositionalPhrase ;
+        owl:versionInfo  "automatically linked" .
+
+penn:WHRelativeClause a owl:Class ;
+        owl:versionInfo  "no linking" .
+
+penn:YesNoQuestion a owl:Class ;
+        rdfs:subClassOf  olia:YesNoQuestion ;
+        owl:versionInfo  "automatically linked" .
+
+penn:ZeroComplementizer a owl:Class ;
+        rdfs:subClassOf  olia:ZeroComplementizer ;
+        owl:versionInfo  "automatically linked" .
+
+penn:ZeroPronoun a owl:Class ;
+        rdfs:subClassOf  olia:ZeroPronoun ;
+        owl:versionInfo  "automatically linked" .
+
+penn:ZeroRelativeClause a owl:Class ;
+        owl:versionInfo  "no linking" .
+
+
+olia:ActorMacroRole  a  owl:Class .
+
+olia:AdjectivePhrase  a  owl:Class .
+
+olia:AdverbPhrase  a  owl:Class .
+
+olia:Adverbial  a  owl:Class .
+
+olia:AdverbialModifier a owl:Class .
+
+olia:BenefactorRole  a  owl:Class .
+
+olia:Clause  a  owl:Class .
+
+olia:CloseAngleBracket a owl:Class .
+
+olia:CloseBracket  a  owl:Class .
+
+olia:CloseSquareBracket a owl:Class .
+
+olia:ComplementClause a owl:Class .
+
+olia:ConjunctionPhrase a owl:Class .
+
+olia:DeclarativeSentence a owl:Class .
+
+olia:DirectQuestion  a  owl:Class .
+
+olia:DirectWHQuestion a owl:Class .
+
+olia:DirectionRole  a  owl:Class .
+
+olia:Ellipsis  a  owl:Class .
+
+olia:ExpletivePronoun a owl:Class .
+
+olia:ExtentRole  a  owl:Class .
+
+olia:Extraposition  a  owl:Class .
+
+olia:Fragment  a  owl:Class .
+
+olia:Gapping  a  owl:Class .
+
+olia:HeadOfNP  a  owl:Class .
+
+olia:Headline  a  owl:Class .
+
+olia:Interjection  a  owl:Class .
+
+olia:ItCleft  a  owl:Class .
+
+olia:ListMarker  a  owl:Class .
+
+olia:LocationRole  a  owl:Class .
+
+olia:MannerRole  a  owl:Class .
+
+olia:Nominal  a  owl:Class .
+
+olia:NounPhrase  a  owl:Class .
+
+olia:OmittedUnit  a  owl:Class .
+
+olia:OpenAngleBracket a owl:Class .
+
+olia:OpenBracket  a  owl:Class .
+
+olia:OpenCurlyBracket a owl:Class .
+
+olia:ParentheticalPunctuation a owl:Class .
+
+olia:Particle  a  owl:Class .
+
+olia:Phrase  a  owl:Class .
+
+olia:Predicate  a  owl:Class .
+
+olia:PrepositionalPhrase a owl:Class .
+
+olia:PurposeRole  a  owl:Class .
+
+olia:Quantifier  a  owl:Class .
+
+olia:Question  a  owl:Class .
+
+olia:QuestionPredicate a owl:Class .
+
+olia:ReducedRelativeClause a owl:Class .
+
+olia:RelativeClause  a  owl:Class .
+
+olia:Subject  a  owl:Class .
+
+olia:SubordinateClause a owl:Class .
+
+olia:SyntacticAdjunct a owl:Class .
+
+olia:SyntacticSubject a owl:Class .
+
+olia:TimeRole  a  owl:Class .
+
+olia:Token  a   owl:Class .
+
+olia:Topicalization  a  owl:Class .
+
+olia:Trace  a   owl:Class .
+
+olia:VerbPhrase  a  owl:Class .
+
+olia:WHAdjectivePhrase a owl:Class .
+
+olia:WHAdverbPhrase  a  owl:Class .
+
+olia:WHCleft  a  owl:Class .
+
+olia:WHNounPhrase  a  owl:Class .
+
+olia:WHPrepositionalPhrase a owl:Class .
+
+olia:YesNoQuestion  a  owl:Class .
+
+olia:ZeroComplementizer a owl:Class .
+
+olia:ZeroPronoun  a  owl:Class .

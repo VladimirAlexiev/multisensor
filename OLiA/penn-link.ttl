@@ -1,0 +1,195 @@
+@prefix :      <http://purl.org/olia/penn-link.rdf#> .
+@prefix penn:  <http://purl.org/olia/penn.owl#> .
+@prefix olia:  <http://purl.org/olia/olia.owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/penn-link.rdf>
+        a                owl:Ontology ;
+        rdfs:comment     "provisional Penn-OLiA-Linking\n"^^xsd:string ;
+        owl:imports      <http://purl.org/olia/olia.owl> , <http://purl.org/olia/penn.owl> ;
+        owl:versionInfo  "2010-01-04 created\n2011-11-30 added PTB Punctuation\n\nChristian Chiarcos, chiarcos@uni-potsdam.de"^^xsd:string .
+
+penn:Adjective  rdfs:subClassOf  olia:Adjective .
+
+penn:Adverb  rdfs:subClassOf  olia:Adverb .
+
+penn:BackwardDoubleQuote
+        rdfs:subClassOf  olia:CloseQuote .
+
+penn:BaseForm  rdfs:subClassOf  [ a            owl:Class ;
+                                  owl:unionOf  ( olia:ImperativeVerb olia:IndicativeVerb olia:Infinitive olia:SubjunctiveVerb )
+                                ] .
+
+penn:BePastTense  rdfs:subClassOf  [ a                  owl:Restriction ;
+                                     owl:allValuesFrom  olia:Past ;
+                                     owl:onProperty     olia:hasTense
+                                   ] ;
+        rdfs:subClassOf  [ a            owl:Class ;
+                           owl:unionOf  ( olia:FiniteVerb olia:StrictAuxiliaryVerb )
+                         ] .
+
+penn:BePresentTense  rdfs:subClassOf  [ a            owl:Class ;
+                                        owl:unionOf  ( olia:FiniteVerb olia:StrictAuxiliaryVerb )
+                                      ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  olia:Present ;
+                           owl:onProperty     olia:hasTense
+                         ] .
+
+penn:CardinalNumber  rdfs:subClassOf  olia:CardinalNumber .
+
+penn:Colon  rdfs:subClassOf  olia:Colon .
+
+penn:Comma  rdfs:subClassOf  olia:Comma .
+
+penn:CommonNoun  rdfs:subClassOf  olia:CommonNoun .
+
+penn:ComparativeAdjective
+        rdfs:subClassOf  olia:Adjective ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  olia:Comparative ;
+                           owl:onProperty     olia:hasDegree
+                         ] .
+
+penn:ComparativeAdverb
+        rdfs:subClassOf  olia:Adverb ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  olia:Comparative ;
+                           owl:onProperty     olia:hasDegree
+                         ] .
+
+penn:Conjunction  a   owl:Class ;
+        rdfs:comment  "This class was inserted to reflect the tag structure. It does not, \n    however, exactly correspond to olia:Conjunction, because Penn conjunction \n    tags can also be applied to prepositions."^^xsd:string .
+
+penn:CoordinatingConjunction
+        rdfs:subClassOf  olia:CoordinatingConjunction .
+
+penn:DT  a      olia:Determiner .
+
+penn:Determiner  a    owl:Class ;
+        rdfs:comment  "Not clear whether this corresponds to OLiA/EAGLES determiners, because some predeterminers seem to be adverbs rather than determiners proper."^^xsd:string .
+
+penn:Dollar  rdfs:subClassOf  olia:Symbol .
+
+penn:DoubleQuote  rdfs:subClassOf  olia:Quote .
+
+penn:ExistentialThere
+        rdfs:subClassOf  olia:Unique .
+
+penn:ForeignWord  rdfs:subClassOf  olia:Foreign .
+
+penn:ForwardDoubleQuote
+        rdfs:subClassOf  olia:OpenQuote .
+
+penn:FullStop  rdfs:subClassOf  olia:Point .
+
+penn:GerundOrPresentParticiple
+        rdfs:subClassOf  olia:ing .
+
+penn:Interjection  rdfs:subClassOf  olia:Interjection .
+
+penn:LeftBracket  rdfs:subClassOf  olia:LeftParentheticalPunctuation .
+
+penn:ListItemMarker  rdfs:subClassOf  olia:Residual .
+
+penn:ModalVerb  rdfs:subClassOf  olia:ModalVerb .
+
+penn:Noun  a          owl:Class ;
+        rdfs:comment  "We inserted this class 'noun' to get a clearer ontology structure. In The Penn Treebank Tag Set there is no class 'noun'."^^xsd:string .
+
+penn:Particle  rdfs:subClassOf  [ a            owl:Class ;
+                                  owl:unionOf  ( olia:Preposition olia:Unique )
+                                ] .
+
+penn:PastParticiple  rdfs:subClassOf  olia:Participle ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  olia:Past ;
+                           owl:onProperty     olia:hasTense
+                         ] .
+
+penn:PastTense  a        owl:Class ;
+        rdfs:subClassOf  olia:AuxiliaryVerb ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  olia:Past ;
+                           owl:onProperty     olia:hasTense
+                         ] .
+
+penn:PersonaPronoun  a   owl:Class ;
+        rdfs:subClassOf  olia:PersonalPronoun .
+
+penn:PersonalPronoun  rdfs:subClassOf  [ a            owl:Class ;
+                                         owl:unionOf  ( olia:PersReflPronoun olia:PossessivePronoun )
+                                       ] .
+
+penn:PossessiveEnding
+        rdfs:subClassOf  olia:Residual ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  olia:GenitiveCase ;
+                           owl:onProperty     olia:hasCase
+                         ] .
+
+penn:PossessivePronoun
+        rdfs:comment     "Both substitutive and attributive 'her' are covered by this categorie. It's thus PossessiveDeterminer or PossessivePronoun."^^xsd:string ;
+        rdfs:subClassOf  [ a            owl:Class ;
+                           owl:unionOf  ( olia:PossessiveDeterminer olia:PossessivePronoun )
+                         ] .
+
+penn:PossessiveWhPronoun
+        rdfs:comment     "This category is applied to the wh-word &quot;whose&quot;."^^xsd:string ;
+        rdfs:subClassOf  penn:Pronoun ;
+        rdfs:subClassOf  [ a                   owl:Class ;
+                           owl:intersectionOf  ( olia:PossessiveDeterminer olia:WHDeterminer )
+                         ] .
+
+penn:Predeterminer  a    owl:Class ;
+        owl:versionInfo  "Very heterogeneous class, difficult to find a clear linking to an OliaCategory." .
+
+penn:PrepositionOrSubordinatingConjunction
+        rdfs:subClassOf  [ a            owl:Class ;
+                           owl:unionOf  ( olia:Preposition olia:SubordinatingConjunction )
+                         ] .
+
+penn:PresentTense  a     owl:Class ;
+        rdfs:subClassOf  olia:AuxiliaryVerb ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  olia:Present ;
+                           owl:onProperty     olia:hasTense
+                         ] .
+
+penn:ProperNoun  rdfs:subClassOf  olia:ProperNoun .
+
+penn:Punctuation  rdfs:subClassOf  olia:Punctuation .
+
+penn:RightBracket  rdfs:subClassOf  olia:RightParentheticalPunctuation .
+
+penn:SuperlativeAdjective
+        rdfs:subClassOf  olia:Adjective ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  olia:Superlative ;
+                           owl:onProperty     olia:hasDegree
+                         ] .
+
+penn:SuperlativeAdverb
+        rdfs:subClassOf  olia:Adverb ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  olia:Superlative ;
+                           owl:onProperty     olia:hasDegree
+                         ] .
+
+penn:Symbol  rdfs:subClassOf  olia:Symbol .
+
+penn:To  rdfs:subClassOf  [ a            owl:Class ;
+                            owl:unionOf  ( olia:Preposition olia:Unique )
+                          ] .
+
+penn:Verb  rdfs:comment  "Inserted to structure the tag set."^^xsd:string ;
+        rdfs:subClassOf  olia:Verb .
+
+penn:WhAdverb  rdfs:subClassOf  olia:WHTypeAdverbs .
+
+penn:WhDeterminer  rdfs:subClassOf  olia:WHDeterminer .
+
+penn:WhPronoun  rdfs:subClassOf  olia:WHPronoun .

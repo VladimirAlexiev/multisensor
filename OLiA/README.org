@@ -1,0 +1,15 @@
+These are Turtle versions of OLiA ontologies downloaded from http://purl.org/olia/ (http://www.acoli.informatik.uni-frankfurt.de/resources/olia/).
+Most of these ontologies are used by Multisensor and will be loaded to the Multisensor repository.
+
+In some cases I have fixed minor aspects, eg:
+- ~rdf:subClassOf~ instead of ~rdfs:subClassOf~
+- URL written as literal (eg "http://www.isocat.org/datcat/DC-1234") instead of proper URL
+- Replaced empty prefix ~:~ with a non-empty one (eg ~olia:~)
+- Used prefixes as much as possible
+
+In all cases I've sorted the elements alphabetically in the following sections (look for ~###~):
+- Ontology declaration
+- Classes
+- Properties
+- Individuals
+- External elements

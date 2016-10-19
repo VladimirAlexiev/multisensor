@@ -1,0 +1,84 @@
+@base <http://data.multisensorproject.eu/content/>.
+
+ms-content:156e0d a foaf:Document ;
+    dbp:countryCode  "ES" ;
+    dc:creator       "Alberto Iglesias Fraga" ;
+    dc:date          "2016-07-28T23:45:07.000+02:00"^^xsd:dateTime ;
+    dc:description   "SONY ha iniciado negociaciones con Murata Manufacturing...";
+    dc:language      "es" ;
+    dc:source        "cloud.ticbeat.com" ;
+    dc:subject       "Economía, Negocios y Finanzas" ;
+    dc:title         "SONY se desprenderá de su negocio de baterías" ;
+    dc:type          "article" ;
+    schema:keywords  "Sony, baterías, Murata Manufacturing";
+    dct:source       <http://feedproxy.google.com/...> .
+
+# EN translation
+  ms-content:156e0d-en a foaf:Document ;
+    bibo:translationOf ms-content:156e0d; # IMPORTANT!
+    dbp:countryCode   "ES" ;
+    dc:creator        "Alberto Iglesias Fraga" ;
+    dc:date           "2016-07-28T23:45:07.000+02:00"^^xsd:dateTime ;
+    dc:description    "SONY has begun negotiations with Murata Manufacturing..." ;
+    dc:language       "en" ;
+    dc:source         "cloud.ticbeat.com" ;
+    dc:subject        "Economy, Business & Finance" ;
+    dc:title          "SONY is clear from its battery business" ;
+    dc:type           "article" ;
+    schema:keywords   "Sony, batteries, Murata Manufacturing";
+    dct:source        <http://feedproxy.google.com/...> .
+
+<156e0d#char=0,2131> a nif:Context ;
+    ms:fluency       "1.22"^^xsd:double ;
+    ms:richness      "1.86"^^xsd:double ;
+    ms:technicality  "2.78"^^xsd:double ;
+    nif:beginIndex   "0"^^xsd:nonNegativeInteger ;
+    nif:endIndex     "2131"^^xsd:nonNegativeInteger ;
+    nif:isString     "SONY se desprenderá de su negocio de baterías..." ;
+    nif:sourceUrl    ms-content:156e0d .
+
+# EN translation
+  <156e0d-en#char=0,1800> a nif:Context ;
+    ms:fluency       "1.25"^^xsd:double ; # hopefully will be similar to original, but won't be identical
+    ms:richness      "1.81"^^xsd:double ;
+    ms:technicality  "2.70"^^xsd:double ;
+    nif:beginIndex   "0"^^xsd:nonNegativeInteger ;
+    nif:endIndex     "1800"^^xsd:nonNegativeInteger ; # Assuming EN comes out shorter than ES
+    nif:isString     "SONY is clear from its battery business..." ;
+    nif:sourceUrl    ms-content:156e0d-en .
+
+  <156e0d#char=1199,1224> a nif:Phrase ;
+    nif:anchorOf           "batería de iones de litio" ;
+    nif:beginIndex         "1199"^^xsd:nonNegativeInteger ;
+    nif:endIndex           "1224"^^xsd:nonNegativeInteger ;
+    nif:referenceContext   <156e0d#char=0,2131> ;
+    nif-ann:taIdentConf    "1.0"^^xsd:double ;
+    nif-ann:taIdentProv    <http://babelfy.org/> ;
+    its:taClassRef         ms:GenericConcept ;
+    its:taIdentRef         bn:s01289274n .
+
+# The BN labels are submitted in the SIMMO graph but stored in the default graph, thus the same for all languages
+bn:s01289274n skos:prefLabel "LiIon"@de, "Li-ion cell"@en, "Batteries lithium-ion"@fr, "Литиево-йонна батерия"@bg .
+
+  <156e0d-en#char=1100,1119> a nif:Phrase ;
+    nif:anchorOf           "lithium ion battery" ;
+    nif:beginIndex         "1100"^^xsd:nonNegativeInteger ;
+    nif:endIndex           "1119"^^xsd:nonNegativeInteger ;
+    nif:referenceContext   <156e0d-en#char=0,1800> ;
+    nif-ann:taIdentConf    "1.0"^^xsd:double ;
+    nif-ann:taIdentProv    <http://babelfy.org/> ;
+    its:taClassRef         ms:GenericConcept ;
+    its:taIdentRef         bn:s01289274n .
+
+bibo:translationOf   puml:arrow puml:left.
+dct:source           puml:arrow puml:up.
+nif:sourceUrl        puml:arrow puml:up.
+nif:referenceContext puml:arrow puml:up.
+<http://babelfy.org/>  a puml:Inline.
+
+ms-content:156e0d          puml:stereotype "<<(S,green)Spanish>>".
+<156e0d#char=1199,1224>    puml:stereotype "<<(S,green)Spanish>>".
+<156e0d#char=0,2131>       puml:stereotype "<<(S,green)Spanish>>".
+ms-content:156e0d-en       puml:stereotype "<<(E,red)English>>".
+<156e0d-en#char=0,1800>    puml:stereotype "<<(E,red)English>>".
+<156e0d-en#char=1100,1119> puml:stereotype "<<(E,red)English>>".

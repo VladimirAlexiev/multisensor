@@ -1,0 +1,950 @@
+#+TITLE: Multisensor Validation Log
+#+DATE: <2016-10-16>
+#+AUTHOR: Vladimir Alexiev
+#+EMAIL: vladimir.alexiev@ontotext.com
+#+STARTUP: showeverything
+#+OPTIONS: ':nil *:t -:t ::t <:t H:5 \n:nil ^:{} arch:headline author:t c:nil
+#+OPTIONS: creator:comment d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:nil
+#+OPTIONS: p:nil pri:nil stat:t tags:t tasks:t tex:t timestamp:nil toc:t todo:t |:t
+#+CREATOR: Emacs 25.0.50.1 (Org mode 8.2.10)
+#+DESCRIPTION:
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+TODO: TODO QUE | DONE CANCEL
+
+[[https://rawgit.com/VladimirAlexiev/multisensor/blob/master/validation.html][HTML Rendered version]]
+
+* Table of Contents                                            :TOC:noexport:
+ - [[#intro][Intro]]
+   - [[#queries][Queries]]
+ - [[#validation][Validation]]
+   - [[#context-extraction-service][Context Extraction Service]]
+     - [[#crawler-to-decode-html-entities][Crawler to decode HTML entities]]
+     - [[#keywords-vs-category][Keywords vs Category]]
+     - [[#ingest-timestamp][Ingest Timestamp]]
+     - [[#simmo-quality][SIMMO Quality]]
+       - [[#cancel-represent-as-qualitymeasurement][CANCEL Represent as QualityMeasurement]]
+       - [[#represent-as-qualityannotation][Represent as QualityAnnotation]]
+       - [[#quality-queries][Quality Queries]]
+     - [[#cancel-missing-authors][CANCEL Missing Authors]]
+     - [[#cancel-genre-type][CANCEL Genre (Type)]]
+     - [[#wrong-prefix-for-text-characteristics][Wrong prefix for Text Characteristics]]
+     - [[#refresh-prefixes][Refresh Prefixes]]
+   - [[#entity-linking-service][Entity Linking Service]]
+     - [[#underscores-to-spaces][Underscores to Spaces]]
+     - [[#cancel-remove-disambiguation-labels][CANCEL Remove Disambiguation Labels?]]
+   - [[#entity-alignment-service][Entity Alignment Service]]
+     - [[#also-remove-taidentconf-taidentprov][Also remove taIdentConf, taIdentProv]]
+     - [[#leave-dependency-links][Leave Dependency Links]]
+     - [[#use-prefixes-in-alignmentlog][Use Prefixes in alignment.log]]
+   - [[#summarization-service][Summarization Service]]
+     - [[#nifanchorof][nif:anchorOf]]
+     - [[#cancel-why-nif-anntaidentconf-is-0][CANCEL Why nif-ann:taIdentConf is 0?]]
+     - [[#cancel-msgenericconcept-vs-msspecificconcept][CANCEL ms:GenericConcept vs ms:SpecificConcept]]
+     - [[#optimize-summarization-queries][Optimize Summarization Queries]]
+   - [[#content-alignment][Content Alignment]]
+     - [[#cap-old-model][CAP Old Model]]
+     - [[#one-annotation-per-pair][One Annotation Per Pair]]
+     - [[#use-msscore-not-fiseconfidence-for-cap][Use ms:score not fise:confidence for CAP]]
+     - [[#add-to-ontology][Add to Ontology]]
+     - [[#cap-query][CAP Query]]
+     - [[#cancel-other-cap-queries][CANCEL Other CAP Queries]]
+   - [[#content-translation][Content Translation]]
+     - [[#babelnet-multilingual-labels][BabelNet Multilingual Labels]]
+     - [[#cancel-add-spanish-babelnet-labels][CANCEL Add Spanish BabelNet Labels]]
+     - [[#translated-content-queries][Translated-content Queries]]
+       - [[#find-entities][Find Entities]]
+       - [[#select-single-label][Select Single Label]]
+       - [[#find-translations-][Find Translations ]]
+ - [[#nif-instead-of-nif-ann][nif: instead of nif-ann:]]
+
+* Intro
+From now until the end of the project I'll keep a detailed log of what I validated and defects I found.
+I'll use Org-mode mechanisms to track the defects (tags TODO, DONE, CANCELED) and try to monitor email conversation to keep this up to date.
+The numbers in brackets after a section name show the resolved vs total defects.
+Whenever a defect is posted in Jira, I'll track the issue number.
+
+Please contact me on skype://valexiev1 for corrections/additions.
+Even better, you could [[https://github.com/VladimirAlexiev/VladimirAlexiev.github.io/edit/master/Multisensor/validation.org][edit this file on github]] (it's a plain text file!) and send me a pull request.
+- Mistakes or imprecise info (eg the scope of a particular service is described wrong, or a particular issue is in fact a non-issue)
+- When an issue is resolved
+- When an issue should be canceled
+I'll also attend weekly calls related to RDF data and validation, and update this.
+
+IMPORTANT: Just because an issue is listed in the section for a particular service, doesn't necessarily mean that service created the defect!
+
+** Queries
+Below I also track questions related to queries.
+But when agreed, they should be moved to gdoc [[https://docs.google.com/document/d/1FfkiiTYvrLzHJ5P5j34NRVGPbXml0ndpNtiNbH2osRw/edit][Multisensor SPARQL Queries]].
+
+Or we could simply use the doc:
+if you need a new query, or a query needs optimization, please write a comment in red,
+and notify me in a gdoc comment (add +vladimir@sirma.bg to the comment).
+
+* Validation
+
+** Context Extraction Service
+
+*** TODO Crawler to decode HTML entities
+It would be good if the crawler decodes HTML entities before storing in dc:subject (possibly also dc:title, dc:description). Eg:
+#+BEGIN_SRC Turtle
+dc:subject
+  "Europ&auml;ische Union, ISIN_FR0003500008, Brexit, Erholungskurs, Europa, Paris, Gro&szlig;britannien" ,
+  "Economy, Business & Finance" ;
+#+END_SRC
+
+*** DONE Keywords vs Category
+Victor: both of the following fields extracted by the crawler are mapped to dc:subject:
+- *category*: eg "Economy, Business & Finance" 
+- *keywords*: eg "Europaische Union, ISIN_FR0003500008, Brexit, Erholungskurs, Europa, Paris, Grossbritannien"
+Should we separate them in different properties?
+
+Vladimir: 
+[[https://iptc.org][IPTC]] is the [[https://iptc.org/about-iptc/][Global Standards Body]] of the News Media industry. 
+[[https://iptc.org/standards/media-topics/][IPTC Media Topics]] is a list of 1100 [[http://cv.iptc.org/newscodes/mediatopic][Media Topics]] developed as an extension from earlier IPTC [[http://cv.iptc.org/newscodes/subjectcode][Subject Codes]].
+You can [[http://show.newscodes.org/index.html?newscodes%3Dmedtop&lang%3Den-GB&startTo%3DShow][explore interactively]] and will see that Multisensor *categories* are similar to these topics/subjects; 
+so we'll continue to map them to ~dc:subject~.
+
+On the other hand, Multisensor *keywords* are free keywords that describe a lot more specific things.
+We'll map them to ~schema:keywords~, defined as 
+"Keywords or tags used to describe the content. Multiple entries in a keywords list are typically delimited by commas":
+#+BEGIN_SRC Turtle
+dc:subject "Economy, Business & Finance";
+schema:keywords "Europaische Union, ISIN_FR0003500008, Brexit, Erholungskurs, Europa, Paris, Grossbritannien";
+#+END_SRC
+
+It would be nice to:
+- Split keywords on ", " and and emit as separate values
+  - (don't split categories, since the 3 words really represent one category)
+- Map our categories to IPTC Media Topics. This is quite harder
+
+*** DONE Ingest Timestamp
+<2016-07-20 Wed> Almost done, only the datatype is missing.
+
+Victor: introduce the date when the article have been processed in RDF. 
+In order to keep track of which and when the “curated selected data” have been processed,
+and match them with the current version of the CEP service.
+
+Vladimir: we can use ~dct:issued~ for this purpose:
+#+BEGIN_SRC Turtle
+ms-content:b3f35
+  dc:date    "2016-06-20T18:45:07.000+02:00"^^xsd:dateTime ; # date crawled
+  dct:issued "2016-06-30T12:34:56.000+02:00"^^xsd:dateTime ; # date processed by pipeline and ingested to GDB
+#+END_SRC
+Boyan will add this second timestamp in the POST method.
+
+*** DONE SIMMO Quality
+Status:
+- <2016-07-18> DONE: initial implementation
+- <2016-07-20> DONE: make dqv:value nominal (eg ms:accuracy-low) instead of numeric (eg 1)
+- <2016-07-26> DONE: use QualityAnnotation instead of QualityMeasurement
+
+Victor: the field "c_quality" is sent now. Values can be:
+- 0 = no quality assigned
+- 1 = high quality
+- 2 = medium quality
+- 3 = low quality
+- 5 = curated
+Vladimir:
+- Instead of a numeric scale (which is not monotonically increasing), let's use a nominal (symbolic) scale.
+- Instead of 0, we should omit the statement
+- There is no value 4
+- About value 5: do we have metadata who & when curated it? Should we record in RDF something more than the number? 
+  The selected quality ontology (DQV, see below) allows to record a lot of detail: who, when, according to what methodology...
+  - Leszek (skype:letschke): we do not provide any additional meta data.
+
+Vladimir: I searched for a [[http://lov.okfn.org/dataset/lov/terms?q%3Dquality&type%3Dproperty&page%3D2][quality property on LOV]], couldn't find anything really appropriate:
+- http://www.w3.org/ns/dcat#dataQuality: this is about datasets, but is deprecated: 
+  "This should not be used to describe the data collection characteristics, other more specialized statistical properties can be used instead". 
+  But I don't see such statistical properties
+- http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#dataQualityInfo:
+  this is about ISO 19115 "Geographic information — metadata"
+  http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality is a whole separate module on Quality
+- http://purl.oclc.org/NET/ssnx/ssn#qualityOfObservation: this is about Semantic Sensor Networks.
+  It makes reference to resultQuality in [[http://portal.opengeospatial.org/files/?artifact_id%3D41579][ISO 19156]] "Geographic information — Observations and measurements"
+
+Finally from a link at Europeana DQC, I found the 
+W3C [[https://www.w3.org/TR/vocab-dqv/][Data Quality Vocabulary]] ~dqv:~. 
+We'll use that vocabulary, and the [[https://www.w3.org/TR/vocab-dqv/#DimensionsofZaveri][Linked Data Quality Dimensions]] ~ldqd:~ by Zaveri.
+
+**** CANCEL Represent as QualityMeasurement
+Initially I tried this representation. 
+But after discussion at [[mailto:public-dwbp-comments@w3.org]], it was clarified that QualityMeasurement can only be used with literal values, so this is WRONG.
+See next section for the correct representation.
+
+First we add a ~dqv:Metric~ to the Multisensor ontology:
+#+BEGIN_SRC Turtle
+@prefix dqv:  <http://www.w3.org/ns/dqv#> .
+@prefix ldqd: <http://www.w3.org/2016/05/ldqd#> .
+
+ms:accuracy a dqv:Metric;
+  skos:prefLabel "Accuracy"@en;
+  skos:definition "Degree to which SIMMO data correctly represents real world facts."@en;
+  dqv:inDimension ldqd:semanticAccuracy;
+  dqv:expectedDataType ms:Accuracy.
+
+ms:Accuracy a owl:Class, skos:ConceptScheme;
+  rdfs:label "Accuracy values"@en.
+ms:accuracy-low a ms:Accuracy, skos:Concept; skos:inScheme ms:Accuracy;
+  skos:prefLabel "Low accuracy"@en.
+ms:accuracy-medium a ms:Accuracy, skos:Concept; skos:inScheme ms:Accuracy;
+  skos:prefLabel "Medium accuracy"@en.
+ms:accuracy-high a ms:Accuracy, skos:Concept; skos:inScheme ms:Accuracy;
+  skos:prefLabel "High accuracy"@en.
+ms:accuracy-curated a ms:Accuracy, skos:Concept; skos:inScheme ms:Accuracy;
+  skos:prefLabel "Manually curated"@en;
+  skos:note "Highest accuracy"@en.
+#+END_SRC
+
+Then for each SIMMO that has a quality rating (SIMMOS that don't have a rating get no extra statements):
+#+BEGIN_SRC Turtle
+ms-content:b3f35 dqv:hasQualityMeasurement ms-content:b3f35-quality.
+
+ms-content:b3f35-quality a dqv:QualityMeasurement ;
+   dqv:isMeasurementOf ms:accuracy; dqv:value ms:accuracy-curated.
+#+END_SRC
+
+**** DONE Represent as QualityAnnotation
+The correct way to use nominal values is to use QualityAnnotation instead of QualityMeasurement.
+
+First we define the nominal values in the ontology:
+#+BEGIN_SRC Turtle
+@prefix dqv:  <http://www.w3.org/ns/dqv#> .
+@prefix ldqd: <http://www.w3.org/2016/05/ldqd#> .
+
+ms:Accuracy a skos:ConceptScheme;
+  rdfs:label "Accuracy values"@en.
+ms:accuracy-low a skos:Concept; skos:inScheme ms:Accuracy;
+  skos:prefLabel "Low accuracy"@en.
+ms:accuracy-medium a skos:Concept; skos:inScheme ms:Accuracy;
+  skos:prefLabel "Medium accuracy"@en.
+ms:accuracy-high a skos:Concept; skos:inScheme ms:Accuracy;
+  skos:prefLabel "High accuracy"@en.
+ms:accuracy-curated a skos:Concept; skos:inScheme ms:Accuracy;
+  skos:prefLabel "Manually curated"@en;
+  skos:note "Highest accuracy"@en.
+#+END_SRC
+
+Then for every SIMMO with a quality rating:
+#+BEGIN_SRC Turtle
+ms-content:b3f35 dqv:hasQualityAnnotation ms-content:b3f35-quality.
+ms-content:b3f35-quality a dqv:QualityAnnotation;
+  dqv:inDimension ldqd:semanticAccuracy;
+  oa:motivatedBy dqv:qualityAssessment;
+  oa:hasTarget ms-content:b3f35;
+  oa:hasBody ms:accuracy-curated.
+#+END_SRC
+
+**** Quality Queries
+Querying for SIMMOs with quality is easy:
+#+BEGIN_SRC sparql
+select * {
+  ?simmo a foaf:Document; dqv:hasQualityAnnotation/oa:hasBody ?quality}
+#+END_SRC
+
+An update query to migrate old QualityMeasurement data to the new QualityAnnotation representation:
+#+BEGIN_SRC sparql
+delete {
+  graph ?graph {
+    ?simmo dqv:hasQualityMeasurement ?quality.
+    ?quality ?p ?v}}
+insert {
+  graph ?graph {
+    ?simmo dqv:hasQualityAnnotation ?quality.
+    ?quality a dqv:QualityAnnotation;
+      dqv:inDimension ldqd:semanticAccuracy;
+      oa:motivatedBy dqv:qualityAssessment;
+      oa:hasTarget ?simmo;
+      oa:hasBody ?value}}
+where {
+  graph ?graph {
+    ?simmo dqv:hasQualityMeasurement ?quality.
+    ?quality dqv:value ?value}}
+#+END_SRC
+
+*** CANCEL Missing Authors
+#+BEGIN_SRC sparql
+select * {?x a foaf:Document} 
+# 112k SIMMOs
+select * {?x a foaf:Document; dc:creator ?y}
+# 10.5k authors, only 9.4%
+#+END_SRC
+- Can we get more authors?
+Discussion <2016-07-08 Fri> [[https://quark.everis.com/jira/browse/MULTISENSO-186][MULTISENSO-186]]:
+- Andrey:  Interest in the "genre", “author” feature if available (not always retrievable by the context extraction service)
+- Ioannis: The genre and author information can only be extracted when they are available in the HTML content of the scrapped page, otherwise we cannot infer it. To this end, there is not much we can do.
+  It was quite obvious on the planning stage that not all articles have mentioned fields in HTML tags, and it could be foreseen, maybe with additional parsing methods since not always html tags do have this information, but normally all news articles have for example Author info in the body of the article. So this part can be closed, as "it" will not going to happen.
+
+*** CANCEL Genre (Type)
+Vladimir & Ioannis: by *Genre*, do you mean dc:type? We assume so below.
+
+#+BEGIN_SRC sparql
+select * {?x a foaf:Document; dc:type ?y} 
+# 20k, that's 17.9%
+#+END_SRC
+- Q: Can we get more genres?
+- A: Same comments as in the previous section apply.
+
+Distribution of Genre:
+#+BEGIN_SRC sparql
+select ?y (count(*) as ?c)
+{?x a foaf:Document; dc:type ?y}
+group by ?y order by desc(?c)
+#+END_SRC
+| Genre/Type        | Count | Notes                  |
+|-------------------+-------+------------------------|
+| article           | 14768 |                        |
+| music             |  2886 |                        |
+| website           |  1087 |                        |
+| speech            |   813 |                        |
+| sound             |   407 |                        |
+| food              |    83 | ?? Maybe "recipe"      |
+| video             |    25 |                        |
+| Article           |    25 | normalize to "article" |
+| single            |    11 |                        |
+| song              |    11 |                        |
+| Speech            |    11 |                        |
+| Ogg               |    11 | normalize to "sound"   |
+| video.other       |     7 | normalize to "video"   |
+| news              |     6 |                        |
+| ARTICLE           |     4 | normalize to "article" |
+| media             |     2 |                        |
+| blog              |     1 |                        |
+| slideshow         |     1 |                        |
+| video.movie       |     1 | normalize to "video"   |
+| tumblr-feed:entry |     1 |                        |
+<2016-07-08 Fri>
+- Vladimir: it would be nice to normalize some values, and reduce this from 20 to say 10 rows
+- Ioannis: the code to extract "type" was written over a year ago, so this would not be so simple
+- Vladimir and Ioannis: the first 5 types catch 90%, so it's only the "long tail" would need normalization... This is not so important
+
+*** DONE Wrong prefix for Text Characteristics
+Advanced Context Extraction adds new Text Characteristics properties (~ms:technicality, ms:fluency, ms:richness~) 
+to the context (property definitions omitted for brevity).
+
+Example (this particular text is fluent, but is neither rich nor technical, so we set values 5, 1, 1 respectively):
+#+BEGIN_SRC Turtle
+@base <http://data.multisensorproject.eu/content/9e9c304>.
+
+<#char=0,2000> a nif:Context;
+  nif:isString "This is the whole text of the SIMMO.\n It should continue for 2000 chars but I'll stop here"@en;
+  ms:fluency      5.0;
+  ms:richness     1.0;
+  ms:technicality 1.0.
+#+END_SRC
+
+<2016-06-23 Thu>: checked [[http://grinder1.multisensorproject.eu/cepfiles/rdf_validation/context_extraction_validation/0e6b24-CONTEXT_EXTRACTION-22-6-2016.ttl][0e6b24-CONTEXT_EXTRACTION-22-6-2016.ttl]] and Text Characteristics (technicality, fluency, richness):
+- currently use <http://data.multisensor.eu/ontology#>
+- but the correct prefix is <http://data.multisensorproject.eu/ontology#>
+Victor <2016-06-30 Thu>: updated the prefix
+
+*** DONE Refresh Prefixes
+I've added http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-annotation# to [[./img/prefixes.ttl]] (committed <2016-06-30 Thu>)
+Please refresh from [[./img/prefixes.ttl]], so new validation files use this prefix.
+
+Gerard: what exactly are we suppposed to do with the prefixes file.
+- Once loaded in the repo (Boyan's job), we can make queries without mentioning the prefixes.
+Should we load it into Sesame somehow so that triples are generated with prefixes? 
+If so, could you give us some code showing how to do it?
+- I think the validation files use prefixes, because prefixes.ttl is prepended, then passed through RIOT.
+  I think Victor made that script. The other prefixes are there, so it's just a matter of refreshing
+
+** Entity Linking Service
+
+*** TODO Underscores to Spaces
+The EL service emits Babelnet entity labels in up to 4 languages, eg
+#+BEGIN_SRC Turtle
+bn:s00088614v  skos:prefLabel  "zu_befriedigen"@de , "satisfacer"@es , "satisfaire"@fr , "задоволи"@bg .
+bn:s00014609n  skos:prefLabel  "Kuchen"@de , "Pastel_(gastronomía)"@es , "Gâteau"@fr , "Торта"@bg .
+bn:s01718102n  skos:prefLabel  "I_do_not_want_what_I_haven't_got"@es , "I_Don't_Want_What_I_Haven't_Got"@en , "I_Do_Not_Want_What_I_Haven't_Got"@fr .
+bn:s02229586n  skos:prefLabel  "UHC_Hamburg"@en , "Uhlenhorster_HC"@fr .
+#+END_SRC
+For reasons unknown, Babelnet uses underscores (eg see [[http://babelnet.org/rdf/page/UHC_Hamburg_n_EN][UHC_Hamburg_n_EN]]).
+I think we should convert the underscores to spaces to make the label more natural.
+
+- Can be fixed in the repo with a query like this
+  - However this doesn't find Babelnet *broader* entities imported by ONTO. We have a list of all Babelnet entities, maybe better to use this somehow
+#+BEGIN_SRC sparql
+delete {?x skos:prefLabel ?lab}
+insert {?x skos:prefLabel ?lab1}
+where {
+    ?x skos:prefLabel ?lab
+    filter exists {[its:taIdentRef ?x; nif-ann:taIdentProv <http://babelfy.org/>]}
+    filter(regex(?lab,"_"))
+    bind(replace(?lab,"_"," ") as ?lab1)
+}
+#+END_SRC
+- UPF code that brings in new Babelnet enrichments should be fixed too.
+  Gerard: DONE <2016-07-20 Wed>
+	Entitly Linking: Translations obtained from BabelNet are now issued as literals of skos:prefLabel triples without underscores.
+- UPF code that creates ~nif:lemma~ should be fixed, eg this node has lemma "basic_data"
+  http://multisensor.ontotext.com/resource/ms-content/00a17bdb91543c45349f42378caeecd434c1a8f4%23char=281,291
+  Gerard: DONE <2016-07-20 Wed>.
+	Dependency parsing: lemmas are also emitted as literals of nif:lemma triples without underscores
+- IMPORTANT <2016-08-12 Fri> Now we have two labels per BN concept per language. Must remove the superfluous ones. Eg:
+  - bn:s03113558n: "Royal Ordnance Factories F.C."@en and "Royal_Ordnance_Factories_F.C."@en
+  - bn:s00124949n: "Prefijo del Segmento de Programa"@es and "Prefijo_del_Segmento_de_Programa"@es
+- Gerard <2016-09-06 Tue>: The EL service only issues labels without underscores, so the ones with underscores are the ouput of running older versions of the service.
+
+*** CANCEL Remove Disambiguation Labels?
+Should we also remove disambiguations, which are trailing parenthesized parts, eg "Pastel_(gastronomía)" -> "Pastel"?
+Since these labels are not used for NLP tasks, and the disambiguations are very useful for understanding what the entity is, I vote to leave them.
+- Gerard: I also vote to leave them, more so considering that they can easily be postprocessed by the UI if ever needed.
+
+** Entity Alignment Service
+<2016-06-28 Tue>: checked [[http://grinder1.multisensorproject.eu/cepfiles/rdf_validation/entity_alignment/0181e1-ENTITY_ALIGNMENT-21-6-2016.ttl][0181e1-ENTITY_ALIGNMENT-21-6-2016.ttl]] and alignment.log (by email)
+
+The log has 90 actions. I checked these 4 actions:
+#+BEGIN_EXAMPLE
+2016-06-21 16:22:18 INFO  Alignment:42 - Comparing <#char=1453,1461> and <#char=1444,1461>
+2016-06-21 16:22:18 INFO  Alignment:138 - Removed: (#char=1453,1461, rdf:type, nif:Phrase)
+2016-06-21 16:22:18 INFO  Alignment:152 - Removed: (#char=1453,1461, itsrdf:taClassRef, null)
+2016-06-21 16:22:18 INFO  Alignment:156 - Removed: (#char=1453,1461, itsrdf:taIdentRef, null)
+#+END_EXAMPLE
+
+This corresponds to two annotations:
+- <#char=1444,1461> found by Named Entity Recognition: "Margaret Thatcher" detected as the politician, with link to DBpedia (longer; correct)
+- <#char=1453,1461> found by Entity Linking: "Thatcher" detected as a "roof builder" with link to Bbelnet (shorter; incorrect)
+
+The Entity Alignment service prefers the longer annotation, and removes 3 properties from the shorter annotation.
+What is left in the RDF is this:
+#+BEGIN_SRC Turtle
+<#char=1453,1461>
+        a                     nif:Word ;
+        <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-annotation#taIdentConf>
+                "0.0"^^xsd:double ;
+        <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-annotation#taIdentProv>
+                <http://babelfy.org/> ;
+        nif:anchorOf          "Thatcher" ;
+        nif:beginIndex        "1453"^^xsd:nonNegativeInteger ;
+        nif:endIndex          "1461"^^xsd:nonNegativeInteger ;
+        nif:referenceContext  <#char=0,2898> .
+
+<#char=1444,1461>
+        a                     nif:Phrase ;
+        nif:anchorOf          "Margaret Thatcher" ;
+        nif:beginIndex        "1444"^^xsd:nonNegativeInteger ;
+        nif:endIndex          "1461"^^xsd:nonNegativeInteger ;
+        nif:referenceContext  <#char=0,2898> ;
+        its:taClassRef        nerd:Person ;
+        its:taIdentRef        dbr:Margaret_Thatcher .
+
+dbr:Margaret_Thatcher
+        a          foaf:Person , dbo:Person , nerd:Person ;
+        foaf:name  "Margaret Thatcher" .
+#+END_SRC
+
+*** DONE Also remove taIdentConf, taIdentProv
+In the example above, ~taClassRef~ and ~taIdentRef~ were removed. 
+This makes the other two props ~nif-ann:taIdentConf~ and ~nif-ann:taIdentProv~ useless.
+Remove them too.
+
+*** DONE Leave Dependency Links
+Entity Alignment also seems to remove the dependency links, eg:
+: <#char=1444,1452> nif:dependency          <#char=1453,1461>
+: <#char=1444,1452> upf-deep:deepDependency <#char=1453,1461>
+
+However, this can make the dependency and FrameNet graphs disconnected. So leave the dependencies alone.
+
+*** TODO Use Prefixes in alignment.log
+I shortened the excerpt from alignment.log above to improve readability:
+substituted the defined prefixes, and used the SIMMO URL as base (i.e. used relative URLs starting with hash)
+It would be very useful if alignment.log uses the same shortenings to improve readability.
+
+This is a completely cosmetic issue, we can cancel it.
+
+** Summarization Service
+<2016-06-28 Tue> looked at [[http://grinder1.multisensorproject.eu/cepfiles/rdf_validation/concept_with_scores_16_06_2016/2c9d5c-CONCEPT_EXTRACTION-16-6-2016.ttl][2c9d5c-CONCEPT_EXTRACTION-16-6-2016.ttl]] (concept_with_scores)
+
+#+BEGIN_SRC Turtle
+<#char=0,11>
+        a                        nif:Phrase ;
+        <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-annotation#taIdentConf>
+                "0.0"^^xsd:double ;
+        <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-annotation#taIdentProv>
+                <http://babelfy.org/> ;
+        nif:beginIndex           "0"^^xsd:nonNegativeInteger ;
+        nif:dependency           <#char=29,38> ;
+        nif:endIndex             "11"^^xsd:nonNegativeInteger ;
+        nif:lemma                "open_source" ;
+        nif:literalAnnotation
+          "surf=spos=NN" ,
+          "rel==dpos=NN|end_string=11|start_string=0|id0=1|number=SG|word=open_source|connect_check=OK|vn=open_source" ,
+          "deep=spos=NN" ;
+        nif:oliaLink             upf-dep-syn:NAME , upf-deep:NAME , <#char=0,11_fe> , penn:NNP ;
+        nif:referenceContext     <#char=0,5625> ;
+        upf-deep:deepDependency  <#char=29,38> ;
+        its:taClassRef           ms:GenericConcept ;
+        its:taIdentRef           bn:s01157392n .
+#+END_SRC
+
+*** DONE nif:anchorOf
+I've been saying all along to skip ~nif:anchorOf~ so as not to create too many literals.
+But with the number of SIMMOs loaded, it has not been too taxing for GDB.
+~nif:anchorOf~ has been instrumental in debugging, eg of the UTF-8 and offset mismatch issues.
+
+~nif:literalAnnotation~ and ~nif:lemma~ provide sufficient info about the phrase, 
+so maybe we don't need ~nif:anchorOf~. We could cancel this issue.
+- Gerard: If they can be sustained by GraphDB, I vote in favor of keeping them as they help *a lot* when debugging. 
+- Vladimir: so decided: if the Entity Lookup makes a new node, add ~nif:anchorOf~ to it.
+
+Some nodes  are missing ~nif:anchorOf~, eg see
+http://multisensor.ontotext.com/resource/ms-content/00a17bdb91543c45349f42378caeecd434c1a8f4%23char=281,291.
+This has nif:lemma "basic_data" but not nif:anchorOf.
+
+Gerard <2016-07-20 Wed> NIFUtils: new annotations created by services using this library will now emit anchors. This affects EL mostly
+
+*** CANCEL Why nif-ann:taIdentConf is 0?
+In some examples, ~nif-ann:taIdentConf~ is 0. 
+(In many other examples it's a good number, eg in [[http://grinder1.multisensorproject.eu/cepfiles/rdf_validation/concept_with_scores_16_06_2016/bf6fe4-CONCEPT_EXTRACTION-16-6-2016.ttl][bf6fe4-CONCEPT_EXTRACTION-16-6-2016.ttl]] it's "0.7619547411890493"^^xsd:double
+Is 0 some sort of bug, or does Babelfy actually return 0 confidence for some concepts?
+- Gerard: I think it's an error, I'll get back to you as soon as as I've figured out what's causing it.
+- Vladimir <2016-09-05 Mon> Still occurs, eg
+  #+BEGIN_SRC Turtle
+  <3c361-de#char=8190,8198>
+        a                      nif:Phrase , nif:Word ;
+        nif-ann:taIdentConf    "0.0"^^xsd:double ;
+        nif-ann:taIdentProv    <http://babelfy.org/> ;
+        nif:anchorOf           "Zugleich" ;
+  #+END_SRC
+- Gerard: After checking the code and Babelfy's documentation, I reached the conclusion that this is normal behaviour. Take a look at this [[http://babelfy.org/guide#ResponseExample][example response from Babelfy's own documentation]], which contains annotations with confidence score 0
+
+*** CANCEL ms:GenericConcept vs ms:SpecificConcept
+- Gerard (about the last example): A 'generic' concept produced by Babelfy. 
+  But annotations of concepts produced by the concept extraction service should contain triples pointing to ~ms:SpecificConcept~.
+- Vladimir: also seems to me that concepts like "open source" and "pastry" are ~ms:SpecificConcept~.
+- Gerard: problems regarding the quality of the annotations shouldn't be part of the RDF validation.
+- Vladimir: agree, but this log is for the project as a whole, not just syntactic validity. (Which doesn't mean I'm determining priorities!)
+- Gerard: we'll be releasing updates to the concept extraction service, so expect improvements into what is considered a specific concept.
+- How is this used in the UI? Gerard thinks that only Specific concepts are (or *should be*) shown in the SIMMO's tag cloud
+
+Gerard <2016-07-20 Wed> This should become a non issue after recent changes are incorporated to the concept service
+
+*** DONE Optimize Summarization Queries
+Gerard wrote some of the Summarization queries are slow.
+Please mark which ones need optimization, and provide ~$graph~ for testing.
+- Used the standard notation ~$param~ to indicate an input parameter, rather than ~__PARAM__~
+- Moved ~FILTER~ inside ~GRAPH~, and a few more minor changes
+- The problem was that the prop path ~p1?/p2~ is slow, since ~p1?~ connects *any* node to itself.
+  Replaced with ~p1/p2|p2~, which is fast
+
+** Content Alignment
+The Content Alignment Pipeline (CAP) is a service that executes on KB data and finds articles that are similar or contradictory to the source article.
+It is *not* executed as part of the SIMMO pipeline, but periodically.
+
+<2016-07-20 Wed>: selected repo *multisensor-test* and checked http://multisensor.ontotext.com/resource?uri=http://data.multisensorproject.eu/CAP/7b91365a-af00-4518-a7e7-f187f3cd44c1 
+- Everything's done except "ms:score instead of fise:confidence" (Babis) and "add to Ontology" (Vladimir).
+- Checked there are motivations of both kinds:
+  #+BEGIN_SRC sparql
+select ?mot (count(*) as ?c) where { 
+ graph <http://data.multisensorproject.eu/CAP> {?x oa:motivatedBy ?mot}
+} group by ?mot
+#+END_SRC
+  ms:linking-similar: 828, ms:linking-contradictory: 860
+- one contradictory CAP annotation is [[http://multisensor.ontotext.com/resource?uri%3Dhttp:%2F%2Fdata.multisensorproject.eu%2FCAP%2F007e1c1e-85b4-481a-a838-0e242c2afb8c][CAP/007e1c1e-85b4-481a-a838-0e242c2afb8c]]
+  It talks about these two:
+  #+BEGIN_SRC sparql
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#>
+select ?desc ?text {
+    values ?x {
+        <http://data.multisensorproject.eu/content/7d76ef5e787e830b081d149d05359c21cc5a9835>
+        <http://data.multisensorproject.eu/content/d2b116e9c5422fda256da2913738ac000ba7b30c>
+    }
+    ?x dc:description ?desc.
+    ?y nif:sourceUrl ?x; nif:isString ?text
+}
+#+END_SRC
+  - One is about "How an Apple Watch can ruin your life"
+  - The other about "Employees and executives win mobility and flexibility with the SH10 TaskBook of SOREDI Touch Systems GmbH"
+  Guess this is sort of contradictory: one hates one IT product, the other one praises another IT product :-)
+
+*** CAP Old Model
+<2016-06-28 Tue> checked [[http://mklab2.iti.gr/multisensor/index.php/CAP:_Specification_of_the_service][CAP:_Specification_of_the_service]]. It proposes the following model:
+
+#+BEGIN_SRC Turtle
+<http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304#similarArticles>
+  a oa:Annotation ;
+  oa:hasTarget <http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304> ;
+  oa:hasBody        
+    <http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304#similarArticle-1> ,
+    <http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304#similarArticle-2> ;
+  oa:motivatedBy oa:tagging ;
+  oa:annotatedBy <http://data.multisensorproject.eu/agent/CAPAgent> ;
+  oa:annotatedAt "2016-01-11T12:00:00"^^xsd:dateTime .
+
+<http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304#similarArticle-1>
+  a oa:SemanticTag ;
+  skos:related <http://data.multisensorproject.eu/content/ca34bb35770bfa55434a0689d64e1e6a60611047> ;
+  fise:confidence 0.862 .
+
+<http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304#similarArticle-2>
+  a oa:SemanticTag ;
+  skos:related <http://data.multisensorproject.eu/content/57e07befbda355c2eca2ee521926071ee9f5c719> ;
+  fise:confidence 0.795 .
+
+<http://data.multisensorproject.eu/agent/CAPAgent>
+  a prov:SoftwareAgent ;
+  foaf:name "Content Alignment Pipeline v1.0" .
+#+END_SRC
+
+Each annotation is symmetric, so it's written twice: in the SIMMO graphs of each of the two SIMMOs.
+This complicates data management, because both of these graphs need to be updated.
+
+*** DONE One Annotation Per Pair                                    :Babis:
+
+After consultation with Babis, we decided to change the representation as follows:
+- Write annotations in their own graph <http://data.multisensorproject.eu/CAP>, outside of any SIMMO graph.
+  The CAP service will be called periodically, search globally in the SIMMO DB, and overwrite the similarity graph.
+- Write one annotation per pair
+- Use custom ~oa:motivatedBy~: ~ms:linking-similar~ vs ~ms:linking-contradictory~ to express similarity vs contradiction
+
+In the previous example, assume that the first related article is *similar* but the second is *contradictory*.
+We restructure it as follows, where ~similarity/123~ and ~similarity/124~ are GUIDs or some other way to generate unique URLs.
+Please note that the representation is completely symmetric regarding the two SIMMOs being linked, 
+so there's no need to repeat for the other SIMMO.
+
+#+BEGIN_SRC Turtle
+graph <http://data.multisensorproject.eu/CAP> {
+  <http://data.multisensorproject.eu/CAP/123> a oa:Annotation;
+    oa:hasBody        
+      <http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304>,
+      <http://data.multisensorproject.eu/content/ca34bb35770bfa55434a0689d64e1e6a60611047>;
+    fise:confidence 0.862;
+    oa:motivatedBy ms:linking-similar;
+    oa:annotatedBy <http://data.multisensorproject.eu/agent/CAP>;
+    oa:annotatedAt "2016-01-11T12:00:00"^^xsd:dateTime .
+
+  <http://data.multisensorproject.eu/CAP/124> a oa:Annotation;
+    oa:hasBody        
+      <http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304>,
+      <http://data.multisensorproject.eu/content/57e07befbda355c2eca2ee521926071ee9f5c719>;
+    fise:confidence 0.795;
+    oa:motivatedBy ms:linking-contradictory;
+    oa:annotatedBy <http://data.multisensorproject.eu/agent/CAP>;
+    oa:annotatedAt "2016-01-12T12:00:00"^^xsd:dateTime .
+}
+#+END_SRC
+
+*** TODO Use ms:score not fise:confidence for CAP
+In an example sent by Babis, I see fise:confidence=1.6439653807554948. 
+But confidence is the probability that something is true, so it should be <=1.
+Guess this is some other sort of *score*, and maybe it's better to use our own property?
+
+Decided with Babis to use a custom property ~ms:score~ (see next).
+
+*** TODO Add to Ontology                                         :Vladimir:
+The following will be in [[./img/ontology.ttl]], so they don't need to be repeated by CAP for every similarity link.
+#+BEGIN_SRC Turtle
+<http://data.multisensorproject.eu/agent/CAP> a prov:SoftwareAgent;
+  foaf:name "Content Alignment Pipeline v1.0".
+
+ms:linking-similar a owl:NamedIndividual, oa:Motivation;
+  skos:inScheme oa:motivationScheme;
+  skos:broader oa:linking;
+  skos:prefLabel "linking-similar"@en;
+  rdfs:comment "Motivation that represents a symmetric link between two *similar* articles"@en;
+  rdfs:isDefinedBy ms: .
+
+ms:linking-contradictory a owl:NamedIndividual, oa:Motivation;
+  skos:inScheme oa:motivationScheme;
+  skos:broader oa:linking;
+  skos:prefLabel "linking-contradictory"@en;
+  rdfs:comment "Motivation that represents a symmetric link between two *contradictory* articles"@en;
+  rdfs:isDefinedBy ms: .
+
+ms:score a owl:DatatypeProperty;
+  rdfs:domain oa:Annotation;
+  rdfs:range  xsd:decimal;
+  rdfs:label "score"@en;
+  rdfs:comment "Strength of an Annotation, eg the link between two entities"@en;
+  rdfs:isDefinedBy ms: .
+#+END_SRC
+
+*** CAP Query
+Given a ~$simmo~, find similar or contradictory articles, and their similarity/contradiction scores.
+#+BEGIN_SRC sparql
+select ?article ?motivation ?score {
+  [a oa:Annotation;
+   oa:annotatedBy <http://data.multisensorproject.eu/agent/CAP>;
+   oa:hasBody $simmo, ?article;
+   ms:score ?score;
+   oa:motivatedBy ?motivation
+  ]
+  filter ($simmo != ?article)
+}
+#+END_SRC
+
+*** CANCEL Other CAP Queries
+The gdoc maybe has 2 queries related to CAP. Not sure I'm looking at the right section. Maybe we should just delete them.
+- 2.8 "Retrieve the concepts in the SIMMO (Select)": wrote something simple
+- 2.9 "Retrieve the concepts in the SIMMO (Construct)": don't know what is needed
+
+** DONE Content Translation
+Scenario: we have a SIMMO in original language ES that is machine-translated to EN & DE. 
+- All textual elements are translated: title, description, body.
+  - The example below also shows subject & keywords in different languages. If you can only produce them in EN, that's fine
+- However, video ASR text is not translated.
+- Both original and translations are annotated with NIF.
+We want to record all NIF information against original and translated separately, so there's no confusion.
+If the article includes multimedia, we want to attach it only to the original, to avoid data duplication.
+
+Solution: we need separate roots (foaf:Document), so we store the original and translation(s) in separate named graphs.
+- the translated-content graph has language-specific suffix; the original-content graph does not have such suffix
+- the translated content has link ~bibo:translationOf~ to the original
+
+Root:
+#+BEGIN_SRC Turtle
+# ES original
+graph ms-content:156e0d {
+  ms-content:156e0d a foaf:Document ;
+    dbp:countryCode  "ES" ;
+    dc:creator       "Alberto Iglesias Fraga" ;
+    dc:date          "2016-07-28T23:45:07.000+02:00"^^xsd:dateTime ;
+    dc:description   "SONY ha iniciado negociaciones con Murata Manufacturing para la venta de su negocio de baterías. La operación culminará en marzo de 2017...";
+    dc:language      "es" ;
+    dc:source        "cloud.ticbeat.com" ;
+    dc:subject       "Economía, Negocios y Finanzas" ;
+    dc:title         "SONY se desprenderá de su negocio de baterías" ;
+    dc:type          "article" ;
+    schema:keywords  "Sony, baterías, Murata Manufacturing";
+    dct:source       <http://feedproxy.google.com/~r/rwwes/~3/z2KuGYx6FiY/> .
+
+# EN translation
+graph ms-content:156e0d-en {
+  ms-content:156e0d-en a foaf:Document ;
+    bibo:translationOf ms-content:156e0d; # IMPORTANT!
+    dbp:countryCode   "ES" ;
+    dc:creator        "Alberto Iglesias Fraga" ;
+    dc:date           "2016-07-28T23:45:07.000+02:00"^^xsd:dateTime ;
+    dc:description    "SONY has begun negotiations with Murata Manufacturing for the sale of its battery business. The operation will culminate in March 2017 ..." ;
+    dc:language       "en" ;
+    dc:source         "cloud.ticbeat.com" ;
+    dc:subject        "Economy, Business & Finance" ;
+    dc:title          "SONY is clear from its battery business" ;
+    dc:type           "article" ;
+    schema:keywords   "Sony, batteries, Murata Manufacturing";
+    dct:source        <http://feedproxy.google.com/~r/rwwes/~3/z2KuGYx6FiY/> .
+}
+
+# DE translation
+graph ms-content:156e0d-de {
+  ms-content:156e0d-de a foaf:Document ;
+    bibo:translationOf ms-content:156e0d; # IMPORTANT!
+    dbp:countryCode   "ES" ;
+    dc:creator        "Alberto Iglesias Fraga" ;
+    dc:date           "2016-07-28T23:45:07.000+02:00"^^xsd:dateTime ;
+    dc:description    "SONY hat die Verhandlungen mit Murata Manufacturing für den Verkauf seiner Batterie-Geschäft begonnen. Die Operation wird März 2017 gipfeln ..." ;
+    dc:language       "de" ;
+    dc:source         "cloud.ticbeat.com" ;
+    dc:subject        "Economy, Business & Finanzen" ;
+    dc:title          "SONY ist klar von seiner Batteriegeschäft" ;
+    dc:type           "article" ;
+    schema:keywords   "Sony, Batterien, Murata Manufacturing";
+    dct:source        <http://feedproxy.google.com/~r/rwwes/~3/z2KuGYx6FiY/> .
+}
+#+END_SRC
+
+Context:
+#+BEGIN_SRC Turtle
+# ES original
+graph ms-content:156e0d {
+  <http://data.multisensorproject.eu/content/156e0d#char=0,2131> a nif:Context ;
+    ms:fluency       "1.22"^^xsd:double ;
+    ms:richness      "1.86"^^xsd:double ;
+    ms:technicality  "2.78"^^xsd:double ;
+    nif:beginIndex   "0"^^xsd:nonNegativeInteger ;
+    nif:endIndex     "2131"^^xsd:nonNegativeInteger ;
+    nif:isString     "SONY se desprenderá de su negocio de baterías\n\nSONY sigue inmersa en la profunda reestructuración..." ;
+    nif:sourceUrl    ms-content:b156e0d .
+}
+
+# EN translation
+graph ms-content:156e0d-en {
+  <http://data.multisensorproject.eu/content/156e0d-en#char=0,1800> a nif:Context ;
+    ms:fluency       "1.25"^^xsd:double ; # hopefully will be similar to original, but won't be identical
+    ms:richness      "1.81"^^xsd:double ;
+    ms:technicality  "2.70"^^xsd:double ;
+    nif:beginIndex   "0"^^xsd:nonNegativeInteger ;
+    nif:endIndex     "1800"^^xsd:nonNegativeInteger ; # Assuming EN comes out shorter than ES
+    nif:isString     "SONY is clear from its battery business\n\nSONY still immersed in deep restructuring ..." ;
+    nif:sourceUrl    ms-content:b156e0d-en .
+}
+
+# EN translation
+graph ms-content:156e0d-de {
+  <http://data.multisensorproject.eu/content/156e0d-de#char=0,2200> a nif:Context ;
+    ms:fluency       "1.12"^^xsd:double ; # hopefully will be similar to original, but won't be identical
+    ms:richness      "1.56"^^xsd:double ;
+    ms:technicality  "2.41"^^xsd:double ;
+    nif:beginIndex   "0"^^xsd:nonNegativeInteger ;
+    nif:endIndex     "2200"^^xsd:nonNegativeInteger ; # Assuming DE comes out longer than ES
+    nif:isString     "SONY ist von seiner Batterie-Geschäft\n\nSONY klar immer noch in einer tiefen Umstrukturierung getaucht ..." ;
+    nif:sourceUrl    ms-content:b156e0d-de .
+}
+#+END_SRC
+
+Some NIF annotations:
+#+BEGIN_SRC Turtle
+# ES original
+graph ms-content:156e0d {
+  <http://data.multisensorproject.eu/content/156e0d#char=1199,1224> a nif:Phrase ;
+    nif:anchorOf           "batería de iones de litio" ;
+    nif:beginIndex         "1199"^^xsd:nonNegativeInteger ;
+    nif:endIndex           "1224"^^xsd:nonNegativeInteger ;
+    nif:referenceContext   <http://data.multisensorproject.eu/content/b156e0d#char=0,2131> ;
+    nif-ann:taIdentConf    "1.0"^^xsd:double ;
+    nif-ann:taIdentProv    <http://babelfy.org/> ;
+    its:taClassRef         ms:GenericConcept ;
+    its:taIdentRef         bn:s01289274n .
+}
+
+# The BN labels are submitted in the SIMMO graph but stored in the default graph, thus the same for all languages
+bn:s01289274n skos:prefLabel "LiIon"@de, "Li-ion cell"@en, "Batteries lithium-ion"@fr, "Литиево-йонна батерия"@bg .
+
+# EN translation
+graph ms-content:156e0d-en {
+  <http://data.multisensorproject.eu/content/156e0d-en#char=1100,1119> a nif:Phrase ;
+    nif:anchorOf           "lithium ion battery" ;
+    nif:beginIndex         "1100"^^xsd:nonNegativeInteger ;
+    nif:endIndex           "1119"^^xsd:nonNegativeInteger ;
+    nif:referenceContext   <http://data.multisensorproject.eu/content/b156e0d-en#char=0,1800> ;
+    nif-ann:taIdentConf    "1.0"^^xsd:double ;
+    nif-ann:taIdentProv    <http://babelfy.org/> ;
+    its:taClassRef         ms:GenericConcept ;
+    its:taIdentRef         bn:s01289274n .
+}
+
+# DE translation
+graph ms-content:156e0d-de {
+  <http://data.multisensorproject.eu/content/156e0d-en#char=1200,1218> a nif:Phrase ;
+    nif:anchorOf           "Lithium-Ionen-Akku" ;
+    nif:beginIndex         "1200"^^xsd:nonNegativeInteger ;
+    nif:endIndex           "1218"^^xsd:nonNegativeInteger ;
+    nif:referenceContext   <http://data.multisensorproject.eu/content/b156e0d-de#char=0,2200> ;
+    nif-ann:taIdentConf    "1.0"^^xsd:double ;
+    nif-ann:taIdentProv    <http://babelfy.org/> ;
+    its:taClassRef         ms:GenericConcept ;
+    its:taIdentRef         bn:s01289274n .
+}
+#+END_SRC
+
+Multimedia is only present in the original-content graph:
+#+BEGIN_SRC Turtle
+graph ms-content:156e0d {
+  ms-content:156e0d dct:hasPart 
+    <http://cloud.ticbeat.com/2016/07/sony-baterías-explosión.mp4>,
+    <http://cloud.ticbeat.com/2016/07/sony-batería.jpg> 
+
+  <http://cloud.ticbeat.com/2016/07/sony-baterías-explosión.mp4> 
+    a dctype:MovingImage;
+    dc:format "video/mp4".
+
+  <http://cloud.ticbeat.com/2016/07/sony-batería.jpg> 
+    a dctype:StillImage;
+    dc:format "image/jpeg".
+}
+#+END_SRC
+
+Files:
+- old: http://grinder1.multisensorproject.eu/cepfiles/multiTest/validated/
+- new: http://grinder1.multisensorproject.eu/cepfiles/multiTest/41d28d-GERMAN_SIMMMO-5-9-2016.ttl and http://grinder1.multisensorproject.eu/cepfiles/multiTest/41d28d-CONTEXT_EXTRACTION-5-9-2016.ttl
+
+Checking:
+- added prefixes ~bibo: upf-pos-spa: upf-dep-deu: upf-pos-deu:~
+  (before we only had ~upf-dep-spa:~). Please update.
+- Would also be nice to translate ~schema:keywords~
+  (currently is "preisportal, vergleich, check24, verivox, billiger, idealo, geizhals, tricks, betrug, geld" in both DE original and EN translation)
+- All the rest is ok
+
+*** TODO BabelNet Multilingual Labels
+The Entity Linking Service can find BN concepts in any language, because BN concepts have multilingual labels.
+This is unrelated to whether the SIMMO is translated to another language or not.
+It's up to the UI to filter BN labels and show only labels in the selected language.
+
+However, not all BN concepts have labels in all MS languages.
+Therefore the UI should implement some *language fall-back* logic:
+- if no label in the selected language is available, show the EN label
+- TODO Boyan: check whether all BN concepts have EN labels.
+
+*** CANCEL Add Spanish BabelNet Labels
+Gerard, as we saw above, Babelfy recognizes "batería de iones de litio" 
+but bn:s01289274n does not have ES label (has EN, FR, DE, BG).
+This concept has [[http://babelnet.org/synset?word%3DBater%C3%ADa%2Bde%2Bion%2Bde%2Blitio&lang%3DES&details%3D1&orig%3DBater%C3%ADa%2Bde%2Bion%2Bde%2Blitio][ES representation on the BN site]]. 
+Do you need to add Spanish labels?
+- Gerard <2016-09-01>: The EL service is using the 2.5.1 release of BabelNet to fetch the translations, as these cannot be retrieved using Babelfy's API, so it is possible that some synset senses have translations in the latest version online (suppose it matches 3.7) which aren't found in 2.5.1.
+- Vladimir: When we got complete BN data (for the concepts found by you plus their ancestors), we used BN online, which includes all needed labels.
+  Eg http://babelnet.org/rdf/s01289274n refers to 38 ES labels, which you can see on http://babelnet.org/rdf/values/-lemon:reference/s01289274n
+  - (Note: BN was down on <2016-09-02 Fri>: "Error parsing configuration file <file:/home/debian/storage/apache-tomcat-7.0.65/webapps/rdf/WEB-INF/config.ttl>: Error making the query, see cause for details")
+
+*** Translated-content Queries
+**** Find Entities
+All queries for a single language (eg find concepts) won't change. 
+Eg here is how to find entities in the original and translated SIMMOs (hopefully the same entities will be recognized).
+We just change the graph:
+#+BEGIN_SRC SPARQL
+# ES Original
+select distinct ?concept ?label {
+  graph ms-content:156e0d {[] itsrdf:taIdentRef ?entity}.
+  ?entity skos:prefLabel ?label
+}
+
+# EN Translation
+select distinct ?concept ?label {
+  graph ms-content:156e0d-en {[] itsrdf:taIdentRef ?entity}.
+  ?entity skos:prefLabel ?label
+}
+#+END_SRC
+
+**** Select Single Label
+We can filter to entity labels in the selected language, implementing "language fall-back".
+~coalesce()~ picks the first bound variable.
+We don't need it for EN since we assume all BN concepts have EN.
+#+BEGIN_SRC SPARQL
+# ES Original
+select distinct ?concept (coalesce(?labelEs,?labelEn) as ?label) {
+  graph ms-content:156e0d {[] itsrdf:taIdentRef ?entity}.
+  ?entity skos:prefLabel ?labelEn filter(lang(?labelEn)="en")
+  optional {?entity skos:prefLabel ?labelEs filter(lang(?labelEn)="es")}
+}
+
+# EN Translation
+select distinct * {
+  graph ms-content:156e0d-en {[] itsrdf:taIdentRef ?entity}.
+  ?entity skos:prefLabel ?label filter(lang(?labelEn)="en")
+}
+#+END_SRC
+
+**** Find Translations 
+To find all translations of a SIMMO we make a query across graphs (i.e. in the default graph, which is a union of all graphs).
+Remember that ~$~ indicates a query paramter (while ~?~ indicates a free variable):
+#+BEGIN_SRC sparql
+select * {
+  ?translatedSIMMO bibo:translationOf $SIMMO; dc:language ?translatedLang}
+#+END_SRC
+
+To find all translations in a given language:
+#+BEGIN_SRC sparql
+select * {
+  ?translatedSIMMO bibo:translationOf ?SIMMO; dc:language $lang}
+#+END_SRC
+
+To find all original SIMMOs (not translations):
+#+BEGIN_SRC sparql
+select * {?simmo filter not exists {?simmo bibo:translationOf []}}
+#+END_SRC
+
+To check whether a given SIMMO is a translation:
+#+BEGIN_SRC sparql
+ask {$simmo bibo:translationOf []}
+#+END_SRC
+
+* TODO nif: instead of nif-ann:
+The current draft of NIF2.1 uses [[https://github.com/NLP2RDF/ontologies/blob/nif2.1/nif-core/nif-core.ttl#L895-L910][namespace nif: instead of nif-ann:]].
+About 4-5m ago I wrote about the instability of NIF2.1 namespaces;
+and I posted some issues to github that they should preserve the namespaces of all existing properties.
+It seems they took this advice to the extreme, and changed the namespace of new props back to nif: as well.
+
+Is there time to fix our data and software to use nif: instead of nif-ann: ?

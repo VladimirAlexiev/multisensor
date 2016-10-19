@@ -1,0 +1,63 @@
+
+@base <http://data.multisensorproject.eu/content/fb086c>.
+
+<> a foaf:Document ;
+  dc:creator "John Smith" ;
+  dc:date "2014-09-08T17:15:34.000+02:00"^^xsd:dateTime;
+  dct:source <http://blog.hgtv.com/terror/2014/09/08/article>.
+
+<#char=0,24> a nif:Context;
+  nif:beginIndex "0"^^xsd:nonNegativeInteger ;
+  nif:endIndex "24"^^xsd:nonNegativeInteger ;
+  nif:sourceUrl <>.
+
+<#char=17,21> a nif:Word;
+  nif:referenceContext <#char=0,24>;
+  nif:beginIndex "17"^^xsd:nonNegativeInteger ;
+  nif:endIndex "21"^^xsd:nonNegativeInteger ;
+  nif:anchorOf "SWAT";
+  its:taIdentRef dbr:SWAT.
+
+<> dct:hasPart <http://blog.hgtv.com/terror/2014/09/08/video.mp4>.
+
+<http://blog.hgtv.com/terror/2014/09/08/video.mp4> a dctype:MovingImage;
+  dc:format "video/mp4".
+
+ms-annot:1234153426
+  a oa:Annotation;
+  oa:hasTarget <http://blog.hgtv.com/terror/2014/09/08/video.mp4>;
+  oa:hasBody
+    ms-annot:1234153426-Concepts3_Or_More_People,
+    ms-annot:1234153426-SWAT;
+  oa:motivatedBy oa:tagging;
+  oa:annotatedBy <http://data.multisensorproject.eu/agent/imageAnnotator>;
+  oa:annotatedAt "2015-10-01T12:34:56"^^xsd:dateTime.
+
+ms-annot:1234153426-Concepts3_Or_More_People
+  a oa:SemanticTag, fise:TopicAnnotation;
+  skos:related ms-concept:Concepts3_Or_More_People;
+  fise:confidence 0.3.
+ms-annot:1234153426-SWAT
+  a oa:SemanticTag, fise:TopicAnnotation;
+  skos:related dbr:SWAT;
+  fise:confidence 0.9.
+
+<http://data.multisensorproject.eu/agent/imageAnnotator>
+  a prov:SoftwareAgent;
+  foaf:name "CERTH Image Annotator v1.0".
+
+ms-concept:Concepts3_Or_More_People
+  a skos:Concept;
+  skos:inScheme ms-concept: ;
+  skos:prefLabel "Concepts: 3 or More People".
+
+dbr:SWAT a skos:Concept; skos:prefLabel "SWAT".
+
+####################
+oa:tagging a puml:Inline.
+<http://blog.hgtv.com/terror/2014/09/08/article> a puml:Inline.
+skos:inScheme a puml:InlineProperty.
+nif:referenceContext puml:arrow puml:up.
+nif:sourceUrl puml:arrow puml:up.
+oa:hasTarget puml:arrow puml:up.
+ms-annot:1234153426 puml:right <http://data.multisensorproject.eu/agent/imageAnnotator>.

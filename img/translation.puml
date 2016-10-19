@@ -1,0 +1,94 @@
+@startuml
+hide empty methods
+hide empty attributes
+hide circle
+skinparam classAttributeIconSize 0
+class ms_content_156e0d as "ms-content:156e0d"
+class ms_content_156e0d <<<<(S,green)Spanish>>>>
+show ms_content_156e0d circle
+class ms_content_156e0d_char_1199_1224 as "ms-content:156e0d#char=1199,1224"
+class ms_content_156e0d_char_1199_1224 <<<<(S,green)Spanish>>>>
+show ms_content_156e0d_char_1199_1224 circle
+class ms_content_156e0d_char_0_2131 as "ms-content:156e0d#char=0,2131"
+class ms_content_156e0d_char_0_2131 <<<<(S,green)Spanish>>>>
+show ms_content_156e0d_char_0_2131 circle
+class ms_content_156e0d_en as "ms-content:156e0d-en"
+class ms_content_156e0d_en <<<<(E,red)English>>>>
+show ms_content_156e0d_en circle
+class ms_content_156e0d_en_char_0_1800 as "ms-content:156e0d-en#char=0,1800"
+class ms_content_156e0d_en_char_0_1800 <<<<(E,red)English>>>>
+show ms_content_156e0d_en_char_0_1800 circle
+class ms_content_156e0d_en_char_1100_1119 as "ms-content:156e0d-en#char=1100,1119"
+class ms_content_156e0d_en_char_1100_1119 <<<<(E,red)English>>>>
+show ms_content_156e0d_en_char_1100_1119 circle
+ms_content_156e0d_char_0_2131 : a nif:Context
+ms_content_156e0d_char_0_2131 -up-> ms_content_156e0d : nif:sourceUrl
+ms_content_156e0d_char_0_2131 : ms:fluency "1.22"^^xsd:double
+ms_content_156e0d_char_0_2131 : ms:richness "1.86"^^xsd:double
+ms_content_156e0d_char_0_2131 : ms:technicality "2.78"^^xsd:double
+ms_content_156e0d_char_0_2131 : nif:beginIndex "0"^^xsd:nonNegativeInteger
+ms_content_156e0d_char_0_2131 : nif:endIndex "2131"^^xsd:nonNegativeInteger
+ms_content_156e0d_char_0_2131 : nif:isString "SONY se desprenderá de su negocio de baterías..."
+class bn_s01289274n as "bn:s01289274n"
+bn_s01289274n : skos:prefLabel "LiIon"@de,\n  "Li-ion cell"@en,\n  "Batteries lithium-ion"@fr,\n  "Литиево-йонна батерия"@bg
+ms_content_156e0d_char_1199_1224 : a nif:Phrase
+ms_content_156e0d_char_1199_1224 --> bn_s01289274n : its:taIdentRef
+ms_content_156e0d_char_1199_1224 -up-> ms_content_156e0d_char_0_2131 : nif:referenceContext
+ms_content_156e0d_char_1199_1224 : its:taClassRef ms:GenericConcept
+ms_content_156e0d_char_1199_1224 : nif-ann:taIdentConf "1.0"^^xsd:double
+ms_content_156e0d_char_1199_1224 : nif-ann:taIdentProv <http://babelfy.org/>
+ms_content_156e0d_char_1199_1224 : nif:anchorOf "batería de iones de litio"
+ms_content_156e0d_char_1199_1224 : nif:beginIndex "1199"^^xsd:nonNegativeInteger
+ms_content_156e0d_char_1199_1224 : nif:endIndex "1224"^^xsd:nonNegativeInteger
+class _http___cloud_ticbeat_com_2016_07_sony_baterias_explosion_mp4_ as "<http://cloud.ticbeat.com/2016/07/sony-baterias-explosion.mp4>"
+_http___cloud_ticbeat_com_2016_07_sony_baterias_explosion_mp4_ : a dctype:MovingImage
+_http___cloud_ticbeat_com_2016_07_sony_baterias_explosion_mp4_ : dc:format "video/mp4"
+ms_content_156e0d : a foaf:Document
+class _http___cloud_ticbeat_com_2016_07_sony_bateria_jpg_ as "<http://cloud.ticbeat.com/2016/07/sony-bateria.jpg>"
+ms_content_156e0d --> _http___cloud_ticbeat_com_2016_07_sony_bateria_jpg_ : dct:hasPart
+class _http___feedproxy_google_com_____ as "<http://feedproxy.google.com/...>"
+ms_content_156e0d -up-> _http___feedproxy_google_com_____ : dct:source
+ms_content_156e0d --> _http___cloud_ticbeat_com_2016_07_sony_baterias_explosion_mp4_ : dct:hasPart
+ms_content_156e0d : dbp:countryCode "ES"
+ms_content_156e0d : dc:creator "Alberto Iglesias Fraga"
+ms_content_156e0d : dc:date "2016-07-28T23:45:07.000+02:00"^^xsd:dateTime
+ms_content_156e0d : dc:description "SONY ha iniciado negociaciones con Murata Manufacturing..."
+ms_content_156e0d : dc:language "es"
+ms_content_156e0d : dc:source "cloud.ticbeat.com"
+ms_content_156e0d : dc:subject "Economía, Negocios y Finanzas"
+ms_content_156e0d : dc:title "SONY se desprenderá de su negocio de baterías"
+ms_content_156e0d : dc:type "article"
+ms_content_156e0d : schema:keywords "Sony, baterías, Murata Manufacturing"
+ms_content_156e0d_en : a foaf:Document
+ms_content_156e0d_en -up-> _http___feedproxy_google_com_____ : dct:source
+ms_content_156e0d_en -left-> ms_content_156e0d : bibo:translationOf
+ms_content_156e0d_en : dbp:countryCode "ES"
+ms_content_156e0d_en : dc:creator "Alberto Iglesias Fraga"
+ms_content_156e0d_en : dc:date "2016-07-28T23:45:07.000+02:00"^^xsd:dateTime
+ms_content_156e0d_en : dc:description "SONY has begun negotiations with Murata Manufacturing..."
+ms_content_156e0d_en : dc:language "en"
+ms_content_156e0d_en : dc:source "cloud.ticbeat.com"
+ms_content_156e0d_en : dc:subject "Economy, Business & Finance"
+ms_content_156e0d_en : dc:title "SONY is clear from its battery business"
+ms_content_156e0d_en : dc:type "article"
+ms_content_156e0d_en : schema:keywords "Sony, batteries, Murata Manufacturing"
+_http___cloud_ticbeat_com_2016_07_sony_bateria_jpg_ : a dctype:StillImage
+_http___cloud_ticbeat_com_2016_07_sony_bateria_jpg_ : dc:format "image/jpeg"
+ms_content_156e0d_en_char_1100_1119 : a nif:Phrase
+ms_content_156e0d_en_char_1100_1119 --> bn_s01289274n : its:taIdentRef
+ms_content_156e0d_en_char_1100_1119 -up-> ms_content_156e0d_en_char_0_1800 : nif:referenceContext
+ms_content_156e0d_en_char_1100_1119 : its:taClassRef ms:GenericConcept
+ms_content_156e0d_en_char_1100_1119 : nif-ann:taIdentConf "1.0"^^xsd:double
+ms_content_156e0d_en_char_1100_1119 : nif-ann:taIdentProv <http://babelfy.org/>
+ms_content_156e0d_en_char_1100_1119 : nif:anchorOf "lithium ion battery"
+ms_content_156e0d_en_char_1100_1119 : nif:beginIndex "1100"^^xsd:nonNegativeInteger
+ms_content_156e0d_en_char_1100_1119 : nif:endIndex "1119"^^xsd:nonNegativeInteger
+ms_content_156e0d_en_char_0_1800 : a nif:Context
+ms_content_156e0d_en_char_0_1800 -up-> ms_content_156e0d_en : nif:sourceUrl
+ms_content_156e0d_en_char_0_1800 : ms:fluency "1.25"^^xsd:double
+ms_content_156e0d_en_char_0_1800 : ms:richness "1.81"^^xsd:double
+ms_content_156e0d_en_char_0_1800 : ms:technicality "2.70"^^xsd:double
+ms_content_156e0d_en_char_0_1800 : nif:beginIndex "0"^^xsd:nonNegativeInteger
+ms_content_156e0d_en_char_0_1800 : nif:endIndex "1800"^^xsd:nonNegativeInteger
+ms_content_156e0d_en_char_0_1800 : nif:isString "SONY is clear from its battery business..."
+@enduml

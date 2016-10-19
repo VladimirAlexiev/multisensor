@@ -1,0 +1,1367 @@
+Prefix: fn: <http://www.ontologydesignpatterns.org/ont/framenet/tbox/#>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+Ontology: <http://www.ontologydesignpatterns.org/ont/framenet/tbox/>
+
+AnnotationProperty:  dc:creator
+
+Annotations:
+    dc:creator "Aldo Gangemi and Andrea Nuzzolese with Semion rules and manual revision"^^xsd:string,
+    rdfs:comment "All rdfs:comments in the ontology are taken from FrameNet II: Extended Theory and Practice, by Josef Ruppenhofer, Michael Ellsworth, Miriam R. L. Petruck, Christopher R. Johnson and Jan Scheffczyk, Printed September 14, 2010, downloadable from http://framenet.icsi.berkeley.edu"^^xsd:string,
+    owl:versionInfo "0.9 revised labels and some restrictions
+0.8 created after manual revision of autamatically generated schema with Semion rules"^^xsd:string,
+    rdfs:comment "Generalities
+The Berkeley FrameNet project is creating an on-line lexical resource for English, based on frame semantics and supported by corpus evidence. The aim is to document the range of semantic and syntactic combinatory possibilities? valences?of each word in each of its senses, through computer-assisted annotation of example sentences and automatic tabulation and display of the annotation results. The major product of this work, the FrameNet lexical database, currently contains more than 10,000 lexical units (defined below), more than 6,000 of which are fully annotated, in nearly 800 hierarchically-related semantic frames, exemplified in more than 135,000 annotated sentences. Beginning with Release 1.3, the quality of FrameNet data is monitored by a consistency management system. The database has gone through three releases, and is now in use by hundreds of researchers, teachers, and students around the world. (See the FrameNet Users page on our web-site). Active research projects are seeking to produce comparable frame-semantic lexicons for other languages and to devise means of automatically labeling running text with semantic frame information.
+A lexical unit (LU) is a pairing of a word with a meaning. Typically, each sense of a polysemous word belongs to a different semantic frame, a script-like conceptual structure that describes a particular type of situation, object, or event along with its participants and props. For example, the Apply heat frame describes a common situation involving a Cook, some Food, and a Heating Instrument, and is evoked by words such as bake, blanch, boil, broil, brown, simmer, steam, etc. We call these roles frame elements (FEs) and the frame-evoking words are LUs in the Apply heat frame. Some frames are more abstract, such as Change position on a scale, which is evoked by LUs such as decline, decrease, gain, plummet, rise, etc., and has FEs such as Item, Attribute, Initial value and Final value."^^xsd:string,
+    rdfs:comment "Annotations
+Formally, FrameNet annotations are constellations of triples that make up the frame element realization for each annotated sentence, each consisting of a frame element (for example, Food), a grammatical function (say, Object) and a phrase type (say, NP). We think of these three types of annotation on each tagged frame element as layers and they are displayed as such in the annotation software used in the project. However, to avoid visual clutter, the grammatical function and phrase type layers are not displayed in the web-based report system. The full data, available as part of the data download (see the FNdata link on the FrameNet homepage), include these three layers (and several more not discussed here) for all of the annotated sentences, along with complete frame and FE descriptions, frame-to-frame relations, and lexical entries summarizing the valence patterns for each annotated LU.
+FrameNet annotations derive from two sources. In pursuing the goal of recording the range of semantic and syntactic combinatory possibilities (valences) of each word in each of its senses, we normally concentrate on a particular target LU and extract sentences from the different texts of a corpus containing that LU. Then we annotate a selection of the extracted sentences in respect to the target LU. In another kind of work that represents a much smaller percentage of our overall annotations, we annotate running text. Full-text annotation differs from sentence annotation mostly in that the sentences are chosen for us, so to speak, by the author of the text. The annotation of running text is technically possible thanks to the annotation layering technique: FN lexicographers can one by one declare each word in a sentence a target, select a frame relative to which the new target is to be annotated, get a new set of annotation layers (frame element, grammatical function, phrase type) and appropriate frame element tags, and then annotate the relevant constituents."^^xsd:string,
+    rdfs:comment "Semantics
+The most basic summarization of the logic of FrameNet is that Frames describe classes of situations, the semantics of LUs are subclasses of the Frames, and non-Extrathematic FEs are classes that are arguments of the Frame classes.	An annotation set for a sentence generally describes an instance of the subclass associated with an LU as well as instances of each of its associated FE classes.
+Inheritance has a special place among the frame relations. It is to be interpreted as a subtype or ?is-a? relation between frame classes. This constrains the Child frame to have all of the properties of the Parent frame.
+Although it is difficult to generalize across all of the relations, it is usually true that an instance of a Sub frame implies the existence of an instance of a Super frame. In the case of a Theft, which inherits from Committing crime, an instance of Theft is obviously an instance of Committing crime. For the Precedes relation, however, this is not exactly true. For the Subframe relation, the existence of a Subframe instance does imply the relevance of a Complex frame instance, but the reverse is not true. So, for example, if there is an instance of the Sentencing frame, then we can instantiate an instance of the Criminal process frame. We can then also instantiate all of the subframes of Criminal process which must precede Sentencing, including Trial, Arraignment, etc., but we cannot instantiate the Appeal subframe of Criminal process which follows Sentencing.
+The relations of FEs and LUs to frames are intertwined with our Frame relations in various ways. Some clarification and formalization of these concepts is necessary to simplify their logical description:
+? The term ?Frame Element? has two meanings: the relation itself, and the filler of the relation. When we describe the Coreness status of an FE (see Sect. 3.2.1), we are describing the relation; when we describe the Ontological type on an FE (see Sect.	6.2.1) we mean the type of the filler. Fillers are pronouns, proper names, or (more usually) common nouns that evoke entity or event frames. Entity reference, named entities, and anaphora are all outside the scope of the FrameNet project, but when FEs are filled by frame-evoking words, an interpretation engine should iteratively analyze these words in the same way as any other frame-evoking element.
+? Extra-thematic FEs have a considerably different interpretation from all other FE types. Normal FEs (barring Coresets (see Sect. 3.2.2.1) or Excludes relations (see Sect. 3.2.2.3)) must always be logically present for the frame to make sense. Extra-thematic FEs, however, independently evoke a different frame from from the one they are listed in. The Extra-thematic FE itself fills one of the FEs of this frame, and the other FEs are filled by various frame elements of the original target word according to heuristics which must be separately specified for each Extra-thematic FE.
+For example, in 44, evoking the Ride vehicles frame, the Cotheme FE evokes an additional instance of Motion whose Theme FE is filled by the Cotheme, and whose Path and other FEs are co-identified with the instance of Ride vehicles. Thus both ?I? and ?her? are described as moving to school in this example.
+(44) I rode to school [with her Cotheme] all the time.
+? Except for the rare LUs with the Semantic Type Biframal LU (see 6.2.3.3) or LUs in frames which are marked Non-perspectivalized (see 6.2.2.2), all LUs of a frame have a semantics which is best described as a subtype of the semantics of the frame. With these caveats, one may thus consider LU membership in a frame to be an identical relationship to Inheritance from a frame."^^xsd:string,
+    rdfs:comment "Inheritance
+Not surprisingly, Inheritance, as our most formally defined relation, is an exact match for an ontologically defined relation, namely subtyping or ?is-a?, as mentioned above. Because these relations are so well-defined formally, there is very little else that needs to be said about Inheritance here.
+As discussed above, the Inheritance relation implies the correspondence of the Parent frame and its FEs to the Child frame and its FEs. This straightforwardly allows us to propagate the ontological semantic types (see Sect 6.2.1) on the Parent frame and its FEs downward to the Child frame and its FEs. However, what may not yet be apparent is the fact that the FE bindings in all frame-to-frame relations are equivalent to the Inheritance FE bindings, regardless of the type of relation. This means that normal semantic types on FEs can be propagated down the hierarchy along every type of relation. Types are propagated explicitly in the current OWL representation of the FrameNet data.
+Because we cannot anticipate all of the Semantic Types that will be useful for tagging FEs, it will certainly also be desirable to categorize the fillers of our FEs using WordNet (or a similar resource). Just as with the pre-marked semantic types applied by the FrameNet team, whatever information is gathered on fillers of an FE in one frame can be propagated to all FEs which are connected to it by any frame-to-frame relation."^^xsd:string,
+    rdfs:comment "Comparison to WordNet
+The FrameNet database is a lexical resource with unique characteristics that differentiate it from other resources such as commercially available dictionaries and thesauri as well as from the best-known on-line lexical resource, WordNet.
+? Like dictionary subentries, FrameNet lexical units come with definitions, either from the Concise Oxford Dictionary, 10th Edition (courtesy of Oxford University Press) or a definition written by a FrameNet staff member.
+? Unlike commercial dictionaries, we provide multiple annotated examples of each sense of a word (i.e. each lexical unit). Moreover, the set of examples (approximately 20 per LU) illustrates all of the combinatorial possibilities of the lexical unit.
+? The examples are attestations taken from naturalistic corpora, rather than constructed by a linguist or lexicographer. The main FrameNet corpus is the 100-million-word British National CorpusBritish National Corpus (BNC), which is both large and balanced across genres (editorials, textbooks, adver- tisements, novels, sermons, etc.), but, of course, lacks many specifically American expressions. We also use U.S. newswire texts provided by the Linguistic Data ConsortiumLinguistic Data Consortium, and have recently acquired the newly released initial part of the American National Corpus, which we will begin using soon.
+? Our analysis of the English lexicon proceeds frame by frame rather than by lemma, whereas traditional dictionary-making proceeds word by word through the alphabet. Thus, while a traditional lexicographer measures progress in words completed, FrameNet measures progress in frames completed. Having one or more LUs for a given word in completed frames does not preclude the possibility that there could be other LUs for the same word in future frames.
+? Each lexical unit is linked to a semantic frame, and hence to the other words which evoke that frame. This makes the FrameNet database similar to a thesaurus, grouping together semantically similar words.
+? WordNet and all ontologies provide some sort of hierarchical relations between their nodes; likewise, FrameNet includes a network of relations between frames. Several types are defined, of which the most important are:
+? Inheritance: An IS-A relation. The child frame is a subtype of the parent frame, and each FE in the parent is bound to a corresponding FE in the child. An example is the Revenge frame which inherits from the Rewards and punishments frame.
+? Using: The child frame presupposes the parent frame as background, e.g the Speed frame ?uses? (or presupposes) the Motion frame; however, not all parent FEs need to be bound to child FEs.
+? Subframe: The child frame is a subevent of a complex event represented by the parent, e.g. the Criminal process frame has subframes of Arrest, Arraignment, Trial, and Sentencing.
+? Perspective on: The child frame provides a particular perspective on an un-perspectivized parent frame. A pair of examples consists of the Hiring and Get a job frames, which perspectivize the Employment start frame from the Employer?s and the Employee?s point of view, respectively.
+? Since we do not annotate many nouns denoting artifacts and natural kinds, the FrameNet database is not readily usable as an ontology of things. In this area, we mostly defer to WordNet, which provides extensive coverage, including hierarchical relations of areas such as animals, plants, etc."^^xsd:string
+
+Class: owl:Thing
+
+Class: fn:AnnotationSet
+    Annotations:
+        rdfs:comment "(Semantically) an annotation set for a sentence generally describes an instance of the subclass associated with an LU as well as instances of each of its associated FE classes."^^xsd:string
+    SubClassOf:
+        owl:Thing,
+        fn:annotationSetLU some fn:LexUnit,
+        fn:annotationSet_ID exactly 1 xsd:int,
+        fn:annotationSet_cDate exactly 1 xsd:string,
+        fn:annotationSet_status some xsd:string,
+        fn:annotationSet_cxnName some xsd:string,
+        fn:annotationSetFrame some fn:Frame,
+        fn:annotationSet_cxnID some xsd:int,
+        fn:hasLayer some fn:Layer
+
+Class: fn:CorpDoc
+    SubClassOf:
+        owl:Thing,
+        fn:corpDoc_ID exactly 1 xsd:int,
+        fn:corpDoc_name exactly 1 xsd:string,
+        fn:hasDocument some fn:Document
+
+Class: fn:Document
+    SubClassOf:
+        owl:Thing,
+        fn:document_ID exactly 1 xsd:int,
+        fn:document_description exactly 1 xsd:string
+
+Class: fn:FECoreSet
+    Annotations:
+        rdfs:comment "In our annotation practice, we often find that some groups of FEs seem to act like sets, in that the presence of any member of the set is sufficient to satisfy a semantic valence of the predicator. We refer to such a group of FEs as a coreness set, or CoreSet. For instance, Source, Path, and Goal are core FEs in the various motion frames in the database. However, although possible, it is not necessary, and in fact unusual, for all three FEs to co-occur, as in example (14). Sentences in many motion frames can be informationally complete and pragmatically felicitous with just one or two of the FEs expressed, as shown in (15)-(18).
+(14) Fred went [from Berkeley Source] [across North America and the Atlantic Ocean Path] [to Paris Goal].
+(15) Martha hiked [from Berkeley Source] [to Oakland Goal].
+(16) Elaine walked [to Monterey Goal].
+(17) I saw Peter sneak [past the guard Path].
+(18) Juan was walking [out of the office Source] when I arrived.
+FrameNet's normal annotation practice demands that we account for all core FEs and we could keep track of the un-instantiated FEs in the example sentences above by using null-instantiation labels as described in section (3.2.3). However, we prefer to group the FEs in CoreSets and not mark null instantiation for each member FE in cases where the FEs have an informational and conceptual interdependence. Source, Path, and Goal, for instance, are clearly related via a notion that we might call 'full path'. By contrast, omission of the Ingestibles for eat in the Ingestion frame is not related to the presence or absence of any other frame element. The sentence I'm eating __ (with my friends/in the kitchen/now) is acceptable with or without any of the frame elements given in parentheses expressed."^^xsd:string
+    SubClassOf:
+        owl:Thing,
+        fn:hasMember some fn:FrameElement,
+        fn:isFECoreSetOf exactly 1 fn:Frame
+
+Class: fn:Frame
+    Annotations:
+        rdfs:comment "(Semantically) frames describe classes of situations.
+Inheritance has a special place among the frame relations. It is to be interpreted as a subtype or ?is-a? relation between frame classes. This constrains the Child frame to have all of the properties of the Parent frame.
+Although it is difficult to generalize across all of the relations, it is usually true that an instance of a Sub frame implies the existence of an instance of a Super frame. In the case of a Theft, which inherits from Committing crime, an instance of Theft is obviously an instance of Committing crime. For the Precedes relation, however, this is not exactly true. For the Subframe relation, the existence of a Subframe instance does imply the relevance of a Complex frame instance, but the reverse is not true. So, for example, if there is an instance of the Sentencing frame, then we can instantiate an instance of the Criminal process frame. We can then also instantiate all of the subframes of Criminal process which must precede Sentencing, including Trial, Arraignment, etc., but we cannot instantiate the Appeal subframe of Criminal process which follows Sentencing."^^xsd:string
+    SubClassOf:
+        owl:Thing,
+        fn:frame_ID exactly 1 xsd:int,
+        fn:hasFrameElement some fn:FrameElement,
+        fn:frame_name exactly 1 xsd:string,
+        fn:frame_cBy exactly 1 xsd:string,
+        fn:frame_cDate exactly 1 xsd:string,
+        fn:hasLexUnit some fn:LexUnit
+
+Class: fn:FrameElement
+    Annotations:
+        rdfs:comment "Extrathematic frame elements
+Extra-thematic FEs have a considerably different interpretation from all other FE types. Normal FEs (barring Coresets or Excludes relations) must always be logically present for the frame to make sense. Extra-thematic FEs, however, independently evoke a different frame from from the one they are listed in. The Extra-thematic FE itself fills one of the FEs of this frame, and the other FEs are filled by various frame elements of the original target word according to heuristics which must be separately specified for each Extra-thematic FE.
+For example, in 44, evoking the Ride vehicles frame, the Cotheme FE evokes an additional instance of Motion whose Theme FE is filled by the Cotheme, and whose Path and other FEs are co-identified with the instance of Ride vehicles. Thus both ?I? and ?her? are described as moving to school in this example.
+(44) I rode to school [with her Cotheme] all the time.
+(Semantically) non-Extrathematic FEs are classes that are arguments of the Frame classes."^^xsd:string,
+        rdfs:comment "General definition
+The term ?Frame Element? has two meanings: the relation itself, and the filler of the relation. When we describe the Coreness status of an FE (see Sect. 3.2.1), we are describing the relation; when we describe the Ontological type on an FE (see Sect.	6.2.1) we mean the type of the filler. Fillers are pronouns, proper names, or (more usually) common nouns that evoke entity or event frames. Entity reference, named entities, and anaphora are all outside the scope of the FrameNet project, but when FEs are filled by frame-evoking words, an interpretation engine should iteratively analyze these words in the same way as any other frame-evoking element."^^xsd:string,
+        rdfs:comment "Universality of frame elements
+In Fillmore?s earlier work Fillmore (1968, 1977), a case was made for the universality of certain types of semantic roles, a concept which was further developed and is now enshrined as the theta role system of many syntactic/semantic formalisms. These roles include such labels as Agent, Instrumental, and Objective (roughly corresponding to Agent, Instrument, and Patient in other formulations). However, as the description of the semantics of Lexical Units has progressed, it has become apparent that the theta-role and original case-role account covers only a subset of the full set of roles.
+We now take it that theta roles should be mapped to FEs in high-level, abstract frames like Transi- tive action, which has FEs like Agent and Patient. The relevance or irrelevance that these labels have for the roles of more specific predicates like break.v (in the Cause to fragment frame) or resemble.v (in the Similarity frame) is explained explicitly by the inheritance or non-inheritance of the Agent and Patient frame elements in the relevant frames.
+There are inherent problems to reducing our role-set of Frame Elements to the considerably smaller (and inarguably more computationally tractable) set of theta roles often used. One of these is deciding on the initial set of theta roles ? a well-known problem in the theta-role literature. The Frame Elements that we define, however, are more immediately verifiable. Presumably, then, any theta-role system proposed to cover all predicates should allow us to specify, in a simple way, which FEs should be mapped to which theta-roles. Of the theta-role systems known to us, none allows any simple mapping to high-level FEs (and thence to the FEs that inherit from them) without covering some FEs multiple times and/or leaving some FEs uncovered, unless there is an unsatisfactory catch-all theta-role."^^xsd:string
+    SubClassOf:
+        owl:Thing,
+        fn:FE_ID exactly 1 xsd:int,
+        fn:FE_cDate exactly 1 xsd:string,
+        fn:FE_coreType exactly 1 xsd:string,
+        fn:FE_cBy exactly 1 xsd:string,
+        fn:FE_coreType exactly 1 {"Core"^^xsd:string , "Core-Unexpressed"^^xsd:string , "Extra-Thematic"^^xsd:string , "Peripheral"^^xsd:string},
+        fn:FE_name exactly 1 xsd:string,
+        fn:FE_abbrev exactly 1 xsd:string
+
+Class: fn:FullTextAnnotation
+    Annotations:
+        rdfs:comment "Formally, FrameNet annotations are constellations of triples that make up the frame element realization for each annotated sentence, each consisting of a frame element (for example, Food), a grammatical function (say, Object) and a phrase type (say, NP). We think of these three types of annotation on each tagged frame element as layers.
+The work can be divided into two kinds according to the way in which sentences are chosen for annotation.
+In the 'lexicographic annotation' mode, our main focus is on the goal of recording the range of semantic and syntactic combinatory possibilities (valences) of each word in each of its senses. To that end, we extract sentences from the different texts of a corpus because they contain a predetermined target LU. Then we annotate a selection of the extracted sentences in respect to that particular LU.
+In another kind of work that represents a much smaller percentage of our overall annotations, we annotate running text. This is called 'full-text annotation'. Full-text annotation differs from sentence annotation mostly in that the sentences are chosen for us, so to speak, by the author of the text. The annotation of running text is technically possible thanks to the annotation layering technique: FN lexicographers can one by one declare each word in a sentence a target, select a frame relative to which the new target is to be annotated, get a new set of annotation layers (frame element, grammatical function, phrase type) and appropriate frame element tags, and then annotate the relevant constituents.
+Before going further into the details of annotation, let us briefly consider the Revenge frame, which will figure as an example frame repeatedly in this chapter. The definition of this frame follows:
+'An Avenger performs some Punishment on an Offender as a response to an earlier action, the Injury, that was inflicted on an Injured party. The Avenger need not be identical to the Injured party but needs to consider the prior action of the Offender a wrong. Importantly, the punishment of the Offender by the Avenger is seen as justified by individual or group opinion rather than by law.'
+Thus, the frame elements in the Revenge frame are Avenger, Punishment, Offender, Injury, and Injured party.
+Lexical units in this frame include avenge.v, avenger.n, get even.v, retaliate.v, retaliation.n, retribution.n, retributive.a, retributory.a, revenge.v, revenge.n, revengeful.a, revenger.n, vengeance.n, vengeful.a, and vin- dictive.a. Some example sentences with the lexical unit avenge are given here.
+(1) [His brothers Avenger] avenged [him Injured party]. (2) With this, [El Cid Agent] at once avenged [the death of his son Injury]. (3) [Hook Avenger] tries to avenge [himself Injured party] [on Peter Pan Offender] [by becoming a second and better father Punishment]."^^xsd:string
+    SubClassOf:
+        owl:Thing,
+        fn:hasSentence some fn:Sentence,
+        fn:hasHeader some fn:Header
+
+Class: fn:Header
+    SubClassOf:
+        owl:Thing,
+        fn:hasCorpDoc some fn:CorpDoc,
+        fn:hasFrame some fn:Frame
+
+Class: fn:Label
+    SubClassOf:
+        fn:label_cBy exactly 1 xsd:string,
+        owl:Thing,
+        fn:label_FE some fn:FrameElement,
+        fn:label_start exactly 1 xsd:int,
+        fn:label_itype exactly 1 xsd:string,
+        fn:label_name exactly 1 xsd:string,
+        fn:label_end some xsd:int
+
+Class: fn:Layer
+    SubClassOf:
+        owl:Thing,
+        fn:hasLabel some fn:Label,
+        fn:layer_rank exactly 1 xsd:int,
+        fn:layer_name exactly 1 xsd:string
+
+Class: fn:LexUnit
+    Annotations:
+        rdfs:comment "(Semantically) LUs are subclasses of the Frames.
+Except for the rare LUs with the Semantic Type Biframal LU or LUs in frames which are marked Non-perspectivalized, all LUs of a frame have a semantics which is best described as a subtype of the semantics of the frame. With these caveats, one may thus consider LU membership in a frame to be an identical relationship to Inheritance from a frame.
+All LUs in a frame must have the same number and types of frame elements in both explicit and implicit (NI) contexts."^^xsd:string
+    SubClassOf:
+        owl:Thing,
+        fn:LU_lemmaID exactly 1 xsd:int,
+        fn:hasLexeme some fn:Lexeme,
+        fn:LU_POS exactly 1 xsd:string,
+        fn:LU_name exactly 1 xsd:string,
+        fn:LU_cBy exactly 1 xsd:string,
+        fn:LU_cDate exactly 1 xsd:string,
+        fn:hasSentenceCount some fn:SentenceCount,
+        fn:LU_status some xsd:string,
+        fn:LU_ID exactly 1 xsd:int
+
+Class: fn:Lexeme
+    SubClassOf:
+        owl:Thing,
+        fn:lexeme_name exactly 1 xsd:string,
+        fn:lexeme_POS exactly 1 xsd:string,
+        fn:lexeme_headword exactly 1 xsd:boolean,
+        fn:lexeme_breakBefore exactly 1 xsd:boolean,
+        fn:lexeme_order exactly 1 xsd:int
+
+Class: fn:SemType
+    Annotations:
+        rdfs:comment "The general use of semantic types in the FrameNet project is to record information that is not representable in our frame and frame element hierarchies. In this section there is a detailed description of each major category of the semantic type hierarchy, which is broadly split by function. In specific, the functions we currently employ semantic types for are:
+? Indicating the basic typing of fillers of frame elements, e.g. ?Sentient? for the Cognizer FE. These basic types are constrained by the frame hierarchy (see section 6.3.5.1), but not predictable from it since frame elements which are arbitrarily far away according to the frame hierarchy, such as the Experiencer of Perception body and the Perpetrator of the Piracy frame, are often marked as the same semantic type (in this case, Sentient). This kind of semantic type is designed primarily to aid frame parsing and automatic FE recognition.
+? Useful, functional marking on frames, such as the type ?Non-lexical? on frames which are present purely to participate in Inheritance, Subframe, or Using relations with other frames. This kind of property is actually a meta-description, not a fact about the semantics of the frame at all, and thus independent of the hierarchy. In fact, a frame which in English is Non-lexical might well have associated LUs in another language.
+? Marking important dimensions of semantic variation among the lexical units in a frame that are not related to the kind of semantic combinatorial possibilities that we use for making frame distinctions (see Chapter 2). For instance, in the Judgment frame the difference between LUs such as praise.v and criticize.v in terms of the negative versus positive evaluation of the Evaluee is marked with the semantic types Positive judgment and Negative judgment, respectively.
+The most interesting function of semantic types for human users is the third one, recording important semantic differences between lexical units that recur within several frames.
+For example, ?Positive judgement? and ?Negative judgement? semantic types, indicating the speaker?s attitude toward a situation, can be applied to lexical units across a range of frames. (Note that the term speaker may either refer to a frame element such as Speaker or Cognizer, or to the author of the utterance containing the lexical unit.) We capture the distinction by marking LUs like the aforementioned Judgment verb praise, the Experiencer subj verb like, and the Frugality adjective generous as ?Positive judgement? and, by contrast, marking ?Negative judgement? on some other words from the same frames, e.g. criticize and hate, and stingy.
+For more description and further examples, see the following subsections."^^xsd:string
+    SubClassOf:
+        owl:Thing,
+        fn:semType_abbrev exactly 1 xsd:string,
+        fn:semType_ID exactly 1 xsd:int,
+        fn:semType_name exactly 1 xsd:string
+
+Class: fn:SentenceCount
+    SubClassOf:
+        owl:Thing,
+        fn:sentenceCount_annotated some xsd:int,
+        fn:sentenceCount_total some xsd:int
+
+Class: fn:Sentence
+    SubClassOf:
+        owl:Thing,
+        fn:text some xsd:string,
+        fn:sentenceInCorpDoc some fn:CorpDoc,
+        fn:sentence_sentNo some xsd:int,
+        fn:sentence_paragNo some xsd:int,
+        fn:sentence_aPos exactly 1 xsd:string,
+        fn:sentence_ID exactly 1 xsd:int,
+        fn:sentenceInDocument some fn:Document
+
+DisjointClasses:
+    fn:AnnotationSet,fn:CorpDoc,fn:Document,fn:FECoreSet,fn:Frame,fn:FrameElement,fn:FullTextAnnotation,fn:Header,fn:Label,fn:Layer,fn:LexUnit,fn:Lexeme,fn:SemType,fn:Sentence,fn:SentenceCount
+
+ObjectProperty: fn:annoForSentence
+    Annotations:
+        rdfs:label "annotatio for sentence"^^xsd:string
+    Domain:
+        fn:AnnotationSet
+    Range:
+        fn:Sentence
+    InverseOf:
+        fn:hasAnnotationSet
+
+ObjectProperty: fn:annotationSetFrame
+    Domain:
+        fn:AnnotationSet
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:frameOfAnnotationSet
+
+ObjectProperty: fn:annotationSetLU
+    Domain:
+        fn:AnnotationSet
+    Range:
+        fn:LexUnit
+    InverseOf:
+        fn:LUOfAnnotationSet
+
+ObjectProperty: fn:containsSentence
+    Annotations:
+        rdfs:label "contain sentence"^^xsd:string
+    Domain:
+        fn:Document
+    Range:
+        fn:Sentence
+    InverseOf:
+        fn:sentenceInDocument
+
+ObjectProperty: fn:corpDocHeader
+    Annotations:
+        rdfs:label "corpus document header"^^xsd:string
+    Domain:
+        fn:CorpDoc
+    Range:
+        fn:Header
+    InverseOf:
+        fn:hasCorpDoc
+
+ObjectProperty: fn:corpDocOfSentence
+    Annotations:
+        rdfs:label "corpus document of sentence"^^xsd:string
+    Domain:
+        fn:CorpDoc
+    Range:
+        fn:Sentence
+    InverseOf:
+        fn:sentenceInCorpDoc
+
+ObjectProperty: fn:excludes
+    Annotations:
+        rdfs:comment "In some cases, if one of the FEs in a group of conceptually related FEs shows up, no other FE from that group can. Again, in the Attaching frame, if Items occurs, then Item and Goal are excluded. In this situation, we say that Items excludes Item and Goal.
+(21) The robbers tied [his ankles Items] together.
+The above Excludes-relation in the Attaching frame is an instance of a much more common pattern of alternation between a symmetric/reciprocal and an asymmetric construal of events or states involving two parties. In most frames, where the alternation is possible, the names of the frame elements reflect the underlying alternation between reciprocal and asymmetric construal. For instance, in the Similarity frame with lexical units such as similar, different, etc. we have the frame elements Entity_1 and Entity_2, and Entities. Usually, one is allowed to infer equal participation in the event or state by the grammatically less profiled participant (Participant_2). However, since in the case of Attaching, the Goal (which would be Item_2 under our normal naming scheme) is not readily understood as itself being secured or immobilized via attachment to the Item on the asymmetric construal, we selected a name that reflects the fact that the usual inference to equal status for Participant_2 in the asymmetric construal is not warranted.
+The Excludes relation also manifests in frames where an event can be brought about either by an intentional Agent or by a Cause event. Consider the following examples from the Placing frame.
+(22) [The same flood tide that had brought such a good harvest of tiles Cause] heaped a mass of driftwood onto the Reach.
+(23) [Bill Agent] deposited the bag of croissants and the Financial Times carelessly on the hall table.
+The two sentences represent two different construals of Placing scenes. Sentence (22) focuses on an event as causing the change in location of the Theme, whereas sentence (23) focuses on an Agent who through their involvement in an unspecified event, most likely an intentional action involving his hands and body, causes the change of location of the Theme. The two construals are incompatible (since there is only one subject slot) and the frame elements Agent and Cause stand in an Excludes relation to each other.8
+Another clear instance of the Excludes relation between frame elements occurs in the Evading frame, where an Evader moves under its own power to thereby avoid Capture or contact with a Pursuer. The Capture is an actual or hypothetical event in which the Pursuer takes physical control of the Evader. The Capture frame element and the Pursuer are thus clearly interrelated but only one of them can appear as a dependent of a target in the Evading frame.
+(24) Sheriff's officials said they apprehended a gang member after he evaded [them Pursuer]. (25) He had successfully evaded [arrest Capture].
+Finally, note that the Excludes relation strictly applies only to the direct syntactic dependents of a target word, that is, to first layer annotation. Frame elements that exclude each other may co-occur in an annotation set if they appear on separate annotation layers.
+(26) Perkins McLain evaded [capture [through Spain Pursuer] Capture] . (27) The discussions [between [Miller Interlocutor_1] and [the dean Interlocutor_2] Interlocutors ] went nowhere.
+In (26), information about the Pursuer is expressed inside the Capture frame element in a prepositional phrase dependent of the noun capture. In (27), the two sides of the discussion, Interlocutor_1 and Interlocutor_2 are expressed within the coordinate NP that encodes the Interlocutors frame element."^^xsd:string
+    SubPropertyOf:
+        fn:hasFERelation
+    Domain:
+        fn:FrameElement
+    Range:
+        fn:FrameElement
+    InverseOf:
+        fn:isExcludedBy
+
+ObjectProperty: fn:FELabel
+    Annotations:
+        rdfs:label "frame element label"^^xsd:string
+    Domain:
+        fn:FrameElement
+    Range:
+        fn:Label
+    InverseOf:
+        fn:label_FE
+
+ObjectProperty: fn:frameElementOf
+    Annotations:
+        rdfs:label "frame element of"^^xsd:string
+    Domain:
+        fn:FrameElement
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:hasFrameElement
+
+ObjectProperty: fn:frameHeader
+    Annotations:
+        rdfs:label "frame header"^^xsd:string
+    Domain:
+        fn:Frame
+    Range:
+        fn:Header
+    InverseOf:
+        fn:hasFrame
+
+ObjectProperty: fn:frameOfAnnotationSet
+    Annotations:
+        rdfs:label "frame of annotation set"^^xsd:string
+    Domain:
+        fn:Frame
+    Range:
+        fn:AnnotationSet
+    InverseOf:
+        fn:annotationSetFrame
+
+ObjectProperty: fn:fromCorpDoc
+    Annotations:
+        rdfs:label "from corpus document"^^xsd:string
+    Domain:
+        fn:Document
+    Range:
+        fn:CorpDoc
+    InverseOf:
+        fn:hasDocument
+
+ObjectProperty: fn:hasAnnotationSet
+    Domain:
+        fn:Sentence
+    Range:
+        fn:AnnotationSet
+    InverseOf:
+        fn:annoForSentence
+
+ObjectProperty: fn:hasCausative
+    Annotations:
+        rdfs:label "has causative"^^xsd:string
+    SubPropertyOf:
+        fn:hasFrameRelation
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:isCausativeOf
+
+ObjectProperty: fn:hasCorpDoc
+    Domain:
+        fn:Header
+    Range:
+        fn:CorpDoc
+    InverseOf:
+        fn:corpDocHeader
+
+ObjectProperty: fn:hasDocument
+    Domain:
+        fn:CorpDoc
+    Range:
+        fn:Document
+    InverseOf:
+        fn:fromCorpDoc
+
+ObjectProperty: fn:hasFEcoreSet
+    Characteristics:
+        InverseFunctional
+    Domain:
+        fn:Frame
+    Range:
+        fn:FECoreSet
+    InverseOf:
+        fn:isFECoreSetOf
+
+ObjectProperty: fn:hasFERelation
+    Annotations:
+        rdfs:comment "Any relation between frame elements."^^xsd:string
+    Characteristics:
+        Symmetric
+    Domain:
+        fn:FrameElement
+    Range:
+        fn:FrameElement
+    InverseOf:
+        fn:hasFERelation
+
+ObjectProperty: fn:hasFrame
+    Domain:
+        fn:Header
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:frameHeader
+
+ObjectProperty: fn:hasFrameElement
+    Domain:
+        fn:Frame
+    Range:
+        fn:FrameElement
+    InverseOf:
+        fn:frameElementOf
+
+ObjectProperty: fn:hasFrameRelation
+    Annotations:
+        rdfs:comment "Any relation between frames. Each frame relation in the FrameNet data is a directed (asymmetric) relation between two frames, where one frame (the less dependent, or more abstract) can be called the Super frame and another (the more dependent, or less abstract) can be called the Sub frame. We give a more specific, informative name to the Super and Sub frames for each relation, as shown in Table 6.1 below.
+Role names for the specialized relations:
+Relation Sub Super
+Inheritance Child Parent
+Perspective on Perspectivized Neutral
+Subframe Component Complex
+Precedes Later EarlierState
+Inchoative of Inchoative State
+Causative of Causative Inchoative/State
+Using Child Parent
+See also ReferringEntry MainEntry"^^xsd:string
+    Characteristics:
+        Symmetric
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:hasFrameRelation
+
+ObjectProperty: fn:hasHeader
+    Domain:
+        fn:FullTextAnnotation
+    Range:
+        fn:Header
+    InverseOf:
+        fn:headerFullTextAnno
+
+ObjectProperty: fn:hasInchoative
+    Annotations:
+        rdfs:label "has inchoative"^^xsd:string
+    SubPropertyOf:
+        fn:hasFrameRelation
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:isInchoativeOf
+
+ObjectProperty: fn:hasLabel
+    Domain:
+        fn:Layer
+    Range:
+        fn:Label
+    InverseOf:
+        fn:labelLayer
+
+ObjectProperty: fn:hasLayer
+    Domain:
+        fn:AnnotationSet
+    Range:
+        fn:Layer
+    InverseOf:
+        fn:layerAnnoSet
+
+ObjectProperty: fn:hasLexeme
+    Domain:
+        fn:LexUnit
+    Range:
+        fn:Lexeme
+    InverseOf:
+        fn:lexemeLU
+
+ObjectProperty: fn:hasLexUnit
+    Domain:
+        fn:Frame
+    Range:
+        fn:LexUnit
+    InverseOf:
+        fn:lexUnitFrame
+
+ObjectProperty: fn:hasMember
+    Domain:
+        fn:FECoreSet
+    Range:
+        fn:FrameElement
+    InverseOf:
+        fn:inCoreSet
+
+ObjectProperty: fn:hasSemType
+    Domain:
+        (fn:Frame or fn:FrameElement or fn:LexUnit)
+    Range:
+        fn:SemType
+    InverseOf:
+        fn:isSemTypeOf
+
+ObjectProperty: fn:hasSentence
+    Domain:
+        fn:FullTextAnnotation
+    Range:
+        fn:Sentence
+    InverseOf:
+        fn:sentenceFullTextAnno
+
+ObjectProperty: fn:hasSentenceCount
+    Domain:
+        fn:LexUnit
+    Range:
+        fn:SentenceCount
+    InverseOf:
+        fn:sentenceCountLU
+
+ObjectProperty: fn:hasSubFE
+    Annotations:
+        rdfs:comment "We have no explicit treatment of the idea of proto-frame elements, of which other frame elements are more specialized expressions. In cases like (28), we would prefer not to have to pick either specifically Agent or Cause as constructionally null instantiated, since the context might not provide enough information to resolve that question. Instead we would make reference to a superordinate frame element (call it *Force) that is vague about intentionality and the event-person distinction. Likewise in (29), where B answers a question about a new employee, we would prefer to use a superordinate frame element (which might be named *Field in this case), rather than choosing among the frame elements Role, Skill, Knowledge, or Focal participant for constructional null instantiation relative to the predicate good in the Expertise frame.
+(28) The car got damaged while parked outside of our house.
+(29) A. How?s Susan working out? B. She?s very good.
+Having an explicit representation of proto-frame elements would also be useful in dealing with certain linguistic expressions that seem to instantiate the superordinate proto-frame element rather than one of its more specific manifestations. Consider the phrase trench to trench in (30): it does not refer to the Source or Goal of a Path but neither does it refer to a middle Path which would be compatible with the specification of a final Goal. A proto-frame element Full path would provide the most adequate treatment.
+(30) He crawled [trench to trench], looking for some sign of Stephen.
+Another use for Proto-frame elements involves inheritance relations. In some cases, an inheriting frame will allow only one FE from an Excludes or CoreSet group in the parent frame. Superficially, this violates the rule that requires child frames to have a corresponding FE for each core/peripheral FE of the parent. In a deeper sense, however, inheriting only one member of a frame element set should be permitted on the understanding of inheritance as subtyping. This is so because the child frame is fulfilling every constraint of the parent, merely adding a constraint that prevents one of the construals possible in the more generic case. If we state the frame element restriction on inheritance so that it pays attention only to the most generic level of FEs, then mappings from subsidiary FEs are allowable, but not required. This would make it possible, for instance, to have a *Murder frame (with only agentive causes) as a child frame of the Killing frame (which allows Causes or Agents)."^^xsd:string
+    SubPropertyOf:
+        fn:hasFERelation
+    Domain:
+        fn:FrameElement
+    Range:
+        fn:FrameElement
+    InverseOf:
+        fn:hasSuperFE
+
+ObjectProperty: fn:hasSubframe
+    Annotations:
+        rdfs:comment "Some frames are complex in that they refer to sequences of states and transitions, each of which can itself be separately described as a frame. The separate frames (called subframes) are related to the complex frames via the SubFrame relation. In such cases, frame elements of the complex frame may be identified (mapped) to the frame elements of the subparts, although not all frame elements of one need have any relation to the other. (In this respect, it contrasts with inheritance; see below.) Also, the ordering and other temporal relationships of the subframes can be specified using binary precedence relations.
+A Suspect is arrested by an Authority on certain Charges, then is arraigned as a Defendant. If at any time the Defendant pleads guilty, then the Defendant is sentenced, otherwise the Defendant first goes to trial. If the Finding after the trial is guilty, then the Defendant is sentenced. In the end, the Defendant is either released or is given a Sentence by a Judge at the sentencing.
+For each step in the process, there is a separate frame in the database, including Arrest, Arraignment, Trial, Sentencing, and so on. Each of these frames is related to the Criminal process frame via the SubFrame relation in the database. Moreover, subframes (of the same complex frame) are related to each other through their ordering. (See Narayanan et al. (2002) and Scheffczyk et al. (2006).) Note that the FEs of the subframes need not map to those of other subframes. So, in this same group of frames, the Arrest frame includes an Arresting authority which is not included in the Trial frame.
+Notice that a given subframe may itself be a complex frame. For example, the Trial frame is a subframe of the Criminal process frame, and has its own rich structure, some of which can be decomposed into simpler frames that are related to each other. A Trial is made up of court appearances, and involves opening arguments, presentation of evidence and testimony, and closing arguments. The system of subframe links is also quite complex. At present, the subframe relation is not indicated in every relevant case."^^xsd:string
+    SubPropertyOf:
+        fn:hasFrameRelation
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:subframeOf
+
+ObjectProperty: fn:hasSubType
+    Annotations:
+        rdfs:label "has subtype"^^xsd:string
+    Domain:
+        fn:SemType
+    Range:
+        fn:SemType
+    InverseOf:
+        fn:hasSuperType
+
+ObjectProperty: fn:hasSuperFE
+    Annotations:
+        rdfs:comment "We have no explicit treatment of the idea of proto-frame elements, of which other frame elements are more specialized expressions. In cases like (28), we would prefer not to have to pick either specifically Agent or Cause as constructionally null instantiated, since the context might not provide enough information to resolve that question. Instead we would make reference to a superordinate frame element (call it *Force) that is vague about intentionality and the event-person distinction. Likewise in (29), where B answers a question about a new employee, we would prefer to use a superordinate frame element (which might be named *Field in this case), rather than choosing among the frame elements Role, Skill, Knowledge, or Focal participant for constructional null instantiation relative to the predicate good in the Expertise frame.
+(28) The car got damaged while parked outside of our house.
+(29) A. How?s Susan working out? B. She?s very good.
+Having an explicit representation of proto-frame elements would also be useful in dealing with certain linguistic expressions that seem to instantiate the superordinate proto-frame element rather than one of its more specific manifestations. Consider the phrase trench to trench in (30): it does not refer to the Source or Goal of a Path but neither does it refer to a middle Path which would be compatible with the specification of a final Goal. A proto-frame element Full path would provide the most adequate treatment.
+(30) He crawled [trench to trench], looking for some sign of Stephen.
+Another use for Proto-frame elements involves inheritance relations. In some cases, an inheriting frame will allow only one FE from an Excludes or CoreSet group in the parent frame. Superficially, this violates the rule that requires child frames to have a corresponding FE for each core/peripheral FE of the parent. In a deeper sense, however, inheriting only one member of a frame element set should be permitted on the understanding of inheritance as subtyping. This is so because the child frame is fulfilling every constraint of the parent, merely adding a constraint that prevents one of the construals possible in the more generic case. If we state the frame element restriction on inheritance so that it pays attention only to the most generic level of FEs, then mappings from subsidiary FEs are allowable, but not required. This would make it possible, for instance, to have a *Murder frame (with only agentive causes) as a child frame of the Killing frame (which allows Causes or Agents)."^^xsd:string
+    SubPropertyOf:
+        fn:hasFERelation
+    Domain:
+        fn:FrameElement
+    Range:
+        fn:FrameElement
+    InverseOf:
+        fn:hasSubFE
+
+ObjectProperty: fn:hasSuperType
+    Domain:
+        fn:SemType
+    Range:
+        fn:SemType
+    InverseOf:
+        fn:hasSubType
+
+ObjectProperty: fn:headerFullTextAnno
+    Annotations:
+        rdfs:label "header full text annotation"^^xsd:string
+    Domain:
+        fn:Header
+    Range:
+        fn:FullTextAnnotation
+    InverseOf:
+        fn:hasHeader
+
+ObjectProperty: fn:inCoreSet
+    Annotations:
+        rdfs:label "in core set"^^xsd:string
+    Domain:
+        fn:FrameElement
+    Range:
+        fn:FECoreSet
+    InverseOf:
+        fn:hasMember
+
+ObjectProperty: fn:incorporatedFE
+    Annotations:
+        rdfs:comment "There are many frames containing verbs which generally involve a particular of frame element, but where some of the verbs incorporate information about that frame element in their definition.
+Consider, for example, verbs of body movement; typically certain verbs are expected to co-occur with the name of a body part, even when the identity of the body part is clear from the meaning of the verb. A dog wags its tail, people arch their brows, bat their eyes, purse their lips, etc.
+But in the case of smile, grimace, frown, pout, and scowl, the affected body part is not separately expressed; we say that it is incorporated.
+Some verbs in this frame can optionally express the expected body part: one can say either She blinked or She blinked her eyes. Likewise, in the Placing frame, many verbs incorporate the Goal FE (i.e. the place where the Theme ends up) such as bag.v, bin.v, bottle.v, box.v, cage.v, crate.v, file.v, garage.v.
+Note that it is still possible to further specify the incorporated FE explicitly, as in They bottled the wine in custom-made blue bottles, in which case, in custom-made blue bottles is annotated as the Goal FE, as usual. In defining a new LU, one can specify an incorporated FE."^^xsd:string
+    Domain:
+        fn:LexUnit
+    Range:
+        fn:FrameElement
+    InverseOf:
+        fn:incorporatedInLU
+
+ObjectProperty: fn:incorporatedInLU
+    Annotations:
+        rdfs:comment "There are many frames containing verbs which generally involve a particular of frame element, but where some of the verbs incorporate information about that frame element in their definition.
+Consider, for example, verbs of body movement; typically certain verbs are expected to co-occur with the name of a body part, even when the identity of the body part is clear from the meaning of the verb. A dog wags its tail, people arch their brows, bat their eyes, purse their lips, etc.
+But in the case of smile, grimace, frown, pout, and scowl, the affected body part is not separately expressed; we say that it is incorporated.
+Some verbs in this frame can optionally express the expected body part: one can say either She blinked or She blinked her eyes. Likewise, in the Placing frame, many verbs incorporate the Goal FE (i.e. the place where the Theme ends up) such as bag.v, bin.v, bottle.v, box.v, cage.v, crate.v, file.v, garage.v.
+Note that it is still possible to further specify the incorporated FE explicitly, as in They bottled the wine in custom-made blue bottles, in which case, in custom-made blue bottles is annotated as the Goal FE, as usual. In defining a new LU, one can specify an incorporated FE."^^xsd:string,
+        rdfs:label "incorporated in lexical unit"^^xsd:string
+    Domain:
+        fn:FrameElement
+    Range:
+        fn:LexUnit
+    InverseOf:
+        fn:incorporatedFE
+
+ObjectProperty: fn:inheritsFrom
+    Annotations:
+        rdfs:comment "This is the strongest relation between frames, corresponding to is-a in many ontologies.
+With this relation, anything which is strictly true about the semantics of the Parent must correspond to an equally or more specific fact about the Child. This includes Frame Element membership of the frames (except for Extrathematic FEs), most Semantic Types, frame relations to other frames, relationships among the Frame Elements, and Semantic Types on the Frame Elements.
+Properties of the Parent which are not strictly semantic in nature, such as not being evoked by lexical units (i.e. the Semantic Type Non-lexical frame), being evoked by a particular set of Lexical Units, or having a See also relation to another frame, are not inherited.
+Also, when there is a Core-set or an Excludes relation among Frame Elements of the Parent, these constitute disjunctive properties of the Parent. The Child frame may legitimately inherit only a subset of these disjunctive Frame Elements."^^xsd:string
+    SubPropertyOf:
+        fn:hasFrameRelation
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:isInheritedBy
+
+ObjectProperty: fn:isCausativeOf
+    Annotations:
+        rdfs:comment "We record the especially close and fairly systematic non-inheritance relationships between stative frames and the inchoative and causative frames which refer to them using the frame-to-frame relations Causative of and Inchoative of. Consider the following frames: Position on a scale, Change position on a scale, and Cause change of scalar position. The following sentences illustrate the kind distinction captured in these frames:
+(1) [Cause change of scalar position] (raise.v) Billie Blount raised taxes on farmers 18 times in 2002!
+(2) [Change position on a scale] (rise.v) During the Elizabethan age, there was an increased em- phasis on genealogy in the heralds? work as the gentry class rose in importance.
+(3) [Position on a scale] (high.a) Most fish from lakes is too high in mercury.
+Frames which participate in these relations as Causatives should inherit from the Transitive action frame, Inchoatives should inherit from Event, and States from State or Gradable attribute.6 Many of these inheri- tance relations have not yet been made."^^xsd:string
+    SubPropertyOf:
+        fn:hasFrameRelation
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:hasCausative
+
+ObjectProperty: fn:isExcludedBy
+    Annotations:
+        rdfs:label "is excluded by"^^xsd:string
+    SubPropertyOf:
+        fn:hasFERelation
+    Domain:
+        fn:FrameElement
+    Range:
+        fn:FrameElement
+    InverseOf:
+        fn:excludes
+
+ObjectProperty: fn:isFECoreSetOf
+    Annotations:
+        rdfs:label "is frame element core set of"^^xsd:string
+    Characteristics:
+        Functional
+    Domain:
+        fn:FECoreSet
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:hasFEcoreSet
+
+ObjectProperty: fn:isInchoativeOf
+    Annotations:
+        rdfs:comment "We record the especially close and fairly systematic non-inheritance relationships between stative frames and the inchoative and causative frames which refer to them using the frame-to-frame relations Causative of and Inchoative of. Consider the following frames: Position on a scale, Change position on a scale, and Cause change of scalar position. The following sentences illustrate the kind distinction captured in these frames:
+(1) [Cause change of scalar position] (raise.v) Billie Blount raised taxes on farmers 18 times in 2002!
+(2) [Change position on a scale] (rise.v) During the Elizabethan age, there was an increased em- phasis on genealogy in the heralds? work as the gentry class rose in importance.
+(3) [Position on a scale] (high.a) Most fish from lakes is too high in mercury.
+Frames which participate in these relations as Causatives should inherit from the Transitive action frame, Inchoatives should inherit from Event, and States from State or Gradable attribute.6 Many of these inheri- tance relations have not yet been made."^^xsd:string
+    SubPropertyOf:
+        fn:hasFrameRelation
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:hasInchoative
+
+ObjectProperty: fn:isInheritedBy
+    Annotations:
+        rdfs:comment "This is the strongest relation between frames, corresponding to is-a in many ontologies.
+With this relation, anything which is strictly true about the semantics of the Parent must correspond to an equally or more specific fact about the Child. This includes Frame Element membership of the frames (except for Extrathematic FEs), most Semantic Types, frame relations to other frames, relationships among the Frame Elements, and Semantic Types on the Frame Elements.
+Properties of the Parent which are not strictly semantic in nature, such as not being evoked by lexical units (i.e. the Semantic Type Non-lexical frame), being evoked by a particular set of Lexical Units, or having a See also relation to another frame, are not inherited.
+Also, when there is a Core-set or an Excludes relation among Frame Elements of the Parent, these constitute disjunctive properties of the Parent. The Child frame may legitimately inherit only a subset of these disjunctive Frame Elements."^^xsd:string
+    SubPropertyOf:
+        fn:hasFrameRelation
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:inheritsFrom
+
+ObjectProperty: fn:isPerspectivizedIn
+    Annotations:
+        rdfs:comment "This relation is a refinement of the more general Using relation. Perspective on constrains related frames considerably more. The use of this relation indicates the presence of at least two different points-of-view that can be taken on the Neutral frame. For example, the Measure scenario, in which an Entity?s Value for some Attribute is described, can be viewed either from the point-of-view of exact measurement (e.g. ?Joey weighed 7 pounds.?) or as a relative measure (e.g. ?Joey was heavy.?). The FEs in the two cases are quite different, so the words should not be included in the same frame, but they do make reference to the same scene. The Perspective on relation allows us to refer directly to the scene (encoded by the Neutral Measure scenario frame here) and connect the two. As in this case, the Neutral frame is normally Non-lexical and Non-perspectivalized.
+A single Neutral frame generally has at least two Perspectivalized frames, but in some cases, words of the Neutral frame are consistent with multiple different points-of-view while the Perspectivalized frame is consistentwithonlyone. Whenever there is a state of affairs that is describable by a frame in a Perspective on relation, all the other frames that are connected to it by the Perspective on relation can also be used to describe the state of affairs.
+For example, the Commercial transaction frame specifies a complex schema involving an exchange of multiple Themes (the Money and Goods) between the Buyer and Seller, including also two subframes: Commerce goods-transfer and Commerce money-transfer. The Buying frame has a Perspective on relationship with the Commerce goods-transfer subframe in which the Money, Goods, Buyer, and Seller are identified.
+Some other relations of this type include:
+? Get a job and Hiring are perspectives of Begin employment
+? Rope manipulation and Knot creation are perspectives on Knot creation scenario
+Further note that it is quite common for a frame to inherit from one frame and be a perspective on another. An example of this is again provided by the Commerce buy frame, which inherits the Getting frame but is a perspective on the Commerce goods transfer frame. An act of buying is a sub-type of getting, which justifies the inheritance relation to Getting. Buying is an event that only occurs when the situation (the Commerce goods transfer) is also describable as selling. For that reason, it (and the Commerce sell) is connected to the Commerce goods transfer frame via a Perspective on relation."^^xsd:string
+    SubPropertyOf:
+        fn:hasFrameRelation
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:perspectiveOn
+
+ObjectProperty: fn:isPrecededBy
+    Annotations:
+        rdfs:comment "This relation occurs only between two Component frames of a single Complex frame, i.e. as extra information associated with a set of Subframe relations. It specifies the sequence of states and events that are definitional for a certain state-of-affairs. Most Subframe relations will naturally have precedence relations, as can be seen in the foregoing diagram of the subframes of the Criminal process frame, in which the Precedes relations are indicated by the black lateral arrows.
+This is the only frame relation for which cycles are allowed. For example, in the subframes of the Sleep wake cycle frame, Being awake precedes Fall asleep, which precedes Sleep, which precedes Waking up or Getting up, which in turn precedes the first frame, Being awake."^^xsd:string
+    SubPropertyOf:
+        fn:hasFrameRelation
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:precedes
+
+ObjectProperty: fn:isRequiredBy
+    Annotations:
+        rdfs:label "is required by"^^xsd:string
+    SubPropertyOf:
+        fn:hasFERelation
+    Domain:
+        fn:FrameElement
+    Range:
+        fn:FrameElement
+    InverseOf:
+        fn:requires
+
+ObjectProperty: fn:isSemTypeOf
+    Annotations:
+        rdfs:label "is semantic type of"^^xsd:string
+    Domain:
+        fn:SemType
+    Range:
+        (fn:Frame or fn:FrameElement or fn:LexUnit)
+    InverseOf:
+        fn:hasSemType
+
+ObjectProperty: fn:isUsedBy
+    Annotations:
+        rdfs:comment "Often a particular frame makes reference in a very general kind of way to the structure of a more abstract, schematic frame. Since the creation of the more specific Perspective on relation, the Using relation is used almost exclusively for cases in which a part of the scene evoked by the Child refers to the Parent frame.
+For example, Volubility uses the Communication frame, since Volubility describes a quantification of communication events.
+It is possible for a frame to use more than one frame. An example of this situation is the Judg- ment communication frame. It uses both the Judgment frame and the Statement frame. The Judgment communication frame does not inherit Judgment because it is not a simple subtype of a purely cognitive state. Judgment communication does not inherit Statement either since it distributes the content of the Statement frame?s Message frame element over two frame elements, Evaluee and Reason."^^xsd:string
+    SubPropertyOf:
+        fn:hasFrameRelation
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:uses
+
+ObjectProperty: fn:label_FE
+    Domain:
+        fn:Label
+    Range:
+        fn:FrameElement
+    InverseOf:
+        fn:FELabel
+
+ObjectProperty: fn:labelLayer
+    Annotations:
+        rdfs:label "label layer"^^xsd:string
+    Domain:
+        fn:Label
+    Range:
+        fn:Layer
+    InverseOf:
+        fn:hasLabel
+
+ObjectProperty: fn:layerAnnoSet
+    Annotations:
+        rdfs:label "layer annotation set"^^xsd:string
+    Domain:
+        fn:Layer
+    Range:
+        fn:AnnotationSet
+    InverseOf:
+        fn:hasLayer
+
+ObjectProperty: fn:lexemeLU
+    Annotations:
+        rdfs:label "lexeme of lexical unit"^^xsd:string
+    Domain:
+        fn:Lexeme
+    Range:
+        fn:LexUnit
+    InverseOf:
+        fn:hasLexeme
+
+ObjectProperty: fn:lexUnitFrame
+    Annotations:
+        rdfs:label "lex unit of frame"^^xsd:string
+    Domain:
+        fn:LexUnit
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:hasLexUnit
+
+ObjectProperty: fn:LUOfAnnotationSet
+    Annotations:
+        rdfs:label "lexicla unit of annotation set"^^xsd:string
+    Domain:
+        fn:LexUnit
+    Range:
+        fn:AnnotationSet
+    InverseOf:
+        fn:annotationSetLU
+
+ObjectProperty: fn:perspectiveOn
+    Annotations:
+        rdfs:comment "This relation is a refinement of the more general Using relation. Perspective on constrains related frames considerably more. The use of this relation indicates the presence of at least two different points-of-view that can be taken on the Neutral frame. For example, the Measure scenario, in which an Entity?s Value for some Attribute is described, can be viewed either from the point-of-view of exact measurement (e.g. ?Joey weighed 7 pounds.?) or as a relative measure (e.g. ?Joey was heavy.?). The FEs in the two cases are quite different, so the words should not be included in the same frame, but they do make reference to the same scene. The Perspective on relation allows us to refer directly to the scene (encoded by the Neutral Measure scenario frame here) and connect the two. As in this case, the Neutral frame is normally Non-lexical and Non-perspectivalized.
+A single Neutral frame generally has at least two Perspectivalized frames, but in some cases, words of the Neutral frame are consistent with multiple different points-of-view while the Perspectivalized frame is consistentwithonlyone. Whenever there is a state of affairs that is describable by a frame in a Perspective on relation, all the other frames that are connected to it by the Perspective on relation can also be used to describe the state of affairs.
+For example, the Commercial transaction frame specifies a complex schema involving an exchange of multiple Themes (the Money and Goods) between the Buyer and Seller, including also two subframes: Commerce goods-transfer and Commerce money-transfer. The Buying frame has a Perspective on relationship with the Commerce goods-transfer subframe in which the Money, Goods, Buyer, and Seller are identified.
+Some other relations of this type include:
+? Get a job and Hiring are perspectives of Begin employment
+? Rope manipulation and Knot creation are perspectives on Knot creation scenario
+Further note that it is quite common for a frame to inherit from one frame and be a perspective on another. An example of this is again provided by the Commerce buy frame, which inherits the Getting frame but is a perspective on the Commerce goods transfer frame. An act of buying is a sub-type of getting, which justifies the inheritance relation to Getting. Buying is an event that only occurs when the situation (the Commerce goods transfer) is also describable as selling. For that reason, it (and the Commerce sell) is connected to the Commerce goods transfer frame via a Perspective on relation."^^xsd:string
+    SubPropertyOf:
+        fn:hasFrameRelation
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:isPerspectivizedIn
+
+ObjectProperty: fn:precedes
+    Annotations:
+        rdfs:comment "This relation occurs only between two Component frames of a single Complex frame, i.e. as extra information associated with a set of Subframe relations. It specifies the sequence of states and events that are definitional for a certain state-of-affairs. Most Subframe relations will naturally have precedence relations, as can be seen in the foregoing diagram of the subframes of the Criminal process frame, in which the Precedes relations are indicated by the black lateral arrows.
+This is the only frame relation for which cycles are allowed. For example, in the subframes of the Sleep wake cycle frame, Being awake precedes Fall asleep, which precedes Sleep, which precedes Waking up or Getting up, which in turn precedes the first frame, Being awake."^^xsd:string
+    SubPropertyOf:
+        fn:hasFrameRelation
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:isPrecededBy
+
+ObjectProperty: fn:requires
+    Annotations:
+        rdfs:comment "In some cases, the occurrence of one core FE requires that another core FE occur as well. To illustrate, in the Attaching frame Item, Goal, and Items all are core FEs. If Item occurs, then Goal is required, as shown below, where the sentence without a Goal is unacceptable. In this situation, we mark a Requires relation between the two frame elements.
+(19) The robbers tied [Paul Item] [to his chair Goal].
+(20) * The robbers tied [Paul Item].
+The Requires relation occurs in almost all frames that have a construal alternation between a symmetric construal, when a single frame element name is used, and an asymmetric construal, when two frame elements with names of the are used. In the former case a simple name of the form [FENAME]s is used and in the latter, two FEs of the form [FENAME]_1 and [FENAME]_2 are used. Some sample frames are Compatibility, Chatting, and Similarity; there are many more."^^xsd:string
+    SubPropertyOf:
+        fn:hasFERelation
+    Domain:
+        fn:FrameElement
+    Range:
+        fn:FrameElement
+    InverseOf:
+        fn:isRequiredBy
+
+ObjectProperty: fn:seeAlso
+    Annotations:
+        rdfs:comment "In cases where there are groups of frames which are similar and should be carefully differentiated, compared, and contrasted, each of the frames in question has a SeeAlso relation with a representative member of the group. In the frame definition of the representative member, there will be a comparison which will contrast the frames to make clear the intended boundaries between them. For example, since the Scrutiny and Seeking frames are similar, there is a SeeAlso relation from Scrutiny to Seeking, and text in the Seeking frame that explains the difference.
+This relationship does not imply any particular relationship between the Frame Elements or subframes of the frames involved."^^xsd:string
+    SubPropertyOf:
+        fn:hasFrameRelation
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+
+ObjectProperty: fn:sentenceCountLU
+    Annotations:
+        rdfs:label "sentence count of lexical unit"^^xsd:string
+    Domain:
+        fn:SentenceCount
+    Range:
+        fn:LexUnit
+    InverseOf:
+        fn:hasSentenceCount
+
+ObjectProperty: fn:sentenceFullTextAnno
+    Annotations:
+        rdfs:label "sentence full text annotation"^^xsd:string
+    Domain:
+        fn:Sentence
+    Range:
+        fn:FullTextAnnotation
+    InverseOf:
+        fn:hasSentence
+
+ObjectProperty: fn:sentenceInCorpDoc
+    Domain:
+        fn:Sentence
+    Range:
+        fn:CorpDoc
+    InverseOf:
+        fn:corpDocOfSentence
+
+ObjectProperty: fn:sentenceInDocument
+    Domain:
+        fn:Sentence
+    Range:
+        fn:Document
+    InverseOf:
+        fn:containsSentence
+
+ObjectProperty: fn:subframeOf
+    Annotations:
+        rdfs:comment "Some frames are complex in that they refer to sequences of states and transitions, each of which can itself be separately described as a frame. The separate frames (called subframes) are related to the complex frames via the SubFrame relation. In such cases, frame elements of the complex frame may be identified (mapped) to the frame elements of the subparts, although not all frame elements of one need have any relation to the other. (In this respect, it contrasts with inheritance; see below.) Also, the ordering and other temporal relationships of the subframes can be specified using binary precedence relations. To illustrate, consider the complex Criminal process frame.
+A Suspect is arrested by an Authority on certain Charges, then is arraigned as a Defendant. If at any time the Defendant pleads guilty, then the Defendant is sentenced, otherwise the Defendant first goes to trial. If the Finding after the trial is guilty, then the Defendant is sentenced. In the end, the Defendant is either released or is given a Sentence by a Judge at the sentencing.
+For each step in the process, there is a separate frame in the database, including Arrest, Arraignment, Trial, Sentencing, and so on. Each of these frames is related to the Criminal process frame via the SubFrame relation in the database. Moreover, subframes (of the same complex frame) are related to each other through their ordering. (See Narayanan et al. (2002) and Scheffczyk et al. (2006).) Note that the FEs of the subframes need not map to those of other subframes. So, in this same group of frames, the Arrest frame includes an Arresting authority which is not included in the Trial frame.
+Notice that a given subframe may itself be a complex frame. For example, the Trial frame is a subframe of the Criminal process frame, and has its own rich structure, some of which can be decomposed into simpler frames that are related to each other. A Trial is made up of court appearances, and involves opening arguments, presentation of evidence and testimony, and closing arguments. The system of subframe links is also quite complex. At present, the subframe relation is not indicated in every relevant case."^^xsd:string
+    SubPropertyOf:
+        fn:hasFrameRelation
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:hasSubframe
+
+ObjectProperty: fn:uses
+    Annotations:
+        rdfs:comment "Often a particular frame makes reference in a very general kind of way to the structure of a more abstract, schematic frame. Since the creation of the more specific Perspective on relation, the Using relation is used almost exclusively for cases in which a part of the scene evoked by the Child refers to the Parent frame.
+For example, Volubility uses the Communication frame, since Volubility describes a quantification of communication events.
+It is possible for a frame to use more than one frame. An example of this situation is the Judg- ment communication frame. It uses both the Judgment frame and the Statement frame. The Judgment communication frame does not inherit Judgment because it is not a simple subtype of a purely cognitive state. Judgment communication does not inherit Statement either since it distributes the content of the Statement frame?s Message frame element over two frame elements, Evaluee and Reason."^^xsd:string
+    SubPropertyOf:
+        fn:hasFrameRelation
+    Domain:
+        fn:Frame
+    Range:
+        fn:Frame
+    InverseOf:
+        fn:isUsedBy
+
+DataProperty: fn:annotationSet_cDate
+    Characteristics:
+        Functional
+    Domain:
+        fn:AnnotationSet
+    Range:
+        xsd:string
+
+DataProperty: fn:annotationSet_cxnID
+    Characteristics:
+        Functional
+    Domain:
+        fn:AnnotationSet
+    Range:
+        xsd:int
+
+DataProperty: fn:annotationSet_cxnName
+    Characteristics:
+        Functional
+    Domain:
+        fn:AnnotationSet
+    Range:
+        xsd:string
+
+DataProperty: fn:annotationSet_ID
+    Characteristics:
+        Functional
+    Domain:
+        fn:AnnotationSet
+    Range:
+        xsd:int
+
+DataProperty: fn:annotationSet_status
+    Domain:
+        fn:AnnotationSet
+    Range:
+        xsd:string
+
+DataProperty: fn:corpDoc_ID
+    Characteristics:
+        Functional
+    Domain:
+        fn:CorpDoc
+    Range:
+        xsd:int
+
+DataProperty: fn:corpDoc_name
+    Characteristics:
+        Functional
+    Domain:
+        fn:CorpDoc
+    Range:
+        xsd:string
+
+DataProperty: fn:definition
+    Domain:
+        (fn:Frame or fn:FrameElement or fn:LexUnit or fn:SemType)
+    Range:
+        xsd:string
+
+DataProperty: fn:document_description
+    Domain:
+        fn:Document
+    Range:
+        xsd:string
+
+DataProperty: fn:document_ID
+    Characteristics:
+        Functional
+    Domain:
+        fn:Document
+    Range:
+        xsd:int
+
+DataProperty: fn:FE_abbrev
+    Characteristics:
+        Functional
+    Domain:
+        fn:FrameElement
+    Range:
+        xsd:string
+
+DataProperty: fn:FE_cBy
+    Characteristics:
+        Functional
+    Domain:
+        fn:FrameElement
+    Range:
+        xsd:string
+
+DataProperty: fn:FE_cDate
+    Characteristics:
+        Functional
+    Domain:
+        fn:FrameElement
+    Range:
+        xsd:string
+
+DataProperty: fn:FE_coreType
+    Annotations:
+        rdfs:comment "We classify frame elements in terms of how central they are to a particular frame, distinguishing three levels: core, peripheral, and extra-thematic. A fourth possible value for this attribute, called core-unexpressed is also discussed below.
+A core frame element is one that instantiates a conceptually necessary component of a frame, while making the frame unique and different from other frames. For example, in the Revenge frame, Avenger, Punishment, Offender, Injury, and Injured party are all core frame elements, because an avenging event necessarily includes these participants. One cannot imagine an act of revenge that is not preceded by a (perceived) offense or one that is not directed against anybody.
+In determining which frame elements are considered core, we also consider some formal properties that provide evidence for core status. These properties are typically co-present, although they need not be.
+? When an element always has to be overtly specified, it is core. For instance, the verb resemble in the Similarity frame always requires a post-verbal complement NP denoting an entity that is similar to the entity denoted by the subject.
+? A frame element which, when omitted, receives a definite interpretation, is also core. For instance, when the verb arrive is used only with a Theme-subject, as in John arrived, a particular Goal location that the Theme reaches still has to be understood in the context. Goal, therefore, must be a core frame element.
+? A frame element whose semantics cannot be predicted from its form, in particular from any marking prepositions, ought to be core since its interpretation completely depends on the target. From this, we can derive two corollaries, given below.
+-- A frame element that has no formal marking should be core. Thus, frame elements that can be subject or object in a simple active sentence ought to be core since these slots host frame elements of many different kinds and knowing that something is a subject or object is not particularly informative. For example, the Building frame which contains the verb build has at least two core frame elements since the verb build has both a subject and an object.
+?- A frame element that has idiosyncratic formal marking should also be core. A good example of this is the prepositional verb depend on. The preposition on does not occur as a marker of the same meaning with predicates in many other frames. In its basic spatial sense of ?in contact with and supported by?, on occurs in many different frames; as a marker of Place or Location frame elements it is totally unremarkable and does not suggest core status for these FEs.
+Frame elements that do not introduce additional, independent or distinct events from the main reported event are characterized as peripheral. Peripheral FEs mark such notions as Time, Place, Manner, Means, Degree, and the like. They do not uniquely characterize a frame, and can be instantiated in any semantically appropriate frame. In respect to the Revenge frame, any report of an event of revenge may also include explicit information about the parameters of time, place, manner, etc. of the revenge, an example of which is given below.
+(8) The bereaved family retaliated [immediately Time].
+Extra-thematic frame elements situate an event against a backdrop of another state of affairs, either of an actual event or state of the same type, as illustrated with Iteration, or by evoking a larger frame within which the reported state of affairs is embedded, as shown for Containing event.
+(9) Thou shalt not exact revenge [twice Iteration] for the same offense.
+(10) The Aussies took revenge [in a penalty shootout before 2465 fans in Long Beach the next day Containing event].
+Note that extra-thematic frame elements are understood not to conceptually belong to the frames they appear in. We take them to properly be frame elements of other abstract frames that take them as well as the targets that they modify as arguments. Thus, in example (11), we take twice and the verb phrase eat to be arguments of a more abstract Iteration frame. Similarly, in example (12), cooked dinner and me are frame elements of a Benefaction frame. Note that, as shown by (12), the native frame of the extra-thematic frame element need not be evoked by lexical material, it may simply be evoked constructionally.
+(11) Learn how to spend a few extra minutes planning complementary menus where you cook once and eat [twice].
+(12) Lennert, another sweetie in my life, cooked [me] dinner, mmm mmm good.
+The view of extra-thematic frame elements presented here entails that these frame elements are necessarily the same across all the ?host? frames in which they appear. That is, unlike core and peripheral frame elements, extra-thematic frame elements do not have a frame-specific understanding. By comparison, although many core frame elements named Agent share properties with each other due to Inheritance and Using relations, they do not necessarily have identical properties.
+The value ?Core-Unexpressed? is a special notational shorthand. It is assigned to FEs that behave like core frame elements in the frame where they are marked as Core-unexpressed but which, counter to expectation, may not be used for annotation in descendants of that frame. Frame elements marked as core-unexpressed will thus not necessarily be listed among the FEs in descendant frames.
+We do not consider core-unexpressed frame elements to be violations of our definition of full inheritance. Our reasoning can be illustrated with the example of the core-unexpressed Act frame element in the Intentionally act frame, which is exemplified in (13).
+(13) I?ll do [the vacuuming Act].
+In the many child frames of Intentionally act such as Choosing, Perception active, etc., the idea of an Act is as relevant as in the Intentionally act parent frame. However, in the child frames the frame element is absorbed by the lexical units in the frame and cannot be separately expressed.
+Marking the frame element Act as core-unexpressed in the Intentionally act parent frame allows us to keep the frames that are lower in the hierarchy from including an inherited FE which for any lexical unit in the frame could at most be annotated on the target itself, but never be expressed separately. The sentence
+*I chose decision the blue one
+is simply ungrammatical.
+Coreness marking makes the most sense for event and state frames, and in these frames we use all three statuses. Coreness marking is done at the level of the frame and is intended to be consistent for all lexical units in a frame.
+In frames whose LUs are artifacts or natural kinds, we only use a two-way distinction (core and peripheral), noting that the values do not have exactly the same meaning as with events. In such cases, typically there is just one core frame element which is marked on the target word. For instance, in the Clothing frame the FE Clothing is core, and all other FEs are peripheral."^^xsd:string
+    Characteristics:
+        Functional
+    Domain:
+        fn:FrameElement
+    Range:
+        xsd:string
+
+DataProperty: fn:FE_ID
+    Characteristics:
+        Functional
+    Domain:
+        fn:FrameElement
+    Range:
+        xsd:int
+
+DataProperty: fn:FE_name
+    Characteristics:
+        Functional
+    Domain:
+        fn:FrameElement
+    Range:
+        xsd:string
+
+DataProperty: fn:frame_cBy
+    Characteristics:
+        Functional
+    Domain:
+        fn:Frame
+    Range:
+        xsd:string
+
+DataProperty: fn:frame_cDate
+    Characteristics:
+        Functional
+    Domain:
+        fn:Frame
+    Range:
+        xsd:string
+
+DataProperty: fn:frame_ID
+    Characteristics:
+        Functional
+    Domain:
+        fn:Frame
+    Range:
+        xsd:int
+
+DataProperty: fn:frame_name
+    Characteristics:
+        Functional
+    Domain:
+        fn:Frame
+    Range:
+        xsd:string
+
+DataProperty: fn:label_cBy
+    Characteristics:
+        Functional
+    Domain:
+        fn:Label
+    Range:
+        xsd:string
+
+DataProperty: fn:label_end
+    Domain:
+        fn:Label
+    Range:
+        xsd:int
+
+DataProperty: fn:label_itype
+    Domain:
+        fn:Label
+    Range:
+        xsd:string
+
+DataProperty: fn:label_name
+    Characteristics:
+        Functional
+    Domain:
+        fn:Label
+    Range:
+        xsd:string
+
+DataProperty: fn:label_start
+    Domain:
+        fn:Label
+    Range:
+        xsd:int
+
+DataProperty: fn:layer_name
+    Characteristics:
+        Functional
+    Domain:
+        fn:Layer
+    Range:
+        xsd:string
+
+DataProperty: fn:layer_rank
+    Domain:
+        fn:Layer
+    Range:
+        xsd:int
+
+DataProperty: fn:lexeme_breakBefore
+    Domain:
+        fn:Lexeme
+    Range:
+        xsd:boolean
+
+DataProperty: fn:lexeme_headword
+    Domain:
+        fn:Lexeme
+    Range:
+        xsd:boolean
+
+DataProperty: fn:lexeme_name
+    Characteristics:
+        Functional
+    Domain:
+        fn:Lexeme
+    Range:
+        xsd:string
+
+DataProperty: fn:lexeme_order
+    Domain:
+        fn:Lexeme
+    Range:
+        xsd:int
+
+DataProperty: fn:lexeme_POS
+    Domain:
+        fn:Lexeme
+    Range:
+        xsd:string
+
+DataProperty: fn:LU_cBy
+    Characteristics:
+        Functional
+    Domain:
+        fn:LexUnit
+    Range:
+        xsd:string
+
+DataProperty: fn:LU_cDate
+    Characteristics:
+        Functional
+    Domain:
+        fn:LexUnit
+    Range:
+        xsd:string
+
+DataProperty: fn:LU_ID
+    Characteristics:
+        Functional
+    Domain:
+        fn:LexUnit
+    Range:
+        xsd:int
+
+DataProperty: fn:LU_lemmaID
+    Characteristics:
+        Functional
+    Domain:
+        fn:LexUnit
+    Range:
+        xsd:int
+
+DataProperty: fn:LU_name
+    Characteristics:
+        Functional
+    Domain:
+        fn:LexUnit
+    Range:
+        xsd:string
+
+DataProperty: fn:LU_POS
+    Domain:
+        fn:LexUnit
+    Range:
+        xsd:string
+
+DataProperty: fn:LU_status
+    Domain:
+        fn:LexUnit
+    Range:
+        xsd:string
+
+DataProperty: fn:semType_abbrev
+    Characteristics:
+        Functional
+    Domain:
+        fn:SemType
+    Range:
+        xsd:string
+
+DataProperty: fn:semType_ID
+    Characteristics:
+        Functional
+    Domain:
+        fn:SemType
+    Range:
+        xsd:int
+
+DataProperty: fn:semType_name
+    Characteristics:
+        Functional
+    Domain:
+        fn:SemType
+    Range:
+        xsd:string
+
+DataProperty: fn:sentence_aPos
+    Domain:
+        fn:Sentence
+    Range:
+        xsd:string
+
+DataProperty: fn:sentence_ID
+    Characteristics:
+        Functional
+    Domain:
+        fn:Sentence
+    Range:
+        xsd:int
+
+DataProperty: fn:sentence_paragNo
+    Domain:
+        fn:Sentence
+    Range:
+        xsd:int
+
+DataProperty: fn:sentence_sentNo
+    Domain:
+        fn:Sentence
+    Range:
+        xsd:int
+
+DataProperty: fn:sentenceCount_annotated
+    Domain:
+        fn:SentenceCount
+    Range:
+        xsd:int
+
+DataProperty: fn:sentenceCount_total
+    Domain:
+        fn:SentenceCount
+    Range:
+        xsd:int
+
+DataProperty: fn:text
+    Domain:
+        fn:Sentence
+    Range:
+        xsd:string

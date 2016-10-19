@@ -1,0 +1,48 @@
+
+@base <http://data.multisensorproject.eu/content/fb086c>.
+<> a foaf:Document ;
+  dc:creator "John Smith" ;
+  dc:date "2014-09-08T17:15:34.000+02:00"^^xsd:dateTime;
+  dct:source <http://blog.hgtv.com/terror/2014/09/08/article>.
+
+<#char=0,24> a nif:Context;
+  nif:beginIndex "0"^^xsd:nonNegativeInteger ;
+  nif:endIndex "24"^^xsd:nonNegativeInteger ;
+  nif:isString "Article mentions Germany";
+  nif:sourceUrl <>.
+
+<#char=17,24> a nif:Word;
+  nif:referenceContext <#char=0,24>;
+  nif:beginIndex "17"^^xsd:nonNegativeInteger ;
+  nif:endIndex "24"^^xsd:nonNegativeInteger ;
+  nif:anchorOf "Germany";
+  its:taIdentRef dbr:Germany.
+
+<> dct:hasPart <http://blog.hgtv.com/terror/2014/09/08/video>.
+
+<http://blog.hgtv.com/terror/2014/09/08/video> a dctype:MovingImage;
+  dc:format "video/mp4";
+  ms:hasCaption <-transcript0>.
+
+<-transcript0> a dctype:Text;
+  dc:format "text/vtt".
+
+<-transcript0#char=0,27> a nif:Context;
+  nif:beginIndex "0"^^xsd:nonNegativeInteger ;
+  nif:endIndex "27"^^xsd:nonNegativeInteger ;
+  nif:isString "Transcript mentions Germany";
+  nif:sourceUrl <-transcript0>.
+
+<-transcript0#char=20,27> a nif:Word;
+  nif:referenceContext <-transcript0#char=0,27>;
+  nif:beginIndex "20"^^xsd:nonNegativeInteger ;
+  nif:endIndex "27"^^xsd:nonNegativeInteger ;
+  nif:anchorOf "Germany";
+  its:taIdentRef dbr:Germany.
+
+dbr:Germany a nerd:Location, dbo:Country; foaf:name "Germany".
+
+####################
+nif:sourceUrl puml:arrow puml:up.
+nif:referenceContext puml:arrow puml:up.
+<http://blog.hgtv.com/terror/2014/09/08/article> a puml:Inline.

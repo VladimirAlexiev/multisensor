@@ -1,0 +1,395 @@
+@prefix penn:      <http://purl.org/olia/penn.owl#> .
+@prefix olia_system: <http://purl.org/olia/system.owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/penn.owl> a owl:Ontology ;
+        rdfs:comment      "OLiA Annotation Model for Penn Treebank (PTB) part-of-speech annotation (Santorini 1990)\n\nUnless specified otherwise, all comments are taken from Santorini (1990). \n\nReferences\nBeatrice Santorini (1990), Part-of-Speech tagging guidelines for the Penn Treebank Project, 3rd revision, 2nd printing, ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz"^^xsd:string ;
+        rdfs:isDefinedBy  "ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz"^^xsd:string ;
+        owl:versionInfo   "2008-04-10 created\n2011-11-28 fixed typo (PR vs. RP)\n2011-11-31 added Punctuation (not addressed by Santorini 1990)\n\nChristian Chiarcos, chiarcos@uni-potsdam.de"^^xsd:string .
+
+#################### Classes
+
+penn:Conjunction a owl:Class ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:Adjective a owl:Class ;
+        rdfs:comment     "These are adjectives, ordinal numerals, and ordinal numbers.\nHyphenated compounds that are used as modifiers are tagged as adjectives, e.g. \"happy-go-lucky\", \"one-of-a-kind\", \"run-of-the-mill\". Ordinal numbers are tagged as adjectives, as are compounds of the form \"n-th\" or \"X-est\", like \"fourth-largest\"."^^xsd:string ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:Adverb a owl:Class ;
+        rdfs:comment     "This category includes most words that end in -ly as well as degree words like \"quite\", \"too\" and \"very\", posthead modifiers like \"enough\" and \"indeed\" (as in \"good enough\", \"very well indeed\"), and negative markers like \"not\", \"n' t\" and \"never\"."^^xsd:string ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:BackwardDoubleQuote a owl:Class ;
+        rdfs:subClassOf  penn:DoubleQuote .
+
+penn:BaseForm a owl:Class ;
+        rdfs:comment     "This tag subsumes imperatives, infinitives and subjunctives.\nEXAMPLES:\nImperative: Do/VB it.\nInfinitive: You should do/VB it.\n                We want them to do/VB it.\n                We made them do/VB it.\nSubjunctive: We suggested that he do/VB it."^^xsd:string ;
+        rdfs:subClassOf  penn:Verb .
+
+penn:BePastTense a owl:Class ;
+        rdfs:comment     "This category includes the conditional form of the verb to be.\nEXAMPLES:\nIf I were/VBD rich...\nIf I were/VBD to win the lottery..."^^xsd:string ;
+        rdfs:subClassOf  penn:Verb .
+
+penn:BePresentTense a owl:Class ;
+        rdfs:comment     "These are verbforms in present tense. This class includes 3rd person singular or other than 3rd person singular verbforms."^^xsd:string ;
+        rdfs:subClassOf  penn:Verb .
+
+penn:CardinalNumber a owl:Class ;
+        rdfs:comment     "These are cardinal numbers."^^xsd:string ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:Colon a owl:Class ;
+        rdfs:subClassOf  penn:Punctuation .
+
+penn:Comma a owl:Class ;
+        rdfs:subClassOf  penn:Punctuation .
+
+penn:CommonNoun a owl:Class ;
+        rdfs:comment     "These are common nouns in singular or plural, or mass nouns."^^xsd:string ;
+        rdfs:subClassOf  penn:Noun .
+
+penn:ComparativeAdjective a owl:Class ;
+        rdfs:comment     "These are adjectives mostly with the comparative ending -er and a comparative meaning. \"More\" or \"less\" should be tagged as a comparative adjective when it is used without a head noun and it\ncorresponds to the object of a verb or preposition."^^xsd:string ;
+        rdfs:subClassOf  penn:Adjective .
+
+penn:ComparativeAdverb a owl:Class ;
+        rdfs:comment     "These are comparative adverbs."^^xsd:string ;
+        rdfs:subClassOf  penn:Adverb .
+
+penn:CoordinatingConjunction a owl:Class ;
+        rdfs:comment     "This category includes \"and\", \"but\", \"nor\", \"or\", \"yet\" (as in \"Yet it's cheap\", \"cheap yet good\"), as well as the mathematical operators \"plus\", \"minus\", \"less\", \"times\" (in the sense of \"multiplied by\") and \"over\" (in the sense of \"divided by\"), when they are spelled out.\nFor in the sense of \"because\" is a coordinating conjunction."^^xsd:string ;
+        rdfs:subClassOf  penn:Conjunction .
+
+penn:Determiner a owl:Class ;
+        rdfs:comment     "This category includes the articles \"a(n)\", \"every\", \"no\" and \"the\", the indefinite determiners \"another\",  \"any\" and \"some\", \"each\", \"either\" (as in \"either way\"), \"neither\" (as in \"neither decision\"), \"that\", \"these\", \"this\" and \"those\", and instances of \"all\" and \"both\" when they do not precede a determiner or possessive pronoun (as in \"all roads\" or \"both times\")."^^xsd:string ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:Dollar a owl:Class ;
+        rdfs:subClassOf  penn:Punctuation .
+
+penn:DoubleQuote a owl:Class ;
+        rdfs:subClassOf  penn:Punctuation .
+
+penn:ExistentialThere a owl:Class ;
+        rdfs:comment     "Existential \"there\" is the unstressed \"there\" that triggers inversion of the inflected verb and the logical subject of a sentence, e.g. \"There/EX was a party in progress.\", \"There/EX ensued a melee.\"."^^xsd:string ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:ForeignWord a owl:Class ;
+        rdfs:comment     "These are foreign words."^^xsd:string ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:ForwardDoubleQuote a owl:Class ;
+        rdfs:subClassOf  penn:DoubleQuote .
+
+penn:FullStop a owl:Class ;
+        rdfs:subClassOf  penn:Punctuation .
+
+penn:GerundOrPresentParticiple a owl:Class ;
+        rdfs:comment     "This is a verb in present participle or in gerund."^^xsd:string ;
+        rdfs:subClassOf  penn:Verb .
+
+penn:Interjection a owl:Class ;
+        rdfs:comment     "This category includes \"my\" (as in \"My, what a gorgeous day\"), \"oh\", \"please\",  \"see\" (as in \"See\t it's like this\"), \"uh\", \"well\" and \"yes\", among others."^^xsd:string ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:LeftBracket a owl:Class ;
+        rdfs:subClassOf  penn:Punctuation .
+
+penn:LeftCurlyBracket a owl:Class ;
+        rdfs:subClassOf  penn:LeftBracket .
+
+penn:LeftRoundBracket a owl:Class ;
+        rdfs:subClassOf  penn:LeftBracket .
+
+penn:LeftSquareBracket a owl:Class ;
+        rdfs:subClassOf  penn:LeftBracket .
+
+penn:ListItemMarker a owl:Class ;
+        rdfs:comment     "This category includes letters and numerals when they are used to identify items in a list."^^xsd:string ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:ModalVerb a owl:Class ;
+        rdfs:comment     "This category includes all verbs that don't take an -s ending in the third person singular present: \"can\", \n\"could\", (\"dare\"), \"may\", \"might\", \"must\", \"ought\", \"shall\", \"should\", \"will\", \"would\"."^^xsd:string ;
+        rdfs:subClassOf  penn:Verb .
+
+penn:Noun a owl:Class ;
+        rdfs:comment     "This is a class, we inserted to structure the tagset."^^xsd:string ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:Particle a owl:Class ;
+        rdfs:comment     "This category includes a number of mostly monosyllabic words that also double as directional adverbs and prepositions."^^xsd:string ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:PastParticiple a owl:Class ;
+        rdfs:comment     "This is a verb in past participle."^^xsd:string ;
+        rdfs:subClassOf  penn:Verb .
+
+penn:PersonalPronoun a owl:Class ;
+        rdfs:comment     "This category includes the personal pronouns proper,  without regard for case distinctions (\"I\", \"me\", \"you\", \"he\", \"him\", etc.), the reflexive pronouns ending in -self or -selves, and the nominal possessive pronouns \"mine\", \"yours\", \"his\", \"hers\", \"ours\" and \"theirs\"."^^xsd:string ;
+        rdfs:subClassOf  penn:Pronoun .
+
+penn:PossessiveEnding a owl:Class ;
+        rdfs:comment     "The possessive ending on nouns ending in 's or  is split off by the tagging algorithm and tagged as if it\nwere a separate word. e.g. \"John/ NP 's/POS idea\", \"the parents/NNS'/POS distress\"."^^xsd:string ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:PossessivePronoun a owl:Class ;
+        rdfs:comment     "This category includes the adjectival possessive forms \"my\", \"your\", \"his\", \"her\", \"its\", \"one's\", \"our\" and \"their\"."^^xsd:string ;
+        rdfs:subClassOf  penn:Pronoun .
+
+penn:PossessiveWhPronoun a owl:Class ;
+        rdfs:subClassOf  penn:PossessivePronoun , penn:WhPronoun .
+
+penn:Predeterminer a owl:Class ;
+        rdfs:comment     "This category includes the following determinerlike elements when they precede an article or possessive pronoun.\nEXAMPLES:  \nall/PDT his marbles \nnary/PDT a soul\nboth/PDT the girls \nquite/PDT a mess\nhalf/PDT his time \nrather/PDT a nuisance\nmany/PDT a moon \nsuch/PDT a good time"^^xsd:string ;
+        rdfs:subClassOf  penn:Determiner .
+
+penn:PrepositionOrSubordinatingConjunction a owl:Class ;
+        rdfs:comment     "We make no explicit distinction between prepositions and subordinating conjunctions. (The distinction is not lost, however - a preposition is an IN that precedes a noun phrase or a prepositional phrase, and a subordinate conjunction is an IN that precedes a clause).\nThe preposition \"to\" has its own special tag TO."^^xsd:string ;
+        rdfs:subClassOf  penn:Conjunction .
+
+penn:Pronoun a owl:Class ;
+        rdfs:comment     "This is a class, we inserted to structure the tagset."^^xsd:string ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:ProperNoun a owl:Class ;
+        rdfs:comment     "These are singular or plural proper nouns."^^xsd:string ;
+        rdfs:subClassOf  penn:Noun .
+
+penn:Punctuation a owl:Class ;
+        rdfs:subClassOf  olia_system:LinguisticAnnotation ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:hasValue    "pos" ;
+                           owl:onProperty  olia_system:hasTier
+                         ] ;
+        owl:versionInfo  "Not addressed by Santorini (1990), but produced by real-world taggers, also cf. http://www.cis.upenn.edu/~treebank/tokenization.html for the treatment of PTB punctuation tags in the parsed Penn Treebank." .
+
+penn:RightBracket a owl:Class ;
+        rdfs:subClassOf  penn:Punctuation .
+
+penn:RightCurlyBracket a owl:Class ;
+        rdfs:subClassOf  penn:RightBracket .
+
+penn:RightRoundBracket a owl:Class ;
+        rdfs:subClassOf  penn:RightBracket .
+
+penn:RightSquareBracket a owl:Class ;
+        rdfs:subClassOf  penn:RightBracket .
+
+penn:SuperlativeAdjective a owl:Class ;
+        rdfs:comment     "These are adjectives with the superlative ending -est (as well as \"worst\"). \"Most\" and \"least\" can also be tagged as superlative adjective when they occur by themselves."^^xsd:string ;
+        rdfs:subClassOf  penn:Adjective .
+
+penn:SuperlativeAdverb a owl:Class ;
+        rdfs:comment     "These are superlative adverbs."^^xsd:string ;
+        rdfs:subClassOf  penn:Adverb .
+
+penn:Symbol a owl:Class ;
+        rdfs:comment     "This tag should be used for mathematical, scientific and technical symbols or expressions that aren't words of English. It should not used for any and all technical expressions. For instance, the names of chemicals, units of measurements (including abbreviations thereof)  and the like should be tagged as nouns."^^xsd:string ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:Tag a owl:Class ;
+        rdfs:subClassOf  olia_system:LinguisticAnnotation ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:hasValue    "pos"^^xsd:string ;
+                           owl:onProperty  olia_system:hasTier
+                         ] .
+
+penn:To a owl:Class ;
+        rdfs:comment     "\"To\" is tagged TO, regardless of whether it is a preposition or an infinitival marker."^^xsd:string ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:Verb a owl:Class ;
+        rdfs:subClassOf  penn:Tag .
+
+penn:WhAdverb a owl:Class ;
+        rdfs:comment     "This category includes \"how\", \"where\", \"why\", etc. When in a temporal sense is tagged as wh-adverb.  In the sense of \"if\",  on the other hand, it is a subordinating conjunction.\nEXAMPLES:\n\"When/WRB he finally arrived,  I was on my way out.\""^^xsd:string ;
+        rdfs:subClassOf  penn:Adverb .
+
+penn:WhDeterminer a owl:Class ;
+        rdfs:comment     "This category includes \"which\", as well as that when it is used as a relative pronoun."^^xsd:string ;
+        rdfs:subClassOf  penn:Determiner .
+
+penn:WhPronoun a owl:Class ;
+        rdfs:comment     "This category includes \"what\", \"who\" and \"whom\"."^^xsd:string ;
+        rdfs:subClassOf  penn:Pronoun .
+
+#################### Individuals (tags)
+
+penn:CC a owl:NamedIndividual , penn:CoordinatingConjunction ;
+        olia_system:hasTag  "CC"^^xsd:string .
+
+penn:CD a owl:NamedIndividual , penn:CardinalNumber ;
+        olia_system:hasTag  "CD"^^xsd:string .
+
+penn:DT a owl:NamedIndividual , penn:Determiner ;
+        rdfs:comment        "determiner, also article"^^xsd:string ;
+        olia_system:hasTag  "DT"^^xsd:string .
+
+penn:EX a owl:NamedIndividual , penn:ExistentialThere ;
+        olia_system:hasTag  "EX"^^xsd:string .
+
+penn:FW a owl:NamedIndividual , penn:ForeignWord ;
+        olia_system:hasTag  "FW"^^xsd:string .
+
+penn:IN a owl:NamedIndividual , penn:PrepositionOrSubordinatingConjunction ;
+        olia_system:hasTag  "IN"^^xsd:string .
+
+penn:JJ a owl:NamedIndividual , penn:Adjective ;
+        rdfs:comment        "adjective, ordinal numeral, ordinal number"^^xsd:string ;
+        olia_system:hasTag  "JJ"^^xsd:string .
+
+penn:JJR a owl:NamedIndividual , penn:ComparativeAdjective ;
+        olia_system:hasTag  "JJR"^^xsd:string .
+
+penn:JJS a owl:NamedIndividual , penn:SuperlativeAdjective ;
+        olia_system:hasTag  "JJS"^^xsd:string .
+
+penn:LS a owl:NamedIndividual , penn:ListItemMarker ;
+        olia_system:hasTag  "LS"^^xsd:string .
+
+penn:MD a owl:NamedIndividual , penn:ModalVerb ;
+        olia_system:hasTag  "MD"^^xsd:string .
+
+penn:NN a owl:NamedIndividual , penn:CommonNoun ;
+        rdfs:comment        "Noun singular or mass"^^xsd:string ;
+        olia_system:hasTag  "NN"^^xsd:string .
+
+penn:NNP a owl:NamedIndividual , penn:ProperNoun ;
+        rdfs:comment        "Proper noun singular"^^xsd:string ;
+        olia_system:hasTag  "NNP"^^xsd:string .
+
+penn:NNPS a owl:NamedIndividual , penn:ProperNoun ;
+        rdfs:comment        "Proper noun plural"^^xsd:string ;
+        olia_system:hasTag  "NNPS"^^xsd:string .
+
+penn:NNS a owl:NamedIndividual , penn:CommonNoun ;
+        rdfs:comment        "Noun plural"^^xsd:string ;
+        olia_system:hasTag  "NNS"^^xsd:string .
+
+penn:PDT a owl:NamedIndividual , penn:Predeterminer ;
+        olia_system:hasTag  "PDT"^^xsd:string .
+
+penn:POS a owl:NamedIndividual , penn:PossessiveEnding ;
+        olia_system:hasTag  "POS"^^xsd:string .
+
+penn:PP a owl:NamedIndividual , penn:PersonalPronoun ;
+        rdfs:comment        "PP is the used Tag in \"Part-of-Speech Tagging Guidelines for the Penn Treebank Project\",  Beatrice Santorini, 15.03.1991\"\n(http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/Penn-Treebank-Tagset.ps 21.11.07)"^^xsd:string ;
+        olia_system:hasTag  "PP"^^xsd:string .
+
+penn:PPpossessive a owl:NamedIndividual , penn:PossessivePronoun ;
+        rdfs:comment        "PP$is the used Tag in \"Part-of-Speech Tagging Guidelines for the Penn Treebank Project\",  Beatrice Santorini, 15.03.1991\"\n(http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/Penn-Treebank-Tagset.ps 21.11.07)"^^xsd:string ;
+        olia_system:hasTag  "PP$"^^xsd:string .
+
+penn:PRP a owl:NamedIndividual , penn:PersonalPronoun ;
+        rdfs:comment        "PRP is the used Tag in \"Part of Speech Tagging Guidelines for the Penn Treebank Project, June 1990\" (ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz  21.11.07)"^^xsd:string ;
+        olia_system:hasTag  "PRP"^^xsd:string .
+
+penn:PRPpossessive a owl:NamedIndividual , penn:PossessivePronoun ;
+        rdfs:comment        "PRP$ is the used Tag in \"Part of Speech Tagging Guidelines for the Penn Treebank Project, June 1990\" (ftp://ftp.cis.upenn.edu/pub/treebank/doc/tagguide.ps.gz  21.11.07)"^^xsd:string ;
+        olia_system:hasTag  "PRP$"^^xsd:string .
+
+penn:RB a owl:NamedIndividual , penn:Adverb ;
+        rdfs:comment        "adverb, negation"^^xsd:string ;
+        olia_system:hasTag  "RB"^^xsd:string .
+
+penn:RBR a owl:NamedIndividual , penn:ComparativeAdverb ;
+        olia_system:hasTag  "RBR"^^xsd:string .
+
+penn:RBS a owl:NamedIndividual , penn:SuperlativeAdverb ;
+        olia_system:hasTag  "RBS"^^xsd:string .
+
+penn:RP a owl:NamedIndividual , penn:Particle ;
+        olia_system:hasTag  "RP"^^xsd:string .
+
+penn:SYM a owl:NamedIndividual , penn:Symbol ;
+        olia_system:hasTag  "SYM"^^xsd:string .
+
+penn:TO a owl:NamedIndividual , penn:To ;
+        olia_system:hasTag  "TO"^^xsd:string .
+
+penn:UH a owl:NamedIndividual , penn:Interjection ;
+        rdfs:comment        "interjections, exclamation"^^xsd:string ;
+        olia_system:hasTag  "UH"^^xsd:string .
+
+penn:VB a owl:NamedIndividual , penn:BaseForm ;
+        olia_system:hasTag  "VB"^^xsd:string .
+
+penn:VBD a owl:NamedIndividual , penn:BePastTense ;
+        olia_system:hasTag  "VBD"^^xsd:string .
+
+penn:VBG a owl:NamedIndividual , penn:GerundOrPresentParticiple ;
+        olia_system:hasTag  "VBG"^^xsd:string .
+
+penn:VBN a owl:NamedIndividual , penn:PastParticiple ;
+        olia_system:hasTag  "VBN"^^xsd:string .
+
+penn:VBP a owl:NamedIndividual , penn:BePresentTense ;
+        rdfs:comment        "Verb non 3-rd person singular present"^^xsd:string ;
+        olia_system:hasTag  "VBP"^^xsd:string .
+
+penn:VBZ a owl:NamedIndividual , penn:BePresentTense ;
+        rdfs:comment        "Verb 3-rd person singular present"^^xsd:string ;
+        olia_system:hasTag  "VBZ"^^xsd:string .
+
+penn:WDT a owl:NamedIndividual , penn:WhDeterminer ;
+        olia_system:hasTag  "WDT"^^xsd:string .
+
+penn:WP a owl:NamedIndividual , penn:WhPronoun ;
+        olia_system:hasTag  "WP"^^xsd:string .
+
+penn:WPpossessive a owl:NamedIndividual , penn:PossessiveWhPronoun ;
+        olia_system:hasTag  "WP$"^^xsd:string .
+
+penn:WRB a owl:NamedIndividual , penn:WhAdverb ;
+        olia_system:hasTag  "WRB"^^xsd:string .
+
+penn:backwardDoubleQuote a owl:NamedIndividual , penn:BackwardDoubleQuote ;
+        olia_system:hasTag  "''" .
+
+penn:colon a owl:NamedIndividual , penn:Colon ;
+        olia_system:hasTag  ":" .
+
+penn:comma a owl:NamedIndividual , penn:Comma ;
+        olia_system:hasTag  "," .
+
+penn:dollar a owl:NamedIndividual , penn:Dollar ;
+        olia_system:hasTag  "$" .
+
+penn:doubleQuote a owl:NamedIndividual , penn:DoubleQuote ;
+        olia_system:hasTag  "\"" .
+
+penn:forwardDoubleQuote a owl:NamedIndividual , penn:ForwardDoubleQuote ;
+        olia_system:hasTag  "``" .
+
+penn:fullStop a owl:NamedIndividual , penn:FullStop ;
+        olia_system:hasTag  "." .
+
+penn:leftCurlyBracket a owl:NamedIndividual , penn:LeftCurlyBracket ;
+        olia_system:hasTag  "{" , "-LCB-" .
+
+penn:leftRoundBracket a owl:NamedIndividual , penn:LeftRoundBracket ;
+        olia_system:hasTag  "(" , "-LRB-" .
+
+penn:leftSquareBracket a owl:NamedIndividual , penn:LeftSquareBracket ;
+        olia_system:hasTag  "-LSB-" , "[" .
+
+penn:rightCurlyBracket a owl:NamedIndividual , penn:RightCurlyBracket ;
+        olia_system:hasTag  "-RCB-" , "}" .
+
+penn:rightRoundBracket a owl:NamedIndividual , penn:RightRoundBracket ;
+        olia_system:hasTag  "-RRB-" , ")" .
+
+penn:rightSquareBracket a owl:NamedIndividual , penn:RightSquareBracket ;
+        olia_system:hasTag  "]" , "-RSB-" .
+
+#################### External classes/ properties
+
+olia_system:LinguisticAnnotation a owl:Class .
+
+olia_system:hasTag a owl:DatatypeProperty .
+
+olia_system:hasTier a owl:DatatypeProperty .

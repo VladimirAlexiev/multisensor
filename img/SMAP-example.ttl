@@ -1,0 +1,34 @@
+
+ms-soc:cars a sioc:Forum;
+  sioc:has_host twitter:;
+  dc:subject "cars".
+
+ms-soc:RDF a sioc:Forum;
+  sioc:has_host twitter:;
+  dc:subject "RDF".
+
+# The first guy has posted on both topics. He knows a bit about "cars" but a lot about "RDF"
+twitter:valexiev1 a sioc:UserAccount;
+  sioc:has_function ms-soc:cars_valexiev1, ms-soc:RDF_valexiev1.
+
+ms-soc:cars_valexiev1 a sioc:Role;
+  sioc:has_scope ms-soc:cars;
+  ms:has_page_rank 0.75;
+  ms:has_reachability 0.70;
+  ms:has_global_influence 0.72.
+
+ms-soc:RDF_valexiev1 a sioc:Role;
+  sioc:has_scope ms-soc:RDF;
+  ms:has_page_rank 7500.0;
+  ms:has_reachability 7000.0;
+  ms:has_global_influence 7200.0.
+
+# The second guy has posted only on the "cars" topic. He knows a lot about "cars"
+twitter:johnSmith a sioc:UserAccount;
+  sioc:has_function ms-soc:cars_johnSmith.
+
+ms-soc:cars_johnSmith a sioc:Role;
+  sioc:has_scope ms-soc:cars;
+  ms:has_page_rank 8.5;
+  ms:has_reachability 8.0;
+  ms:has_global_influence 8.2.

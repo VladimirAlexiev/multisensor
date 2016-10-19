@@ -1,0 +1,1450 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Multisensor Linked Data and Ontologies</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Multisensor Linked Data and Ontologies"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-05-28"/>
+<meta name="author" content="Vladimir Alexiev, Ontotext Corp"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<!-- configuration parameters --> <meta name='defaultView' content='slideshow' /> <meta name='controlVis' content='hidden' /> <!-- style sheet links --> <link rel='stylesheet' href='ui/default/slides.css' type='text/css' media='projection' id='slideProj' /> <link rel='stylesheet' href='ui/default/outline.css' type='text/css' media='screen' id='outlineStyle' /> <link rel='stylesheet' href='ui/default/print.css' type='text/css' media='print' id='slidePrint' /> <link rel='stylesheet' href='ui/default/opera.css' type='text/css' media='projection' id='operaFix' /><!-- S5 JS --> <script src='ui/jquery.js' type='text/javascript'></script> <script src='ui/org-slides.js' type='text/javascript'></script> <script src='ui/default/slides.js' type='text/javascript'></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+<div class='layout'>
+<div id='controls'></div>
+<div id='currentSlide'></div>
+<div id='header'></div>
+<div id='footer'><h1>Multisensor Linked Data and Ontologies</h1><h2>Vladimir Alexiev, Ontotext Corp &#8226; 2014-05-28</h2></div>
+</div>
+<div class='presentation'>
+<div class='slide front'>
+  <div id='front-logo'></div>
+<h1 class='front'>Multisensor Linked Data and Ontologies</h1><h3>Vladimir Alexiev, Ontotext Corp</h3></div>
+</div>
+
+<div id="content">
+<h1 class="title">Multisensor Linked Data and Ontologies</h1>
+
+
+<div id="outline-container-1-" class="outline-2">
+<h2 id="sec-1-">Navigating This Presentation</h2>
+<div class="outline-text-2" id="text-1-">
+
+<ul>
+<li>Ext links shown icon, eg <a href="http://www.ontotext.com">http://www.ontotext.com</a>
+</li>
+<li>This web-based presentation is made with <a href="http://meyerweb.com/eric/tools/s5/">S5</a> and plain text
+</li>
+<li><i>Press F11 for full-screen now</i> (on small screen or Opera)
+</li>
+<li>Navigating:
+<ul>
+<li><span style="text-decoration:underline;">Click, Right, Down, PageDown</span>: next slide (Opera: only PageDown)
+</li>
+<li><span style="text-decoration:underline;">Left, Up, PageUp</span>: prev slide (Opera: only PageUp)
+</li>
+<li><span style="text-decoration:underline;">Home</span>: first slide
+</li>
+<li><span style="text-decoration:underline;">End</span>: last slide
+</li>
+<li><i>nn</i> <span style="text-decoration:underline;">Enter</span>: go to slide <i>nn</i>
+</li>
+<li><span style="text-decoration:underline;">t</span>: toggle between slide view and single-page HTML view (for printing)
+</li>
+<li><span style="text-decoration:underline;">c</span> (or hover at bottom-right corner): show control panel<br/>
+    <img src="./img/s5-control-panel.png" width=150 alt="./img/s5-control-panel.png" />
+<ul>
+<li>toggle, prev, next icons
+</li>
+<li><b>table of contents</b> listbox
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-2-" class="outline-2">
+<h2 id="sec-2-">Outline</h2>
+<div class="outline-text-2" id="text-2-">
+
+<p>2014-05-19 Mon
+</p><ul>
+<li>General linked data
+<ul>
+<li>FactForge and the datasets that it integrates
+</li>
+<li>Possible changes/additions
+</li>
+</ul>
+
+</li>
+<li>Use-case specific linked data
+<ul>
+<li>Energy Simulation; comparison to 2 automatic extractions
+</li>
+<li>Energy Thesauri
+</li>
+<li>Energy Datasets
+</li>
+<li>Use-case specific DBpedia subsets
+</li>
+<li>Household appliances
+</li>
+</ul>
+
+</li>
+<li>Linguistic Linked Data in FactForge
+<ul>
+<li>WordNet, Lingvo, Lexvo
+</li>
+</ul>
+
+</li>
+</ul>
+
+<p>2014-05-21 Wed
+</p><ul>
+<li>Linguistic ontologies
+<ul>
+<li>NIF
+</li>
+<li>OLIA and its constituents
+</li>
+<li>LEMON, GOLD, ISOcat??
+</li>
+</ul>
+
+</li>
+<li>New Linguistic Linked Data
+<ul>
+<li>WordNet RDF
+</li>
+<li>Wiktionary
+</li>
+<li>BabelNet
+</li>
+<li>UBYlemon
+</li>
+</ul>
+
+</li>
+<li>News ontology
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-3-" class="outline-2">
+<h2 id="sec-3-">General linked data</h2>
+<div class="outline-text-2" id="text-3-">
+
+<p>FactForge
+</p><ul>
+<li>DBpedia
+</li>
+<li>GeoNames
+</li>
+<li>FreeBase
+</li>
+<li>New York Times
+</li>
+<li>CIA World FactBook
+</li>
+<li>MusicBrainz (irrelevant)
+</li>
+<li>WordNet, Lingvoj, Lexvo
+</li>
+</ul>
+
+<p>Possible changes/additions
+</p><ul>
+<li>Update datasets
+</li>
+<li>BaseKB instead of FreeBase
+</li>
+<li>OpenStreetMap
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-4-" class="outline-2">
+<h2 id="sec-4-">FactForge</h2>
+<div class="outline-text-2" id="text-4-">
+
+<p><a href="http://factforge.net/"><img src="./img/factforge-large.png" alt="factforge-large.png"/></a>
+</p><ul>
+<li>An RDF warehouse of the 9 most central LOD datasets (red below)<br/>
+  <img src="./img/lod-datasets-2009-03-27-FactForge-LLD.jpg"  alt="./img/lod-datasets-2009-03-27-FactForge-LLD.jpg" />
+</li>
+<li>A reason-able view over the web of data, which allows efficient linking and reasoning.
+</li>
+<li>Exposed to Multisensor as <a href="http://render.ontotext.com/">http://render.ontotext.com/</a> (allows writing).
+</li>
+<li><a href="http://www.ontotext.com/factforge/statistics3">Dataset statistics</a>
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-5-" class="outline-2">
+<h2 id="sec-5-">PROTON</h2>
+<div class="outline-text-2" id="text-5-">
+
+<p>Problem: each of the LOD datasets comes with its own ontology.
+</p><ul>
+<li>Freebase isn't even structured according to RDF/RDFS principles.
+</li>
+</ul>
+
+<p>Our approach:
+</p><ul>
+<li><a href="http://www.ontotext.com/proton-ontology">PROTON</a> (PROTo ONtology): a lightweight upper-level ontology
+</li>
+<li>Serves as a reference mapping layer so you can access the integrated LOD datasets in a uniform manner
+</li>
+<li>Examples at <a href="http://factforge.net/sparql">http://factforge.net/sparql</a> (contrasts access throuh PROTON vs DBpedia and GeoNames ontologies)
+</li>
+<li><a href="http://mklab2.iti.gr/multisensor/index.php/Render_OWLIM_Repository">RENDER Repository</a> page in the wiki, including presentation from Sofia meeting
+</li>
+</ul>
+
+<p>References:
+</p><ul>
+<li><a href="http://www.dit.unitn.it/~p2p/OM-2010/om2010_Tpaper6.pdf">Mapping the central LOD ontologies to PROTON upper-level ontology</a>, Ontology Mapping Workshop at ISWC 2010, Shanghai, China, November 2010
+</li>
+<li><a href="http://www.ontotext.com/sites/default/files/publications/S3T-MuseumreasonableView_v7_cameraReady-30Jun.pdf">Reason-able View of Linked Data for Cultural Heritage</a>, Proceedings of S3T'2011, Burgas, Bulgaria, September 2011
+</li>
+<li>Creation and Integration of Reference Ontologies for Efficient LOD Management. In: Semi-Automatic Ontology Development: Processes and Resources, February 2012
+</li>
+<li><a href="http://ceur-ws.org/Vol-858/ore2012_paper14.pdf">OWLIM Reasoning over FactForge</a>. Proceedings of OWL Reasoner Evaluation Workshop (ORE'2012), collocated with IJCAR 2012, Manchester, UK
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-6-" class="outline-2">
+<h2 id="sec-6-">DBpedia</h2>
+<div class="outline-text-2" id="text-6-">
+
+<p><a href="http://dbpedia.org"><img src="./img/dbpedia_logo.png" alt="dbpedia_logo.png"/></a><br/>
+DBpedia is the central LOD dataset, serving as a source of stable URLs and a "crystallization point" for other LD.
+</p><ul>
+<li>English version: 4M things, 3.22M classified in a consistent ontology:
+<ul>
+<li>832k persons
+</li>
+<li>209k organizations (49k companies, 45k educational institutions)
+</li>
+<li>639k places (427k populated places)
+</li>
+<li>372k creative works (116k music albums, 78k films, 18.5k video games)
+</li>
+<li>226k species, 5.6k diseases
+</li>
+</ul>
+
+</li>
+<li>Localized versions (119 languages): 24.9M things
+<ul>
+<li>16.8M overlap (interlinked) with English Dbpedia, 8.1M (32%) are new
+</li>
+</ul>
+
+</li>
+<li>12.6M unique things with labels and abstracts
+</li>
+<li>24.6M links to images
+</li>
+<li>27.6M links to external web pages, 45M links into other RDF datasets
+</li>
+<li>67M links to Wikipedia categories, 41.2M to YAGO categories
+</li>
+<li>2.46B triples
+<ul>
+<li>470M from English Wikipedia
+</li>
+<li>1.98B from other language editions
+</li>
+<li>45M from links to external datasets
+</li>
+</ul>
+
+</li>
+<li><a href="http://wiki.dbpedia.org/Datasets39/DatasetStatistics?v=dqp">Detailed statistics</a>
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-7-" class="outline-2">
+<h2 id="sec-7-">DBpedia English-German example</h2>
+<div class="outline-text-2" id="text-7-">
+
+<p><a href="http://dbpedia.org/resource/Wuppertal_Institute_for_Climate,_Environment_and_Energy">http://dbpedia.org/resource/Wuppertal_Institute_for_Climate,_Environment_and_Energy</a>
+</p><table border=0 cellspacing=0 cellpadding=0 rules=all frame=box>
+<caption></caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"><b>prop</b></th><th scope="col" class="left"><b>object</b></th><th scope="col" class="left"><b>comment</b></th></tr>
+</thead>
+<tbody>
+<tr><td class="left">dbpprop:leitung</td><td class="left">dbpedia:Brigitte_Mutert-Breidbach</td><td class="left">resource (has own data)</td></tr>
+<tr><td class="left"></td><td class="left">President</td><td class="left">say what?</td></tr>
+<tr><td class="left"></td><td class="left">Vice President</td><td class="left">say what?</td></tr>
+<tr><td class="left"></td><td class="left">Business Manager</td><td class="left">say what?</td></tr>
+<tr><td class="left"></td><td class="left">Prof. Dr. Manfred Fischedick</td><td class="left">string  (no own data)</td></tr>
+<tr><td class="left"></td><td class="left">Prof. Dr. Uwe Schneidewind</td><td class="left">string  (no own data)</td></tr>
+<tr><td class="left">owl:sameAs</td><td class="left"><a href="http://de.dbpedia.org/resource/Wuppertal_Institut_fР“С�r_Klima,_Umwelt,_Energie" width=50>http://de.dbpedia.org/resource/Wuppertal_Institut_fР“С�r_Klima,_Umwelt,_Energie</a></td><td class="left">identity link to DE resource</td></tr>
+</tbody>
+</table>
+
+To use owl:sameAs effectively, must use a powerful repo (eg OWLIM)
+<ul>
+<li>Semantics: "smush" the two resources, so they obtain the same statements
+</li>
+<li><a href="http://www.ontotext.com/owlim/owl-sameas-optimisation">OWLIM sameAs optimization</a>
+</li>
+</ul>
+
+
+<p>
+<a href="http://de.dbpedia.org/resource/Wuppertal_Institut_fР“С�r_Klima,_Umwelt,_Energie">http://de.dbpedia.org/resource/Wuppertal_Institut_fР“С�r_Klima,_Umwelt,_Energie</a>
+</p><ul>
+<li>(click "Back to old DBpedia" to see all data, this "NEW DBpedia" is no good)
+</li>
+</ul>
+
+<table border=0 cellspacing=0 cellpadding=0 rules=all frame=box>
+<caption></caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left"><b>prop</b></td><td class="left"><b>object</b></td><td class="left"><b>comment</b></td></tr>
+<tr><td class="left">dbpedia-owl:individualisedGnd</td><td class="left">2133644-1</td><td class="left">Nice, link to DNB GND</td></tr>
+<tr><td class="left">dbpedia-owl:leader</td><td class="left">dbpedia-de:Uwe_Schneidewind</td><td class="left">Ok, all 3 are resources</td></tr>
+<tr><td class="left"></td><td class="left">dbpedia-de:Manfred_Fischedick</td><td class="left"></td></tr>
+<tr><td class="left"></td><td class="left">dbpedia-de:Brigitte_Mutert-Breidbach</td><td class="left"></td></tr>
+<tr><td class="left">prop-de:leitung</td><td class="left">* Uwe Schneidewind * Manfred Fischedick * Brigitte Mutert-Breidbach</td><td class="left">All 3 in one string??</td></tr>
+<tr><td class="left">owl:sameAs</td><td class="left">dbpedia-de:Wuppertal Institut fР“С�r Klima, Umwelt, Energie</td><td class="left">same as itself? Very useful ;-)</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+<div id="outline-container-8-" class="outline-2">
+<h2 id="sec-8-">FreeBase</h2>
+<div class="outline-text-2" id="text-8-">
+
+<p><a href="https://www.freebase.com/"><img src="./img/freebase-logo.png" alt="freebase-logo.png"/></a>
+</p><ul>
+<li>43.7M "topics": like WikiPedia pages or DBpedia resources, 
+  typically lists of things (albums of a band, battles of a war, ingredients of a recipe&hellip;). 2.5B facts (triples) 
+</li>
+<li>3.5x bigger coverage than English DBpedia, 2.3x bigger than all DBpedias
+</li>
+<li>Human-curated fact creation, so supposedly higher quality than DBpedia:<br/>
+  (WikiPedia is curated, DBpedia <b>mappings</b> are curated, but DBpedia is automatically extracted)
+</li>
+<li>Doesn't use RDFS modeling (e.g. no rdf:type). We've done significant work in mapping to RDFS and PROTON
+</li>
+</ul>
+
+<p><img src="./img/freebase-numbers.png"  alt="./img/freebase-numbers.png" />
+</p></div>
+
+</div>
+
+<div id="outline-container-9-" class="outline-2">
+<h2 id="sec-9-">GeoNames</h2>
+<div class="outline-text-2" id="text-9-">
+
+<p><a href="http://www.geonames.org/"><img src="./img/globe.gif" alt="globe.gif"/></a> <b>GeoNames</b>
+</p><ul>
+<li>8M place names (compare to 0.64M English DBpedia, estimated 1M all DBpedias, 1M FreeBase)
+</li>
+<li>Includes place names and alternate names in many languages
+</li>
+<li>Includes administrative hierarchy
+</li>
+<li>Includes coordinates (points only)
+</li>
+<li>I expect that most are interlinked to DBpedia
+</li>
+<li>Covers all countries, and a rich range of features
+</li>
+</ul>
+
+<p><img src="./img/geonames-feature-counts.png"  alt="./img/geonames-feature-counts.png" />
+</p></div>
+
+</div>
+
+<div id="outline-container-10-" class="outline-2">
+<h2 id="sec-10-">New York Times, CIA World FactBook</h2>
+<div class="outline-text-2" id="text-10-">
+
+<p><a href="http://data.nytimes.com">New York Times data</a>
+</p><ul>
+<li>5k people, 3k organizations, 2k locations, 0.5k concepts
+</li>
+<li>Other factual data
+</li>
+<li>Strong US bias
+</li>
+<li>(?) Explore deeper for useful News patterns/ontologies?
+</li>
+</ul>
+
+<p><a href="https://www.cia.gov/library/publications/the-world-factbook/">CIA World FactBook</a>
+</p><ul>
+<li>General geopolitical data: history, people, government, economy, geography, communications, transportation, military, and transnational
+</li>
+<li>Covers most countries: 267 world entities
+</li>
+<li>Don't know whether the LD is kept up to date
+</li>
+</ul>
+
+<p>Much smaller but still important resources
+</p></div>
+
+</div>
+
+<div id="outline-container-11-" class="outline-2">
+<h2 id="sec-11-">Possible Changes/Additions to FactForge</h2>
+<div class="outline-text-2" id="text-11-">
+
+<p>Although FactForge integrates the above described datasets, it has some disadvantages
+</p><ul>
+<li>Most importantly, it has not been updated in the last couple of years
+</li>
+<li>Eg DBpedia Live mirrors the minutely changes of Wikipedia.<br/>
+  But this is hard to implement, since we make corrections and mappings on top of DBpedia
+</li>
+<li>Potentially it can be extended with new datasets, if needed by the project:<br/>
+  OpenStreetMap/LinkedGeoData, WikiData, and Linguistic LD
+</li>
+</ul>
+
+<p><a href="http://basekb.com/">BaseKB Lime</a> instead of FreeBase 
+</p><ul>
+<li>Removes some 13M erroneous and 100M redundant triples
+</li>
+<li>Resilient towards errors in NTriples format: skips the line instead of rejecting the whole file ("parallelSuperEyeball" module)
+</li>
+<li><a href="https://github.com/paulhoule/infovore/wiki">Infovore Framework</a>: allows to transform a more recent Freebase RDF dump (Last one is from 201303)
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-12-" class="outline-2">
+<h2 id="sec-12-">OpenStreetMap and LinkedGeoData</h2>
+<div class="outline-text-2" id="text-12-">
+
+<p><a href="http://www.openstreetmap.org"><img src="./img/openstreetmap.png" alt="openstreetmap.png"/></a> OpenStreetMap
+</p><ul>
+<li>An open manually curated map of the world
+</li>
+<li>Thousands of types of features, ways and areas; from the monumental to the micro scale:<br/>
+  continents, oceans, mountains,<br/>
+  cities, monuments, power stations,<br/>
+  roads, power lines, rivers, parks, areas,<br/>
+  pharmacies, stores, phone boxes, recycling bins&hellip;
+</li>
+<li>Integration of GPS tracks and easy editors for adding annotations
+</li>
+</ul>
+
+<p><a href="http://linkedgeodata.org" width=50><img src="./img/linkedgeodata.png" alt="linkedgeodata.png"/></a>
+</p><ul>
+<li>Conversion of OSM to RDF: 15B triples
+</li>
+<li>Links to DBpedia, GeoNames, UN FAO Geopolitical data
+</li>
+<li>Last updated: just now (13 May 2014)
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-13-" class="outline-2">
+<h2 id="sec-13-">WikiData</h2>
+<div class="outline-text-2" id="text-13-">
+
+<p><a href="http://www.wikidata.org/"><img src="./img/wikidata.png" alt="wikidata.png"/></a>
+</p><ul>
+<li>Provides atomic facts taht can be referenced in various WikiMedia sites
+</li>
+<li>Thus it is quite amenable to RDF use
+</li>
+<li>However, the data is still in its inception
+</li>
+<li>Furthermore, the facts can presumably be used from the WikiMedia sites, eg DBpedia
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-14-" class="outline-2">
+<h2 id="sec-14-">Use-case specific linked data</h2>
+<div class="outline-text-2" id="text-14-">
+
+<p>For the specific use cases, we'll need to assemble specific datasets
+</p><ul>
+<li>The depth, breadth, content interlinking etc will be dictated by the needs of the use cases
+</li>
+</ul>
+
+<p>We can elaborate, assemble and complement this only together!
+</p><ul>
+<li>Both to be goal-driven (what data do you need)
+</li>
+<li>And to find the data (what data you have stumbled upon)
+</li>
+<li>Ontotext will assess the data found and look at interlinking (also related to T4.3 alignment)
+</li>
+<li>Maybe some "crowd-sourcing" will be needed (eg DBpedia subsets)
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-15-" class="outline-2">
+<h2 id="sec-15-">Energy Simulation</h2>
+<div class="outline-text-2" id="text-15-">
+
+<p>Identified all named entities <b>and concepts</b> in an Energy article by hand
+</p><ul>
+<li>Compared with REEGLE Tagging API (automatic annotation from a thesaurus dedicated to energy) and DBpedia Spotlight
+</li>
+<li>Shows the manual annotation is much richer &amp; precise. Would require very powerful tools. Probably overly ambitious: this is a "programme maximum"
+</li>
+<li>Once we decide what is a feasible set of features to extract, we could write up Annotation Guidelines that can be used by manual annotators to build a Gold Standard corpus to be used for Machine Learning. What do you think (?)
+</li>
+</ul>
+
+<p>Article: "TheGuardian_Goodbye nuclear power.docx" 
+</p><ul>
+<li>Goodbye nuclear power: Germany's renewable energy revolution
+</li>
+<li>Tim Smedley - Guardian Professional, Friday 10 May 2013 17.58 BST
+</li>
+</ul>
+
+<p><img src="./img/energy-simulation.png"  alt="./img/energy-simulation.png" />
+</p></div>
+
+</div>
+
+<div id="outline-container-16-" class="outline-2">
+<h2 id="sec-16-">Simulation: Article Metadata/Attribution/Credits</h2>
+<div class="outline-text-2" id="text-16-">
+
+<p>"Standard" metadata, which doesn't mean it will be easy to extract. 
+</p><ul>
+<li>DCTerms provides properties for a lot of these
+</li>
+<li>Added MARC Relators, esp. where there's no DCTerms field
+</li>
+</ul>
+
+<table border=0 cellspacing=0 cellpadding=0 rules=all frame=box>
+<caption></caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left"><b>field</b></td><td class="left"><b>value</b></td><td class="left"><b>URL/canonic value</b></td></tr>
+<tr><td class="left">creator</td><td class="left">Tim Smedley</td><td class="left"></td></tr>
+<tr><td class="left">creator.affiliation</td><td class="left">Guardian Professional</td><td class="left"></td></tr>
+<tr><td class="left">creator.role</td><td class="left">Author</td><td class="left"><a href="http://id.loc.gov/vocabulary/relators/aut">http://id.loc.gov/vocabulary/relators/aut</a></td></tr>
+<tr><td class="left">created</td><td class="left">Friday 10 May 2013 17.58 BST</td><td class="left">"20130510T17:58:00"^^xsd:dateTime</td></tr>
+<tr><td class="left">contributor</td><td class="left">Sean Gallup</td><td class="left"></td></tr>
+<tr><td class="left">contributor.affiliation</td><td class="left">Getty Images</td><td class="left"></td></tr>
+<tr><td class="left">contributor.role</td><td class="left">Photograph by</td><td class="left"><a href="http://id.loc.gov/vocabulary/relators/pht">http://id.loc.gov/vocabulary/relators/pht</a></td></tr>
+<tr><td class="left">contributor</td><td class="left">Accenture</td><td class="left"></td></tr>
+<tr><td class="left">contributor.role</td><td class="left">paid for by</td><td class="left"></td></tr>
+<tr><td class="left">publisher</td><td class="left">Guardian Sustainable Business</td><td class="left"></td></tr>
+<tr><td class="left">editorial</td><td class="left">The Guardian</td><td class="left"></td></tr>
+<tr><td class="left">editorial.role</td><td class="left">controlled and overseen by (responsible party)</td><td class="left"><a href="http://id.loc.gov/vocabulary/relators/rpy">http://id.loc.gov/vocabulary/relators/rpy</a></td></tr>
+<tr><td class="left">rights-holder</td><td class="left">Guardian News and Media Limited</td><td class="left"></td></tr>
+<tr><td class="left">rights-holder.role</td><td class="left">copyright holder</td><td class="left"><a href="http://id.loc.gov/vocabulary/relators/cph">http://id.loc.gov/vocabulary/relators/cph</a></td></tr>
+<tr><td class="left">copyright date</td><td class="left">2014</td><td class="left">"2014"^^xsd:gYear</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+<div id="outline-container-17-" class="outline-2">
+<h2 id="sec-17-">Energy Simulation: Concepts (1)</h2>
+<div class="outline-text-2" id="text-17-">
+
+<ul>
+<li>altLabels separated with ";". See "DBpedia Subsets re Energy" later on.
+</li>
+</ul>
+
+<p>Generation, Transfer
+</p><ul>
+<li>nuclear power; nuclear capability (altLabel but only in the Energy context, else means nuclear weapons)
+</li>
+<li>renewable energy; renewables; Renewable Energy Sources; renewable-energy capacity 
+</li>
+<li>wind power
+</li>
+<li>wind turbine
+</li>
+<li>wind farms; wind plants
+</li>
+<li>offshore wind farms; offshore wind plants
+</li>
+<li>intermittent wind energy
+</li>
+<li>biogas plant; plant [that] processes natural waste; biomass plants
+</li>
+<li>biomass facilities
+</li>
+<li>power lines, power cables 
+</li>
+<li>electricity grid 
+</li>
+<li>transportation [of energy]
+</li>
+<li>storage [of energy]
+</li>
+<li>micro-generation 
+</li>
+<li>PV; photovoltaic
+</li>
+<li>photovoltaic plants
+</li>
+<li>co-generation; cogeneration
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-18-" class="outline-2">
+<h2 id="sec-18-">Energy Simulation: Concepts (2)</h2>
+<div class="outline-text-2" id="text-18-">
+
+<p>Economics
+</p><ul>
+<li>renewable energy surcharge
+</li>
+<li>energy bill 
+</li>
+<li>micro-ownership
+</li>
+<li>prosumer model; 'prosumer' model; prosumer (eg "the prosumer aspect")
+</li>
+<li>incentive systems
+</li>
+<li>ecological taxes
+</li>
+</ul>
+
+<p>Other energy concepts
+</p><ul>
+<li>electricity
+</li>
+<li>heat 
+</li>
+<li>environmentally-friendly
+</li>
+<li>insulation of buildings
+</li>
+<li>fertiliser
+</li>
+<li>greenhouse-gas (GHG) emissions 
+</li>
+<li>energy consumption; consumption of energy
+</li>
+<li>consumer behaviour
+</li>
+<li>Energiewende, Energy Transformation, alternative energy transformation
+</li>
+<li>utility companies
+</li>
+<li>battery
+</li>
+</ul>
+
+<p>Other
+</p><ul>
+<li>local farms
+</li>
+<li>houses
+</li>
+<li>Herculean task; Herculean 
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-19-" class="outline-2">
+<h2 id="sec-19-">Energy Simulation: Events, Places, Orgs, Persons</h2>
+<div class="outline-text-2" id="text-19-">
+
+<p>Events (from thesaurus)
+</p><ul>
+<li>Fukushima disaster
+<ul>
+<li>Fukushima: in this case is event not place: can be recognized by: "July 2011 (only three months after &hellip;)"
+</li>
+</ul>
+
+</li>
+</ul>
+
+<p>Places
+</p><ul>
+<li>Germany; Germany's; economic powerhouse of Europe (alias)
+</li>
+<li>Lower Saxony
+</li>
+<li>Ebendorf, Germany
+</li>
+</ul>
+
+<p>Organizations
+</p><ul>
+<li>German government 
+</li>
+<li>Wuppertal Institute; Wuppertal Institute for Climate, Environment and Energy
+</li>
+<li>Big Four energy companies
+</li>
+<li>RWE
+</li>
+</ul>
+
+<p>Persons
+</p><ul>
+<li>Angela Merkel
+</li>
+<li>Professor Dr Manfred Fischedick
+<ul>
+<li>Fischedick: requires coreference resolution
+</li>
+</ul>
+
+</li>
+</ul>
+
+<p>Roles/positions
+</p><ul>
+<li>Professor Dr
+</li>
+<li>vice president
+</li>
+<li>scientific adviser
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-20-" class="outline-2">
+<h2 id="sec-20-">Energy Simulation: Quantified Events</h2>
+<div class="outline-text-2" id="text-20-">
+
+<p>Quantities &amp; Dates from text. Would be hard to recognize, but if possible will enable some quite interesting quantitative analyses.
+</p><table border=0 cellspacing=0 cellpadding=0 rules=all frame=box>
+<caption></caption>
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left"><b>subject</b></td><td class="left"><b>action</b></td><td class="left"><b>quantity</b></td><td class="left"><b>object</b></td><td class="left"><b>date</b></td></tr>
+<tr><td class="left">Nuclear power</td><td class="left">produces</td><td class="left">nearly 20%</td><td class="left">Germany's energy</td><td class="left">now</td></tr>
+<tr><td class="left">German government</td><td class="left">vowed to</td><td class="left"></td><td class="left">shut down</td><td class="left">July 2011</td></tr>
+<tr><td class="left">German government</td><td class="left">shut down</td><td class="left">nuclear capability</td><td class="left"></td><td class="left">within 10 years</td></tr>
+<tr><td class="left">German government</td><td class="left">cut</td><td class="left">by 40%</td><td class="left">greenhouse-gas (GHG) emissions</td><td class="left">by 2020</td></tr>
+<tr><td class="left">German government</td><td class="left">cut</td><td class="left">and 80%</td><td class="left">greenhouse-gas (GHG) emissions</td><td class="left">by 2050</td></tr>
+<tr><td class="left">renewables</td><td class="left">contribute</td><td class="left">80%</td><td class="left">Germany's energy</td><td class="left">by 2050</td></tr>
+<tr><td class="left"></td><td class="left">drop</td><td class="left">20%</td><td class="left">energy consumption</td><td class="left">by 2020</td></tr>
+<tr><td class="left"></td><td class="left">drop</td><td class="left">50%</td><td class="left">energy consumption</td><td class="left">by 2050</td></tr>
+<tr><td class="left"></td><td class="left">Discussions about</td><td class="left"></td><td class="left">Energiewende</td><td class="left">started already in the 1980s</td></tr>
+<tr><td class="left">renewable energy surcharge</td><td class="left">increase</td><td class="left">by 47%</td><td class="left">average family's energy bill</td><td class="left">in the past two years</td></tr>
+<tr><td class="left">wind power</td><td class="left">contribute</td><td class="left">half of the 80%</td><td class="left">renewable energy target</td><td class="left">by 2050</td></tr>
+<tr><td class="left">individuals or farmers in Germany</td><td class="left">INV is owned by</td><td class="left">over 50%</td><td class="left">renewable-energy capacity</td><td class="left"></td></tr>
+<tr><td class="left">Big Four energy companies</td><td class="left">own</td><td class="left">just 6.5%</td><td class="left">renewable-energy capacity</td><td class="left">(according to 2010 figures)</td></tr>
+<tr><td class="left"></td><td class="left">Reducing</td><td class="left">by half</td><td class="left">energy consumption</td><td class="left"></td></tr>
+<tr><td class="left"></td><td class="left">discuss</td><td class="left"></td><td class="left">new forms of incentive systems</td><td class="left">in the next couple of years</td></tr>
+<tr><td class="left">economic powerhouse of Europe</td><td class="left">decommission</td><td class="left">17</td><td class="left">nuclear power plants</td><td class="left">seven years left</td></tr>
+<tr><td class="left">economic powerhouse of Europe</td><td class="left">cut</td><td class="left">by 40%</td><td class="left">GHG emissions</td><td class="left">seven years left</td></tr>
+<tr><td class="left">economic powerhouse of Europe</td><td class="left">cut</td><td class="left">by 20%</td><td class="left">energy consumption</td><td class="left">seven years left</td></tr>
+</tbody>
+</table>
+
+Annotations for such event networks can be visualized and manually created by <a href="http://brat.nlplab.org/">Brat Rapid Annotation Tool</a> (BRAT) 
+</div>
+
+</div>
+
+<div id="outline-container-21-" class="outline-2">
+<h2 id="sec-21-">Compare with REEGLE Tagging API</h2>
+<div class="outline-text-2" id="text-21-">
+
+<p>How much can be recognized with a single glossary dedicated to energy (REEGLE)?
+</p><ul>
+<li>Paste the article text at <a href="http://api.reegle.info/service/try">REEGLE Tagging API</a> and compare the results to these above.<br/>
+</li>
+<li>Extracted Concepts: keywords from REEGLE thesaurus. Semantic info available, including synonyms, related concepts, higher level concepts
+</li>
+<li>Terms: Plain keywords extracted using statistical algorithms (frequency, position in text)
+<table border=0 cellspacing=0 cellpadding=0 rules=all frame=box>
+<caption></caption>
+<colgroup><col class="left" /><col class="right" /><col class="left" /><col class="right" />
+</colgroup>
+<tbody>
+<tr><td class="left"><b>Concept</b></td><td class="right"><b>Score</b></td><td class="left"><b>Term</b></td><td class="right"><b>Score</b></td></tr>
+<tr><td class="left">energy</td><td class="right">74</td><td class="left">fischedick</td><td class="right">41</td></tr>
+<tr><td class="left">wind</td><td class="right">32</td><td class="left">nuclear</td><td class="right">36</td></tr>
+<tr><td class="left">renewable energies</td><td class="right">20</td><td class="left">germany's</td><td class="right">35</td></tr>
+<tr><td class="left">electricity generation</td><td class="right">14</td><td class="left">energiewende</td><td class="right">28</td></tr>
+<tr><td class="left">wind farms</td><td class="right">10</td><td class="left">germany</td><td class="right">22</td></tr>
+<tr><td class="left">wind turbines</td><td class="right">9</td><td class="left">farms</td><td class="right">19</td></tr>
+<tr><td class="left">emissions</td><td class="right">9</td></tr>
+<tr><td class="left">biogas</td><td class="right">9</td></tr>
+<tr><td class="left">biomass</td><td class="right">9</td></tr>
+<tr><td class="left">natural disasters</td><td class="right">9</td></tr>
+</tbody>
+</table>
+
+</li>
+<li>Locations: Cities/countries, include latitude / longitude<br/>
+<table border=0 cellspacing=0 cellpadding=0 rules=all frame=box>
+<caption></caption>
+<colgroup><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">DE : Federal Republic of Germany (Country)</td></tr>
+</tbody>
+</table>
+
+</li>
+</ul>
+
+<p>Conclusion: REEGLE covers perhaps 45% of the concepts and 1% of the entities.
+</p><ul>
+<li>Doesn't know specifics. Eg it sees the word "nuclear" is used often in the article, but doesn't know about nuclear energy
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-22-" class="outline-2">
+<h2 id="sec-22-">DBpedia Spotlight Annotate Service</h2>
+<div class="outline-text-2" id="text-22-">
+
+<p><a href="https://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki"><img src="./img/dbpedia-spotlight.jpg" alt="dbpedia-spotlight.jpg"/></a><br/>
+<a href="#Https-github.com-dbpedia-spotlight-dbpedia-spotlight-wiki-Web-service">Web services</a>
+</p><ul>
+<li><b>/annotate</b>: just the top candidates. Supported formats:
+<ul>
+<li>HTML: text/html
+</li>
+<li>XML: text/xml (or no accept header; application/xml returns empty file)
+</li>
+<li>JSON: application/json
+</li>
+<li>RDFa: don't know how to invoke this since RDFa by itself doesn't have a mime type
+</li>
+<li>NIF: application/rdf+xml. This comes to 3Mb since it uses the full text as part of every URL and is therefore unusable: the text must be deployed on a web server before this format can be used
+</li>
+</ul>
+
+</li>
+<li><b>/candidates</b>: returns more data about potential enrichments (with score)<br/>
+</li>
+</ul>
+
+<p>Annotations below are obtained with:
+</p><pre class="example">
+curl -H accept:text/html http://spotlight.dbpedia.org/rest/annotate
+  --data-urlencode text@EN_Guardian_nuclear_power.txt &gt; Spotlight-Guardian.htm
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-23-" class="outline-2">
+<h2 id="sec-23-">Compare with DBpedia Spotlight</h2>
+<div class="outline-text-2" id="text-23-">
+
+<p><img src="./img/Spotlight-performance.png"  alt="./img/Spotlight-performance.png" />
+</p></div>
+
+</div>
+
+<div id="outline-container-24-" class="outline-2">
+<h2 id="sec-24-">Energy Datasets</h2>
+<div class="outline-text-2" id="text-24-">
+
+<p>Keeping the Energy article simulation in mind, what are possible sources for those entities and concepts?<br/>
+</p>
+<p>
+Named entities:
+</p><ul>
+<li>I think we'll cover quite a lot of the domain of interest by using datasets already integrated in FactForge: DBPedia, GeoNames, FreeBase and NY Times
+</li>
+<li>There are better sources for energy-specific entities (e.g. Power Plants)
+</li>
+</ul>
+
+<p>Concepts:
+</p><ul>
+<li>Below are examples from various thesauri
+</li>
+<li>When a resource is present in several thesauri, we can often find interlinks (alignments), and then enlarge the scope by exploring around the hierarchy.
+</li>
+<li>A potential problem in general theasuri is coverage: I don't know how much of the desired terms are covered, so we may have to pick and choose from various thesauri
+</li>
+</ul>
+
+<p>DBPedia
+</p><ul>
+<li>DBpedia provides both entities and concepts/categories.
+</li>
+<li>Related concepts can be extracted by links navigation and using the Categories (see below)
+</li>
+<li>Person: <a href="http://de.wikipedia.org/wiki/Manfred_Fischedick">http://de.wikipedia.org/wiki/Manfred_Fischedick</a> (related to Wuppertal Institute)
+</li>
+<li>Event: <a href="http://en.wikipedia.org/wiki/Fukushima_Daiichi_nuclear_disaster">http://en.wikipedia.org/wiki/Fukushima_Daiichi_nuclear_disaster</a>.<br/>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Fukushima">http://en.wikipedia.org/wiki/Fukushima</a> is a disambiguation (redirection) page that leads to the above (amongst other things). Thus redirection pages provide synonyms (altLabels)
+</li>
+</ul>
+
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-25-" class="outline-2">
+<h2 id="sec-25-">General Thesauri</h2>
+<div class="outline-text-2" id="text-25-">
+
+<p>Example concept: "Wind Energy"
+</p><ul>
+<li>DBpedia: <a href="http://de.dbpedia.org/page/Windenergie">http://de.dbpedia.org/page/Windenergie</a>, <a href="http://en.dbpedia.org/page/Wind_power">http://en.dbpedia.org/page/Wind_power</a>.
+<ul>
+<li>Although these mean the same, they don't have the same data and links!
+</li>
+</ul>
+
+</li>
+<li>Thesaurus for Economics (STW) by Leibnitz Centre, German National Library of Economics (ZBW)
+<ul>
+<li><a href="http://zbw.eu/stw/versions/latest/descriptor/18231-5/about.en.html">http://zbw.eu/stw/versions/latest/descriptor/18231-5/about.en.html</a>
+</li>
+</ul>
+
+</li>
+<li>Thesaurus Sozialwissenschaften=Thesaurus for the Social Sciences (TheSoz) by Leibnitz Institute (GESIS)
+<ul>
+<li><a href="http://lod.gesis.org/pubby/page/thesoz/concept/10063564">http://lod.gesis.org/pubby/page/thesoz/concept/10063564</a>
+</li>
+</ul>
+
+</li>
+<li>General Multilingual Environmental Thesaurus (GEMET) by European Environmental Agency (EIONET)
+<ul>
+<li><a href="http://www.eionet.europa.eu/gemet/concept?ns=1&amp;cp=9335">http://www.eionet.europa.eu/gemet/concept?ns=1&amp;cp=9335</a>
+</li>
+</ul>
+
+</li>
+<li>Umwelt Thesaurus (UMTHES) by Umwelt Bundes Amt fuer Mensch und Umwelt (UBA)
+<ul>
+<li><a href="http://data.uba.de/umt/_00027736">http://data.uba.de/umt/_00027736</a>, <a href="http://www.eionet.europa.eu/gemet/about?langcode=en#chapter-I">largely incorporated in GEMET</a>
+</li>
+</ul>
+
+</li>
+<li>Agricultural Vocabulary (AGROVOC) by Food and Agriculture Organization, United Nations (UN FAO)
+<ul>
+<li><a href="http://aims.fao.org/aos/agrovoc/c_8394">http://aims.fao.org/aos/agrovoc/c_8394</a>
+</li>
+</ul>
+
+</li>
+<li>EU's multilingual thesaurus (EuroVoc) by Publications Office, European Commission (OPOCE)
+<ul>
+<li><a href="http://eurovoc.europa.eu/748">http://eurovoc.europa.eu/748</a>
+</li>
+</ul>
+
+</li>
+<li>Gemeinsame Normdatei=Integrated Authority File (GND) by German National Library (DNB)
+<ul>
+<li><a href="http://d-nb.info/gnd/4079329-1/about/html">http://d-nb.info/gnd/4079329-1/about/html</a>
+</li>
+</ul>
+
+</li>
+<li>Library of Congress Subject Headings (LCSH) by US Library of Congress (LoC)
+<ul>
+<li><a href="http://id.loc.gov/authorities/subjects/sh85146874">http://id.loc.gov/authorities/subjects/sh85146874</a>
+</li>
+</ul>
+
+</li>
+<li>Dewey Decimal Classification (DDC)
+<ul>
+<li><a href="http://dewey.info/class/333.92/about">http://dewey.info/class/333.92/about</a> (Other natural resources&gt; Air)
+</li>
+<li><a href="http://dewey.info/class/621.312136/about">http://dewey.info/class/621.312136/about</a> (Specific kinds of mechanical generation&gt; Wind-powered generation)
+</li>
+</ul>
+
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-26-" class="outline-2">
+<h2 id="sec-26-">Energy Thesauri</h2>
+<div class="outline-text-2" id="text-26-">
+
+<p>Search Google for "renewable energy vocabulary", there are some matches.
+</p><ul>
+<li>(Unfortunately when I ask "energy thesauri", Google thinks I want synonyms of "energy")
+</li>
+<li>REEGLE glossary (more info below, comparison to annotation service above)
+<ul>
+<li><a href="http://www.reegle.info/glossary/1660">http://www.reegle.info/glossary/1660</a>
+</li>
+<li><a href="http://poolparty.reegle.info/PoolParty/wiki/glossary?URI=http://reegle.info/glossary/1660&amp;lang=en">http://poolparty.reegle.info/PoolParty/wiki/glossary?URI=http%3A%2F%2Freegle.info%2Fglossary%2F1660&amp;lang=en</a>
+</li>
+</ul>
+
+</li>
+<li><a href="http://greenworkspower.com/energy-vocabulary/">http://greenworkspower.com/energy-vocabulary/</a>
+</li>
+<li><a href="http://www.allaboutspace.com/wordlist/energy.shtml">http://www.allaboutspace.com/wordlist/energy.shtml</a><br/>
+  Just a word list, but maybe can be used to find proper vocabularies on this topic
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-27-" class="outline-2">
+<h2 id="sec-27-">Enipedia</h2>
+<div class="outline-text-2" id="text-27-">
+
+<p><a href="http://enipedia.tudelft.nl">Enipedia</a> at TU Delft, Next Generation Infrastructures
+</p><ul>
+<li>Covers power generation (power plants, fuel type, emissions, geography, etc) and other energy topics
+</li>
+<li>Developed with Semantic Media Wiki. Hand-curated, includes data imported from other sources
+</li>
+<li>Eg power plants and power lines from LinkedGeoData (filtering by specific feature types)
+</li>
+<li>Developed SparqlQuery extension to SMW so content can be explored with SPARQL
+</li>
+<li><a href="http://www.ldbc.eu:8090/download/attachments/5538064/ChrisDavis.pdf?version=1&amp;modificationDate=1396597920000">Enipedia: exploration into applications of wikis and semantic web for energy and industry issues</a>, Christopher Davis, Apr 2014
+<ul>
+<li>I also have the PhD thesis of this guy, nice work
+</li>
+</ul>
+
+</li>
+</ul>
+
+<p>Interesting statistical/ecological/economic analyses<br/>
+<img src="./img/enipedia-homepage.png" width=800 alt="./img/enipedia-homepage.png" />
+</p></div>
+
+</div>
+
+<div id="outline-container-28-" class="outline-2">
+<h2 id="sec-28-">OpenEI</h2>
+<div class="outline-text-2" id="text-28-">
+
+<p><a href="http://en.openei.org">Open Energy Information</a>: knowledge-sharing online community for energy information and data.
+</p><ul>
+<li>Geographic discovery, visualizations, apps, topic-oriented gateways.
+</li>
+<li>Built with Semantic MediaWiki, the data is crowd-sourced
+</li>
+<li>Numerous <a href="http://en.openei.org/datasets/">articles and datasets</a>: Articles 135k, Images 5k, Documents 2k, Datasets 2k, Maps 2k, etc
+</li>
+<li>Faceted by: Countries (211), Programs (1153), Tools (1586)
+</li>
+<li>US centric: States (50), Congressional Districts (437), Counties (3142), Cities (27937), Clean Energy Economy Regions (7)
+</li>
+<li><a href="http://en.openei.org/wiki/Special:Categories">Categories (folksonomy)</a>, hopefully better organized than DBpedia. Eg <a href="http://en.openei.org/wiki/Category:Companies">5k energy companies</a>
+</li>
+<li><a href="http://en.openei.org/wiki/Help:Energy_Hackathon_Resources">Developer (hackaton) resources</a>
+</li>
+<li><a href="http://en.openei.org/lod">Provides LOD</a>
+</li>
+</ul>
+
+<p>Example:
+</p><ul>
+<li><a href="#Http-en.openei.org-wiki-Bulgaria">Data about Bulgaria</a> (quite sparse)
+</li>
+<li><a href="http://en.openei.org/apps/SWERA/?active=Bulgaria">Solar and Wind Energy Resource Atlas</a> (SWERA) for Bulgaria
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-29-" class="outline-2">
+<h2 id="sec-29-">REEGLE, REEP, REN21</h2>
+<div class="outline-text-2" id="text-29-">
+
+<p><a href="http://www.reegle.info"><img src="./img/reegle_logo.gif" alt="reegle_logo.gif"/></a> Clean Energy Info Portal
+</p><ul>
+<li>Eg <a href="http://www.reegle.info/countries/bulgaria-energy-profile/BG">REEGLE Profile for Bulgaria</a>
+</li>
+<li><a href="http://api.reegle.info/">Reegle tagging API</a> (compared above)
+<ul>
+<li>Automated Tagging: extraction is based on the custom-built reegle clean energy thesaurus, with a wide range of additional information available.
+</li>
+<li>This service is accessible in English, Spanish, Portuguese, French and German. The API returns the formats RDF/XML and JSON.
+</li>
+<li>Content Pool: Related documents are suggested based on matching keywords and geographical regions. Includes REEEP documents, policy reports and project outcome documents.
+</li>
+</ul>
+
+</li>
+<li><a href="http://www.reegle.info/glossary">REEGLE thesaurus/glossary</a>, <a href="http://poolparty.reegle.info/PoolParty/sparql/glossary">SPARQL access</a>
+</li>
+</ul>
+
+<p><a href="http://www.reeep.org">Renewable Energy and Energy Efficiency Partnership</a> (REEEP) 
+</p><ul>
+<li>Eg <a href="http://www.reegle.info/countries/BG">REEEP Profile for Bulgaria</a>
+</li>
+</ul>
+
+<p><a href="http://www.ren21.net">Renewable Energy Policy Network for the 21st Century</a> (REN21)
+</p><ul>
+<li>Global renewable energy policy multi-stakeholder network
+</li>
+<li>Connects key actors from Governments, International organisations, Industry associations, Science and academia, Civil society
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-30-" class="outline-2">
+<h2 id="sec-30-">Other Possible Energy Data Sources</h2>
+<div class="outline-text-2" id="text-30-">
+
+<ul>
+<li>International Association of Energy Economics
+</li>
+<li>EUROSTAT
+</li>
+<li>Trading Economics
+</li>
+<li><a href="http://www.iea.org">IEA</a>, eg <a href="http://www.iea.org/stats/renewdata.asp?COUNTRY_CODE=BG">IEA Profile for Bulgaria</a>
+</li>
+<li><a href="http://www.lowcarboneconomy.com">LowCarbonWorld</a>, eg <a href="http://www.lowcarboneconomy.com/low_carbon_world/data/country/bulgaria/34">Profile for Bulgaria</a>
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-31-" class="outline-2">
+<h2 id="sec-31-">Use-case specific DBpedia subsets</h2>
+<div class="outline-text-2" id="text-31-">
+
+<p>DBpedia is a rich source of concepts and stable URLs with universal coverage.
+</p><ul>
+<li>Most of the energy Concepts I outlined can also be found in DBpedia
+</li>
+<li>Wikipedia has a lot of synonyms (wiki redirect links, disambiguation pages), categories, lateral hierarchies/topic guides
+</li>
+<li>These can help to fish out the concepts
+</li>
+</ul>
+
+<p>Because it's a folksonomy (not curated according to ISO thesaurus construction precepts), one cannot use hierarchical structure directly, and needs to pick and choose. How to find useful groupings for a specific use case?
+</p><ul>
+<li>It requires manual curation &amp; crowdsourcing
+</li>
+<li>Can complement manual &amp; automated effort (machine learning, clusterization)
+</li>
+</ul>
+
+<p>Example: <b>Film Genres</b>
+</p><ul>
+<li>Explore one genre: <a href="http://en.wikipedia.org/wiki/Horror_movie">http://en.wikipedia.org/wiki/Horror_movie</a>
+</li>
+<li>And you find Categories: Film genres (other genres), Horror films (instances of horror films)
+</li>
+<li><a href="http://en.wikipedia.org/wiki/Category:Film_genres">http://en.wikipedia.org/wiki/Category:Film_genres</a> includes 239!
+</li>
+<li>Including "Mexploitation" (think El Mariachi, Desperado), "Mafia comedy", etc
+</li>
+<li>"Mexploitation" is a subkind of "Exploitation film", which also includes:
+<ul>
+<li>Blaxploitation Bruceploitation Cannibal Eurospy Giallo Hixploitation Martial arts Mexploitation Mockbuster Mondo Nazi exploitation Nunsploitation Outlaw biker Ozploitation Poliziotteschi Pornochanchada Rape and revenge Sexploitation Slasher Spaghetti Western Splatter Sword-and-sandal Women in prison
+</li>
+</ul>
+
+</li>
+<li>"Bruceploitation" isn't really about exploitation: it involves the use of Bruce Lee look-alike actors
+</li>
+<li>So it really takes intellectual effort to explore these facsinating networks of meaning
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-32-" class="outline-2">
+<h2 id="sec-32-">DBpedia Example re Energy</h2>
+<div class="outline-text-2" id="text-32-">
+
+<p><a href="http://en.wikipedia.org/wiki/Electricity_delivery">http://en.wikipedia.org/wiki/Electricity_delivery</a>: useful portal with links<br/>
+<img src="./img/dbpedia-Electricity-delivery.png"  alt="./img/dbpedia-Electricity-delivery.png" />
+</p><ul>
+<li>Includes main processes: Generation Transmission Distribution Retailing (with their own categories and links)
+</li>
+<li>Includes Sources (type of power):     
+<ul>
+<li>Nonrenewable: Coal Fossil-fuel power station Natural gas Petroleum Nuclear Oil shale
+</li>
+<li>Renewable: Biomass Biofuel Geothermal Hydro Marine (Current Osmotic Thermal Tidal Wave) Solar Wind
+</li>
+</ul>
+
+</li>
+</ul>
+
+<p>How about its LD representation?
+</p><ul>
+<li><a href="http://dbpedia.org/resource/Electricity_delivery">http://dbpedia.org/resource/Electricity_delivery</a>: ironically at 2014-05-18 Sun 11:26:<br/>
+<ul>
+<li>The web-site you are currently trying to access is under maintenance at this time.
+</li>
+<li>We are sorry for any inconvenience this has caused. <img src="./img/under-construction.gif"  alt="./img/under-construction.gif" /> 
+</li>
+</ul>
+
+</li>
+<li><a href="http://factforge.net/resource/dbpedia/Electricity_delivery">http://factforge.net/resource/dbpedia/Electricity_delivery</a>: that's why we have "reason-able views"
+</li>
+<li>Unfortunately the blue links are not in the DBpedia LD: only infoboxes, lists and tables are converted
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-33-" class="outline-2">
+<h2 id="sec-33-">Other Useful DBpedia Lists</h2>
+<div class="outline-text-2" id="text-33-">
+
+<p>Lists about Energy:
+</p><ul>
+<li><a href="http://en.wikipedia.org/wiki/Outline_of_energy">http://en.wikipedia.org/wiki/Outline_of_energy</a>: headings Energy_industry, Forms_of_energy, Economics, <b>Lists</b>
+</li>
+<li><a href="http://en.wikipedia.org/wiki/Renewable_energy">http://en.wikipedia.org/wiki/Renewable_energy</a>
+</li>
+<li><a href="http://en.wikipedia.org/wiki/Lists_about_renewable_energy">http://en.wikipedia.org/wiki/Lists_about_renewable_energy</a>
+</li>
+</ul>
+
+<p>Lists about Telecom Standards:
+</p><ul>
+<li><a href="http://en.wikipedia.org/wiki/Portal:Telecommunication">http://en.wikipedia.org/wiki/Portal:Telecommunication</a>: Category Telecom Standards going 5 levels deep
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-34-" class="outline-2">
+<h2 id="sec-34-">Household appliances</h2>
+<div class="outline-text-2" id="text-34-">
+
+<p>I haven't dug deep enough on this topic, but here are a few leads:
+</p><ul>
+<li>Amazon and eBay product lists/category trees. Are they downloadable somehow?
+</li>
+<li>GoodRelations, LinkedOpenCommerce, IceCat, eClass, PCS, etc
+</li>
+<li>Semantics3
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-35-" class="outline-2">
+<h2 id="sec-35-">GoodRelations, Product Catalogs, Product Features</h2>
+<div class="outline-text-2" id="text-35-">
+
+<p>The GoodRelations ontology is the clear leader for eCommerce
+</p><ul>
+<li>Martin Hepp is active both in conferences and with commercial entities
+</li>
+<li>Uptake by Google, Yahoo, WalMart&hellip;
+</li>
+</ul>
+
+<p>General approaches for converting product catalogs to RDF (links available):
+</p><ul>
+<li>Servant, F.-P., Chevalier, E.: Describing Customizable Products on the Web of Data.
+</li>
+<li>Hepp, M., de Bruijn, J.: GenTax: A generic methodology for deriving OWL and RDF-S ontologies from hierarchical classifications, thesauri, and inconsistent taxonomies. The Semantic Web: Research and Applications. pp. 129вЂ“144. Springer (2007).
+</li>
+<li>Ozacar, T.: IRIS: A ProtГ©gГ© Plug-in to Extract and Serialize Product Attribute Name-Value Pairs.
+</li>
+<li>Stolz, A., Rodriguez-Castro, B., Radinger, A., Hepp, M.: PCS2OWL: A Generic Approach for Deriving Web Ontologies from Product Classification Systems. The Semantic Web: Trends and Challenges. pp. 644вЂ“658. Springer (2014).
+</li>
+</ul>
+
+<p>Datasets:
+</p><ul>
+<li><a href="http://www.ebusiness-unibw.org/ontologies/consumerelectronics/v1">Consumer Electronics Ontology</a>: cameras, printers, smart phones&hellip;
+</li>
+<li><a href="http://linkedopencommerce.com/">LinkedOpenCommerce</a>: computers, washing machines&hellip; (see model on next slide)
+<ul>
+<li>Model of Products, ProductFamilies, Categories, Features
+</li>
+<li>Big list of generic (8535) and specific features (1002; seem to be subsumed by the generics), eg<br/>
+    <a href="http://linkedopencommerce.com/icecat/feature/5">http://linkedopencommerce.com/icecat/feature/5</a> "Processor clock speed" is for processors or computers<br/>
+    <a href="http://linkedopencommerce.com/icecat/feature/749">http://linkedopencommerce.com/icecat/feature/749</a> "Left metric copy margin" is for printers<br/>
+    <a href="http://linkedopencommerce.com/icecat/feature/9773">http://linkedopencommerce.com/icecat/feature/9773</a> "Spin class" is for washing machines
+</li>
+</ul>
+
+</li>
+<li>(!) <a href="http://www.ebusiness-unibw.org/ontologies/pcs2owl/">Catalog of Product Classification Systems as Web Ontologies</a> (PCS, eClass, etc)
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-36-" class="outline-2">
+<h2 id="sec-36-">LinkedOpenCommerce, IceCat</h2>
+<div class="outline-text-2" id="text-36-">
+
+<p><a href="http://answers.semanticweb.com/questions/27854/ontology-for-hardware-features">http://answers.semanticweb.com/questions/27854/ontology-for-hardware-features</a><br/>
+<img src="./img/linkedopencommerce.png" width=1100 alt="./img/linkedopencommerce.png" />
+</p></div>
+
+</div>
+
+<div id="outline-container-37-" class="outline-2">
+<h2 id="sec-37-">Semantics3 Product Data</h2>
+<div class="outline-text-2" id="text-37-">
+
+<p><a href="https://www.semantics3.com/#sampleapi">https://www.semantics3.com/#sampleapi</a>
+</p><ul>
+<li>Startup company affiliated with National University of Singapore
+</li>
+<li>Web mining of big product sites (TechCrunch article says 250Gb per day on a 250-node cluster)
+</li>
+<li>Excellent way of presenting the data. Convenient API, signup (eg with Github account), excellent web presentation
+</li>
+<li>They get product and dynamic pricing data
+</li>
+<li>They charge for the pricing data, but maybe they'll give us the brand name list for free, since we're a research project?
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+</div>
+</div>
+</body>
+</html>

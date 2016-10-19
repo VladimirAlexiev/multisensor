@@ -1,0 +1,8 @@
+
+@base <http://data.multisensorproject.eu/content/9e9c304>.
+
+<#char=0,2000> a nif:Context;
+  nif:isString "This is the whole text of the SIMMO.\n It should continue for 2000 chars but I'll stop here"@en;
+  ms:fluency      5.0;
+  ms:richness     1.0;
+  ms:technicality 1.0.

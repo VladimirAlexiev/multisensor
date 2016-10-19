@@ -1,0 +1,1077 @@
+@prefix mte:         <http://purl.org/olia/mte/multext-east.owl#> .
+@prefix mte-link:    <http://purl.org/olia/mte/mte-link.rdf#> .
+@prefix olia:        <http://purl.org/olia/olia.owl#> .
+@prefix olia-top:    <http://purl.org/olia/olia-top.owl#>.
+@prefix olia-system: <http://purl.org/olia/system.owl#>.
+@prefix rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:         <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:         <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:        <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://purl.org/olia/mte/mte-link.rdf#> a owl:Ontology ;
+        rdfs:comment  "\n            2011/07/29 provisional semiautomated linking (link if same name, propose if partial name, unlink otherwise,\n            optional comment), afterwards manual correction based on the manual and automatic\n            comments \n            2011/07/31 removed deprecated concepts (IndefiniteAdjective), ambiguity\n            concepts (subclasses of AmbiguousAdjective, AmbiguousDefinitenessFeature,\n            AmbiguousCliticness), language-specific concepts (WithCliticS, WithoutCliticS) and\n            inconsistent concepts (NumeralForm, CliticDeterminerType [conflactes ProximityFeature\n            and DefinitenessFeature], Cliticness) from linking \n            2011/07/31-2011/08/05 manual revision \n            \n            Christian Chiarcos, chiarcos@uni-potsdam.de"^^xsd:string ;
+        owl:imports   <http://purl.org/olia/mte/multext-east.owl> , <http://purl.org/olia/olia.owl> .
+
+#################### Classes
+
+mte:Abbreviation a owl:Class ;
+        rdfs:subClassOf  olia:Abbreviation .
+
+mte:AbessiveCase a owl:Class ;
+        rdfs:subClassOf  olia:AbessiveCase .
+
+mte:AblativeCase a owl:Class ;
+        rdfs:subClassOf  olia:AblativeCase .
+
+mte:AccusativeCase a owl:Class ;
+        rdfs:subClassOf  olia:Accusative .
+
+mte:ActiveVoice a owl:Class ;
+        rdfs:subClassOf  olia:ActiveVoice .
+
+mte:AdessiveCase a owl:Class ;
+        rdfs:subClassOf  olia:AdessiveCase .
+
+mte:AditiveCase a owl:Class ;
+        rdfs:subClassOf  olia:AditiveCase .
+
+mte:Adjectival a owl:Class ;
+        rdfs:subClassOf  olia:Adjectival .
+
+mte:AdjectivalAdverb a owl:Class ;
+        rdfs:subClassOf  olia:AdjectivalAdverb .
+
+mte:Adjective a owl:Class ;
+        rdfs:subClassOf  olia:Adjective .
+
+mte:AdjectiveFormation a owl:Class ;
+        rdfs:subClassOf  olia-top:StrengthFeature .
+
+mte:Adposition a owl:Class ;
+        rdfs:subClassOf  olia:Adposition .
+
+mte:AdpositionFormation a owl:Class ;
+        rdfs:comment  "unlinked, surface properties" .
+
+mte:Adverb a owl:Class ;
+        rdfs:subClassOf  olia:Adverb .
+
+mte:Adverbial a owl:Class ;
+        rdfs:subClassOf  olia:Adverbial .
+
+mte:AffirmativeParticle a owl:Class ;
+        rdfs:subClassOf  olia:AffirmativeParticle ;
+        owl:versionInfo  "" .
+
+mte:AgglutinantClitic a owl:Class ;
+        owl:versionInfo  "unlinked, definition unclear" .
+
+mte:AllativeCase a owl:Class ;
+        rdfs:subClassOf  olia:AllativeCase .
+
+mte:Animacy a owl:Class ;
+        rdfs:subClassOf  olia-top:AnimacyFeature .
+
+mte:Animate a owl:Class ;
+        rdfs:subClassOf  olia:Animate .
+
+mte:AoristTense a owl:Class ;
+        rdfs:subClassOf  olia:Aorist .
+
+mte:ApproximateNumeral a owl:Class ;
+        rdfs:subClassOf  olia:ApproximateNumeral .
+
+mte:Article a owl:Class ;
+        rdfs:subClassOf  olia:Article .
+
+mte:Aspect a owl:Class ;
+        rdfs:subClassOf  olia-top:AspectFeature .
+
+mte:AspectParticle a owl:Class ;
+        rdfs:subClassOf  olia:AspectParticle .
+
+mte:AttributivePronoun a owl:Class ;
+        rdfs:subClassOf  olia:AttributivePronoun .
+
+mte:AuxiliaryVerb a owl:Class ;
+        rdfs:subClassOf  olia:AuxiliaryVerb .
+
+mte:BaseVerb a owl:Class ;
+        rdfs:comment  "this is a superficial, language-specific characterization of verb forms, hence\n            not represented in the OLiA ontology" .
+
+mte:Biaspectual a owl:Class ;
+        rdfs:subClassOf  olia-top:AspectFeature ;
+        rdfs:subClassOf  [ a owl:Class ;
+                           owl:unionOf  ( olia:ImperfectiveAspect olia:PerfectiveAspect )
+                         ] .
+
+mte:BothNumeral a owl:Class ;
+        rdfs:comment  "unlinked, properties of surface representation" .
+
+mte:CardinalNumeral a owl:Class ;
+        rdfs:subClassOf  olia:CardinalNumber .
+
+mte:Case a owl:Class ;
+        rdfs:subClassOf  olia-top:CaseFeature .
+
+mte:CausalAdverb a owl:Class ;
+        rdfs:subClassOf  olia:CausalAdverb .
+
+mte:CausalisCase a owl:Class ;
+        rdfs:subClassOf  olia:CausativeCase .
+
+mte:CliticDefiniteDeterminer a owl:Class ;
+        rdfs:subClassOf  olia:CliticDefiniteArticle .
+
+mte:CliticDistalDeterminer a owl:Class ;
+        rdfs:subClassOf  olia:CliticDefiniteArticle ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:onProperty      olia:hasProximity ;
+                           owl:someValuesFrom  olia:Distal
+                         ] .
+
+mte:CliticElement a owl:Class ;
+        rdfs:subClassOf  olia:CliticElement .
+
+mte:CliticIndefiniteDeterminer a owl:Class ;
+        owl:versionInfo  "not linked, for the MTE languages, \"Indefinite\" seems to refer to absence\n            of a determiner rather than to the presence of an indefinite\n            determiner" .
+
+mte:CliticProximalDeterminer a owl:Class ;
+        rdfs:subClassOf  olia:CliticDefiniteArticle ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:onProperty      olia:hasProximity ;
+                           owl:someValuesFrom  olia:Proximal
+                         ] .
+
+mte:CliticSpecificDeterminer a owl:Class ;
+        rdfs:subClassOf  olia:CliticSpecificArticle .
+
+mte:Collective a owl:Class ;
+        rdfs:subClassOf  olia:Collective .
+
+mte:CollectiveNumber a owl:Class ;
+        rdfs:subClassOf  olia:Collective .
+
+mte:CollectiveNumeral a owl:Class ;
+        rdfs:subClassOf  olia:CollectiveNumeral .
+
+mte:Collocation a owl:Class ;
+        rdfs:subClassOf  olia:Collocation .
+
+mte:ComitativeCase a owl:Class ;
+        rdfs:subClassOf  olia:ComitativeCase .
+
+mte:CommonGender a owl:Class ;
+        rdfs:subClassOf  olia:CommonGender .
+
+mte:CommonNoun a owl:Class ;
+        rdfs:subClassOf  olia:CommonNoun .
+
+mte:ComparativeDegree a owl:Class ;
+        rdfs:subClassOf  olia:Comparative .
+
+mte:ComparativeParticle a owl:Class ;
+        rdfs:subClassOf  olia:ComparativeParticle ;
+        owl:versionInfo  "" .
+
+mte:CompoundAdjective a owl:Class ;
+        rdfs:subClassOf  olia:Adjective , olia:NonreducedInflection .
+
+mte:CompoundAdposition a owl:Class ;
+        rdfs:comment  "unlinked, surface properties" .
+
+mte:CompoundConjunction a owl:Class ;
+        rdfs:comment  "unliked, surface properties" .
+
+mte:CompoundInterjection a owl:Class ;
+        rdfs:comment  "unlinked, lanbguage-specific surface criterion" .
+
+mte:CompoundParticle a owl:Class ;
+        rdfs:subClassOf  olia:Particle .
+
+mte:Conditional a owl:Class ;
+        rdfs:subClassOf  olia:ConditionalMood .
+
+mte:Conjunction a owl:Class ;
+        rdfs:subClassOf  olia:Conjunction .
+
+mte:ConjunctionFormation a owl:Class ;
+        rdfs:comment  "unliked, surface property" .
+
+mte:CoordinatingConjunction a owl:Class ;
+        rdfs:subClassOf  olia:CoordinatingConjunction .
+
+mte:CoordinatingConjunction_ConjunctType a owl:Class ;
+        rdfs:comment  "unlinked, introduced for disambiguation only" .
+
+mte:CoordinatingConjunction_PositionalType a owl:Class ;
+        rdfs:comment  "not separately linked, corresponds to subclassification of\n            CoordinatingConjunction" .
+
+mte:CopulaVerb a owl:Class ;
+        rdfs:subClassOf  olia:Copula .
+
+mte:CorrelativeCoordinatingConjunction a owl:Class ;
+        rdfs:subClassOf  olia:CorrelativeCoordinatingConjunction .
+
+mte:CountNumber a owl:Class ;
+        rdfs:subClassOf  olia:CountNumber .
+
+mte:Courtesy a owl:Class ;
+        owl:versionInfo  "unlinked, courtesy is modeled in the taxonomy of (SecondPerson)\n            Pronoun" .
+
+mte:DativeCase a owl:Class ;
+        rdfs:subClassOf  olia:DativeCase .
+
+mte:DefiniteArticle a owl:Class ;
+        rdfs:subClassOf  olia:DefiniteArticle .
+
+mte:Degree a owl:Class ;
+        rdfs:subClassOf  olia-top:DegreeFeature .
+
+mte:DelativeCase a owl:Class ;
+        rdfs:subClassOf  olia:DelativeCase .
+
+mte:DemandingClitic a owl:Class ;
+        rdfs:subClassOf  olia:ElementDemandingClitic .
+
+mte:DemonstrativeArticle a owl:Class ;
+        rdfs:subClassOf  olia:DemonstrativeDeterminer .
+
+mte:DemonstrativeDeterminer a owl:Class ;
+        rdfs:subClassOf  olia:DemonstrativeDeterminer .
+
+mte:DemonstrativePronoun a owl:Class ;
+        rdfs:subClassOf  olia:DemonstrativePronoun .
+
+mte:DemonstrativeQuantifier a owl:Class ;
+        rdfs:subClassOf  olia:DemonstrativeQuantifier .
+
+mte:DeterminalPronoun a owl:Class ;
+        rdfs:subClassOf  olia:DeterminalPronoun .
+
+mte:Determiner a owl:Class ;
+        rdfs:subClassOf  olia:Determiner .
+
+mte:DigitNumeral a owl:Class ;
+        rdfs:comment  "unlinked, properties of surface representation" .
+
+mte:Diminuitive a owl:Class ;
+        rdfs:subClassOf  olia:Diminuitive .
+
+mte:DirectCase a owl:Class ;
+        rdfs:subClassOf  olia:DirectCase .
+
+mte:DistributiveCase a owl:Class ;
+        rdfs:subClassOf  olia:DistributiveCase .
+
+mte:DualNumber a owl:Class ;
+        rdfs:subClassOf  olia:Dual .
+
+mte:DualQuantifier a owl:Class ;
+        rdfs:subClassOf  olia:DualQuantifier .
+
+mte:ElativeCase a owl:Class ;
+        rdfs:subClassOf  olia:ElativeCase .
+
+mte:ElativeDegree a owl:Class ;
+        rdfs:subClassOf  olia:ElativeDegree .
+
+mte:ElementWithClitic a owl:Class ;
+        rdfs:subClassOf  olia:ElementWithClitic .
+
+mte:ElementWithoutClitic a owl:Class ;
+        rdfs:subClassOf  olia:ElementWithoutClitic .
+
+mte:EmphaticDeterminer a owl:Class ;
+        rdfs:subClassOf  olia:EmphaticDeterminer .
+
+mte:EmphaticPronoun a owl:Class ;
+        rdfs:subClassOf  olia:EmphaticPronoun .
+
+mte:EssiveCase a owl:Class ;
+        rdfs:subClassOf  olia:EssiveCase .
+
+mte:EssiveFormalCase a owl:Class ;
+        rdfs:subClassOf  olia:EssiveFormalCase .
+
+mte:ExclamativeDeterminer a owl:Class ;
+        rdfs:subClassOf  olia:ExclamatoryDeterminer .
+
+mte:ExclamativePronoun a owl:Class ;
+        rdfs:subClassOf  olia:ExclamatoryPronoun .
+
+mte:ExistentialThere a owl:Class ;
+        rdfs:subClassOf  <http://purl.org/olia/olia.owl#ExistentialParticle> .
+
+mte:FactiveCase a owl:Class ;
+        rdfs:subClassOf  olia:FactiveCase .
+
+mte:FeminineGender a owl:Class ;
+        rdfs:subClassOf  olia:Feminine .
+
+mte:FirstPerson a owl:Class ;
+        rdfs:subClassOf  olia:First .
+
+mte:FirstSgSecondSg a owl:Class ;
+        rdfs:subClassOf  olia:Singular , olia:First ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:onProperty      olia:hasObjectNumber ;
+                           owl:someValuesFrom  olia:Singular
+                         ] ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:onProperty      olia:hasObjectPerson ;
+                           owl:someValuesFrom  olia:Second
+                         ] ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:onProperty      olia:hasSubjectNumber ;
+                           owl:someValuesFrom  olia:Singular
+                         ] ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:onProperty      olia:hasSubjectPerson ;
+                           owl:someValuesFrom  olia:First
+                         ] ;
+        owl:versionInfo  "TODO: check whether the second argument may also be plural (against the MTE\n            specifications), as mentioned by Csaba Oravecz (p.c., 2010/06/15) " .
+
+mte:Foreign a owl:Class ;
+        rdfs:subClassOf  olia:Foreign .
+
+mte:FormalCase a owl:Class ;
+        rdfs:subClassOf  olia:FormalCase .
+
+mte:Formation a owl:Class ;
+        rdfs:comment  "unlinked, generalizes over different Formation concepts" .
+
+mte:FractalNumeral a owl:Class ;
+        rdfs:subClassOf  olia:Fraction .
+
+mte:FutureParticle a owl:Class ;
+        rdfs:subClassOf  olia:FutureParticle .
+
+mte:FutureTense a owl:Class ;
+        rdfs:subClassOf  olia:Future .
+
+mte:Gender a owl:Class ;
+        rdfs:subClassOf  olia-top:GenderFeature .
+
+mte:GeneralAdjective a owl:Class ;
+        rdfs:subClassOf  mte:Adjective ;
+        rdfs:subClassOf  [ a owl:Class ;
+                           owl:complementOf  mte:PossessiveAdjective
+                         ] .
+
+mte:GeneralAdverb a owl:Class ;
+        rdfs:comment  "unlinked, as no consistent definition (like in EAGLES)" .
+
+mte:GeneralDeterminer a owl:Class ;
+        rdfs:comment  "unlinked, no consistent definition" .
+
+mte:GeneralParticle a owl:Class ;
+        rdfs:comment     "not linked, this category only means \"Particle but none of the other\n            classes\"" ;
+        rdfs:subClassOf  olia:Particle .
+
+mte:GenitiveCase a owl:Class ;
+        rdfs:subClassOf  olia:GenitiveCase .
+
+mte:Gerund a owl:Class ;
+        rdfs:subClassOf  [ a owl:Class ;
+                           owl:unionOf  ( olia:AdverbialParticiple olia:Gerund )
+                         ] .
+
+mte:GerundOrAdverbialParticiple a owl:Class ;
+        rdfs:comment  "unlinked, as ambiguous" .
+
+mte:GerundProper a owl:Class ;
+        rdfs:subClassOf  olia:Gerund .
+
+mte:Human a owl:Class ;
+        rdfs:subClassOf  olia:Human .
+
+mte:Humanness a owl:Class ;
+        rdfs:subClassOf  olia-top:AnimacyFeature .
+
+mte:IllativeCase a owl:Class ;
+        rdfs:subClassOf  olia:IllativeCase .
+
+mte:Imperative a owl:Class ;
+        rdfs:subClassOf  olia:ImperativeMood , olia:ImperativeVerb .
+
+mte:ImperfectTense a owl:Class ;
+        rdfs:subClassOf  olia:Imperfect .
+
+mte:Impersonal a owl:Class ;
+        rdfs:subClassOf  olia:ImpersonalVerb .
+
+mte:Inanimate a owl:Class ;
+        rdfs:subClassOf  olia:Inanimate .
+
+mte:IndefiniteArticle a owl:Class ;
+        rdfs:subClassOf  olia:IndefiniteArticle .
+
+mte:IndefiniteDeterminer a owl:Class ;
+        rdfs:subClassOf  olia:IndefiniteDeterminer .
+
+mte:IndefinitePronoun a owl:Class ;
+        rdfs:subClassOf  olia:IndefinitePronoun .
+
+mte:IndefiniteQuantifier a owl:Class ;
+        rdfs:subClassOf  olia:IndefiniteQuantifier .
+
+mte:Indicative a owl:Class ;
+        rdfs:subClassOf  olia:IndicativeMood , olia:IndicativeVerb .
+
+mte:InessiveCase a owl:Class ;
+        rdfs:subClassOf  olia:InessiveCase .
+
+mte:Infinitive a owl:Class ;
+        rdfs:subClassOf  olia:Infinitive .
+
+mte:InfinitiveParticle a owl:Class ;
+        rdfs:subClassOf  olia:InfinitiveParticle .
+
+mte:InitialCoordinatingConjunction a owl:Class ;
+        rdfs:subClassOf  olia:InitialCoordinatingConjunction .
+
+mte:InstrumentalCase a owl:Class ;
+        rdfs:subClassOf  olia:InstrumentalCase .
+
+mte:Interjection a owl:Class ;
+        rdfs:subClassOf  olia:Interjection .
+
+mte:InterjectionFormation a owl:Class ;
+        rdfs:comment  "unlinked, lanbguage-specific surface criterion" .
+
+mte:InterrogativeAdverb a owl:Class ;
+        rdfs:subClassOf  olia:InterrogativeAdverb .
+
+mte:InterrogativeDeterminer a owl:Class ;
+        rdfs:subClassOf  olia:InterrogativeDeterminer .
+
+mte:InterrogativeOrRelativeAdverb a owl:Class ;
+        rdfs:subClassOf  [ a owl:Class ;
+                           owl:unionOf  ( olia:InterrogativeAdverb olia:RelativeAdverb )
+                         ] .
+
+mte:InterrogativeOrRelativeDeterminer a owl:Class ;
+        rdfs:subClassOf  olia:WHDeterminer .
+
+mte:InterrogativeOrRelativePronoun a owl:Class ;
+        rdfs:subClassOf  olia:WHPronoun .
+
+mte:InterrogativeParticle a owl:Class ;
+        rdfs:subClassOf  olia:InterrogativeParticle .
+
+mte:InterrogativePronoun a owl:Class ;
+        rdfs:subClassOf  olia:InterrogativePronoun .
+
+mte:InterrogativeQuantifier a owl:Class ;
+        rdfs:subClassOf  olia:InterrogativeQuantifier .
+
+mte:Intransitive a owl:Class ;
+        rdfs:subClassOf  olia:Intransitive .
+
+mte:LetterNumeral a owl:Class ;
+        rdfs:comment  "unlinked, properties of surface representation" .
+
+mte:LightVerb a owl:Class ;
+        rdfs:subClassOf  olia:LightVerb .
+
+mte:LocativeCase a owl:Class ;
+        rdfs:subClassOf  olia:LocativeCase .
+
+mte:MFormNumeral a owl:Class ;
+        rdfs:comment  "unlinked, language-specific" .
+
+mte:MainVerb a owl:Class ;
+        rdfs:subClassOf  olia:MainVerb .
+
+mte:MasculineGender a owl:Class ;
+        rdfs:subClassOf  olia:Masculine .
+
+mte:MedialVoice a owl:Class ;
+        rdfs:subClassOf  olia:MiddleVoice .
+
+mte:ModalParticle a owl:Class ;
+        rdfs:subClassOf  olia:ModalParticle .
+
+mte:ModalVerb a owl:Class ;
+        rdfs:subClassOf  olia:ModalVerb .
+
+mte:ModificationType a owl:Class ;
+        owl:subClassOf  olia:AdnominalConstituent .
+
+mte:ModifierAdverb a owl:Class ;
+        rdfs:subClassOf  olia:ModifierAdverb .
+
+mte:MoodInterjection a owl:Class ;
+        rdfs:comment  "no examples anmd no definition provided, maybe an artifact designed for an\n            earlier version of the MTE but no longer in use. hence not linked." .
+
+mte:MorphologicalDerivation a owl:Class ;
+        rdfs:subClassOf  olia:Derivation .
+
+mte:MorphologicalFormOfNumeral a owl:Class ;
+        rdfs:comment     "linked to Quantifier only, which will be true, but a broad\n            generalization" ;
+        rdfs:subClassOf  olia:Quantifier ;
+        owl:versionInfo  "If taxonomy of Numeral/Quantifier is reorganized, a category corresponding\n            to MorphologicalFormOfNumeral should be established" .
+
+mte:MorphosyntacticCategory a owl:Class ;
+        owl:subClassOf  olia-top:MorphosyntacticCategory .
+
+mte:MorphosyntacticFeature a owl:Class ;
+        rdfs:subClassOf  olia-top:MorphosyntacticFeature .
+
+mte:MultipleNumeral a owl:Class ;
+        rdfs:subClassOf  olia:MultipleNumeral .
+
+mte:MultiplicativeCase a owl:Class ;
+        rdfs:subClassOf  olia:MultiplicativeCase .
+
+mte:Negated a owl:Class ;
+        rdfs:subClassOf  olia:Negation .
+
+mte:Negation a owl:Class ;
+        rdfs:subClassOf  olia-top:PolarityFeature .
+
+mte:NegativeAdverb a owl:Class ;
+        rdfs:subClassOf  olia:NegativeAdverb .
+
+mte:NegativeDeterminer a owl:Class ;
+        rdfs:subClassOf  olia:NegativeDeterminer .
+
+mte:NegativeParticle a owl:Class ;
+        rdfs:subClassOf  olia:NegativeParticle .
+
+mte:NegativePronoun a owl:Class ;
+        rdfs:subClassOf  olia:NegativePronoun .
+
+mte:NegativeSubordinatingConjunction a owl:Class ;
+        rdfs:subClassOf  olia:SubordinatingConjunctionWithNegation .
+
+mte:NeuterGender a owl:Class ;
+        rdfs:subClassOf  olia:Neuter .
+
+mte:NoHuman a owl:Class ;
+        rdfs:subClassOf  olia-top:AnimacyFeature ;
+        rdfs:subClassOf  [ a owl:Class ;
+                           owl:complementOf  olia:Human
+                         ] .
+
+mte:Nominal a owl:Class ;
+        rdfs:subClassOf  olia:SubstitutivePronoun , olia:Nominal .
+
+mte:NominalAdjective a owl:Class ;
+        rdfs:subClassOf  olia:Adjective , olia:ReducedInflection .
+
+mte:NominativeCase a owl:Class ;
+        rdfs:subClassOf  olia:Nominative .
+
+mte:NonInitialCoordinatingConjunction a owl:Class ;
+        rdfs:subClassOf  olia:NonInitialCoordinatingConjunction .
+
+mte:NonNegated a owl:Class ;
+        rdfs:subClassOf  olia:NonNegated .
+
+mte:NoncliticElement a owl:Class ;
+        rdfs:subClassOf  [ a owl:Class ;
+                           owl:intersectionOf  ([a owl:Class ; owl:complementOf olia:CliticElement]
+                                                olia:Morpheme )
+                         ] .
+
+mte:NonspecificPronoun a owl:Class ;
+        rdfs:subClassOf  olia:NonspecificPronoun .
+
+mte:Noun a owl:Class ;
+        rdfs:subClassOf  olia:Noun .
+
+mte:Number a owl:Class ;
+        rdfs:subClassOf  olia-top:NumberFeature .
+
+mte:Numeral a owl:Class ;
+        rdfs:subClassOf  olia:Numeral .
+
+mte:NumeralAgreementClass a owl:Class ;
+        rdfs:subClassOf  olia-top:NumeralAgreementClass .
+
+mte:NumeralThreeOrFour a owl:Class ;
+        rdfs:comment  "unlinked, language-specific specialization of PaucalQuantifier" .
+
+mte:NumeralTwoToFour a owl:Class ;
+        rdfs:comment  "unlinked, language-specific specialization of PaucalQuantifier" .
+
+mte:ObliqueCase a owl:Class ;
+        rdfs:subClassOf  olia:ObliqueCase .
+
+mte:OrdinalNumeral a owl:Class ;
+        rdfs:subClassOf  olia:OrdinalNumber .
+
+mte:OrthographicalRepresentationOfNumeral a owl:Class ;
+        rdfs:comment     "only linked to Numeral, properties of surface representation" ;
+        rdfs:subClassOf  olia:Numeral .
+
+mte:OtherInterjection a owl:Class ;
+        rdfs:comment  "no consistent definition, just \"Interjection, but not any of the other\n            types\"" .
+
+mte:PartOfFixedExpression a owl:Class ;
+        rdfs:subClassOf  olia:FixedExpression .
+
+mte:Participle a owl:Class ;
+        rdfs:subClassOf  olia:Participle .
+
+mte:ParticipleAdverb a owl:Class ;
+        rdfs:subClassOf  olia:AdverbialParticiple .
+
+mte:Particle a owl:Class ;
+        rdfs:subClassOf  olia:Particle .
+
+mte:ParticleAdverb a owl:Class ;
+        rdfs:comment  "unlinked, language-specific" .
+
+mte:ParticleFormation a owl:Class ;
+        rdfs:comment  "omitted, as only referring to surface realization" .
+
+mte:PartitiveCase a owl:Class ;
+        rdfs:subClassOf  olia:PartitiveCase .
+
+mte:PassiveVoice a owl:Class ;
+        rdfs:subClassOf  olia:PassiveVoice .
+
+mte:PastTense a owl:Class ;
+        rdfs:subClassOf  olia:Past .
+
+mte:PaucalNumber a owl:Class ;
+        rdfs:subClassOf  olia:Paucal .
+
+mte:PaucalQuantifier a owl:Class ;
+        rdfs:subClassOf  mte:PaucalQuantifier .
+
+mte:PerfectiveAspect a owl:Class ;
+        rdfs:subClassOf  olia:PerfectiveAspect .
+
+mte:Person a owl:Class ;
+        rdfs:subClassOf  olia-top:PersonFeature .
+
+mte:PersonOfObject a owl:Class ;
+        rdfs:comment  "unlinked, represented by properties olia:hasObjectPerson and\n            olia:hasObjectNumber" .
+
+mte:PersonalPronoun a owl:Class ;
+        rdfs:subClassOf  olia:PersonalPronoun .
+
+mte:PluperfectTense a owl:Class ;
+        rdfs:subClassOf  olia:PluperfectTense .
+
+mte:PluralNumber a owl:Class ;
+        rdfs:subClassOf  olia:Plural .
+
+mte:PluralQuantifier a owl:Class ;
+        rdfs:subClassOf  mte:PluralQuantifier .
+
+mte:PortmanteauAdverb a owl:Class ;
+        rdfs:subClassOf  [ a owl:Class ;
+                           owl:unionOf  ( olia:Adverb olia:Conjunction )
+                         ] .
+
+mte:PortmanteauConjunction a owl:Class ;
+        rdfs:subClassOf  [ a owl:Class ;
+                           owl:unionOf  ( olia:Adverb olia:Conjunction )
+                         ] .
+
+mte:PositiveDegree a owl:Class ;
+        rdfs:subClassOf  olia:Positive .
+
+mte:PositiveSubordinatingConjunction a owl:Class ;
+        rdfs:subClassOf  olia:SubordinatingConjunctionWithoutNegation .
+
+mte:PossessiveAdjective a owl:Class ;
+        rdfs:subClassOf  olia:PossessiveAdjective .
+
+mte:PossessiveArticle a owl:Class ;
+        rdfs:subClassOf  olia:PossessiveArticle .
+
+mte:PossessiveDeterminer a owl:Class ;
+        rdfs:subClassOf  olia:PossessiveDeterminer .
+
+mte:PossessivePronoun a owl:Class ;
+        rdfs:subClassOf  olia:PossessivePronoun .
+
+mte:PostnominalModification a owl:Class ;
+        owl:subClassOf  olia:PostNominalModifier .
+
+mte:Postposition a owl:Class ;
+        rdfs:subClassOf  olia:Postposition .
+
+mte:PremodifyingOrdinalNumeral a owl:Class ;
+        rdfs:subClassOf  olia:PreNominalModifier , olia:OrdinalNumber .
+
+mte:PrenominalModification a owl:Class ;
+        rdfs:subClassOf  olia:PreNominalModifier .
+
+mte:Preposition a owl:Class ;
+        rdfs:subClassOf  olia:Preposition .
+
+mte:PrepositionalCase a owl:Class ;
+        rdfs:subClassOf  olia:PrepositionalCase .
+
+mte:PresentTense a owl:Class ;
+        rdfs:subClassOf  olia:Present .
+
+mte:ProQuantifier a owl:Class ;
+        rdfs:subClassOf  olia:ProQuantifier .
+
+mte:Program a owl:Class ;
+        owl:versionInfo  "unlinked, indicates tokenization error" .
+
+mte:ProgressiveAspect a owl:Class ;
+        rdfs:subClassOf  olia:ProgressiveAspect .
+
+mte:Pronominal a owl:Class ;
+        rdfs:subClassOf  olia:AbbreviatedPronoun .
+
+mte:Pronoun a owl:Class ;
+        rdfs:subClassOf  olia:Pronoun .
+
+mte:PronounForm a owl:Class ;
+        rdfs:subClassOf  olia-top:StrengthFeature .
+
+mte:ProperNoun a owl:Class ;
+        rdfs:subClassOf  olia:ProperNoun .
+
+mte:QualificativeAdjective a owl:Class ;
+        rdfs:subClassOf  olia:QualifierAdjective .
+
+mte:Quantifier a owl:Class ;
+        rdfs:subClassOf  olia:Quantifier .
+
+mte:Question a owl:Class ;
+        rdfs:subClassOf  [ a owl:Class ;
+                           owl:unionOf  ( olia:InterrogativePronoun olia:InterrogativeAdverb olia:InterrogativeDeterminer )
+                         ] ;
+        owl:versionInfo  "no WHType in OLiA, hence linked to a disjunction of Pronoun, Determiner and\n            Adverb" .
+
+mte:Quotative a owl:Class ;
+        rdfs:subClassOf  olia:QuotativeMood , olia:QuotativeVerb .
+
+mte:ReciprocalPronoun a owl:Class ;
+        rdfs:subClassOf  olia:ReciprocalPronoun .
+
+mte:ReductionFeature a owl:Class ;
+        rdfs:subClassOf  olia-top:StrengthFeature .
+
+mte:ReflexivePronoun a owl:Class ;
+        rdfs:subClassOf  olia:ReflexivePronoun .
+
+mte:RelationalAdjective a owl:Class ;
+        rdfs:subClassOf  olia:RelationalAdjective .
+
+mte:Relative a owl:Class ;
+        rdfs:subClassOf  [ a owl:Class ;
+                           owl:unionOf  ( olia:RelativePronoun olia:RelativeAdverb olia:RelativeDeterminer )
+                         ] ;
+        owl:versionInfo  "no WHType in OLiA, hence linked to a disjunction of Pronoun, Determiner and\n            Adverb" .
+
+mte:RelativeAdverb a owl:Class ;
+        rdfs:subClassOf  olia:RelativeAdverb .
+
+mte:RelativeDeterminer a owl:Class ;
+        rdfs:subClassOf  olia:RelativeDeterminer .
+
+mte:RelativePronoun a owl:Class ;
+        rdfs:subClassOf  olia:RelativePronoun .
+
+mte:RelativeQuantifier a owl:Class ;
+        rdfs:subClassOf  olia:RelativeQuantifier .
+
+mte:RepetitiveCoordinatingConjunction a owl:Class ;
+        rdfs:subClassOf  olia:RepetitiveCoordinatingConjunction .
+
+mte:Residual a owl:Class ;
+        rdfs:subClassOf  olia:Residual .
+
+mte:RomanNumeral a owl:Class ;
+        rdfs:comment  "unlinked, properties of surface representation" .
+
+mte:SecondPerson a owl:Class ;
+        rdfs:subClassOf  olia:Second .
+
+mte:SentenceCoordinatingConjunction a owl:Class ;
+        rdfs:subClassOf  olia:CoordinatingConjunction ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:onProperty      [ a owl:ObjectProperty ;
+                                                 owl:inverseOf  olia:hasSource
+                                               ] ;
+                           owl:someValuesFrom  olia:hasSentenceConjunct
+                         ] ;
+        owl:versionInfo  "modelled as olia_top:Relation hasConjunct plus constraints on its\n            targets" .
+
+mte:SimpleAdposition a owl:Class ;
+        rdfs:comment  "unlinked, surface properties" .
+
+mte:SimpleConjunction a owl:Class ;
+        rdfs:comment  "unliked, surface properties" .
+
+mte:SimpleCoordinatingConjunction a owl:Class ;
+        rdfs:subClassOf  olia:SimpleCoordinatingConjunction .
+
+mte:SimpleInterjection a owl:Class ;
+        rdfs:comment  "unlinked, lanbguage-specific surface criterion" .
+
+mte:SimpleParticle a owl:Class ;
+        rdfs:subClassOf  olia:Particle .
+
+mte:SingularNumber a owl:Class ;
+        rdfs:subClassOf  olia:Singular .
+
+mte:SingularQuantifier a owl:Class ;
+        rdfs:subClassOf  mte:SingularQuantifier .
+
+mte:SociativeCase a owl:Class ;
+        rdfs:subClassOf  olia:SociativeCase .
+
+mte:SpecialNumeral a owl:Class ;
+        rdfs:comment  "unlinked, no definition provided" .
+
+mte:SpecifierAdverb a owl:Class ;
+        rdfs:subClassOf  olia:DegreeAdverb .
+
+mte:StrongPronoun a owl:Class ;
+        rdfs:subClassOf  olia:StrongPersonalPronoun .
+
+mte:Subjunctive a owl:Class ;
+        rdfs:subClassOf  olia:SubjunctiveMood .
+
+mte:SubjunctiveParticle a owl:Class ;
+        rdfs:subClassOf  olia:SubjunctiveParticle .
+
+mte:SublativeCase a owl:Class ;
+        rdfs:subClassOf  olia:SublativeCase .
+
+mte:SubordinatingConjunction a owl:Class ;
+        rdfs:subClassOf  olia:SubordinatingConjunction .
+
+mte:SuperessiveCase a owl:Class ;
+        rdfs:subClassOf  olia:SuperessiveCase .
+
+mte:SuperlativeDegree a owl:Class ;
+        rdfs:subClassOf  olia:Superlative .
+
+mte:Supine a owl:Class ;
+        rdfs:subClassOf  olia:Supine .
+
+mte:TemporalisCase a owl:Class ;
+        rdfs:subClassOf  olia:TemporalisCase .
+
+mte:Tense a owl:Class ;
+        rdfs:subClassOf  olia:TenseFeature .
+
+mte:TerminativeCase a owl:Class ;
+        rdfs:subClassOf  olia:TerminativeCase .
+
+mte:ThirdPerson a owl:Class ;
+        rdfs:subClassOf  olia:Third .
+
+mte:Transgressive a owl:Class ;
+        rdfs:subClassOf  olia:Transgressive .
+
+mte:Transitive a owl:Class ;
+        rdfs:subClassOf  olia:Transitive .
+
+mte:Transitivity a owl:Class ;
+        rdfs:subClassOf  olia-top:ValencyFeature .
+
+mte:TranslativeCase a owl:Class ;
+        rdfs:subClassOf  olia:TranslativeCase .
+
+mte:Typo a owl:Class ;
+        rdfs:subClassOf  olia:Typo .
+
+mte:UniquitiveDeterminer a owl:Class ;
+        rdfs:subClassOf  olia:UniquitiveDeterminer .
+
+mte:Verb a owl:Class ;
+        rdfs:subClassOf  olia:Verb .
+
+mte:VerbForm a owl:Class ;
+        rdfs:comment  "in OLiA represented within the Verb hierarchy" .
+
+mte:Verbal a owl:Class ;
+        rdfs:subClassOf  olia:Verbal .
+
+mte:VerbalAdverb a owl:Class ;
+        rdfs:subClassOf  olia:VerbalAdverb .
+
+mte:VerbalParticle a owl:Class ;
+        rdfs:subClassOf  olia:VerbalParticle .
+
+mte:VocativeCase a owl:Class ;
+        rdfs:subClassOf  olia:VocativeCase .
+
+mte:Voice a owl:Class ;
+        rdfs:subClassOf  olia-top:VoiceFeature .
+
+mte:WHType a owl:Class ;
+        owl:versionInfo  "no WHType in OLiA, hence not linked" .
+
+mte:WeakPronoun a owl:Class ;
+        rdfs:subClassOf  olia:WeakPersonalPronoun .
+
+mte:WithCourtesy a owl:Class ;
+        rdfs:subClassOf   olia:PoliteSecondPersonPronoun ;
+        owl:versionInfo  "I assume that Courtesy applies only to second persons in both MTE languages\n            with this feature, i.e., Slovene/Resian and Farsi" .
+
+mte:WithoutCourtesy a owl:Class ;
+        rdfs:subClassOf   olia:FamiliarSecondPersonPronoun ;
+        owl:versionInfo  "I assume that Courtesy applies only to second persons in both MTE languages\n            with this feature, i.e., Slovene/Resian and Farsi" .
+
+mte:WordsCoordinatingConjunction a owl:Class ;
+        rdfs:subClassOf  olia:CoordinatingConjunction ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:onProperty      [ a owl:ObjectProperty ;
+                                                 owl:inverseOf  olia:hasSource
+                                               ] ;
+                           owl:someValuesFrom  olia:hasWordConjunct
+                         ] ;
+        owl:versionInfo  "modelled as olia_top:Relation hasConjunct plus constraints on its\n            targets" .
+
+#################### Properties
+
+mte:hasAdjectiveFormation a owl:ObjectProperty .
+
+mte:hasAdpositionFormation a owl:ObjectProperty .
+
+mte:hasAnimacy a owl:ObjectProperty ;
+        rdfs:subPropertyOf  olia:hasAnimacy .
+
+mte:hasAspect a owl:ObjectProperty ;
+        rdfs:subPropertyOf  olia:hasAspect .
+
+mte:hasCase a owl:ObjectProperty ;
+        rdfs:subPropertyOf  olia:hasCase .
+
+mte:hasClitic a owl:ObjectProperty .
+
+mte:hasConjunctionFormation a owl:ObjectProperty .
+
+mte:hasDefiniteness a owl:ObjectProperty .
+
+mte:hasDegree a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasDegree .
+
+mte:hasFeature a owl:ObjectProperty ;
+        rdfs:subPropertyOf  olia-system:hasFeature .
+
+mte:hasFormation a owl:ObjectProperty .
+
+mte:hasGender a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasGender .
+
+mte:hasHumanness a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasAnimacy .
+
+mte:hasInterjectionFormation a owl:ObjectProperty .
+
+mte:hasModificationType a owl:ObjectProperty .
+
+mte:hasNegation a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasPolarity .
+
+mte:hasNumber a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasNumber .
+
+mte:hasNumeralForm a owl:ObjectProperty .
+
+mte:hasOwnedNumber a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasOwnedNumber .
+
+mte:hasOwnerGender a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasOwnerGender .
+
+mte:hasOwnerNumber a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasOwnerNumber .
+
+mte:hasOwnerPerson a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasOwnerPerson .
+
+mte:hasParticleFormation a owl:ObjectProperty .
+
+mte:hasPerson a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasPerson .
+
+mte:hasPolarity a owl:ObjectProperty .
+
+mte:hasPronounForm a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasStrength .
+
+mte:hasQuantifier a owl:ObjectProperty ;
+        owl:versionInfo  "check" .
+
+mte:hasStrength a owl:ObjectProperty .
+
+mte:hasSubCase a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasCase .
+
+mte:hasSyntacticFunction a owl:ObjectProperty .
+
+mte:hasSyntacticType a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasSyntacticFunction .
+
+mte:hasTense a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasTense .
+
+mte:hasTransitivity a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasValency .
+
+mte:hasValency a owl:ObjectProperty .
+
+mte:hasVerbForm a owl:ObjectProperty ;
+        owl:versionInfo  "linking could only be specified for finite verbs (olia:hasMood), for\n            infinite forms, VerbForm is represened in the olia taxonomy. hence\n            unlinked" .
+
+mte:hasVoice a owl:ObjectProperty ;
+        rdfs:subPropertyOf  mte:hasVoice .
+
+#################### External elements
+
+olia:Adverb a owl:Class .
+
+olia:AdverbialParticiple a owl:Class .
+
+olia:CliticElement a owl:Class .
+
+olia:Conjunction a owl:Class .
+
+olia:First a owl:Class .
+
+olia:Gerund a owl:Class .
+
+olia:Human a owl:Class .
+
+olia:ImperfectiveAspect a owl:Class .
+
+olia:InterrogativeAdverb a owl:Class .
+
+olia:InterrogativeDeterminer a owl:Class .
+
+olia:InterrogativePronoun a owl:Class .
+
+olia:Morpheme a owl:Class .
+
+olia:PerfectiveAspect a owl:Class .
+
+olia:RelativeAdverb a owl:Class .
+
+olia:RelativeDeterminer a owl:Class .
+
+olia:RelativePronoun a owl:Class .
+
+olia:Second a owl:Class .
+
+olia:Singular a owl:Class .
+
+olia:TenseFeature a owl:Class .
+
+olia:hasAnimacy a owl:ObjectProperty .
+
+olia:hasAspect a owl:ObjectProperty .
+
+olia:hasCase a owl:ObjectProperty .
+
+olia:hasSource a owl:ObjectProperty .
+
+olia-system:hasFeature a owl:ObjectProperty .

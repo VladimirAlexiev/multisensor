@@ -1,0 +1,125 @@
+@startuml
+hide empty attributes
+hide empty methods
+hide circle
+
+package "Frame instances & text" {
+  class "Header"
+  class AnnotationSet
+  class AnnotationStatus
+  class Corpus
+  class Document
+  class FullText
+  class Label
+  class Layer
+  class Sentence
+  class SubCorpus
+}
+package "Frame definitions" {
+  class Coreness
+  class Governor
+  class FEGroupRealization
+  class FERealization
+  class Frame
+  class FrameElement
+  class FrameElementCoreSet
+  class Lexeme
+  class LexicalUnit
+  class PartOfSpeech
+  class SemType
+  class SemTypeSet
+  class ValencePattern
+  class Valences
+  class ValenceUnit
+}
+
+"Header"             -down- Corpus
+"Header"             -down- Frame
+"Header"             -down- FullText
+"Header"             -down- LexicalUnit
+AnnotationSet        -down- AnnotationStatus
+AnnotationSet        -down- Frame
+AnnotationSet        -down- Governor
+AnnotationSet        -down- Layer
+Corpus               -down- Document
+Corpus               -down- Sentence
+Document             -down- Sentence
+FEGroupRealization   -down- FrameElement
+FERealization        -down- FrameElement
+Frame                -down- Frame
+Frame                -down- FrameElement
+Frame                -down- FrameElementCoreSet
+Frame                -left- LexicalUnit
+Frame                -down- SemType
+Frame                -down- SemTypeSet
+FrameElement         -down- Coreness
+FrameElement         -down- FrameElement
+FrameElementCoreSet  -down- FrameElement
+FullText             -down- Sentence
+Governor             -down- Valences
+Label                -down- FrameElement
+Layer                -down- Label
+Lexeme               -down- PartOfSpeech
+LexicalUnit          -down- FrameElement
+LexicalUnit          -down- Lexeme
+LexicalUnit          -down- PartOfSpeech
+LexicalUnit          -down- SemType
+LexicalUnit          -down- SemTypeSet
+SubCorpus            -down- LexicalUnit
+Valences             -up-   LexicalUnit
+SemType              -down- SemType
+SemTypeSet           -down- SemType
+Sentence             -down- AnnotationSet
+Sentence             -down- SubCorpus
+ValencePattern       -down- AnnotationSet
+ValencePattern       -up-   FEGroupRealization
+ValencePattern       -up-   FERealization
+ValencePattern       -down- ValenceUnit
+Valences             -down- FEGroupRealization
+Valences             -down- FERealization
+ValenceUnit          -down- FrameElement
+
+AnnotationSet       : creationDate dateTime
+AnnotationStatus    : owl:hasValue\l {Manual, Unannotated}
+Coreness            : owl:hasValue\l {Core, Core-Unexpressed,\l  Extra-thematic, Peripheral}
+Corpus              : name
+Document            : name
+FEGroupRealization  : total
+FERealization       : total
+Frame               : abbrev
+Frame               : createdBy integer
+Frame               : creationDate dateTime
+Frame               : definition
+Frame               : name
+FrameElement        : abbrev
+FrameElement        : createdBy integer
+FrameElement        : creationDate dateTime
+Governor            : lemma
+Governor            : type
+Label               : bgColor
+Label               : createdBy integer
+Label               : end
+Label               : fgColor
+Label               : name
+Label               : start
+Layer               : name
+Layer               : rank
+Lexeme              : breakBefore
+Lexeme              : headword
+Lexeme              : name
+Lexeme              : order
+LexicalUnit         : name
+LexicalUnit         : status
+PartOfSpeech        : owl:hasValue\l {Adjective, Adverb, Article,\l  C, ComplexConjunction, Interjections,\l  Noun, Numeral, Preposition, Pronoun,\l  SimpleConjunction, Verb}
+SemType             : abbrev
+SemType             : name
+Sentence            : aPos integer
+Sentence            : paragNo integer
+Sentence            : sentNo integer
+Sentence            : text
+SubCorpus           : name
+ValencePattern      : total
+ValenceUnit         : grammaticalFunction
+ValenceUnit         : phraseType
+
+@enduml

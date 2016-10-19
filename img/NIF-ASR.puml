@@ -1,0 +1,48 @@
+@startuml
+hide empty methods
+hide empty attributes
+hide circle
+skinparam classAttributeIconSize 0
+class ms_content_fb086c as "ms-content:fb086c"
+ms_content_fb086c : a foaf:Document
+class _http___blog_hgtv_com_terror_2014_09_08_video_ as "<http://blog.hgtv.com/terror/2014/09/08/video>"
+ms_content_fb086c --> _http___blog_hgtv_com_terror_2014_09_08_video_ : dct:hasPart
+ms_content_fb086c : dc:creator "John Smith"
+ms_content_fb086c : dc:date "2014-09-08T17:15:34.000+02:00"^^xsd:dateTime
+ms_content_fb086c : dct:source <http://blog.hgtv.com/terror/2014/09/08/article>
+_http___blog_hgtv_com_terror_2014_09_08_video_ : a dctype:MovingImage
+class ms_content__transcript0 as "ms-content:-transcript0"
+_http___blog_hgtv_com_terror_2014_09_08_video_ --> ms_content__transcript0 : ms:hasCaption
+_http___blog_hgtv_com_terror_2014_09_08_video_ : dc:format "video/mp4"
+class ms_content__transcript0_char_20_27 as "ms-content:-transcript0#char=20,27"
+ms_content__transcript0_char_20_27 : a nif:Word
+class ms_content__transcript0_char_0_27 as "ms-content:-transcript0#char=0,27"
+ms_content__transcript0_char_20_27 -up-> ms_content__transcript0_char_0_27 : nif:referenceContext
+class dbr_Germany as "dbr:Germany"
+ms_content__transcript0_char_20_27 --> dbr_Germany : its:taIdentRef
+ms_content__transcript0_char_20_27 : nif:anchorOf "Germany"
+ms_content__transcript0_char_20_27 : nif:beginIndex "20"^^xsd:nonNegativeInteger
+ms_content__transcript0_char_20_27 : nif:endIndex "27"^^xsd:nonNegativeInteger
+class ms_content_fb086c_char_17_24 as "ms-content:fb086c#char=17,24"
+ms_content_fb086c_char_17_24 : a nif:Word
+ms_content_fb086c_char_17_24 --> dbr_Germany : its:taIdentRef
+class ms_content_fb086c_char_0_24 as "ms-content:fb086c#char=0,24"
+ms_content_fb086c_char_17_24 -up-> ms_content_fb086c_char_0_24 : nif:referenceContext
+ms_content_fb086c_char_17_24 : nif:anchorOf "Germany"
+ms_content_fb086c_char_17_24 : nif:beginIndex "17"^^xsd:nonNegativeInteger
+ms_content_fb086c_char_17_24 : nif:endIndex "24"^^xsd:nonNegativeInteger
+ms_content__transcript0 : a dctype:Text
+ms_content__transcript0 : dc:format "text/vtt"
+dbr_Germany : a nerd:Location, dbo:Country
+dbr_Germany : foaf:name "Germany"
+ms_content__transcript0_char_0_27 : a nif:Context
+ms_content__transcript0_char_0_27 -up-> ms_content__transcript0 : nif:sourceUrl
+ms_content__transcript0_char_0_27 : nif:beginIndex "0"^^xsd:nonNegativeInteger
+ms_content__transcript0_char_0_27 : nif:endIndex "27"^^xsd:nonNegativeInteger
+ms_content__transcript0_char_0_27 : nif:isString "Transcript mentions Germany"
+ms_content_fb086c_char_0_24 : a nif:Context
+ms_content_fb086c_char_0_24 -up-> ms_content_fb086c : nif:sourceUrl
+ms_content_fb086c_char_0_24 : nif:beginIndex "0"^^xsd:nonNegativeInteger
+ms_content_fb086c_char_0_24 : nif:endIndex "24"^^xsd:nonNegativeInteger
+ms_content_fb086c_char_0_24 : nif:isString "Article mentions Germany"
+@enduml

@@ -1,0 +1,27 @@
+
+ms-distance-dat:ES-AT a qb:Observation;
+  qb:dataSet ms-distance:google-distance;
+  prop:geo eugeo:ES;
+  prop:partner eugeo:AT;
+  ms:distance ms-distance:ES-AT-2401185.                 
+
+ms-distance:ES-AT-2401185 
+  ms:distance 2401185;
+  rdfs:label "2,401 km";
+  ms:duration 79722;
+  ms:durationLabel "22 hours 9 mins".
+
+ms-distance-dat:ES-BE a qb:Observation;
+  qb:dataSet ms-distance:google-distance;
+  prop:geo eugeo:ES;
+  prop:partner eugeo:BE;
+  ms:distance ms-distance:ES-BE-1580489.         
+
+ms-distance:ES-BE-1580489 
+  ms:distance 1580489;
+  rdfs:label "1,580 km";
+  ms:duration 52262;
+  ms:durationLabel "14 hours 31 mins".
+
+##################
+qb:dataSet puml:arrow puml:up.

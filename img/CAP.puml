@@ -1,0 +1,28 @@
+@startuml
+hide empty methods
+hide empty attributes
+hide circle
+skinparam classAttributeIconSize 0
+class _http___data_multisensorproject_eu_CAP_123_ as "<http://data.multisensorproject.eu/CAP/123>"
+_http___data_multisensorproject_eu_CAP_123_ : a oa:Annotation
+class ms_content_e9c304 as "ms-content:e9c304"
+_http___data_multisensorproject_eu_CAP_123_ -up-> ms_content_e9c304 : oa:hasBody
+class ms_linking_similar as "ms:linking-similar"
+_http___data_multisensorproject_eu_CAP_123_ --> ms_linking_similar : oa:motivatedBy
+class _http___data_multisensorproject_eu_agent_CAP_ as "<http://data.multisensorproject.eu/agent/CAP>"
+_http___data_multisensorproject_eu_CAP_123_ --> _http___data_multisensorproject_eu_agent_CAP_ : oa:annotatedBy
+class ms_content_611047 as "ms-content:611047"
+_http___data_multisensorproject_eu_CAP_123_ -up-> ms_content_611047 : oa:hasBody
+_http___data_multisensorproject_eu_CAP_123_ : ms:score 1.645
+_http___data_multisensorproject_eu_CAP_123_ : oa:annotatedAt "2016-01-11T12:00:00"^^xsd:dateTime
+class _http___data_multisensorproject_eu_CAP_124_ as "<http://data.multisensorproject.eu/CAP/124>"
+_http___data_multisensorproject_eu_CAP_124_ : a oa:Annotation
+_http___data_multisensorproject_eu_CAP_124_ -up-> ms_content_e9c304 : oa:hasBody
+class ms_linking_contradictory as "ms:linking-contradictory"
+_http___data_multisensorproject_eu_CAP_124_ --> ms_linking_contradictory : oa:motivatedBy
+class ms_content_f5c719 as "ms-content:f5c719"
+_http___data_multisensorproject_eu_CAP_124_ -up-> ms_content_f5c719 : oa:hasBody
+_http___data_multisensorproject_eu_CAP_124_ --> _http___data_multisensorproject_eu_agent_CAP_ : oa:annotatedBy
+_http___data_multisensorproject_eu_CAP_124_ : ms:score 1.987
+_http___data_multisensorproject_eu_CAP_124_ : oa:annotatedAt "2016-01-12T12:00:00"^^xsd:dateTime
+@enduml

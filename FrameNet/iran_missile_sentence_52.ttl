@@ -1,0 +1,1284 @@
+@prefix nti:   <http://www.ontologydesignpatterns.org/ont/framenet/abox/nti__>.
+@prefix iran:  <http://www.ontologydesignpatterns.org/ont/framenet/abox/nti__iran_missile_fullTextAnnotation> .
+@base          <http://www.ontologydesignpatterns.org/ont/framenet/abox/nti__iran_missile_fullTextAnnotation_sentence_52_>.
+
+@prefix fe:    <http://www.ontologydesignpatterns.org/ont/framenet/abox/fe/> .
+@prefix fn:    <http://www.ontologydesignpatterns.org/ont/framenet/tbox/> .
+@prefix frame: <http://www.ontologydesignpatterns.org/ont/framenet/abox/frame/> .
+@prefix lu:    <http://www.ontologydesignpatterns.org/ont/framenet/abox/lu/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+iran:header_0 a fn:Header ;
+        fn:hasCorpDoc  iran:header_0_corpus_0 .
+
+iran:header_0_corpus_0 a fn:CorpDoc ;
+        fn:corpDoc_name  "NTI"^^xsd:string ;
+        fn:hasDocument   iran:header_0_corpus_0_document_0 ;
+        fn:corpDoc_ID    "134"^^xsd:string .
+
+iran:header_0_corpus_0_document_0 a fn:Document ;
+        fn:document_ID           "493"^^xsd:string ;
+        fn:document_description  "Iran_Missile"^^xsd:string .
+
+iran: a fn:FullTextAnnotation ;
+        fn:hasHeader    iran:header_0 ;
+        fn:hasSentence  iran:sentence_52 .
+
+iran:sentence_52 a fn:Sentence ;
+        fn:hasAnnotationSet    <annotationSet_10> , <annotationSet_2> , <annotationSet_4> , <annotationSet_14> , <annotationSet_12> , <annotationSet_6> , <annotationSet_8> , <annotationSet_18> , <annotationSet_16> ;
+        fn:sentenceInCorpDoc   nti:northkorea_nuclearcapabilities_fullTextAnnotation_header_0_corpus_0 , nti:syria_nuclearoverview_fullTextAnnotation_header_0_corpus_0 , nti:bwtutorial_chapter1_fullTextAnnotation_header_0_corpus_0 , nti:iran_biological_fullTextAnnotation_header_0_corpus_0 , nti:northkorea_chemicaloverview_fullTextAnnotation_header_0_corpus_0 , nti:chinaoverview_fullTextAnnotation_header_0_corpus_0 , nti:iran_nuclear_fullTextAnnotation_header_0_corpus_0 , nti:russia_introduction_fullTextAnnotation_header_0_corpus_0 , nti:southafrica_introduction_fullTextAnnotation_header_0_corpus_0 , nti:taiwan_introduction_fullTextAnnotation_header_0_corpus_0 , nti:workadvances_fullTextAnnotation_header_0_corpus_0 , nti:libyacountry1_fullTextAnnotation_header_0_corpus_0 , nti:kazakhstan_fullTextAnnotation_header_0_corpus_0 , nti:wmdnews_042106_fullTextAnnotation_header_0_corpus_0 , nti:iran_chemical_fullTextAnnotation_header_0_corpus_0 , nti:northkorea_introduction_fullTextAnnotation_header_0_corpus_0 , nti:iran_introduction_fullTextAnnotation_header_0_corpus_0 , nti:wmdnews_062606_fullTextAnnotation_header_0_corpus_0 , nti:northkorea_nuclearoverview_fullTextAnnotation_header_0_corpus_0 , iran:header_0_corpus_0 ;
+        fn:sentenceInDocument  iran:header_0_corpus_0_document_0 ;
+        fn:sentence_ID         "1271928"^^xsd:string ;
+        fn:sentence_aPos       "0"^^xsd:string ;
+        fn:sentence_paragNo    "10"^^xsd:string ;
+        fn:sentence_sentNo     "3"^^xsd:string ;
+        fn:text                "This project was focused on the development of a longer ranged ( 150 - 200 km ) and more heavily armed version of the Israeli Gabriel anti - ship missile ( not as sometimes reported with the development of a ballistic missile based upon Israeli Jericho surface - to - surface missile technology ) ."^^xsd:string .
+
+<annotationSet_2>
+        a                        fn:AnnotationSet ;
+        fn:annotationSet_ID      "1990538"^^xsd:string ;
+        fn:annotationSet_cDate   "02/25/2005 12:23:05 PST Fri"^^xsd:string ;
+        fn:annotationSet_status  "UNANN"^^xsd:string ;
+        fn:hasLayer              <annotationSet_2_layer_0> , <annotationSet_2_layer_2> , <annotationSet_2_layer_4> .
+
+<annotationSet_2_layer_0>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_2_layer_0_label_74> , <annotationSet_2_layer_0_label_14> , <annotationSet_2_layer_0_label_54> , <annotationSet_2_layer_0_label_106> , <annotationSet_2_layer_0_label_108> , <annotationSet_2_layer_0_label_18> , <annotationSet_2_layer_0_label_64> , <annotationSet_2_layer_0_label_44> , <annotationSet_2_layer_0_label_46> , <annotationSet_2_layer_0_label_4> , <annotationSet_2_layer_0_label_22> , <annotationSet_2_layer_0_label_90> , <annotationSet_2_layer_0_label_24> , <annotationSet_2_layer_0_label_92> , <annotationSet_2_layer_0_label_72> , <annotationSet_2_layer_0_label_58> , <annotationSet_2_layer_0_label_28> , <annotationSet_2_layer_0_label_80> , <annotationSet_2_layer_0_label_82> , <annotationSet_2_layer_0_label_62> , <annotationSet_2_layer_0_label_8> , <annotationSet_2_layer_0_label_96> , <annotationSet_2_layer_0_label_76> , <annotationSet_2_layer_0_label_78> , <annotationSet_2_layer_0_label_100> , <annotationSet_2_layer_0_label_86> , <annotationSet_2_layer_0_label_66> , <annotationSet_2_layer_0_label_32> , <annotationSet_2_layer_0_label_68> , <annotationSet_2_layer_0_label_34> , <annotationSet_2_layer_0_label_48> , <annotationSet_2_layer_0_label_38> , <annotationSet_2_layer_0_label_10> , <annotationSet_2_layer_0_label_12> , <annotationSet_2_layer_0_label_26> , <annotationSet_2_layer_0_label_52> , <annotationSet_2_layer_0_label_94> , <annotationSet_2_layer_0_label_104> , <annotationSet_2_layer_0_label_16> , <annotationSet_2_layer_0_label_42> , <annotationSet_2_layer_0_label_84> , <annotationSet_2_layer_0_label_30> , <annotationSet_2_layer_0_label_0> , <annotationSet_2_layer_0_label_2> , <annotationSet_2_layer_0_label_98> , <annotationSet_2_layer_0_label_20> , <annotationSet_2_layer_0_label_70> , <annotationSet_2_layer_0_label_50> , <annotationSet_2_layer_0_label_102> , <annotationSet_2_layer_0_label_88> , <annotationSet_2_layer_0_label_56> , <annotationSet_2_layer_0_label_36> , <annotationSet_2_layer_0_label_60> , <annotationSet_2_layer_0_label_40> , <annotationSet_2_layer_0_label_6> ;
+        fn:layer_name  "PENN"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_2_layer_0_label_0>
+        a               fn:Label ;
+        fn:label_end    "3"^^xsd:string ;
+        fn:label_name   "dt"^^xsd:string ;
+        fn:label_start  "0"^^xsd:string .
+
+<annotationSet_2_layer_0_label_2>
+        a               fn:Label ;
+        fn:label_end    "11"^^xsd:string ;
+        fn:label_name   "nn"^^xsd:string ;
+        fn:label_start  "5"^^xsd:string .
+
+<annotationSet_2_layer_0_label_4>
+        a               fn:Label ;
+        fn:label_end    "15"^^xsd:string ;
+        fn:label_name   "VBD"^^xsd:string ;
+        fn:label_start  "13"^^xsd:string .
+
+<annotationSet_2_layer_0_label_6>
+        a               fn:Label ;
+        fn:label_end    "23"^^xsd:string ;
+        fn:label_name   "VVN"^^xsd:string ;
+        fn:label_start  "17"^^xsd:string .
+
+<annotationSet_2_layer_0_label_8>
+        a               fn:Label ;
+        fn:label_end    "26"^^xsd:string ;
+        fn:label_name   "in"^^xsd:string ;
+        fn:label_start  "25"^^xsd:string .
+
+<annotationSet_2_layer_0_label_10>
+        a               fn:Label ;
+        fn:label_end    "30"^^xsd:string ;
+        fn:label_name   "dt"^^xsd:string ;
+        fn:label_start  "28"^^xsd:string .
+
+<annotationSet_2_layer_0_label_12>
+        a               fn:Label ;
+        fn:label_end    "42"^^xsd:string ;
+        fn:label_name   "nn"^^xsd:string ;
+        fn:label_start  "32"^^xsd:string .
+
+<annotationSet_2_layer_0_label_14>
+        a               fn:Label ;
+        fn:label_end    "45"^^xsd:string ;
+        fn:label_name   "in"^^xsd:string ;
+        fn:label_start  "44"^^xsd:string .
+
+<annotationSet_2_layer_0_label_16>
+        a               fn:Label ;
+        fn:label_end    "47"^^xsd:string ;
+        fn:label_name   "dt"^^xsd:string ;
+        fn:label_start  "47"^^xsd:string .
+
+<annotationSet_2_layer_0_label_18>
+        a               fn:Label ;
+        fn:label_end    "54"^^xsd:string ;
+        fn:label_name   "jjr"^^xsd:string ;
+        fn:label_start  "49"^^xsd:string .
+
+<annotationSet_2_layer_0_label_20>
+        a               fn:Label ;
+        fn:label_end    "61"^^xsd:string ;
+        fn:label_name   "VVN"^^xsd:string ;
+        fn:label_start  "56"^^xsd:string .
+
+<annotationSet_2_layer_0_label_22>
+        a               fn:Label ;
+        fn:label_end    "63"^^xsd:string ;
+        fn:label_name   "("^^xsd:string ;
+        fn:label_start  "63"^^xsd:string .
+
+<annotationSet_2_layer_0_label_24>
+        a               fn:Label ;
+        fn:label_end    "67"^^xsd:string ;
+        fn:label_name   "cd"^^xsd:string ;
+        fn:label_start  "65"^^xsd:string .
+
+<annotationSet_2_layer_0_label_26>
+        a               fn:Label ;
+        fn:label_end    "69"^^xsd:string ;
+        fn:label_name   ":"^^xsd:string ;
+        fn:label_start  "69"^^xsd:string .
+
+<annotationSet_2_layer_0_label_28>
+        a               fn:Label ;
+        fn:label_end    "73"^^xsd:string ;
+        fn:label_name   "cd"^^xsd:string ;
+        fn:label_start  "71"^^xsd:string .
+
+<annotationSet_2_layer_0_label_30>
+        a               fn:Label ;
+        fn:label_end    "76"^^xsd:string ;
+        fn:label_name   "nn"^^xsd:string ;
+        fn:label_start  "75"^^xsd:string .
+
+<annotationSet_2_layer_0_label_32>
+        a               fn:Label ;
+        fn:label_end    "78"^^xsd:string ;
+        fn:label_name   ")"^^xsd:string ;
+        fn:label_start  "78"^^xsd:string .
+
+<annotationSet_2_layer_0_label_34>
+        a               fn:Label ;
+        fn:label_end    "82"^^xsd:string ;
+        fn:label_name   "cc"^^xsd:string ;
+        fn:label_start  "80"^^xsd:string .
+
+<annotationSet_2_layer_0_label_36>
+        a               fn:Label ;
+        fn:label_end    "87"^^xsd:string ;
+        fn:label_name   "rbr"^^xsd:string ;
+        fn:label_start  "84"^^xsd:string .
+
+<annotationSet_2_layer_0_label_38>
+        a               fn:Label ;
+        fn:label_end    "95"^^xsd:string ;
+        fn:label_name   "rb"^^xsd:string ;
+        fn:label_start  "89"^^xsd:string .
+
+<annotationSet_2_layer_0_label_40>
+        a               fn:Label ;
+        fn:label_end    "101"^^xsd:string ;
+        fn:label_name   "VVN"^^xsd:string ;
+        fn:label_start  "97"^^xsd:string .
+
+<annotationSet_2_layer_0_label_42>
+        a               fn:Label ;
+        fn:label_end    "109"^^xsd:string ;
+        fn:label_name   "nn"^^xsd:string ;
+        fn:label_start  "103"^^xsd:string .
+
+<annotationSet_2_layer_0_label_44>
+        a               fn:Label ;
+        fn:label_end    "112"^^xsd:string ;
+        fn:label_name   "in"^^xsd:string ;
+        fn:label_start  "111"^^xsd:string .
+
+<annotationSet_2_layer_0_label_46>
+        a               fn:Label ;
+        fn:label_end    "116"^^xsd:string ;
+        fn:label_name   "dt"^^xsd:string ;
+        fn:label_start  "114"^^xsd:string .
+
+<annotationSet_2_layer_0_label_48>
+        a               fn:Label ;
+        fn:label_end    "124"^^xsd:string ;
+        fn:label_name   "jj"^^xsd:string ;
+        fn:label_start  "118"^^xsd:string .
+
+<annotationSet_2_layer_0_label_50>
+        a               fn:Label ;
+        fn:label_end    "132"^^xsd:string ;
+        fn:label_name   "NP"^^xsd:string ;
+        fn:label_start  "126"^^xsd:string .
+
+<annotationSet_2_layer_0_label_52>
+        a               fn:Label ;
+        fn:label_end    "137"^^xsd:string ;
+        fn:label_name   "nn"^^xsd:string ;
+        fn:label_start  "134"^^xsd:string .
+
+<annotationSet_2_layer_0_label_54>
+        a               fn:Label ;
+        fn:label_end    "139"^^xsd:string ;
+        fn:label_name   ":"^^xsd:string ;
+        fn:label_start  "139"^^xsd:string .
+
+<annotationSet_2_layer_0_label_56>
+        a               fn:Label ;
+        fn:label_end    "144"^^xsd:string ;
+        fn:label_name   "nn"^^xsd:string ;
+        fn:label_start  "141"^^xsd:string .
+
+<annotationSet_2_layer_0_label_58>
+        a               fn:Label ;
+        fn:label_end    "152"^^xsd:string ;
+        fn:label_name   "nn"^^xsd:string ;
+        fn:label_start  "146"^^xsd:string .
+
+<annotationSet_2_layer_0_label_60>
+        a               fn:Label ;
+        fn:label_end    "154"^^xsd:string ;
+        fn:label_name   "("^^xsd:string ;
+        fn:label_start  "154"^^xsd:string .
+
+<annotationSet_2_layer_0_label_62>
+        a               fn:Label ;
+        fn:label_end    "158"^^xsd:string ;
+        fn:label_name   "rb"^^xsd:string ;
+        fn:label_start  "156"^^xsd:string .
+
+<annotationSet_2_layer_0_label_64>
+        a               fn:Label ;
+        fn:label_end    "161"^^xsd:string ;
+        fn:label_name   "rb"^^xsd:string ;
+        fn:label_start  "160"^^xsd:string .
+
+<annotationSet_2_layer_0_label_66>
+        a               fn:Label ;
+        fn:label_end    "171"^^xsd:string ;
+        fn:label_name   "rb"^^xsd:string ;
+        fn:label_start  "163"^^xsd:string .
+
+<annotationSet_2_layer_0_label_68>
+        a               fn:Label ;
+        fn:label_end    "180"^^xsd:string ;
+        fn:label_name   "VVN"^^xsd:string ;
+        fn:label_start  "173"^^xsd:string .
+
+<annotationSet_2_layer_0_label_70>
+        a               fn:Label ;
+        fn:label_end    "185"^^xsd:string ;
+        fn:label_name   "in"^^xsd:string ;
+        fn:label_start  "182"^^xsd:string .
+
+<annotationSet_2_layer_0_label_72>
+        a               fn:Label ;
+        fn:label_end    "189"^^xsd:string ;
+        fn:label_name   "dt"^^xsd:string ;
+        fn:label_start  "187"^^xsd:string .
+
+<annotationSet_2_layer_0_label_74>
+        a               fn:Label ;
+        fn:label_end    "201"^^xsd:string ;
+        fn:label_name   "nn"^^xsd:string ;
+        fn:label_start  "191"^^xsd:string .
+
+<annotationSet_2_layer_0_label_76>
+        a               fn:Label ;
+        fn:label_end    "204"^^xsd:string ;
+        fn:label_name   "in"^^xsd:string ;
+        fn:label_start  "203"^^xsd:string .
+
+<annotationSet_2_layer_0_label_78>
+        a               fn:Label ;
+        fn:label_end    "206"^^xsd:string ;
+        fn:label_name   "dt"^^xsd:string ;
+        fn:label_start  "206"^^xsd:string .
+
+<annotationSet_2_layer_0_label_80>
+        a               fn:Label ;
+        fn:label_end    "216"^^xsd:string ;
+        fn:label_name   "jj"^^xsd:string ;
+        fn:label_start  "208"^^xsd:string .
+
+<annotationSet_2_layer_0_label_82>
+        a               fn:Label ;
+        fn:label_end    "224"^^xsd:string ;
+        fn:label_name   "nn"^^xsd:string ;
+        fn:label_start  "218"^^xsd:string .
+
+<annotationSet_2_layer_0_label_84>
+        a               fn:Label ;
+        fn:label_end    "230"^^xsd:string ;
+        fn:label_name   "VVN"^^xsd:string ;
+        fn:label_start  "226"^^xsd:string .
+
+<annotationSet_2_layer_0_label_86>
+        a               fn:Label ;
+        fn:label_end    "235"^^xsd:string ;
+        fn:label_name   "in"^^xsd:string ;
+        fn:label_start  "232"^^xsd:string .
+
+<annotationSet_2_layer_0_label_88>
+        a               fn:Label ;
+        fn:label_end    "243"^^xsd:string ;
+        fn:label_name   "jj"^^xsd:string ;
+        fn:label_start  "237"^^xsd:string .
+
+<annotationSet_2_layer_0_label_90>
+        a               fn:Label ;
+        fn:label_end    "251"^^xsd:string ;
+        fn:label_name   "NP"^^xsd:string ;
+        fn:label_start  "245"^^xsd:string .
+
+<annotationSet_2_layer_0_label_92>
+        a               fn:Label ;
+        fn:label_end    "259"^^xsd:string ;
+        fn:label_name   "nn"^^xsd:string ;
+        fn:label_start  "253"^^xsd:string .
+
+<annotationSet_2_layer_0_label_94>
+        a               fn:Label ;
+        fn:label_end    "261"^^xsd:string ;
+        fn:label_name   ":"^^xsd:string ;
+        fn:label_start  "261"^^xsd:string .
+
+<annotationSet_2_layer_0_label_96>
+        a               fn:Label ;
+        fn:label_end    "264"^^xsd:string ;
+        fn:label_name   "to"^^xsd:string ;
+        fn:label_start  "263"^^xsd:string .
+
+<annotationSet_2_layer_0_label_98>
+        a               fn:Label ;
+        fn:label_end    "266"^^xsd:string ;
+        fn:label_name   ":"^^xsd:string ;
+        fn:label_start  "266"^^xsd:string .
+
+<annotationSet_2_layer_0_label_100>
+        a               fn:Label ;
+        fn:label_end    "274"^^xsd:string ;
+        fn:label_name   "VV"^^xsd:string ;
+        fn:label_start  "268"^^xsd:string .
+
+<annotationSet_2_layer_0_label_102>
+        a               fn:Label ;
+        fn:label_end    "282"^^xsd:string ;
+        fn:label_name   "nn"^^xsd:string ;
+        fn:label_start  "276"^^xsd:string .
+
+<annotationSet_2_layer_0_label_104>
+        a               fn:Label ;
+        fn:label_end    "293"^^xsd:string ;
+        fn:label_name   "nn"^^xsd:string ;
+        fn:label_start  "284"^^xsd:string .
+
+<annotationSet_2_layer_0_label_106>
+        a               fn:Label ;
+        fn:label_end    "295"^^xsd:string ;
+        fn:label_name   ")"^^xsd:string ;
+        fn:label_start  "295"^^xsd:string .
+
+<annotationSet_2_layer_0_label_108>
+        a               fn:Label ;
+        fn:label_end    "297"^^xsd:string ;
+        fn:label_name   "sent"^^xsd:string ;
+        fn:label_start  "297"^^xsd:string .
+
+<annotationSet_2_layer_2>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_2_layer_2_label_10> , <annotationSet_2_layer_2_label_6> , <annotationSet_2_layer_2_label_2> , <annotationSet_2_layer_2_label_4> , <annotationSet_2_layer_2_label_0> , <annotationSet_2_layer_2_label_8> ;
+        fn:layer_name  "NER"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_2_layer_2_label_0>
+        a               fn:Label ;
+        fn:label_end    "251"^^xsd:string ;
+        fn:label_name   "person"^^xsd:string ;
+        fn:label_start  "245"^^xsd:string .
+
+<annotationSet_2_layer_2_label_2>
+        a               fn:Label ;
+        fn:label_end    "152"^^xsd:string ;
+        fn:label_name   "WEA"^^xsd:string ;
+        fn:label_start  "134"^^xsd:string .
+
+<annotationSet_2_layer_2_label_4>
+        a               fn:Label ;
+        fn:label_end    "243"^^xsd:string ;
+        fn:label_name   "location"^^xsd:string ;
+        fn:label_start  "237"^^xsd:string .
+
+<annotationSet_2_layer_2_label_6>
+        a               fn:Label ;
+        fn:label_end    "224"^^xsd:string ;
+        fn:label_name   "WEA"^^xsd:string ;
+        fn:label_start  "208"^^xsd:string .
+
+<annotationSet_2_layer_2_label_8>
+        a               fn:Label ;
+        fn:label_end    "132"^^xsd:string ;
+        fn:label_name   "person"^^xsd:string ;
+        fn:label_start  "126"^^xsd:string .
+
+<annotationSet_2_layer_2_label_10>
+        a               fn:Label ;
+        fn:label_end    "282"^^xsd:string ;
+        fn:label_name   "WEA"^^xsd:string ;
+        fn:label_start  "253"^^xsd:string .
+
+<annotationSet_2_layer_4>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_2_layer_4_label_42> , <annotationSet_2_layer_4_label_52> , <annotationSet_2_layer_4_label_40> , <annotationSet_2_layer_4_label_50> , <annotationSet_2_layer_4_label_24> , <annotationSet_2_layer_4_label_28> , <annotationSet_2_layer_4_label_34> , <annotationSet_2_layer_4_label_22> , <annotationSet_2_layer_4_label_32> , <annotationSet_2_layer_4_label_48> , <annotationSet_2_layer_4_label_16> , <annotationSet_2_layer_4_label_58> , <annotationSet_2_layer_4_label_14> , <annotationSet_2_layer_4_label_4> , <annotationSet_2_layer_4_label_8> , <annotationSet_2_layer_4_label_64> , <annotationSet_2_layer_4_label_20> , <annotationSet_2_layer_4_label_62> , <annotationSet_2_layer_4_label_30> , <annotationSet_2_layer_4_label_46> , <annotationSet_2_layer_4_label_56> , <annotationSet_2_layer_4_label_44> , <annotationSet_2_layer_4_label_12> , <annotationSet_2_layer_4_label_54> , <annotationSet_2_layer_4_label_6> , <annotationSet_2_layer_4_label_2> , <annotationSet_2_layer_4_label_10> , <annotationSet_2_layer_4_label_38> , <annotationSet_2_layer_4_label_26> , <annotationSet_2_layer_4_label_0> , <annotationSet_2_layer_4_label_36> , <annotationSet_2_layer_4_label_60> , <annotationSet_2_layer_4_label_18> ;
+        fn:layer_name  "WSL"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_2_layer_4_label_0>
+        a               fn:Label ;
+        fn:label_end    "3"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "0"^^xsd:string .
+
+<annotationSet_2_layer_4_label_10>
+        a               fn:Label ;
+        fn:label_end    "63"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "63"^^xsd:string .
+
+<annotationSet_2_layer_4_label_12>
+        a               fn:Label ;
+        fn:label_end    "67"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "65"^^xsd:string .
+
+<annotationSet_2_layer_4_label_14>
+        a               fn:Label ;
+        fn:label_end    "69"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "69"^^xsd:string .
+
+<annotationSet_2_layer_4_label_16>
+        a               fn:Label ;
+        fn:label_end    "73"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "71"^^xsd:string .
+
+<annotationSet_2_layer_4_label_18>
+        a               fn:Label ;
+        fn:label_end    "78"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "78"^^xsd:string .
+
+<annotationSet_2_layer_4_label_20>
+        a               fn:Label ;
+        fn:label_end    "82"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "80"^^xsd:string .
+
+<annotationSet_2_layer_4_label_22>
+        a               fn:Label ;
+        fn:label_end    "112"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "111"^^xsd:string .
+
+<annotationSet_2_layer_4_label_24>
+        a               fn:Label ;
+        fn:label_end    "116"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "114"^^xsd:string .
+
+<annotationSet_2_layer_4_label_26>
+        a               fn:Label ;
+        fn:label_end    "132"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "126"^^xsd:string .
+
+<annotationSet_2_layer_4_label_28>
+        a               fn:Label ;
+        fn:label_end    "139"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "139"^^xsd:string .
+
+<annotationSet_2_layer_4_label_2>
+        a               fn:Label ;
+        fn:label_end    "26"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "25"^^xsd:string .
+
+<annotationSet_2_layer_4_label_30>
+        a               fn:Label ;
+        fn:label_end    "154"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "154"^^xsd:string .
+
+<annotationSet_2_layer_4_label_32>
+        a               fn:Label ;
+        fn:label_end    "185"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "182"^^xsd:string .
+
+<annotationSet_2_layer_4_label_34>
+        a               fn:Label ;
+        fn:label_end    "189"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "187"^^xsd:string .
+
+<annotationSet_2_layer_4_label_36>
+        a               fn:Label ;
+        fn:label_end    "204"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "203"^^xsd:string .
+
+<annotationSet_2_layer_4_label_38>
+        a               fn:Label ;
+        fn:label_end    "206"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "206"^^xsd:string .
+
+<annotationSet_2_layer_4_label_40>
+        a               fn:Label ;
+        fn:label_end    "235"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "232"^^xsd:string .
+
+<annotationSet_2_layer_4_label_42>
+        a               fn:Label ;
+        fn:label_end    "251"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "245"^^xsd:string .
+
+<annotationSet_2_layer_4_label_44>
+        a               fn:Label ;
+        fn:label_end    "261"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "261"^^xsd:string .
+
+<annotationSet_2_layer_4_label_46>
+        a               fn:Label ;
+        fn:label_end    "264"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "263"^^xsd:string .
+
+<annotationSet_2_layer_4_label_48>
+        a               fn:Label ;
+        fn:label_end    "266"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "266"^^xsd:string .
+
+<annotationSet_2_layer_4_label_4>
+        a               fn:Label ;
+        fn:label_end    "30"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "28"^^xsd:string .
+
+<annotationSet_2_layer_4_label_50>
+        a               fn:Label ;
+        fn:label_end    "295"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "295"^^xsd:string .
+
+<annotationSet_2_layer_4_label_52>
+        a               fn:Label ;
+        fn:label_end    "297"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "297"^^xsd:string .
+
+<annotationSet_2_layer_4_label_54>
+        a               fn:Label ;
+        fn:label_end    "15"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "13"^^xsd:string .
+
+<annotationSet_2_layer_4_label_56>
+        a               fn:Label ;
+        fn:label_end    "87"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "84"^^xsd:string .
+
+<annotationSet_2_layer_4_label_58>
+        a               fn:Label ;
+        fn:label_end    "95"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "89"^^xsd:string .
+
+<annotationSet_2_layer_4_label_60>
+        a               fn:Label ;
+        fn:label_end    "158"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "156"^^xsd:string .
+
+<annotationSet_2_layer_4_label_62>
+        a               fn:Label ;
+        fn:label_end    "161"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "160"^^xsd:string .
+
+<annotationSet_2_layer_4_label_64>
+        a               fn:Label ;
+        fn:label_end    "171"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "163"^^xsd:string .
+
+<annotationSet_2_layer_4_label_6>
+        a               fn:Label ;
+        fn:label_end    "45"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "44"^^xsd:string .
+
+<annotationSet_2_layer_4_label_8>
+        a               fn:Label ;
+        fn:label_end    "47"^^xsd:string ;
+        fn:label_name   "NT"^^xsd:string ;
+        fn:label_start  "47"^^xsd:string .
+
+<annotationSet_4>
+        a                        fn:AnnotationSet ;
+        fn:annotationSetFrame    frame:Type ;
+        fn:annotationSetLU       lu:version.n ;
+        fn:annotationSet_ID      "1992834"^^xsd:string ;
+        fn:annotationSet_cDate   "03/11/2005 06:16:03 PST Fri"^^xsd:string ;
+        fn:annotationSet_status  "MANUAL"^^xsd:string ;
+        fn:hasLayer              <annotationSet_4_layer_2> , <annotationSet_4_layer_0> , <annotationSet_4_layer_6>, <annotationSet_4_layer_4> , <annotationSet_4_layer_8> , <annotationSet_4_layer_10> , <annotationSet_4_layer_12> .
+
+<annotationSet_4_layer_0>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_4_layer_0_label_0> ;
+        fn:layer_name  "Target"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_4_layer_0_label_0>
+        a               fn:Label ;
+        fn:label_cBy    "303"^^xsd:string ;
+        fn:label_end    "109"^^xsd:string ;
+        fn:label_name   "Target"^^xsd:string ;
+        fn:label_start  "103"^^xsd:string .
+
+<annotationSet_4_layer_2>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_4_layer_2_label_0> , <annotationSet_4_layer_2_label_2> , <annotationSet_4_layer_2_label_4> ;
+        fn:layer_name  "FE"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_4_layer_2_label_0>
+        a               fn:Label ;
+        fn:label_FE     fe:Type_Property.type ;
+        fn:label_cBy    "303"^^xsd:string ;
+        fn:label_end    "101"^^xsd:string ;
+        fn:label_name   "Type_Property"^^xsd:string ;
+        fn:label_start  "49"^^xsd:string .
+
+<annotationSet_4_layer_2_label_2>
+        a               fn:Label ;
+        fn:label_FE     fe:Category.type ;
+        fn:label_cBy    "303"^^xsd:string ;
+        fn:label_end    "152"^^xsd:string ;
+        fn:label_name   "Category"^^xsd:string ;
+        fn:label_start  "111"^^xsd:string .
+
+<annotationSet_4_layer_2_label_4>
+        a               fn:Label ;
+        fn:label_FE     fe:Subtype.type ;
+        fn:label_cBy    "303"^^xsd:string ;
+        fn:label_end    "109"^^xsd:string ;
+        fn:label_name   "Subtype"^^xsd:string ;
+        fn:label_start  "103"^^xsd:string .
+
+<annotationSet_4_layer_4>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_4_layer_4_label_0> , <annotationSet_4_layer_4_label_2> ;
+        fn:layer_name  "GF"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_4_layer_4_label_0>
+        a               fn:Label ;
+        fn:label_end    "101"^^xsd:string ;
+        fn:label_name   "Dep"^^xsd:string ;
+        fn:label_start  "49"^^xsd:string .
+
+<annotationSet_4_layer_4_label_2>
+        a               fn:Label ;
+        fn:label_end    "152"^^xsd:string ;
+        fn:label_name   "Dep"^^xsd:string ;
+        fn:label_start  "111"^^xsd:string .
+
+<annotationSet_4_layer_6>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_4_layer_6_label_0> , <annotationSet_4_layer_6_label_2> ;
+        fn:layer_name  "PT"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_4_layer_6_label_0>
+        a               fn:Label ;
+        fn:label_end    "101"^^xsd:string ;
+        fn:label_name   "AJP"^^xsd:string ;
+        fn:label_start  "49"^^xsd:string .
+
+<annotationSet_4_layer_6_label_2>
+        a               fn:Label ;
+        fn:label_end    "152"^^xsd:string ;
+        fn:label_name   "PP"^^xsd:string ;
+        fn:label_start  "111"^^xsd:string .
+
+<annotationSet_4_layer_8>
+        a              fn:Layer ;
+        fn:layer_name  "Other"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_4_layer_10>
+        a              fn:Layer ;
+        fn:layer_name  "Sent"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_4_layer_12>
+        a              fn:Layer ;
+        fn:layer_name  "Noun"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_6>
+        a                        fn:AnnotationSet ;
+        fn:annotationSetFrame    frame:Gizmo ;
+        fn:annotationSetLU       lu:technology.n ;
+        fn:annotationSet_ID      "1992837"^^xsd:string ;
+        fn:annotationSet_cDate   "03/11/2005 06:21:25 PST Fri"^^xsd:string ;
+        fn:annotationSet_status  "MANUAL"^^xsd:string ;
+        fn:hasLayer              <annotationSet_6_layer_4> , <annotationSet_6_layer_6> , <annotationSet_6_layer_10> , <annotationSet_6_layer_8> , <annotationSet_6_layer_12> , <annotationSet_6_layer_0> , <annotationSet_6_layer_2> .
+
+<annotationSet_6_layer_0>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_6_layer_0_label_0> ;
+        fn:layer_name  "Target"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_6_layer_0_label_0>
+        a               fn:Label ;
+        fn:label_cBy    "303"^^xsd:string ;
+        fn:label_end    "293"^^xsd:string ;
+        fn:label_name   "Target"^^xsd:string ;
+        fn:label_start  "284"^^xsd:string .
+
+<annotationSet_6_layer_2>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_6_layer_2_label_0> , <annotationSet_6_layer_2_label_2> ;
+        fn:layer_name  "FE"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_6_layer_2_label_0>
+        a               fn:Label ;
+        fn:label_FE     fe:Use.gizmo ;
+        fn:label_cBy    "303"^^xsd:string ;
+        fn:label_end    "282"^^xsd:string ;
+        fn:label_name   "Use"^^xsd:string ;
+        fn:label_start  "253"^^xsd:string .
+
+<annotationSet_6_layer_2_label_2>
+        a               fn:Label ;
+        fn:label_FE     fe:User.gizmo ;
+        fn:label_cBy    "303"^^xsd:string ;
+        fn:label_end    "243"^^xsd:string ;
+        fn:label_name   "User"^^xsd:string ;
+        fn:label_start  "237"^^xsd:string .
+
+<annotationSet_6_layer_4>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_6_layer_4_label_0> , <annotationSet_6_layer_4_label_2> ;
+        fn:layer_name  "GF"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_6_layer_4_label_0>
+        a               fn:Label ;
+        fn:label_end    "282"^^xsd:string ;
+        fn:label_name   "Dep"^^xsd:string ;
+        fn:label_start  "253"^^xsd:string .
+
+<annotationSet_6_layer_4_label_2>
+        a               fn:Label ;
+        fn:label_end    "243"^^xsd:string ;
+        fn:label_name   "Dep"^^xsd:string ;
+        fn:label_start  "237"^^xsd:string .
+
+<annotationSet_6_layer_6>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_6_layer_6_label_0> , <annotationSet_6_layer_6_label_2> ;
+        fn:layer_name  "PT"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_6_layer_6_label_0>
+        a               fn:Label ;
+        fn:label_end    "282"^^xsd:string ;
+        fn:label_name   "N"^^xsd:string ;
+        fn:label_start  "253"^^xsd:string .
+
+<annotationSet_6_layer_6_label_2>
+        a               fn:Label ;
+        fn:label_end    "243"^^xsd:string ;
+        fn:label_name   "AJP"^^xsd:string ;
+        fn:label_start  "237"^^xsd:string .
+
+<annotationSet_6_layer_8>
+        a              fn:Layer ;
+        fn:layer_name  "Other"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_6_layer_10>
+        a              fn:Layer ;
+        fn:layer_name  "Sent"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_6_layer_12>
+        a              fn:Layer ;
+        fn:layer_name  "Noun"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_8>
+        a                        fn:AnnotationSet ;
+        fn:annotationSetLU       lu:report.v ;
+        fn:annotationSet_ID      "1992838"^^xsd:string ;
+        fn:annotationSet_cDate   "03/11/2005 06:23:44 PST Fri"^^xsd:string ;
+        fn:annotationSet_status  "MANUAL"^^xsd:string ;
+        fn:hasLayer              <annotationSet_8_layer_10> , <annotationSet_8_layer_8> , <annotationSet_8_layer_2> , <annotationSet_8_layer_6> , <annotationSet_8_layer_4> , <annotationSet_8_layer_0> , <annotationSet_8_layer_12> .
+
+<annotationSet_8_layer_0>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_8_layer_0_label_0> ;
+        fn:layer_name  "Target"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_8_layer_0_label_0>
+        a               fn:Label ;
+        fn:label_cBy    "303"^^xsd:string ;
+        fn:label_end    "180"^^xsd:string ;
+        fn:label_name   "Target"^^xsd:string ;
+        fn:label_start  "173"^^xsd:string .
+
+<annotationSet_8_layer_2>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_8_layer_2_label_0> , <annotationSet_8_layer_2_label_2> ;
+        fn:layer_name  "FE"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_8_layer_2_label_0>
+        a               fn:Label ;
+        fn:label_FE     fe:Message.statement ;
+        fn:label_cBy    "303"^^xsd:string ;
+        fn:label_end    "293"^^xsd:string ;
+        fn:label_name   "Message"^^xsd:string ;
+        fn:label_start  "182"^^xsd:string .
+
+<annotationSet_8_layer_2_label_2>
+        a               fn:Label ;
+        fn:label_FE     fe:Speaker.statement ;
+        fn:label_cBy    "303"^^xsd:string ;
+        fn:label_itype  "CNI"^^xsd:string ;
+        fn:label_name   "Speaker"^^xsd:string .
+
+<annotationSet_8_layer_4>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_8_layer_4_label_0> ;
+        fn:layer_name  "GF"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_8_layer_4_label_0>
+        a               fn:Label ;
+        fn:label_end    "293"^^xsd:string ;
+        fn:label_name   "Dep"^^xsd:string ;
+        fn:label_start  "182"^^xsd:string .
+
+<annotationSet_8_layer_6>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_8_layer_6_label_0> ;
+        fn:layer_name  "PT"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_8_layer_6_label_0>
+        a               fn:Label ;
+        fn:label_end    "293"^^xsd:string ;
+        fn:label_name   "PP"^^xsd:string ;
+        fn:label_start  "182"^^xsd:string .
+
+<annotationSet_8_layer_8>
+        a              fn:Layer ;
+        fn:layer_name  "Other"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_8_layer_10>
+        a              fn:Layer ;
+        fn:layer_name  "Sent"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_8_layer_12>
+        a              fn:Layer ;
+        fn:layer_name  "Verb"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_10>
+        a                        fn:AnnotationSet ;
+        fn:annotationSetFrame    frame:Bearing_arms ;
+        fn:annotationSetLU       lu:armed.a ;
+        fn:annotationSet_ID      "1992840"^^xsd:string ;
+        fn:annotationSet_cDate   "03/14/2005 03:32:56 PST Mon"^^xsd:string ;
+        fn:annotationSet_status  "MANUAL"^^xsd:string ;
+        fn:hasLayer              <annotationSet_10_layer_8> , <annotationSet_10_layer_2> , <annotationSet_10_layer_12> , <annotationSet_10_layer_0> , <annotationSet_10_layer_10> , <annotationSet_10_layer_6> , <annotationSet_10_layer_4> .
+
+<annotationSet_10_layer_0>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_10_layer_0_label_0> ;
+        fn:layer_name  "Target"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_10_layer_0_label_0>
+        a               fn:Label ;
+        fn:label_cBy    "303"^^xsd:string ;
+        fn:label_end    "101"^^xsd:string ;
+        fn:label_name   "Target"^^xsd:string ;
+        fn:label_start  "97"^^xsd:string .
+
+<annotationSet_10_layer_2>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_10_layer_2_label_0> , <annotationSet_10_layer_2_label_2> ;
+        fn:layer_name  "FE"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_10_layer_2_label_0>
+        a               fn:Label ;
+        fn:label_FE     fe:Protagonist.bearing_arms ;
+        fn:label_cBy    "303"^^xsd:string ;
+        fn:label_end    "152"^^xsd:string ;
+        fn:label_name   "Protagonist"^^xsd:string ;
+        fn:label_start  "103"^^xsd:string .
+
+<annotationSet_10_layer_2_label_2>
+        a               fn:Label ;
+        fn:label_FE     fe:Degree.bearing_arms ;
+        fn:label_cBy    "303"^^xsd:string ;
+        fn:label_end    "95"^^xsd:string ;
+        fn:label_name   "Degree"^^xsd:string ;
+        fn:label_start  "84"^^xsd:string .
+
+<annotationSet_10_layer_4>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_10_layer_4_label_0> , <annotationSet_10_layer_4_label_2> ;
+        fn:layer_name  "GF"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_10_layer_4_label_0>
+        a               fn:Label ;
+        fn:label_end    "152"^^xsd:string ;
+        fn:label_name   "Dep"^^xsd:string ;
+        fn:label_start  "103"^^xsd:string .
+
+<annotationSet_10_layer_4_label_2>
+        a               fn:Label ;
+        fn:label_end    "95"^^xsd:string ;
+        fn:label_name   "Dep"^^xsd:string ;
+        fn:label_start  "84"^^xsd:string .
+
+<annotationSet_10_layer_6>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_10_layer_6_label_0> , <annotationSet_10_layer_6_label_2> ;
+        fn:layer_name  "PT"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_10_layer_6_label_0>
+        a               fn:Label ;
+        fn:label_end    "152"^^xsd:string ;
+        fn:label_name   "NP"^^xsd:string ;
+        fn:label_start  "103"^^xsd:string .
+
+<annotationSet_10_layer_6_label_2>
+        a               fn:Label ;
+        fn:label_end    "95"^^xsd:string ;
+        fn:label_name   "AVP"^^xsd:string ;
+        fn:label_start  "84"^^xsd:string .
+
+<annotationSet_10_layer_8>
+        a              fn:Layer ;
+        fn:layer_name  "Other"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_10_layer_10>
+        a              fn:Layer ;
+        fn:layer_name  "Sent"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_10_layer_12>
+        a              fn:Layer ;
+        fn:layer_name  "Adj"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_12>
+        a                        fn:AnnotationSet ;
+        fn:annotationSetFrame    frame:Project ;
+        fn:annotationSetLU       lu:project.n ;
+        fn:annotationSet_ID      "1992841"^^xsd:string ;
+        fn:annotationSet_cDate   "03/14/2005 03:35:06 PST Mon"^^xsd:string ;
+        fn:annotationSet_status  "UNANN"^^xsd:string ;
+        fn:hasLayer              <annotationSet_12_layer_6> , <annotationSet_12_layer_12> , <annotationSet_12_layer_4> , <annotationSet_12_layer_2> , <annotationSet_12_layer_10> , <annotationSet_12_layer_8> , <annotationSet_12_layer_0> .
+
+<annotationSet_12_layer_0>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_12_layer_0_label_0> ;
+        fn:layer_name  "Target"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_12_layer_0_label_0>
+        a               fn:Label ;
+        fn:label_cBy    "303"^^xsd:string ;
+        fn:label_end    "11"^^xsd:string ;
+        fn:label_name   "Target"^^xsd:string ;
+        fn:label_start  "5"^^xsd:string .
+
+<annotationSet_12_layer_10>
+        a              fn:Layer ;
+        fn:layer_name  "Sent"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_12_layer_12>
+        a              fn:Layer ;
+        fn:layer_name  "Noun"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_12_layer_2>
+        a              fn:Layer ;
+        fn:layer_name  "FE"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_12_layer_4>
+        a              fn:Layer ;
+        fn:layer_name  "GF"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_12_layer_6>
+        a              fn:Layer ;
+        fn:layer_name  "PT"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_12_layer_8>
+        a              fn:Layer ;
+        fn:layer_name  "Other"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_14>
+        a                        fn:AnnotationSet ;
+        fn:annotationSetFrame    frame:Cause_to_make_progress ;
+        fn:annotationSetLU       lu:development.n ;
+        fn:annotationSet_ID      "1995755"^^xsd:string ;
+        fn:annotationSet_cDate   "06/07/2005 10:34:33 PDT Tue"^^xsd:string ;
+        fn:annotationSet_status  "MANUAL"^^xsd:string ;
+        fn:hasLayer              <annotationSet_14_layer_12> , <annotationSet_14_layer_6> , <annotationSet_14_layer_2> , <annotationSet_14_layer_10> , <annotationSet_14_layer_0> , <annotationSet_14_layer_8> , <annotationSet_14_layer_4> .
+
+<annotationSet_14_layer_0>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_14_layer_0_label_0> ;
+        fn:layer_name  "Target"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_14_layer_0_label_0>
+        a               fn:Label ;
+        fn:label_cBy    "618"^^xsd:string ;
+        fn:label_end    "42"^^xsd:string ;
+        fn:label_name   "Target"^^xsd:string ;
+        fn:label_start  "32"^^xsd:string .
+
+<annotationSet_14_layer_10>
+        a              fn:Layer ;
+        fn:layer_name  "Sent"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_14_layer_12>
+        a              fn:Layer ;
+        fn:layer_name  "Noun"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_14_layer_2>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_14_layer_2_label_0> ;
+        fn:layer_name  "FE"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_14_layer_2_label_0>
+        a               fn:Label ;
+        fn:label_FE     fe:Project.cause_to_make_progress ;
+        fn:label_cBy    "618"^^xsd:string ;
+        fn:label_end    "152"^^xsd:string ;
+        fn:label_name   "Project"^^xsd:string ;
+        fn:label_start  "44"^^xsd:string .
+
+<annotationSet_14_layer_4>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_14_layer_4_label_0> ;
+        fn:layer_name  "GF"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_14_layer_4_label_0>
+        a               fn:Label ;
+        fn:label_end    "152"^^xsd:string ;
+        fn:label_name   "Dep"^^xsd:string ;
+        fn:label_start  "44"^^xsd:string .
+
+<annotationSet_14_layer_6>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_14_layer_6_label_0> ;
+        fn:layer_name  "PT"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_14_layer_6_label_0>
+        a               fn:Label ;
+        fn:label_end    "152"^^xsd:string ;
+        fn:label_name   "PP"^^xsd:string ;
+        fn:label_start  "44"^^xsd:string .
+
+<annotationSet_14_layer_8>
+        a              fn:Layer ;
+        fn:layer_name  "Other"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_16>
+        a                        fn:AnnotationSet ;
+        fn:annotationSetFrame    frame:Cause_to_make_progress ;
+        fn:annotationSetLU       lu:development.n ;
+        fn:annotationSet_ID      "2002548"^^xsd:string ;
+        fn:annotationSet_cDate   "05/01/2006 04:17:00 PDT Mon"^^xsd:string ;
+        fn:annotationSet_status  "MANUAL"^^xsd:string ;
+        fn:hasLayer              <annotationSet_16_layer_12> , <annotationSet_16_layer_2> , <annotationSet_16_layer_8> , <annotationSet_16_layer_0> , <annotationSet_16_layer_6> , <annotationSet_16_layer_10> , <annotationSet_16_layer_4> .
+
+<annotationSet_16_layer_0>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_16_layer_0_label_0> ;
+        fn:layer_name  "Target"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_16_layer_0_label_0>
+        a               fn:Label ;
+        fn:label_cBy    "618"^^xsd:string ;
+        fn:label_end    "42"^^xsd:string ;
+        fn:label_name   "Target"^^xsd:string ;
+        fn:label_start  "32"^^xsd:string .
+
+<annotationSet_16_layer_10>
+        a              fn:Layer ;
+        fn:layer_name  "Sent"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_16_layer_12>
+        a              fn:Layer ;
+        fn:layer_name  "Noun"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_16_layer_2>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_16_layer_2_label_0> , <annotationSet_16_layer_2_label_2> ;
+        fn:layer_name  "FE"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_16_layer_2_label_0>
+        a               fn:Label ;
+        fn:label_FE     fe:Project.cause_to_make_progress ;
+        fn:label_cBy    "618"^^xsd:string ;
+        fn:label_end    "152"^^xsd:string ;
+        fn:label_name   "Project"^^xsd:string ;
+        fn:label_start  "44"^^xsd:string .
+
+<annotationSet_16_layer_2_label_2>
+        a               fn:Label ;
+        fn:label_FE     fe:Agent.cause_to_make_progress ;
+        fn:label_cBy    "618"^^xsd:string ;
+        fn:label_itype  "INI"^^xsd:string ;
+        fn:label_name   "Agent"^^xsd:string .
+
+<annotationSet_16_layer_4>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_16_layer_4_label_0> ;
+        fn:layer_name  "GF"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_16_layer_4_label_0>
+        a               fn:Label ;
+        fn:label_end    "152"^^xsd:string ;
+        fn:label_name   "Dep"^^xsd:string ;
+        fn:label_start  "44"^^xsd:string .
+
+<annotationSet_16_layer_6>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_16_layer_6_label_0> ;
+        fn:layer_name  "PT"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_16_layer_6_label_0>
+        a               fn:Label ;
+        fn:label_end    "152"^^xsd:string ;
+        fn:label_name   "PP"^^xsd:string ;
+        fn:label_start  "44"^^xsd:string .
+
+<annotationSet_16_layer_8>
+        a              fn:Layer ;
+        fn:layer_name  "Other"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_18>
+        a                        fn:AnnotationSet ;
+        fn:annotationSetFrame    frame:Cause_to_make_progress ;
+        fn:annotationSetLU       lu:development.n ;
+        fn:annotationSet_ID      "2004850"^^xsd:string ;
+        fn:annotationSet_cDate   "07/13/2006 04:21:24 PDT Thu"^^xsd:string ;
+        fn:annotationSet_status  "MANUAL"^^xsd:string ;
+        fn:hasLayer              <annotationSet_18_layer_6> , <annotationSet_18_layer_8> , <annotationSet_18_layer_0> , <annotationSet_18_layer_10> , <annotationSet_18_layer_2> , <annotationSet_18_layer_12> , <annotationSet_18_layer_4> .
+
+<annotationSet_18_layer_0>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_18_layer_0_label_0> ;
+        fn:layer_name  "Target"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_18_layer_0_label_0>
+        a               fn:Label ;
+        fn:label_cBy    "618"^^xsd:string ;
+        fn:label_end    "201"^^xsd:string ;
+        fn:label_name   "Target"^^xsd:string ;
+        fn:label_start  "191"^^xsd:string .
+
+<annotationSet_18_layer_10>
+        a              fn:Layer ;
+        fn:layer_name  "Sent"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_18_layer_12>
+        a              fn:Layer ;
+        fn:layer_name  "Noun"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_18_layer_2>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_18_layer_2_label_0> ;
+        fn:layer_name  "FE"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_18_layer_2_label_0>
+        a               fn:Label ;
+        fn:label_FE     fe:Project.cause_to_make_progress ;
+        fn:label_cBy    "618"^^xsd:string ;
+        fn:label_end    "293"^^xsd:string ;
+        fn:label_name   "Project"^^xsd:string ;
+        fn:label_start  "203"^^xsd:string .
+
+<annotationSet_18_layer_4>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_18_layer_4_label_0> ;
+        fn:layer_name  "GF"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_18_layer_4_label_0>
+        a               fn:Label ;
+        fn:label_end    "293"^^xsd:string ;
+        fn:label_name   "Dep"^^xsd:string ;
+        fn:label_start  "203"^^xsd:string .
+
+<annotationSet_18_layer_6>
+        a              fn:Layer ;
+        fn:hasLabel    <annotationSet_18_layer_6_label_0> ;
+        fn:layer_name  "PT"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .
+
+<annotationSet_18_layer_6_label_0>
+        a               fn:Label ;
+        fn:label_end    "293"^^xsd:string ;
+        fn:label_name   "PP"^^xsd:string ;
+        fn:label_start  "203"^^xsd:string .
+
+<annotationSet_18_layer_8>
+        a              fn:Layer ;
+        fn:layer_name  "Other"^^xsd:string ;
+        fn:layer_rank  "1"^^xsd:string .

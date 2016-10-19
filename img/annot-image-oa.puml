@@ -1,0 +1,46 @@
+@startuml
+hide empty methods
+hide empty attributes
+hide circle
+skinparam classAttributeIconSize 0
+class ms_annot_1234153426_Concepts3_Or_More_People as "ms-annot:1234153426-Concepts3_Or_More_People"
+ms_annot_1234153426_Concepts3_Or_More_People : a oa:SemanticTag
+class ms_concept_Concepts3_Or_More_People as "ms-concept:Concepts3_Or_More_People"
+ms_annot_1234153426_Concepts3_Or_More_People --> ms_concept_Concepts3_Or_More_People : skos:related
+ms_annot_1234153426_Concepts3_Or_More_People : ms:confidence 0.731893
+class ms_annot_1234153426_Amateur_Video as "ms-annot:1234153426-Amateur_Video"
+ms_annot_1234153426_Amateur_Video : a oa:SemanticTag
+class ms_concept_Amateur_Video as "ms-concept:Amateur_Video"
+ms_annot_1234153426_Amateur_Video --> ms_concept_Amateur_Video : skos:related
+ms_annot_1234153426_Amateur_Video : ms:confidence 0.884379
+class ms_annot_1234153426_Armed_Person as "ms-annot:1234153426-Armed_Person"
+ms_annot_1234153426_Armed_Person : a oa:SemanticTag
+class ms_concept_Armed_Person as "ms-concept:Armed_Person"
+ms_annot_1234153426_Armed_Person --> ms_concept_Armed_Person : skos:related
+ms_annot_1234153426_Armed_Person : ms:confidence 0.35975
+class _http___data_multisensorproject_eu_agent_imageAnnotator_ as "<http://data.multisensorproject.eu/agent/imageAnnotator>"
+_http___data_multisensorproject_eu_agent_imageAnnotator_ : a prov:SoftwareAgent
+_http___data_multisensorproject_eu_agent_imageAnnotator_ : foaf:name "CERTH Image Annotator v1.0"
+ms_concept_Armed_Person : a skos:Concept, oa:SemanticTag
+class ms_concept_ as "ms-concept:"
+ms_concept_Armed_Person --> ms_concept_ : skos:inScheme
+ms_concept_Armed_Person : skos:prefLabel "Armed Person"
+ms_concept_Concepts3_Or_More_People : a skos:Concept
+ms_concept_Concepts3_Or_More_People --> ms_concept_ : skos:inScheme
+ms_concept_Concepts3_Or_More_People : skos:prefLabel "Concepts: 3 or More People"
+class _http___images_zeit_de_____540x304_jpg_ as "<http://images.zeit.de/...-540x304.jpg>"
+_http___images_zeit_de_____540x304_jpg_ : a dctype:Image
+_http___images_zeit_de_____540x304_jpg_ : dc:format "image/jpeg"
+ms_concept_Amateur_Video : a skos:Concept, oa:SemanticTag
+ms_concept_Amateur_Video --> ms_concept_ : skos:inScheme
+ms_concept_Amateur_Video : skos:prefLabel "Amateur Video"
+class ms_annot_1234153426 as "ms-annot:1234153426"
+ms_annot_1234153426 : a oa:Annotation
+ms_annot_1234153426 --> ms_annot_1234153426_Armed_Person : oa:hasBody
+ms_annot_1234153426 -right-> _http___data_multisensorproject_eu_agent_imageAnnotator_ : oa:annotatedBy
+ms_annot_1234153426 --> ms_annot_1234153426_Concepts3_Or_More_People : oa:hasBody
+ms_annot_1234153426 -left-> _http___images_zeit_de_____540x304_jpg_ : oa:hasTarget
+ms_annot_1234153426 --> ms_annot_1234153426_Amateur_Video : oa:hasBody
+ms_annot_1234153426 : oa:annotatedAt "2015-10-01T12:34:56"^^xsd:dateTime
+ms_annot_1234153426 : oa:motivatedBy oa:tagging
+@enduml

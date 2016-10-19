@@ -1,0 +1,122 @@
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix nif:   <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> .
+@prefix itsrdf: <http://www.w3.org/2005/11/its/rdf#> .
+@prefix yago:  <http://dbpedia.org/class/yago/> .
+@prefix schema: <http://schema.org/> .
+@prefix nerd:  <http://nerd.eurecom.fr/ontology#> .
+@prefix olia:  <http://purl.org/olia/olia.owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time:  <http://www.w3.org/2006/time#> .
+@prefix dbo:   <http://dbpedia.org/ontology/> .
+@prefix rdau:  <http://rdaregistry.info/Elements/u/> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix dbp:   <http://dbpedia.org/resource/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.multisensor.eu/test-in.txt#char=36,45>
+        a             nif:Word ;
+        nif:anchorOf  "moonlight" .
+
+<http://www.multisensor.eu/test-in.txt#char=104,105>
+        a             nif:Word ;
+        nif:anchorOf  "." .
+
+<http://www.multisensor.eu/test-in.txt#char=94,104>
+        a             nif:Word ;
+        nif:anchorOf  "University" .
+
+<http://www.multisensor.eu/test-in.txt#char=45,46>
+        a             nif:Word ;
+        nif:anchorOf  "." .
+
+<http://www.multisensor.eu/test-in.txt#char=20,28>
+        a             nif:Word ;
+        nif:anchorOf  "Lochtown" .
+
+<http://www.multisensor.eu/test-in.txt#char=54,63>
+        a             nif:Word ;
+        nif:anchorOf  "impressed" .
+
+<http://www.multisensor.eu/test-in.txt#char=67,70>
+        a             nif:Word ;
+        nif:anchorOf  "the" .
+
+<http://www.multisensor.eu/test-in.txt#char=86,93>
+        a             nif:Word ;
+        nif:anchorOf  "Münster" .
+
+<http://www.multisensor.eu/test-in.txt#char=64,66>
+        a             nif:Word ;
+        nif:anchorOf  "by" .
+
+<http://www.multisensor.eu/test-in.txt#char=29,31>
+        a             nif:Word ;
+        nif:anchorOf  "in" .
+
+<http://www.multisensor.eu/test-in.txt#char=47,105>
+        a             nif:Sentence ;
+        nif:anchorOf  "He was impressed by the skyline of the Münster University." .
+
+<http://www.multisensor.eu/test-in.txt#char=82,85>
+        a             nif:Word ;
+        nif:anchorOf  "the" .
+
+<http://www.multisensor.eu/test-in.txt#char=104,0>
+        a                  nif:Phrase ;
+        nif:anchorOf       "Münster University" ;
+        itsrdf:taClassRef  nerd:Organization ;
+        itsrdf:taIdentRef  <http://www.multisensor.eu/entities#Organization=Münster_University> .
+
+<http://www.multisensor.eu/test-in.txt>
+        a             foaf:Document ;
+        dct:language  "http://www.lexvo.org/page/iso639-3/eng" .
+
+<http://www.multisensor.eu/test-in.txt#char=32,35>
+        a             nif:Word ;
+        nif:anchorOf  "the" .
+
+<http://www.multisensor.eu/test-in.txt#char=0,46>
+        a             nif:Sentence ;
+        nif:anchorOf  "Peter Valistzky saw Lochtown in the moonlight." .
+
+<http://www.multisensor.eu/test-in.txt#char=16,19>
+        a             nif:Word ;
+        nif:anchorOf  "saw" .
+
+<http://www.multisensor.eu/test-in.txt#char=50,53>
+        a             nif:Word ;
+        nif:anchorOf  "was" .
+
+<http://www.multisensor.eu/test-in.txt#char=47,49>
+        a             nif:Word ;
+        nif:anchorOf  "He" .
+
+<http://www.multisensor.eu/test-in.txt#char=0,5>
+        a             nif:Word ;
+        nif:anchorOf  "Peter" .
+
+<http://www.multisensor.eu/test-in.txt#char=71,78>
+        a             nif:Word ;
+        nif:anchorOf  "skyline" .
+
+<http://www.multisensor.eu/test-in.txt#char=28,0>
+        a                  nif:Phrase ;
+        nif:anchorOf       "Lochtown" ;
+        itsrdf:taClassRef  nerd:Location ;
+        itsrdf:taIdentRef  <http://www.multisensor.eu/entities#Location=Lochtown> .
+
+<http://www.multisensor.eu/test-in.txt#char=15,0>
+        a                  nif:Phrase ;
+        nif:anchorOf       "Peter Valistzky" ;
+        itsrdf:taClassRef  nerd:Person ;
+        itsrdf:taIdentRef  <http://www.multisensor.eu/entities#Person=Peter_Valistzky> .
+
+<http://www.multisensor.eu/test-in.txt#char=6,15>
+        a             nif:Word ;
+        nif:anchorOf  "Valistzky" .
+
+<http://www.multisensor.eu/test-in.txt#char=79,81>
+        a             nif:Word ;
+        nif:anchorOf  "of" .

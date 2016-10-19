@@ -1,0 +1,183 @@
+
+@base <http://example.com/blog/1/> .
+<#char=0,47> a nif:Context; # the complete text
+  nif:isString "Germany is the work horse of the European Union";
+  nif:sourceUrl <>.
+
+<#char=0,7>   a nif:RFC5147String; nif:referenceContext <#char=0,47>;
+  nif:beginIndex "0"^^xsd:nonNegativeInteger;  nif:endIndex "7"^^xsd:nonNegativeInteger.
+<#char=8,10>  a nif:RFC5147String; nif:referenceContext <#char=0,47>;
+  nif:beginIndex "8"^^xsd:nonNegativeInteger;  nif:endIndex "10"^^xsd:nonNegativeInteger.
+<#char=11,14> a nif:RFC5147String; nif:referenceContext <#char=0,47>;
+  nif:beginIndex "11"^^xsd:nonNegativeInteger; nif:endIndex "14"^^xsd:nonNegativeInteger.
+<#char=15,19> a nif:RFC5147String; nif:referenceContext <#char=0,47>;
+  nif:beginIndex "15"^^xsd:nonNegativeInteger; nif:endIndex "19"^^xsd:nonNegativeInteger.
+<#char=20,25> a nif:RFC5147String; nif:referenceContext <#char=0,47>;
+  nif:beginIndex "20"^^xsd:nonNegativeInteger; nif:endIndex "25"^^xsd:nonNegativeInteger.
+<#char=26,28> a nif:RFC5147String; nif:referenceContext <#char=0,47>;
+  nif:beginIndex "26"^^xsd:nonNegativeInteger; nif:endIndex "28"^^xsd:nonNegativeInteger.
+<#char=29,32> a nif:RFC5147String; nif:referenceContext <#char=0,47>;
+  nif:beginIndex "29"^^xsd:nonNegativeInteger; nif:endIndex "32"^^xsd:nonNegativeInteger.
+<#char=33,41> a nif:RFC5147String; nif:referenceContext <#char=0,47>;
+  nif:beginIndex "33"^^xsd:nonNegativeInteger; nif:endIndex "41"^^xsd:nonNegativeInteger.
+<#char=42,47> a nif:RFC5147String; nif:referenceContext <#char=0,47>;
+  nif:beginIndex "42"^^xsd:nonNegativeInteger; nif:endIndex "47"^^xsd:nonNegativeInteger.
+
+<#char=15,25> a nif:RFC5147String; nif:referenceContext <#char=0,47>;
+  nif:beginIndex "15"^^xsd:nonNegativeInteger; nif:endIndex "25"^^xsd:nonNegativeInteger.
+<#char=33,47> a nif:RFC5147String; nif:referenceContext <#char=0,47>;
+  nif:beginIndex "33"^^xsd:nonNegativeInteger; nif:endIndex "47"^^xsd:nonNegativeInteger.
+
+<#char=0,47>  owl:sameAs <#ROOT-0>.
+<#char=0,7>   owl:sameAs <#Germany-1>.
+<#char=8,10>  owl:sameAs <#is-2>.
+<#char=11,14> owl:sameAs <#the-3>.
+<#char=15,19> owl:sameAs <#work-4>.
+<#char=20,25> owl:sameAs <#horse-5>.
+<#char=26,28> owl:sameAs <#of-6>.
+<#char=29,32> owl:sameAs <#the-7>.
+<#char=33,41> owl:sameAs <#European-8>.
+<#char=42,47> owl:sameAs <#Union-9>.
+<#char=15,25> owl:sameAs <#work-horse>.
+<#char=33,47> owl:sameAs <#European-Union>.
+
+<#ROOT-0> a nif:Sentence. # no nif:anchorOf because it already has the mandatory subprop nif:isString
+<#Germany-1>      nif:anchorOf "Germany";        a nif:Word.
+<#is-2>           nif:anchorOf "is";             a nif:Word.
+<#the-3>          nif:anchorOf "the";            a nif:Word.
+<#work-4>         nif:anchorOf "work";           a nif:Word.
+<#horse-5>        nif:anchorOf "horse";          a nif:Word.
+<#of-6>           nif:anchorOf "of";             a nif:Word.
+<#the-7>          nif:anchorOf "the";            a nif:Word.
+<#European-8>     nif:anchorOf "European";       a nif:Word.
+<#Union-9>        nif:anchorOf "Union";          a nif:Word.
+<#work-horse>     nif:anchorOf "work horse";     a nif:Phrase.
+<#European-Union> nif:anchorOf "European Union"; a nif:Phrase.
+
+############################## Stemming/Lemmatization
+<#Germany-1>    nif:lemma "Germany". # same for all words, except:
+<#European-8>   nif:lemma "Europe".
+
+# For a more interesting example, let's assume there's a 10th word "favourite".
+<#favourite-10> nif:stem  "favourit". # Snowball Stemmer
+<#favourite-10> nif:lemma "favorite". # Stanford Core NLP
+
+<#Germany-1>   nif:oliaLink penn:NNP; nif:oliaCategory penn:ProperNoun.
+<#is-2>        nif:oliaLink penn:VBZ; nif:oliaCategory penn:BePresentTense.
+<#the-3>       nif:oliaLink penn:DT;  nif:oliaCategory penn:Determiner.
+<#work-4>      nif:oliaLink penn:NN;  nif:oliaCategory penn:CommonNoun. # POS is NN, but the syntactic role is Adjective
+<#horse-5>     nif:oliaLink penn:NN;  nif:oliaCategory penn:CommonNoun.
+<#of-6>        nif:oliaLink penn:IN;  nif:oliaCategory penn:PrepositionOrSubordinatingConjunction.
+<#the-7>       nif:oliaLink penn:DT;  nif:oliaCategory penn:Determiner.
+<#European-8>  nif:oliaLink penn:NNP; nif:oliaCategory penn:ProperNoun.
+<#Union-9>     nif:oliaLink penn:NNP; nif:oliaCategory penn:ProperNoun.
+
+<#Germany-1>   nif:oliaCategory olia:ProperNoun.
+<#is-2>        nif:oliaCategory [owl:unionOf (olia:FiniteVerb olia:StrictAuxiliaryVerb)],
+                             [a owl:Restriction; owl:onProperty olia:hasTense; owl:allValuesFrom olia:Present].
+<#the-3>       nif:oliaCategory penn:Determiner. # "Not clear whether this corresponds to OLiA/EAGLES determiners"
+<#work-4>      nif:oliaCategory olia:CommonNoun.
+<#horse-5>     nif:oliaCategory olia:CommonNoun.
+<#of-6>        nif:oliaCategory [owl:unionOf (olia:Preposition olia:SubordinatingConjunction)].
+<#the-7>       nif:oliaCategory penn:Determiner. # "Not clear whether this corresponds to OLiA/EAGLES determiners"
+<#European-8>  nif:oliaCategory olia:ProperNoun.
+<#Union-9>     nif:oliaCategory olia:ProperNoun.
+
+<#is-2> a olia:Verb;
+  olia:hasTense ms:VerySpecialPresentTense.
+ms:VerySpecialPresentTense a olia:Present, olia:Tense.
+
+<#horse-5> nif:dependency <#Germany-1>.  <#Germany-1>  a stanford:NominalSubject.
+<#horse-5> nif:dependency <#is-2>.       <#is-2>       a stanford:Copula.
+<#horse-5> nif:dependency <#the-3>.      <#the-3>      a stanford:Determiner.
+<#horse-5> nif:dependency <#work-4>.     <#work-4>     a stanford:NounCompoundModifier.
+<#ROOT-0>  nif:dependency <#horse-5>.    <#horse-5>    a stanford:Root.
+<#horse-5> nif:dependency <#of-6>.       <#of-6>       a stanford:PrepositionalModifier.
+<#Union-9> nif:dependency <#the-7>.      <#the-7>      a stanford:Determiner.
+<#Union-9> nif:dependency <#European-8>. <#European-8> a stanford:AdjectivalModifier.
+<#of-6>    nif:dependency <#Union-9>.    <#Union-9>    a stanford:ObjectOfPreposition.
+
+<#nsubj(horse-5,Germany-1)> a olia:Relation, stanford:NominalSubject;        olia:hasSource <#horse-5>; olia:hasTarget <#Germany-1>.
+<#cop(horse-5,is-2)>        a olia:Relation, stanford:Copula;                olia:hasSource <#horse-5>; olia:hasTarget <#is-2>.
+<#det(horse-5,the-3)>       a olia:Relation, stanford:Determiner;            olia:hasSource <#horse-5>; olia:hasTarget <#the-3>.
+<#nn(horse-5,work-4)>       a olia:Relation, stanford:NounCompoundModifier;  olia:hasSource <#horse-5>; olia:hasTarget <#work-4>.
+<#root(ROOT-0,horse-5)>     a olia:Relation, stanford:Root;                  olia:hasSource <#ROOT-0>;  olia:hasTarget <#horse-5>.
+<#prep(horse-5,of-6)>       a olia:Relation, stanford:PrepositionalModifier; olia:hasSource <#horse-5>; olia:hasTarget <#of-6>.
+<#det(Union-9,the-7)>       a olia:Relation, stanford:Determiner;            olia:hasSource <#Union-9>; olia:hasTarget <#the-7>.
+<#amod(Union-9,European-8)> a olia:Relation, stanford:AdjectivalModifier;    olia:hasSource <#Union-9>; olia:hasTarget <#European-8>.
+<#pobj(of-6,Union-9)>       a olia:Relation, stanford:ObjectOfPreposition;   olia:hasSource <#of-6>;    olia:hasTarget <#Union-9>.
+
+<#Germany-1>      its:taClassRef nerd:Country.
+<#European-Union> its:taClassRef nerd:Country. # or AdministrativeRegion or Location
+
+<#work-horse>     its:taIdentRef
+  <http://wordnet-rdf.princeton.edu/wn31/104608649-n>, bn:s00081596n.
+<#Germany-1>      its:taIdentRef dbr:Germany.
+<#European-Union> its:taIdentRef dbr:European_union.
+
+dbr:European_union a dbo:Country, dbo:Place, dbo:PopulatedPlace, yago:G20Nations, yago:InternationalOrganizationsOfEurope. # etc
+dbr:Germany        a dbo:Country, dbo:Place, dbo:PopulatedPlace, yago:FederalCountries, yago:EuropeanUnionMemberEconomies. # etc
+
+<#Germany-1> a nif:Word;
+  its:taIdentRef dbr:Germany;
+  nif-ann:provenance <http://linguatec.com>;
+  nif-ann:confidence "0.9"^^xsd:double;
+  nif-ann:annotationUnit <#Germany-1-annot-Babelnet>.
+
+<#Germany-1-annot-Babelnet> a nif-ann:AnnotationUnit;
+  its:taIdentRef bn:sTODO;
+  nif-ann:provenance <http://babelfy.org/>;
+  nif-ann:confidence "1.0"^^xsd:double.
+
+<comment/1> a sioc:Post;
+  sioc:reply_of <>;
+  sioc:has_creator <http://example.com/users/Hans>;
+  sioc:content "Yes, we Germans are the hardest-working people in the world".
+<comment/2> a sioc:Post;
+  sioc:reply_of <>;
+  sioc:has_creator <http://example.com/users/Dimitrios>;
+  sioc:content "Bullshit! We Greeks are harder-working".
+
+<opinion/1> a marl:Opinion;
+  marl:extractedFrom <comment/1>;
+  marl:describesObject <>;
+  marl:opinionText "Yes";
+  marl:polarityValue 0.9;
+  marl:minPolarityValue -1;
+  marl:maxPolarityValue 1;
+  marl:hasPolarity marl:Positive.
+<opinion/2> a marl:Opinion;
+  marl:extractedFrom <comment/2>;
+  marl:describesObject <>;
+  marl:opinionText "Bullshit!";
+  marl:polarityValue -1;
+  marl:minPolarityValue -1;
+  marl:maxPolarityValue 1;
+  marl:hasPolarity marl:Negative.
+
+<opinions> a marl:AggregatedOpinion;
+  marl:describesObject <>;
+  marl:aggregatesOpinion <opinion/1>, <opinion/2>; # can skip
+  marl:opinionCount 2;
+  marl:positiveOpinionsCount 1; # sic, this property is spelled in plural
+  marl:negativeOpinionCount 1;
+  marl:polarityValue -0.05; # simple average
+  marl:minPolarityValue -1;
+  marl:maxPolarityValue 1;
+  marl:hasPolarity marl:Neutral.
+
+<comment/1#char=0,> a nif:Context;
+  nif:sourceUrl <comment/1>;
+  nif:isString "Yes, we Germans are the hardest-working people in the world".
+<comment/1#char=0,3> a nif:String;
+  nif:referenceContext <comment/1#char=0,>;
+  nif:anchorOf "Yes";
+  nif:opinion <opinion/1>.
+
+<comment/2#char=0,> a nif:Context;
+  nif:sourceUrl <comment/2>;
+  nif:isString "Bullshit! We Greeks are harder-working".
+<comment/2#char=0,9> a nif:String;
+  nif:referenceContext <comment/2#char=0,>;
+  nif:anchorOf "Bullhshit!";
+  nif:opinion <opinion/2>.

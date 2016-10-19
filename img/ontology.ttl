@@ -1,0 +1,116 @@
+
+ms: a owl:Ontology;
+  rdfs:label "Multisensor Ontology";
+  rdfs:comment "Defines various classes and properties used by the FP7 Multisensor project";
+  rdfs:seeAlso <http://multisensorproject.eu>, <http://github.com/VladimirAlexiev/multisensor/>;
+  dct:creator  <http://multisensorproject.eu>, <mailto:Vladimir.Alexiev@ontotext.com>;
+  dct:created  "2016-06-20"^^xsd:date;
+  dct:modified "2016-10-20"^^xsd:date;
+  owl:versionInfo "1.0".
+
+ms:GenericConcept a rdfs:Class;
+  rdfs:subClassOf skos:Concept;
+  rdfs:label "GenericConcept";
+  rdfs:comment "Generic concept that doesn't belong to a specific domain";
+  rdfs:isDefinedBy ms: .
+
+ms:SpecificConcept a rdfs:Class;
+  rdfs:subClassOf skos:Concept;
+  rdfs:label "SpecificConcept";
+  rdfs:comment "Concept that is specific to a Multisensor domain, determined by statistical analysis over the Multisensor SIMMO corpus";
+  rdfs:isDefinedBy ms: .
+
+ms:hasCaption a owl:ObjectProperty;
+  rdfs:domain dctype:MovingImage;
+  rdfs:range dctype:Text;
+  rdfs:label "hasCaption";
+  rdfs:comment "Transcript or ASR of a video (dctype:MovingImage) expressed as dctype:Text";
+  rdfs:isDefinedBy ms: .
+
+<http://data.multisensorproject.eu/agent/CAP> a prov:SoftwareAgent;
+  foaf:name "Content Alignment Pipeline v1.0".
+
+ms:linking-similar a owl:NamedIndividual, oa:Motivation;
+  skos:inScheme oa:motivationScheme;
+  skos:broader oa:linking;
+  skos:prefLabel "linking-similar"@en;
+  rdfs:comment "Motivation that represents a symmetric link between two *similar* articles"@en;
+  rdfs:isDefinedBy ms: .
+
+ms:linking-contradictory a owl:NamedIndividual, oa:Motivation;
+  skos:inScheme oa:motivationScheme;
+  skos:broader oa:linking;
+  skos:prefLabel "linking-contradictory"@en;
+  rdfs:comment "Motivation that represents a symmetric link between two *contradictory* articles"@en;
+  rdfs:isDefinedBy ms: .
+
+ms:score a owl:DatatypeProperty;
+  rdfs:domain oa:Annotation;
+  rdfs:range  xsd:decimal;
+  rdfs:label "score"@en;
+  rdfs:comment "Strength of an Annotation, eg the link between two entities"@en;
+  rdfs:isDefinedBy ms: .
+
+ms:has_page_rank a owl:DatatypeProperty;
+  rdfs:domain sioc:Role;
+  rdfs:label "Has page rank"@en;
+  rdfs:comment "Centrality and importance of a poster on particular topic"@en;
+  rdfs:isDefinedBy ms: .
+ 
+ms:has_reachability a owl:DatatypeProperty;
+  rdfs:domain sioc:Role;
+  rdfs:label "Has reachability"@en;
+  rdfs:comment "Level of linking of a poster on particular topic"@en;
+  rdfs:isDefinedBy ms: .
+
+ms:has_global_influence: a owl:DatatypeProperty;
+  rdfs:domain sioc:Role;
+  rdfs:label "Has global influence"@en;
+  rdfs:comment "Global influence of a poster on particular topic. A combination of page rank and reachability"@en;
+  rdfs:isDefinedBy ms: .
+
+ms:negativePolarityValue a owl:DatatypeProperty;
+  rdfs:domain marl:Opinion;
+  rdfs:label "Most negative polarity value"@en;
+  rdfs:comment "A sentence may include both negative and positive polarity words: this records the most negative polarity"@en;
+  rdfs:isDefinedBy ms: .
+
+ms:positivePolarityValue a owl:DatatypeProperty;
+  rdfs:domain marl:Opinion;
+  rdfs:label "Most positive polarity value"@en;
+  rdfs:comment "A sentence may include both negative and positive polarity words: this records the most positive polarity"@en;
+  rdfs:isDefinedBy ms: .
+
+ms:sentimentalityValue a owl:DatatypeProperty;
+  rdfs:domain marl:Opinion;
+  rdfs:label "Sentimentality value"@en;
+  rdfs:comment """How strong is the sentiment.
+Sum of the absolute values of the most positive and most negative polarity of an opinion (i.e. the difference between them)"""@en;
+  rdfs:isDefinedBy ms: .
+
+ms:fluency a owl:DatatypeProperty;
+  rdfs:domain nif:Context;
+  rdfs:label "Text fluency"@en;
+  rdfs:comment """How fluent is the text.
+The text should build from sentence to sentence to a coherent body of information about a topic. 
+Consecutive sentences should be meaningfully connected. Paragraphs should be written in a logical sequence. 
+The best way to achieve fluency is to have at least one object or subject repeatedly mentioned in consecutive units of text. """@en;
+  rdfs:comment "Range: 1.0 ... 5.0"@en;
+  rdfs:isDefinedBy ms: .
+
+ms:richness a owl:DatatypeProperty;
+  rdfs:domain nif:Context;
+  rdfs:label "Text richness"@en;
+  rdfs:comment """How rich is the text. 
+Is the writing style and vocabulary used rich and interesting, as opposed to plain and straightforward?"""@en;
+  rdfs:comment "Range: 1.0 ... 5.0"@en;
+  rdfs:isDefinedBy ms: .
+
+ms:technicality a owl:DatatypeProperty;
+  rdfs:domain nif:Context;
+  rdfs:label "Text technicality"@en;
+  rdfs:comment """How technical is the text. 
+Are the topic and used language technical? 
+Does it require effort and previous knowledge to understand the text?"""@en;
+  rdfs:comment "Range: 1.0 ... 5.0"@en;
+  rdfs:isDefinedBy ms: .

@@ -1,0 +1,29 @@
+
+# topic URL made from sorted concatenated tags
+ms-soc:civilengineering.dishwasher.energy_crisis.energy_policy.renewable.foodmanufacturing.homeappliances a sioc:Forum;
+  sioc:has_host twitter:;
+  dct:subject twitter_tag:civilengineering, twitter_tag:dishwasher, 
+    twitter_tag:energy_crisis, twitter_tag:policy_energy, twitter_tag:renewable,
+    twitter_tag:foodmanufacturing, twitter_tag:homeappliances.
+
+# poster on topic URL made from topic concatenated with user id
+twitter_user:17463923 a sioc:UserAccount;
+  sioc:has_function ms-soc:civilengineering.dishwasher.energy_crisis.energy_policy.renewable.foodmanufacturing.homeappliances_17463923.
+
+ms-soc:civilengineering.dishwasher.energy_crisis.energy_policy.renewable.foodmanufacturing.homeappliances_17463923 a sioc:Role;
+  sioc:has_scope ms-soc:civilengineering.dishwasher.energy_crisis.energy_policy.renewable.foodmanufacturing.homeappliances;
+  ms:has_pagerank 0.0206942;
+  ms:has_reachability 386.05;
+  ms:has_overall_influence 0.143948.
+
+twitter_user:243236419 a sioc:UserAccount;
+  sioc:has_function ms-soc:civilengineering.dishwasher.energy_crisis.energy_policy.renewable.foodmanufacturing.homeappliances_243236419.
+
+ms-soc:civilengineering.dishwasher.energy_crisis.energy_policy.renewable.foodmanufacturing.homeappliances_243236419 a sioc:Role;
+  sioc:has_scope ms-soc:civilengineering.dishwasher.energy_crisis.energy_policy.renewable.foodmanufacturing.homeappliances;
+  ms:has_pagerank 0.020222;
+  ms:has_reachability 434.15;
+  ms:has_overall_influence 0.143038.
+
+##################
+dct:subject a puml:InlineProperty.

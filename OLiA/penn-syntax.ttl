@@ -1,0 +1,602 @@
+@prefix penn:  <http://purl.org/olia/penn-syntax.owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix olia_system: <http://purl.org/olia/system.owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/penn-syntax.owl> a owl:Ontology ;
+        rdfs:comment     "\n\t\tPenn Syntax annotations according to Santorini (1991) and Bies et al. (1995), \n\t\tthe edge/node classification follows TIGERSearch conventions.\n\n\t\tBeatrice Santorini (1991), Bracketing Guidelines for the Penn Treebank Project *** DRAFT VERSION ****, May 15, 1991 \t\t\n\t\t(ftp://ftp.cis.upenn.edu/pub/treebank/doc/old-bktguide.ps.gz)\n\n\t\tAnn Bies, Mark Ferguson, Karen Katz, and Robert MacIntyre (1995), Bracketing Guidelines for Treebank II Style Penn Treebank Project, \n\t\tJanuary 1995 (ftp://ftp.cis.upenn.edu/pub/treebank/doc/manual/root.ps.gz)"^^xsd:string ;
+        owl:versionInfo  "\n        2010/04/14 created\n        2010/04/15 added hasTagContaining, etc., checked against OntoNotes PTB annotations\n        Christian Chiarcos, chiarcos@uni-potsdam.de"^^xsd:string .
+
+#################### Classes
+
+penn:AdjectivePhrase a owl:Class ;
+        rdfs:comment     "ADJP|Adjective phrase. Phrasal category headed by an adjective (including comparative and\nsuperlative adjectives). Example: outrageously expensive.\n(Santorini 1991)\n\nADJP — Adjective Phrase. Phrasal category headed by an adjective (including comparative and superlative adjectives). Example: outrageously expensive. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:Adjunct a owl:Class ;
+        rdfs:comment     "Adjuncts are also represented as sisters of heads. \nLet’s (VP meet (PP on Tuesday))\n(Santorini 1991)\n\ncf. Adverbials (Bies et al. 1995, § 2.2.3)"^^xsd:string ;
+        rdfs:subClassOf  penn:FunctionTag .
+
+penn:AdverbPhrase a owl:Class ;
+        rdfs:comment     "ADVP|Adverb phrase. Phrasal category headed by an adverb (including comparative and superlative\nadverbs). Examples: rather timidly, very well indeed.\n(Santorini 1991)\n\nADVP — Adverb Phrase. Phrasal category headed by an adverb (including comparative and superlative adverbs). Examples: rather timidly, very well indeed, rapidly. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:Adverbial a owl:Class ;
+        rdfs:comment     "-ADV (adverbial)\n— marks a constituent other than ADVP or PP when it is used adverbially (e.g., NPs or free (“headless”) relatives). However, constituents that themselves are modifying an ADVP generally do not get -ADV. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:FormFunctionDiscrepancy .
+
+penn:Ambiguity a owl:Class ;
+        rdfs:comment     "*PPA*\n— Permanent Predictable Ambiguity (ambiguity)  ...\n\n*PPA*-attach is used to indicate ambiguity of attachment of a trace, if the sentence is truly ambiguous (here “why was the decision made” vs. “why do you think it was made”): \n\n  (SBARQ (WHADVP-1 Why)\n         (SQ do\n             (NP-SBJ you)\n             (VP think\n                 (SBAR 0\n                       (S (NP-SBJ we)\n                          (VP made\n                              (NP that decision)\n                              (ADVP-PRP *PPA*-2))))\n                 (ADVP-PRP-2 *T*-1))))\n\nNote that such ambiguity is unlikely context, so such examples are rare or nonexistent in the actual corpus.\n\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:NullElement .
+
+penn:BenefactiveAdverbial a owl:Class ;
+        rdfs:comment     "-BNF (benefactive)\n— marks the beneficiary of an action (attaches to NP or PP). \n\nThis tag is used only when (1) the verb can undergo dative shift and (2) the prepositional variant (with the same meaning) uses for. The prepositional objects of dative-shifting verbs with other prepositions than for (such as to or of) are annotated -DTV. \n\n  (S (NP-SBJ I)\n     (VP baked\n         (NP-BNF Doug)\n         (NP a cake)))\n\n\n  (S (NP-SBJ I)\n     (VP baked\n         (NP a cake)\n         (PP-BNF for\n                 (NP Doug))))\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Adjunct .
+
+penn:Clause a owl:Class ;
+        rdfs:comment     "We distinguish among a number of basic clause types: S, SINV, SBAR, RRC, SBARQ, SQ, S-CLF, it-extraposition, and FRAG.\n(Bies et al. 1995)\n\nS-CLF is @cat=\"S\" & edge/@func=\"CLF\", so see under ItCleft"^^xsd:string ;
+        rdfs:subClassOf  penn:SyntaxTag .
+
+penn:CloselyRelated a owl:Class ;
+        rdfs:comment     "-CLR (closely related)\n— marks constituents that occupy some middle ground between argument and adjunct of the verb phrase. These roughly correspond to “predication adjuncts” , prepositional ditransitives , and some “phrasal verbs” , as defined in [Quirk et al. 1985].\n\nAlthough constituents marked with -CLR are not strictly speaking complements, they are treated as complements whenever it makes a bracketing difference (see the section on fronting in section 1 [Overview of Basic Clause Structure] and *RNR*-attach in section 8 [Shared Complements and Modifiers]).\n\nThe precise meaning of -CLR depends somewhat on the category of its phrase: \non S or SBAR\n— These categories are usually arguments, so the -CLR tag indicates that the clause is more adverbial than normal clausal arguments. The most common case is the infinitival semicomplement of use, but there are a variety of other cases (see section 14 [Infinitives]).\non PP, ADVP, SBAR-PRP, etc.\n— On categories that are ordinarily interpreted as (adjunct) adverbials, -CLR indicates a somewhat closer relationship to the verb. For example: \n•\tPrepositional Ditransitives \n\nIn order to ensure consistency, the Treebank recognizes only a limited class of verbs that take more than one complement, as described in this section (-DTV on page ?? and -PUT on page ??) and in section 15 [Small Clauses]. Verbs that fall outside these classes (including most of the prepositional ditransitive verbs in class [D2] in [Quirk et al. 1985]) are often annotated with -CLR: \n\t\n\t  (VP associate\n\t      (NP snow)\n\t      (PP-CLR with\n\t              (NP winter)))\n\n...\n\n•\tPhrasal verbs \n\nPhrasal verbs are also annotated with -CLR or a combination of PRT and PP-CLR. \n\t\n\t  (VP pay\n\t      (PP-CLR for\n\t              (NP 500 shares)))\n...\n\n•\tPredication Adjuncts \n\nMany of Quirk's predication adjuncts (see [Quirk et al. 1985], especially sections 8.27–35, 15.22, & 16.48) are annotated with -CLR. \n\t\n\t  (VP place\n\t      (NP the flour)\n\t      (PP-LOC-CLR in\n\t                  (NP the sifter)))\n...\non NP\n— To the extent that -CLR is used on noun phrases, it indicates that the NP is part of some kind of “fixed phrase” or expression, such as take care of. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Miscellaneous .
+
+penn:ComplementClause a owl:Class ;
+        rdfs:comment     "In noun phrases like the fact that she is late, the subordinate clause that she is late is a complement of\nthe noun fact and should not be confused with a relative clause. (Note that the embedded clause she is\nlate is not missing a constituent; by contrast, in a relative clause construction like the TV that she bought\nthe other day, the clause that she bought\nthe other day is incomplete.) The entire noun phrase should be\nbracketed as a sister of the head noun.\n\n(NP the fact \n(SBAR that\n(S (NP she)\n(VP is\n(ADJP late)))))\n\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:SubordinateClause .
+
+penn:ConjunctionPhrase a owl:Class ;
+        rdfs:comment     "Besides the usual and, or, but, etc., certain prepositions and subordinating conjunctions can be used as coordinating conjunctions. Multi-word coordinating conjunctions are labeled CONJP (see section 7 [Coordination]). ...\nCONJP — Conjunction Phrase. Used to mark certain “multi-word” conjunctions, such as as well as, instead of. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:Dative a owl:Class ;
+        rdfs:comment     "-DTV (dative)\n— marks the dative object in the unshifted form of the double object construction. \n\nIf the preposition introducing the “dative” object is for, it is considered benefactive (see -BNF on page ??). \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:GrammaticalRole .
+
+penn:DirectQuestion a owl:Class ;
+        rdfs:comment     "There are two types of direct questions: yes-no questions and wh-questions. Yes-no questions should be\nbracketed as SQ. The auxiliary verb or form of do that precedes the subject in a yes-no question is a child\nof SQ. Note that yes-no questions need not contain a VP node\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:Question .
+
+penn:DirectWHQuestion a owl:Class ;
+        rdfs:comment     "SBARQ|Direct question introduced by a wh-word or wh-phrase. See Section 5.32. Indirect questions\nand relative clauses should be bracketed as SBAR, not SBARQ.\n(Santorini 1991)\n\nWh-questions should be bracketed as SBARQ. The wh-constituent (whether it is a subject or not) is a\nchild of SBARQ; the rest of the question is an SQ. If the wh-constituent is a subject or an object, the\nposition where it is interpreted should be represented by the empty element T.\n(Santorini 1991)\n\nThe SBARQ label marks wh-questions (i.e., those that contain a gap and therefore require a trace). a further level of structure, SQ, contains the inverted auxiliary (if there is one) and the rest of the sentence. The inverted auxiliary in wh-questions is not labeled. ...\nSBARQ — Direct question introduced by a wh-word or wh-phrase. See section 1 [Overview of Basic Clause Structure]. Indirect questions and relative clauses should be bracketed as SBAR, not SBARQ. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:DirectQuestion .
+
+penn:DirectionAdverbial a owl:Class ;
+        rdfs:comment     "-DIR (direction)\n— marks adverbials that answer the questions “from where?” and “to where?” It implies motion, which can be metaphorical as in “...rose 5 pts. to 57-1/2” or “increased 70% to 5.8 billion yen” (see section 23 [“Financialspeak” Conventions]). -DIR is most often used with verbs of motion/transit and financial verbs: \n\n  (S (NP-SBJ I)\n     (VP flew\n         (PP-DIR from\n                 (NP Tokyo))\n         (PP-DIR to\n                 (NP New York))))\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Adjunct .
+
+penn:DiscontinuousDependency a owl:Class ;
+        rdfs:comment     "*ICH*\n— Interpret Constituent Here (discontinuous dependency) ...\nThe most common type of pseudo-attach is *ICH*-attach, which is used to indicate a relationship of constituency between elements separated by intervening material. For instance, *ICH*-attach is used in “heavy shift” constructions when the movement results in a configuration in which it is impossible to attach the constituent to the phrase it belongs with: \n\n  (S (NP-SBJ (NP a young woman)\n             (SBAR *ICH*-1))\n     (VP entered\n         (SBAR-1 (WHNP-2 whom)\n                 (S (NP-SBJ she)\n                    (PP-TMP at\n                            (ADVP once))\n                    (VP recognized\n                        (NP *T*-2)\n                        (PP-CLR as\n                                (NP Jemima Broadwood)))))))\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:NullElement .
+
+penn:Ellipsis a owl:Class ;
+        rdfs:comment     "*?* — placeholder for ellipsed material ...\n\n*?* is now available in the following great-tasting flavors: (VP *?*), (ADJP-PRD *?*), (PP-PRD *), (NP *?*), (S *?*), (SBAR *?*). These act as placeholders for a missing predicate or piece thereof, especially in comparative constructions and other environments where predicate deletion occurs. Although the missing material represented by *?* is often identical to another constituent in the same sentence, the two are never coindexed. Postmodifiers of the verb (including traces) may be attached under (VP *?*), but not to any other null element, including the other *?* null elements and (VP *T*).\n\nNote that policy for *?* was never finalized, so its use varies to some extent. In general, *?* is used by the annotators as a last resort (short of the FRAG analysis) for the annotation of clauses with “missing” material. Nonetheless, there are certain constructions that are particularly likely to contain *?*:\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:NullElement .
+
+penn:ExpletiveOfExtraposition a owl:Class ;
+        rdfs:comment     "*EXP*\n— Expletive (extraposition) ...\nIn cases where a clausal subject has been extraposed and replaced by an expletive it, we use a type of pseudo-attach called *EXP*. (In the small ATIS sample included with this release, it is also used for existential there.) Use of *EXP*-attach is discussed in more detail in section 17 [It-Extraposition]. \n\n  (S (NP-SBJ (NP It)\n             (SBAR *EXP*-1))\n     (VP is\n         (ADJP-PRD clear)\n         (PP to\n             (NP me))\n         (SBAR-1 that\n                 (S (NP-SBJ this message)\n                    (VP is\n                        (ADJP-PRD unclear))))))\n\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:NullElement .
+
+penn:ExtentAdverbial a owl:Class ;
+        rdfs:comment     "-EXT (extent)\n— marks adverbial phrases that describe the spatial extent of an activity. -EXT was incorporated primarily for cases of movement in financial space, but is also used in analogous situations elsewhere. \n\n  (S (NP-SBJ the Dow Jones Industrial Average)\n     (VP plunged\n         (NP-EXT 190.58 points)))\n\n\n  (S (NP-SBJ She)\n     (VP walked\n         (NP-EXT 5 miles)))\n\nObligatory complements do not receive -EXT: \n\n  (S (NP-SBJ The sumo wrestler)\n     (VP gained\n         (NP 80 pounds)))\n\nWords such as fully and completely are absolutes and do not receive -EXT.\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Adjunct .
+
+penn:FormFunctionDiscrepancy a owl:Class ;
+        rdfs:comment     "Bies et al. (1995, §2.2.1)"^^xsd:string ;
+        rdfs:subClassOf  penn:FunctionTag .
+
+penn:Fragment a owl:Class ;
+        rdfs:comment     "FRAG marks those portions of text that appear to be clauses, but lack too many essential elements for the exact structure to be easily determined (e.g., answers to questions). Predicate argument structure therefore cannot be extracted from FRAGs.\n(Bies et al. 1995)\n\nSentence fragments that end with sentence- nal punctuation like Not even an earthquake. should not\nbe bracketed as S, but only with the highest appropriate label|in this case, NP. Do not attach such\nfragments to the preceding or following full sentence.\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:FunctionTag a owl:Class ;
+        rdfs:comment     "Bies et al. (1995), func label of edges in TIGER"^^xsd:string ;
+        rdfs:subClassOf  olia_system:Feature ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:hasValue    "func"^^xsd:string ;
+                           owl:onProperty  olia_system:hasTier
+                         ] .
+
+penn:Gapping a owl:Class ;
+        rdfs:comment     "*NOT*\n— anti-placeholder in template gapping\n(Bies et al. 1995)\n\nThe term \\gapping\" refers to a form of coordination in which the coordinated phrases after the rst\nare incomplete. For instance, the gapped equivalent of the full coordination structure in (@18a) is given in\n( 18b).\n( 18)\na. Mary likes Bach and Susan likes Beethoven.\nb. Mary likes Bach and Susan, Beethoven.\nGapped sequences like Susan, Beethoven should be labelled X. On the other hand, while coordination\n________________________________________\nPage 22\n5 GUIDELINES FOR PROBLEMATIC CONSTRUCTIONS\n21\nconstructions containing gapped sequences involve coordination of unlike categories, it is clear that the\nentire coordination structure is a clause; hence, it should be labelled S.\n(Santorini 1991)\n\n*NOT* is used in the template gapping procedure, along with “=” and a system of coindexation. See section 7 [Coordination] for more details on the template gapping approach.\n\nUnlike other null elements, correspondence to a *NOT* is shown by an “=” index on the bracket label, rather than by a “–” index on the null element itself.\n\n*NOT* is used very rarely (about 20 times in the entire WSJ corpus) when the “template” and “copy” are not entirely parallel. In principle, it can serve in two roles:\n\n\n4.7.1  In the “copy”\nIn the copy, *NOT* can be used to indicate that the corresponding constituent in the template is not interpreted in the “copy”. \n\n  (S (NP-SBJ the auditor)\n     (VP (VP (ADVP-TMP-2 first)\n             described\n             (NP-3 the old plan)\n             (PP-CLR-4 as\n                       (ADJP ill conceived))\n             (PRN -LRB-\n                  (SBAR-ADV-5 as\n                              (S (NP-SBJ everyone)\n                                 (ADVP-TMP already)\n                                 (VP agreed)))\n                  -RRB-))\n         but\n         (VP (ADVP-TMP=2 then)\n             (NP=3 (NP the new plan)\n                   (SBAR (WHNP-1 that)\n                         (S (NP-SBJ we)\n                            (VP 'd\n                                (VP worked\n                                    (ADVP-MNR so hard)\n                                    (PP-CLR on\n                                            (NP *T*-1)))))))\n             (PP-CLR=4 as\n                       (UCP (PP out (PP to (NP lunch)))\n                            and\n                            (ADJP totally half-baked)))\n             (ADVP=5 *NOT*))))\n\nNote that it is very difficult to construct a grammatical example, so (unsurprisingly) there are no actual examples of this construction in the WSJ corpus.\n\n\n4.7.2  In the “template”\nIn the template, *NOT* appears in the position where the corresponding constituent in the copy is interpreted, when there is no matching constituent already in the template. \n\n  (S (NP-SBJ (NP The 189 Democrats)\n             (SBAR (WHNP-1 who)\n                   (S (NP-SBJ *T*-1)\n                      (VP supported\n                          (NP the override)\n                          (NP-TMP yesterday)))))\n     (VP compare\n         (PP-CLR with\n                 (NP (NP (NP-3 175)\n                         (SBAR (WHNP-2 who)\n                               (S (NP-SBJ *T*-2)\n                                  (ADVP initially)\n                                  (VP backed\n                                      (NP the rape-and-incest exemption)\n                                      (ADVP-TMP-4 (NP two weeks)\n                                                  ago)\n                                      (PP-5 *NOT*)))))\n                     and\n                     (NP (NP=3 136)\n                         (NP-TMP=4 last year)\n                         (PP=5 on\n                               (NP a similar vote)))))))\n\nMore often than not, however, it is assumed that an unindexed constituent at top level of the “copy” is interpreted at highest possible level – usually VP-level of the template. (Note that this rule doesn't work in the above example, so it actually needs the *NOT*.)\n\nSo the following examples: \n\n  (S (NP The teacher)\n     (VP (VP gave\n             (NP-1 Ignatius)\n             (NP-2 only a B)\n             (SBAR-3 *NOT*))\n         ,\n         but\n         (VP (NP=1 Bertha)\n             (NP=2 an A)\n             (SBAR-PRP=3 because\n                         (S (NP-SBJ she)\n                            (VP wrote\n                                (ADVP-MNR so well)))))))\n\n\n  (VP (VP increasing\n          (PP-DIR-2 to\n                    (NP 2.5 %))\n          (PP-TMP-3 in\n                    (NP February 1991))\n          (ADVP-TMP-4 *NOT*))\n      ,\n      and\n      (VP (PP-DIR=2 to\n                    (NP 3 %))\n          (PP-TMP=3 at\n                    (NP six-month intervals))\n          (ADVP-TMP=4 thereafter)))\n\nmight more likely be bracketed: \n\n  (S (NP The teacher)\n     (VP (VP gave\n             (NP-1 Ignatius)\n             (NP-2 only a B))\n         ,\n         but\n         (VP (NP=1 Bertha)\n             (NP=2 an A)\n             (SBAR-PRP because\n                       (S (NP-SBJ she)\n                          (VP wrote\n                              (ADVP-MNR so well)))))))\n\n\n  (VP (VP increasing\n          (PP-DIR-2 to\n                    (NP 2.5 %))\n          (PP-TMP-3 in\n                    (NP February 1991)))\n      ,\n      and\n      (VP (PP-DIR=2 to\n                    (NP 3 %))\n          (PP-TMP=3 at\n                    (NP six-month intervals))\n          (ADVP-TMP thereafter)))\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:NullElement .
+
+penn:GrammaticalRole a owl:Class ;
+        rdfs:comment     "Bies et al. (1995, §2.2.2)"^^xsd:string ;
+        rdfs:subClassOf  penn:FunctionTag .
+
+penn:HeadOfNP a owl:Class ;
+        rdfs:comment     "NX — Used within certain complex noun phrases to mark the head of the noun phrase. Corresponds very roughly to N-bar level but used quite differently. ...\nIn the case where a noun is modified by an unshared modifier and also shares non-nominal premodifiers with another noun, the NX bracket label is used. That is, unshared items are lumped together with their respective noun heads and bracketed NX, with the shared modifier(s) outside NX (at NP level). The NX levels are then coordinated at the lowest level possible, as usual. \n\nNX brackets contain the head of the NP and its (unshared) modifiers in complicated NPs where both shared an unshared modifiers are involved. It \ndoes not correspond to any particular linguistic structure, although it occasionally resembles “N-bar”. Rather, it exists only to show which modifiers go with which NP head, and is only used when the extent of modification would not otherwise be clear. \n\nThe NAC label, described in section 11 [Modification of NP], plays a similar role of indicating modifiers that go together. However, NAC is only used for pre-head modifiers, while NX always contains the head (or heads) of the NP in which it is found. \n\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:Headline a owl:Class ;
+        rdfs:comment     "-HLN (headline)\n— marks headlines and datelines. Note that headlines and datelines always constitute a unit of text that is structurally independent from the following sentence. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Miscellaneous .
+
+penn:InfinitivalRelative a owl:Class ;
+        rdfs:comment     "Infinitival relatives.\nSee section 14 [Infinitives] for more information. \n\ttrace as object \n\t\n\t  (NP (NP a movie)\n\t      (SBAR (WHNP-1 0)\n\t            (S (NP-SBJ *)\n\t               (VP to\n\t                   (VP see\n\t                       (NP *T*-1))))))\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:RelativeClause .
+
+penn:Interjection a owl:Class ;
+        rdfs:comment     "INTJ — Interjection. Corresponds approximately to the part-of-speech tag UH (see the POS guidelines [Santorini 1990]). \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:InvertedDeclarativeSentence a owl:Class ;
+        rdfs:comment     "SINV|Inverted declarative sentence, i.e. one in which the subject follows the verb. See Section 5.19.\n(Santorini 1991)\n\nThe SINV label is used for subject-auxiliary inversion in the case of negative inversion, conditional inversion, locative inversion, and some topicalizations. ...\nSINV — Inverted declarative sentence, i.e. one in which the subject follows the tensed verb or modal. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Clause .
+
+penn:ItCleft a owl:Class ;
+        rdfs:comment     "-CLF (cleft)\n— marks it-clefts (“true” clefts) and may be added to the labels S, SINV, or SQ. See section 16 [Clefts]. \n\n  (SQ-CLF Was\n          (NP-SBJ it)\n          (NP-PRD (NP John's)\n                  car)\n          (SBAR (WHNP-6 0)\n                (S (NP-SBJ you)\n                   (VP borrowed\n                       (NP *T*-6))))\n          ?)\n(Bies et al. 1995)\n\nS-CLF\n(it-cleft or “true” cleft) \n\nDeclarative it-clefts are labeled S-CLF, expletive it is tagged as the surface subject (-SBJ), the SBAR is attached at VP-level, and a trace is coindexed to the wh-complementizer of the clefted portion. (See section 16 [Clefts] for more information.) \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Miscellaneous .
+
+penn:ItExtraposition a owl:Class ;
+        rdfs:comment     "it-extraposition\nClauses that are extraposed from subject position are labeled S or SBAR. The extraposed clause is attached at VP level and adjoined to the “it” with *EXP*-attach. The NP containing it and *EXP* is tagged -SBJ. (See section 17 [It-Extraposition] for more information.) \n(Bies et al. 1995)\n\nnot explicitly tagged"^^xsd:string ;
+        rdfs:subClassOf  penn:Clause .
+
+penn:LeftAngleBracket a owl:Class ;
+        rdfs:comment     "<\n*LAB*\nLeft angle bracket\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:Parenthesis .
+
+penn:LeftCurlyBracket a owl:Class ;
+        rdfs:comment     "{\n*LCB*\nLeft curly bracket\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:Parenthesis .
+
+penn:LeftRoundBracket a owl:Class ;
+        rdfs:comment     "(\n*LRB*\nLeft round bracket\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:Parenthesis .
+
+penn:LeftSquareBracket a owl:Class ;
+        rdfs:comment     "[\n*LSB*\nLeft square bracket\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:Parenthesis .
+
+penn:ListMarker a owl:Class ;
+        rdfs:comment     "LST — List marker. Includes surrounding punctuation. (see section 24 [Numbered Lists]) \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:LocativeAdverbial a owl:Class ;
+        rdfs:comment     "-LOC (locative)\n— marks adverbials that indicate place/setting of the event. \n\n  (PP-LOC on\n          (NP the moon))\n\n-LOC may also indicate metaphorical location. For example, the following receive the -LOC tag: \n\n  (PP-LOC amongst\n          (NP yourselves))\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Adjunct .
+
+penn:LocativeComplementOfPut a owl:Class ;
+        rdfs:comment     "-PUT\n— marks the locative complement of put. \n\n  (S (NP-SBJ John)\n     (VP put\n         (NP the book)\n         (PP-PUT on\n                 (NP the table))))\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:GrammaticalRole .
+
+penn:LogicalSubject a owl:Class ;
+        rdfs:comment     "-LGS (logical subject)\n— is used to mark the logical subject in passives. It attaches to the NP object of by and not to the PP node itself. \n\n  (S (NP-SBJ-7 That)\n     (VP was\n         (VP painted\n             (NP *-7)\n             (PP by\n                 (NP-LGS Mark)))))\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:GrammaticalRole .
+
+penn:MannerAdverbial a owl:Class ;
+        rdfs:comment     "-MNR (manner)\n— marks adverbials that indicate manner, including instrument phrases. \n\n  (S (NP She)\n     (VP waited\n         (ADVP-MNR impatiently)))\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Adjunct .
+
+penn:Miscellaneous a owl:Class ;
+        rdfs:comment     "(Bies et al. 1995, §2.2.4)"^^xsd:string ;
+        rdfs:subClassOf  penn:FunctionTag .
+
+penn:Nil a owl:Class ;
+        rdfs:comment     "NIL|Nil is legitimate in pied-piping contexts; otherwise it needs to be deleted. ...\nNIL occurs in pied-piping contexts to mark the location where the head of a prepositional\nphrase is interpreted. An example is:\n\n(S (NP (NP Simulated golf games)\n,\n(SBARQ (WHPP in (WHNP which)) (S (NP players) (VP hit (NP golf balls) (PP NIL (NP T)) (PP into (NP nets))))) ,)\nhave been (VP installed) .)\n\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:NullElement .
+
+penn:Nominal a owl:Class ;
+        rdfs:comment     "-NOM (nominal)\n— marks free (“headless”) relatives and gerunds when they act nominally. (See section 9 [WH-Phrases] for more information about free relatives, and section 13 [Gerunds and Participles] for more information about gerunds.) \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:FormFunctionDiscrepancy .
+
+penn:NotAConstituent a owl:Class ;
+        rdfs:comment     "NAC — Not a Constituent; used to show the scope of certain prenominal modifiers within a noun phrase.  ...\nIn the case where a noun is modified by an unshared modifier and also shares non-nominal premodifiers with another noun, the NX bracket label is used. That is, unshared items are lumped together with their respective noun heads and bracketed NX, with the shared modifier(s) outside NX (at NP level). The NX levels are then coordinated at the lowest level possible, as usual. \n\nNX brackets contain the head of the NP and its (unshared) modifiers in complicated NPs where both shared an unshared modifiers are involved. It \ndoes not correspond to any particular linguistic structure, although it occasionally resembles “N-bar”. Rather, it exists only to show which modifiers go with which NP head, and is only used when the extent of modification would not otherwise be clear. \n\nThe NAC label, described in section 11 [Modification of NP], plays a similar role of indicating modifiers that go together. However, NAC is only used for pre-head modifiers, while NX always contains the head (or heads) of the NP in which it is found. \n\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:NounPhrase a owl:Class ;
+        rdfs:comment     "NP|Noun phrase. Phrasal category that includes all constituents that depend on a head noun.\n(Santorini 1991)\n\nNP — Noun Phrase. Phrasal category that includes all constituents that depend on a head noun. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:NullElement a owl:Class ;
+        rdfs:comment     "Modelled like tokens, Santorini (1991, §4.2), Bies (1995, §2.3, §2.5)"^^xsd:string ;
+        rdfs:subClassOf  penn:TokenLikeElement ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:hasValue    "pos"^^xsd:string ;
+                           owl:onProperty  olia_system:hasTier
+                         ] .
+
+penn:Parenthesis a owl:Class ;
+        rdfs:subClassOf  penn:TokenLikeElement .
+
+penn:Parenthetical a owl:Class ;
+        rdfs:comment     "PRN\n— Parenthetical. (See section 2.6 below for a complete description.) \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:ParentheticalNode a owl:Class ;
+        rdfs:comment     "Parenthetical elements are dominated by a node labeled PRN. Punctuation marks that set off a parenthetical (i.e., commas, dashes, parentheses (-LRB- and -RRB-)) are contained within the PRN node. Use of PRN is determined ultimately by individual annotator intuition, though the presence of dashes or parentheses strongly suggests a parenthetical. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:SyntaxTag .
+
+penn:Particle a owl:Class ;
+        rdfs:comment     "PRT\n— Particle. Category for words that should be tagged RP, as described in the POS guidelines [Santorini 1990], with some guidance from [Quirk et al. 1985] sections 16.3-16 in tricky ADVP vs. PRT decisions (but note that the Treebank notion of particle is somewhat different from that of Quirk et al.). \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:Phrase a owl:Class ;
+        rdfs:comment     "(Bies et al. 1995, §2.1.2)"^^xsd:string ;
+        rdfs:subClassOf  penn:SyntaxTag .
+
+penn:Predicate a owl:Class ;
+        rdfs:comment     "The predicate is either the lowest (right-most branching) VP or (after copular verbs and in “small clauses”) a constituent tagged -PRD. Moved predicates leave a coindexed trace *T* in VP. ...\n-PRD (predicate) — marks any predicate that is not VP. \n\n  (S (NP-SBJ I)\n     (VP consider\n         (S (NP-SBJ Kris)\n            (NP-PRD a fool))))\n\n\n  (SQ Was\n      (NP-SBJ he)\n      (ADVP-TMP ever)\n      (ADJP-PRD successful)\n      ?)\n\nIn do so constructions, the so is annotated as a predicate. \n\n  (S (NP-SBJ They)\n     (ADVP also)\n     (VP did\n         (ADVP-PRD so)))\n(Bies et al. 1995)\n\nComplements of the following verbs appear with the -PRD tag. This list should be considered exhaustive (see [Quirk et al. 1985] sections 16.21-24). \n\n\nbe (friendly/my friend/at home) [adj/n/adv]\n\nappear (happy/the only solution) [adj/n]\nfeel (annoyed/a fool) [adj/n]\nlook (pretty/a fine day) [adj/n]\nseem (restless/a genius) [adj/n]\nsmell (sweet) [adj]\nsound (surprised/a reasonable idea) [adj/n]\ntaste (bitter) [adj]\n\nremain (uncertain/good friends) [adj/n]\nkeep (silent) [adj]\nstay (motionless/good friends) [adj/n]\n\nbecome (older/an expert) [adj/n]\ncome (true) [adj]\nend up (happy/her slave) [adj/n]\nget (ready) [adj]\ngo (sour) [adj]\ngrow (tired) [adj]\nprove (rather useful/his equal) [adj/n]\nturn (cold/traitor) [adj/n]\nturn out (fortunate/a success) [adj/n]\nwind up (drunk/a millionaire) [adj/n]\n\nAdjectival\n\n  (S (NP-SBJ The dog)\n     (VP is/appears/seems\n         (ADJP-PRD happy)))\n\nNominal\n  (S (NP-SBJ Your safety belt)\n     (VP is-PRD your friend))\n\n\n  (S (NP-SBJ-1 The former chief executive)\n     (VP will\n         (VP remain\n             (NP-PRD chairman)))\n     .)\n\nAdverbial\nAdverbial predicates should only be tagged -PRD when they follow be or in a do so construction. \n\tafter be \n\t\n\t  (S (NP-SBJ (NP much)\n\t             (PP of\n\t                 (NP the action)))\n\t     (VP was\n\t         (PP-LOC-PRD in\n\t                     (NP heating oil))))\n\nClausal\nForms of be can also take clausal complements: \n\n  (S (NP-SBJ its purpose)\n     (VP is\n         (S-PRD (NP-SBJ *)\n                (VP to\n                    (VP gauge\n                        (NP learning progress))))))\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:GrammaticalRole .
+
+penn:PrepositionalPhrase a owl:Class ;
+        rdfs:comment     "PP|Prepositional_phrase. Phrasal_category_headed_by_a_preposition.\n(Santorini 1991)\n\nPP — Prepositional Phrase. Phrasal category headed by a preposition. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:ProperNounPhrase a owl:Class ;
+        rdfs:comment     "PNP|Proper noun phrase. Phrasal category corresponding to NP, but headed by a proper noun\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:PurposeAdverbial a owl:Class ;
+        rdfs:comment     "-PRP (purpose or reason)\n— marks purpose or reason clauses and PPs. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Adjunct .
+
+penn:QuantifierPhrase a owl:Class ;
+        rdfs:comment     "QP\n— Quantifier Phrase (i.e., complex measure/amount phrase); used within NP. (see section 11 [Modification of NP])  ...\nThis label is not used for NPs with quantificational determiners such as every, some, almost all, etc. Instead, it is used for multiword numerical expressions that occur within NP (and sometimes ADJP), where the QP corresponds frequently to some kind of complex determiner phrase.\n\nThe determiners a and an are included in the QP in cases where the appropriate interpretation is one: \n\n  (NP (QP under an) hour)\n\n  (NP (QP less than a) year)\n\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:Question a owl:Class ;
+        rdfs:comment     "There are two types of questions: direct questions (which are main clauses ending with a question\nmark) and indirect questions (which are subordinate clauses embedded under a verb). In this section, we\ndiscuss only direct questions; indirect questions are bracketed as SBAR’s (see Section 5.17).\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:Clause .
+
+penn:QuestionPredicate a owl:Class ;
+        rdfs:comment     "SQ — Inverted yes/no question, or main clause of a wh-question, following the wh-phrase in SBARQ. \n(Bies et al. 1995)\n\nSQ|That part of an SBARQ that excludes the wh-word or wh-phrase. See Section 5.32.\n(Santorini 1991)\n\nThe SBARQ label marks wh-questions (i.e., those that contain a gap and therefore require a trace). a further level of structure, SQ, contains the inverted auxiliary (if there is one) and the rest of the sentence. The inverted auxiliary in wh-questions is not labeled. ...\n\nSQ\n(See also section 1.2.7.) \n•\tinside SBARQ:\n\nAs described above, inside wh-questions, SQ holds the subject, inverted auxiliary (if any), main verb phrase, and some adjuncts.\n•\tyes/no questions: \n\nSQ is used for yes/no questions (i.e., those with inversion but no wh-movement). ...\n\n•\tsubject-less yes/no questions: \n\nIn questions where the auxiliary and subject do not appear, the auxiliary is unlabeled and a null subject (NP-SBJ *) is used. ...\n\nNote that questions with overt subjects and auxiliaries that show declarative word order are simply labeled S.\n\n•\tTag questions: \n\nTag questions are treated as an adjunction of SQ to S. The resulting structure is labeled SQ, since the whole thing is interrogative in nature. The lower SQ is annotated to show predicate deletion; that is, an appropriate null *?* is inserted. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Question .
+
+penn:ReducedRelativeClause a owl:Class ;
+        rdfs:comment     "RRC (reduced relative clause)\nReduced relative clauses are adjoined to the NP they modify. \n(Bies et al. 1995)\n\nWe will use the term \\reduced relative clause\" to refer to participial or adjectival constituents of the\ntype illustrated in (@26).\n\n(26) He bought two watches designed by Paloma Picasso.\n\nReduced relative clauses should be bracketed as adjunction structures. The structure of ( 26) is thus as in\n(@27). Note that the reduced relative clause, which is headed by a participle, is bracketed as a VP.\n\n(27)\n(S (NP He)\n(VP bought\n(NP (NP two watches)\n(VP designed\n(PP by\n(PNP (PNP Paloma)\n(PNP Picasso))))))\n.)\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:Clause .
+
+penn:RelativeClause a owl:Class ;
+        rdfs:comment     "There are three different types of relative clauses in English (be careful not to confuse relative clauses\nand complement clauses (see Section 5.8)):\nwh-relative clauses (a guy who(m) I know),\nthat-relative clauses (a guy that I know), and\nzero relative clauses (a guy I know).\n(Santorini 1991)\n\nBies et al. (1995, §4.2.2) mention additionally infinitival relatives"^^xsd:string ;
+        rdfs:subClassOf  penn:SubordinateClause .
+
+penn:RightAngleBracket a owl:Class ;
+        rdfs:comment     ">\n*RAB*\nRight angle bracket\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:Parenthesis .
+
+penn:RightCurlyBracket a owl:Class ;
+        rdfs:comment     "}\n*RCB*\nRight curly bracket\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:Parenthesis .
+
+penn:RightRoundBracket a owl:Class ;
+        rdfs:comment     ")\n*RRB*\nRight round bracket\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:Parenthesis .
+
+penn:RightSquareBracket a owl:Class ;
+        rdfs:comment     "]\n*RSB*\nRight square bracket\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:Parenthesis .
+
+penn:SharedComplements a owl:Class ;
+        rdfs:comment     "*RNR*\n— Right Node Raising (shared complements) \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:NullElement .
+
+penn:SimpleDeclarativeClause a owl:Class ;
+        rdfs:comment     "S|Simple declarative clause, i.e. one that is not introduced by a (possibly empty) subordinating\nconjunction or wh-word and that does not exhibit subject-verb inversion.\n(Santorini 1991)\n\nSimple declarative sentences: \n(S (NP-SBJ Casey) (VP threw (NP the ball))) ...\n\nS — Simple declarative clause, i.e. one that is not introduced by a (possibly empty) subordinating conjunction or wh-word and that does not exhibit subject-verb inversion. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Clause .
+
+penn:SubordinateClause a owl:Class ;
+        rdfs:comment     "SBAR|Clause introduced by a (possibly empty) subordinating conjunction.\n(Santorini 1991)\n\nSBAR is used for relative clauses and subordinate clauses, including indirect questions. ...\nSBAR — Clause introduced by a (possibly empty) subordinating conjunction. \n\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Clause .
+
+penn:SurfaceSubject a owl:Class ;
+        rdfs:comment     "The surface subject is tagged -SBJ (subject). ...\n-SBJ (surface subject)\n— marks the structural surface subject of both matrix and embedded clauses, including those with null subjects. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:GrammaticalRole .
+
+penn:SyntaxTag a owl:Class ;
+        rdfs:comment     "Santorini (1991, §4.1), in TIGER cat label of syntactic nodes"^^xsd:string ;
+        rdfs:subClassOf  olia_system:UnitOfAnnotation ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:hasValue    "cat"^^xsd:string ;
+                           owl:onProperty  olia_system:hasTier
+                         ] .
+
+penn:TemporalAdverbial a owl:Class ;
+        rdfs:comment     "-TMP (temporal)\n— marks temporal or aspectual adverbials that answer the questions when, how often, or how long. It has some uses that are not strictly adverbial, such as with dates that modify other NPs (see section 11 [Modification of NP]). \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Adjunct .
+
+penn:ThatRelativeClause a owl:Class ;
+        rdfs:comment     "There are three di erent types of relative clauses in English (be careful not to confuse relative clauses\nand complement clauses (see Section 5.8)):\nwh-relative clauses (a guy who(m) I know),\nthat-relative clauses (a guy that I know), and\nzero relative clauses (a guy I know).\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:RelativeClause .
+
+penn:Title a owl:Class ;
+        rdfs:comment     "-TTL (title)\n— is attached to the top node of a title when this title appears inside running text.\n-TTL implies -NOM. The internal structure of the title is bracketed as usual. (See section 12 [Titles] for more information about the bracketing of titles.) \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Miscellaneous .
+
+penn:TokenLikeElement a owl:Class ;
+        rdfs:comment     "Special tokens and pseudo tokens for null elements."^^xsd:string ;
+        rdfs:subClassOf  olia_system:UnitOfAnnotation ;
+        rdfs:subClassOf  [ a owl:Restriction ;
+                           owl:hasValue    "pos"^^xsd:string ;
+                           owl:onProperty  olia_system:hasTier
+                         ] .
+
+penn:Topicalized a owl:Class ;
+        rdfs:comment     "Topicalization structures are ones where a non-subject immediately precedes a subject, which\nimmediately precedes the verb/auxiliary of the sentence. Two examples:\nPizza, John likes.\nTomorrow, I will go to the store.\nSuch examples should be bracketed as adjunction structures.\n(Santorini 1991)\n\nFronted elements are those that appear before the subject in a declarative sentence. They are placed inside the top clause level (e.g. S, SINV, SQ, SBAR).  ...\nFronted arguments are attached under the main clause level. They always leave a *T* and are tagged -TPC. This holds whether the argument is fronted within a single clause or crosses more than one clause boundary. \n(Bies et al. 1995)\n\n-TPC (“topicalized”)\n— marks elements that appear before the subject in a declarative sentence, but in two cases only: \n\n(i) if the fronted element is associated with a *T* in the position of the gap.\n\n(ii) if the fronted element is left-dislocated (i.e., it is associated with a resumptive pronoun in the position of the gap). (See the section on fronted elements in section 1 [Overview of Basic Clause Structure] for more details on the treatment of fronted elements and the section on *T* with fronted elements in section 4 [Null Elements] for more details on the distribution of *T*.) \n(Bies et al. 1995)\n\nFronted elements are placed inside the top clause level (e.g. S, SINV, SQ, SBAR). (Only certain fronted elements are tagged -TPC: (i) constituents associated with a *T* in the position of the gap and (ii) left-dislocated constituents (those associated with a resumptive pronoun in the position of the gap).) (See section 1 [Overview of Basic Clause Structure] for more details on the treatment of fronted elements.) \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:GrammaticalRole .
+
+penn:Trace a owl:Class ;
+        rdfs:comment     "T|Trace. Marks the position where a fronted wh-constituent is interpreted. ...\n\nT marks the spot where an argument NP that has been moved by wh-movement or relative clause\nformation is interpreted. For instance, the relative clause the man that I saw should be bracketed as\nfollows, by analogy to the corresponding simple declarative I saw the man.\n\n(NP (NP the man) (SBAR that (S (NP I) (VP saw) (NP T)))))\n\nT is also used to represent the empty subjects of as-clauses.\n(Santorini 1991)\n\n*T*\n— trace of A′-movement \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:NullElement .
+
+penn:Unit a owl:Class ;
+        rdfs:comment     "*U*\n— unit ...\nThis element marks the interpreted position of a unit symbol, such as $, # (British pounds), FFr (French francs), C$, US$, HK$, A$, M$, S$, and NZ$. It may also appear after % or even cents, when convenient. See section 11 [Modification of NP] for more details on the use of *U*. ...\nIn general, *U* is placed where the word corresponding to the symbol would appear in the string if the text were read aloud. One notable exception is in certain hyphenated compound adjectives, such as a $5-a-share increase (spoken: “A five dollar a share increase”). Here, the bracketing will usually not reflect the spoken order, with *U* placed as the last element in the ADJP: \n\n  (NP a (ADJP $ 5-a-share *U*)\n      increase)\n\nSometimes, this type may lack the *U* entirely. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:NullElement .
+
+penn:UnknownConstituentType a owl:Class ;
+        rdfs:comment     "X|Constituent of unknown or uncertain type. See Section 5.41.\n(Santorini 1991)\n\nX — Unknown, uncertain, or unbracketable. X is often used for bracketing typos and in bracketing the...the-constructions (see section 10 [Subordinate Clauses] and section 25 [Correlative the-Clauses]). \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:SyntaxTag .
+
+penn:UnlikeCoordinatedPhrase a owl:Class ;
+        rdfs:comment     "UCP — Unlike Coordinated Phrase. ...\nCoordination of unlike syntactic categories (UCP)\nIn general, coordinated phrases belong to the same syntactic category. However, it is also possible for coordinated phrases to belong to different categories. When they do, the phrase node at the level of coordination is labeled UCP (“Unlike Coordinated Phrase”).\n\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:VerbPhrase a owl:Class ;
+        rdfs:comment     "VP|Verb phrase. Phrasal category headed a verb.\n(Santorini 1991)\n\nVP — Verb Phrase. Phrasal category headed a verb. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:Vocative a owl:Class ;
+        rdfs:comment     "-VOC (vocative)\n— marks nouns of address, regardless of their position in the sentence. It is not coindexed to the subject and does not get -TPC when it is sentence-initial. \n\n  (SQ (NP-VOC Mike)\n      ,\n      would\n      (NP-SBJ you)\n      (INTJ please)\n      (VP close\n          (NP the door))\n      ?)\n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:GrammaticalRole .
+
+penn:WHAdjectivePhrase a owl:Class ;
+        rdfs:comment     "WHADJP — Wh-adjective Phrase. Adjectival phrase containing a wh-adverb, as in how hot. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:WHAdverbPhrase a owl:Class ;
+        rdfs:comment     "WHADVP|Wh-adverb phrase. Phrasal category headed by a wh-adverb such as how or why.\n(Santorini 1991)\nWHADVP — Wh-adverb Phrase. Introduces a clause with an ADVP gap. May be null (containing the 0 complementizer) or lexical, containing a wh-adverb such as how or why. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:WHCleft a owl:Class ;
+        rdfs:comment     "Wh-clefts are constructions in which a wh-clause functions as the subject of a sentence. a simple\nexample is What matters is the price. Here, the wh-clause What matters is the subject, and is the price is\nthe predicate. The internal structure of the subject is:\n(NP (SBAR (WHNP what)\n(S (NP T)\n(VP matters))))\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:SubordinateClause .
+
+penn:WHNounPhrase a owl:Class ;
+        rdfs:comment     "WHNP|Wh-noun phrase. Noun phrase containing (among other things) a wh-determiner, as in which\nbook or whose daughter, or consisting of a wh-pronoun like who.\n(Santorini 1991)\n\nWHNP\n— Wh-noun Phrase. Introduces a clause with an NP gap. May be null (containing the 0 complementizer) or lexical, containing some wh-word, e.g. who, which book, whose daughter, none of which, or how many leopards. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:WHPrepositionalPhrase a owl:Class ;
+        rdfs:comment     "WHPP|Wh-prepositional phrase. Prepositional phrase containing a wh-determiner, as in by whatever\nmeans necessary.\n(Santorini 1991)\n\nWHPP — Wh-prepositional Phrase. Prepositional phrase containing a wh-noun phrase (such as of which or by whose authority) that either introduces a PP gap or is contained by a WHNP. \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:Phrase .
+
+penn:WHRelativeClause a owl:Class ;
+        rdfs:comment     "There are three di erent types of relative clauses in English (be careful not to confuse relative clauses\nand complement clauses (see Section 5.8)):\nwh-relative clauses (a guy who(m) I know),\nthat-relative clauses (a guy that I know), and\nzero relative clauses (a guy I know).\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:RelativeClause .
+
+penn:YesNoQuestion a owl:Class ;
+        rdfs:comment     "There are two types of direct questions: yes-no questions and wh-questions. Yes-no questions should be\nbracketed as SQ. The auxiliary verb or form of do that precedes the subject in a yes-no question is a child\nof SQ. Note that yes-no questions need not contain a VP node\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:DirectQuestion .
+
+penn:ZeroComplementizer a owl:Class ;
+        rdfs:comment     "0|Zero represents a zero complementizer (= subordinating conjunction); it may need to be deleted. The\nzero complementizer is generally the counterpart of the overt complementizer that. Example: I’m sure 0\nhe’ll be here any minute. ...\n\n0 stands in for overt subordinating conjunctions like that in tensed subordinate clauses, including\nrelative clauses. So the relative clause the man I saw should be bracketed as follows:\n(NP (NP the man) (SBAR 0 (S (NP I) (VP saw) (NP T)))))\n\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:NullElement .
+
+penn:ZeroPronoun a owl:Class ;
+        rdfs:comment     "*|An asterisk represents a zero pronoun; it may need to be deleted. ...\n* is used to represent the empty subject of gerunds, imperatives and to-infinitive clauses. \n(Santorini 1991)\n\n(NP *) — arbitrary PRO, controlled PRO, and trace of A-movement \n(Bies et al. 1995)"^^xsd:string ;
+        rdfs:subClassOf  penn:NullElement .
+
+penn:ZeroRelativeClause a owl:Class ;
+        rdfs:comment     "There are three di erent types of relative clauses in English (be careful not to confuse relative clauses\nand complement clauses (see Section 5.8)):\nwh-relative clauses (a guy who(m) I know),\nthat-relative clauses (a guy that I know), and\nzero relative clauses (a guy I know).\n(Santorini 1991)"^^xsd:string ;
+        rdfs:subClassOf  penn:RelativeClause .
+
+#################### Individuals
+
+penn:ADJP a penn:AdjectivePhrase ;
+        olia_system:hasTag  "ADJP"^^xsd:string .
+
+penn:ADV a penn:Adverbial ;
+        olia_system:hasTag  "ADV"^^xsd:string .
+
+penn:ADVP a penn:AdverbPhrase ;
+        olia_system:hasTag  "ADVP"^^xsd:string .
+
+penn:CLF a penn:ItCleft ;
+        olia_system:hasTag  "CLF"^^xsd:string .
+
+penn:CLR a penn:CloselyRelated ;
+        olia_system:hasTag  "CLR"^^xsd:string .
+
+penn:CONJP a penn:ConjunctionPhrase ;
+        olia_system:hasTag  "CONJP"^^xsd:string .
+
+penn:DIR a penn:DirectionAdverbial ;
+        olia_system:hasTag  "DIR"^^xsd:string .
+
+penn:DTV a penn:Dative ;
+        olia_system:hasTag  "DTV"^^xsd:string .
+
+penn:EXP a penn:ExpletiveOfExtraposition ;
+        olia_system:hasTag  "*EXP*"^^xsd:string .
+
+penn:EXT a penn:ExtentAdverbial ;
+        olia_system:hasTag  "EXT"^^xsd:string .
+
+penn:FRAG a penn:Fragment ;
+        olia_system:hasTag  "FRAG"^^xsd:string .
+
+penn:HLN a penn:Headline ;
+        olia_system:hasTag  "HLN"^^xsd:string .
+
+penn:ICH a penn:DiscontinuousDependency ;
+        olia_system:hasTag  "*ICH*"^^xsd:string .
+
+penn:INTJ a penn:Interjection ;
+        olia_system:hasTag  "INTJ"^^xsd:string .
+
+penn:LAB a penn:LeftAngleBracket ;
+        olia_system:hasTag  "*LAB*"^^xsd:string .
+
+penn:LCB a penn:LeftCurlyBracket ;
+        olia_system:hasTag  "*LCB*"^^xsd:string .
+
+penn:LGS a penn:LogicalSubject ;
+        olia_system:hasTag  "LGS"^^xsd:string .
+
+penn:LOC a penn:LocativeAdverbial ;
+        olia_system:hasTag  "LOC"^^xsd:string .
+
+penn:LRB a penn:LeftRoundBracket ;
+        olia_system:hasTag  "*LRB*"^^xsd:string .
+
+penn:LSB a penn:LeftSquareBracket ;
+        olia_system:hasTag  "*LSB*"^^xsd:string .
+
+penn:LST a penn:ListMarker ;
+        olia_system:hasTag  "LST"^^xsd:string .
+
+penn:MNR a penn:MannerAdverbial ;
+        olia_system:hasTag  "MNR"^^xsd:string .
+
+penn:NAC a penn:NotAConstituent ;
+        olia_system:hasTag  "NAC"^^xsd:string .
+
+penn:NIL a penn:Nil ;
+        olia_system:hasTag  "NIL"^^xsd:string .
+
+penn:NOM a penn:Nominal ;
+        olia_system:hasTag  "NOM"^^xsd:string .
+
+penn:NOT a penn:Gapping ;
+        olia_system:hasTag  "*NOT*"^^xsd:string .
+
+penn:NP a penn:NounPhrase ;
+        olia_system:hasTag  "NP"^^xsd:string .
+
+penn:NX a penn:HeadOfNP ;
+        olia_system:hasTag  "NX"^^xsd:string .
+
+penn:PNP a penn:ProperNounPhrase ;
+        olia_system:hasTag  "PNP"^^xsd:string .
+
+penn:PP a penn:PrepositionalPhrase ;
+        olia_system:hasTag  "PP"^^xsd:string .
+
+penn:PPA a penn:Ambiguity ;
+        olia_system:hasTag  "*PPA*"^^xsd:string .
+
+penn:PRD a penn:Predicate ;
+        olia_system:hasTag  "PRD"^^xsd:string .
+
+penn:PRN a penn:ParentheticalNode , penn:Parenthetical ;
+        olia_system:hasTag  "PRN"^^xsd:string .
+
+penn:PRP a penn:PurposeAdverbial ;
+        olia_system:hasTag  "PRP"^^xsd:string .
+
+penn:PRT a penn:Particle ;
+        olia_system:hasTag  "PRT"^^xsd:string .
+
+penn:PUT a penn:LocativeComplementOfPut ;
+        olia_system:hasTag  "PUT"^^xsd:string .
+
+penn:QP a penn:QuantifierPhrase ;
+        olia_system:hasTag  "QP"^^xsd:string .
+
+penn:RAB a penn:RightAngleBracket ;
+        olia_system:hasTag  "*RAB*"^^xsd:string .
+
+penn:RCB a penn:RightCurlyBracket ;
+        olia_system:hasTag  "*RCB*"^^xsd:string .
+
+penn:RNR a penn:SharedComplements ;
+        olia_system:hasTag  "*RNR*"^^xsd:string .
+
+penn:RRB a penn:RightRoundBracket ;
+        olia_system:hasTag  "*RRB*"^^xsd:string .
+
+penn:RRC a penn:ReducedRelativeClause ;
+        olia_system:hasTag  "RRC"^^xsd:string .
+
+penn:RSB a penn:RightSquareBracket ;
+        olia_system:hasTag  "*RSB*"^^xsd:string .
+
+penn:S a penn:SimpleDeclarativeClause ;
+        olia_system:hasTag  "S"^^xsd:string .
+
+penn:SBAR a penn:SubordinateClause ;
+        olia_system:hasTag  "SBAR"^^xsd:string .
+
+penn:SBARQ a penn:DirectWHQuestion ;
+        olia_system:hasTag  "SBARQ"^^xsd:string .
+
+penn:SBJ a penn:SurfaceSubject ;
+        olia_system:hasTag  "SBJ"^^xsd:string .
+
+penn:SINV a penn:InvertedDeclarativeSentence ;
+        olia_system:hasTag  "SINV"^^xsd:string .
+
+penn:SQ a penn:QuestionPredicate , penn:YesNoQuestion ;
+        olia_system:hasTag  "SQ"^^xsd:string .
+
+penn:T a penn:Trace ;
+        olia_system:hasTag  "*T*"^^xsd:string .
+
+penn:TMP a penn:TemporalAdverbial ;
+        olia_system:hasTag  "TMP"^^xsd:string .
+
+penn:TPC a penn:Topicalized ;
+        olia_system:hasTag  "TPC"^^xsd:string .
+
+penn:TTL a penn:Title ;
+        olia_system:hasTag  "TTL"^^xsd:string .
+
+penn:U a penn:Unit ;
+        olia_system:hasTag  "*U*"^^xsd:string .
+
+penn:UCP a penn:UnlikeCoordinatedPhrase ;
+        olia_system:hasTag  "UCP"^^xsd:string .
+
+penn:VOC a penn:Vocative ;
+        olia_system:hasTag  "VOC"^^xsd:string .
+
+penn:VP a penn:VerbPhrase ;
+        olia_system:hasTag  "VP"^^xsd:string .
+
+penn:WHADJP a penn:WHAdjectivePhrase ;
+        olia_system:hasTag  "WHADJP"^^xsd:string .
+
+penn:WHADVP a penn:WHAdverbPhrase ;
+        olia_system:hasTag  "WHADVP"^^xsd:string .
+
+penn:WHNP a penn:WHNounPhrase ;
+        olia_system:hasTag  "WHNP"^^xsd:string .
+
+penn:WHPP a penn:WHPrepositionalPhrase ;
+        olia_system:hasTag  "WHPP"^^xsd:string .
+
+penn:X a penn:UnknownConstituentType ;
+        olia_system:hasTag  "X"^^xsd:string .
+
+penn:clause a penn:Clause ;
+        olia_system:hasTagStartingWith  "S"^^xsd:string .
+
+penn:questionMark a penn:Ellipsis ;
+        olia_system:hasTag  "*?*"^^xsd:string .
+
+penn:zero a penn:ZeroComplementizer ;
+        olia_system:hasTag  "0"^^xsd:string .
+
+penn:zeroPronoun a penn:ZeroPronoun ;
+        olia_system:hasTag  "*"^^xsd:string .
+
+penn:BNF a penn:BenefactiveAdverbial ;
+        olia_system:hasTag  "BNF"^^xsd:string .
+
+#################### External elements
+
+olia_system:Feature a owl:Class .
+
+olia_system:UnitOfAnnotation a owl:Class .
+
+olia_system:hasTag a owl:DatatypeProperty .
+
+olia_system:hasTagContaining a owl:DatatypeProperty .
+
+olia_system:hasTagEndingWith a owl:DatatypeProperty .
+
+olia_system:hasTagStartingWith a owl:DatatypeProperty .
+
+olia_system:hasTier a owl:DatatypeProperty .

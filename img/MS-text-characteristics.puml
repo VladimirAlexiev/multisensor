@@ -1,0 +1,12 @@
+@startuml
+hide empty methods
+hide empty attributes
+hide circle
+skinparam classAttributeIconSize 0
+class ms_content_9e9c304_char_0_2000 as "ms-content:9e9c304#char=0,2000"
+ms_content_9e9c304_char_0_2000 : a nif:Context
+ms_content_9e9c304_char_0_2000 : ms:fluency 5.0
+ms_content_9e9c304_char_0_2000 : ms:richness 1.0
+ms_content_9e9c304_char_0_2000 : ms:technicality 1.0
+ms_content_9e9c304_char_0_2000 : nif:isString "This is the whole text of the SIMMO.\n It should continue for 2000 chars but I'll stop here"@en
+@enduml

@@ -1,0 +1,206 @@
+#+COMMENT: -*- fill-column: 100 -*-
+#+STARTUP: showeverything
+#+TITLE: Multisensor Linked Open Data
+#+DATE: DBpedia Meeting, 2016-09-15, Leipzig, Germany
+#+AUTHOR: Vladimir Alexiev, Ontotext Corp
+#+OPTIONS: ':nil *:t -:t ::t <:t H:5 \n:nil ^:{} arch:headline author:t c:nil creator:comment
+#+OPTIONS: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:nil p:nil pri:nil stat:t tags:t
+#+OPTIONS: tasks:t tex:t timestamp:nil toc:2 todo:t |:t
+#+CREATOR: Emacs 25.0.50.1 (Org mode 8.2.10)
+#+DESCRIPTION: The FP7 Multisensor project analyzes and extracts data from mass- and social media documents, including text, images and video, across several languages. It uses a number of ontologies for representing that data: NIF and OLIA for linguistic info, ITSRDF for NER, DBpedia and Babelnet for entities and concepts, MARL for sentiment, OA for image and cross-article annotations, etc. We'll present how all these ontologies fit together, and some innovations like embedding FrameNet in NIF.
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS: Multisensor, CUBE, NLP, NLP2RDF, NIF, OLIA, ITSRDF, NERD, MARL, BabelNet, FrameNet, WordNet
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+REVEAL_TITLE_SLIDE_TEMPLATE: <p class='center'><img src='img/ontotext.png' style='width:506px'/></p><p/><p/><h2>%t</h2><h3>%e</h3><h4>%d</h4><p class='center'>2D presentation: <a href='javascript:Reveal.toggleOverview()'>O for overview</a>, <a href='../../reveal.js/js/reveal-help.html' target='_blank'>H for help</a>.</p><p class='center'>Made in plain text with <a href='https://github.com/hakimel/reveal.js/'>reveal.js</a>, <a href='https://github.com/yjwen/org-reveal'>org-reveal</a>, <a href='http://orgmode.org'>org-mode</a>, <a href='http://www.gnu.org/s/emacs/'>emacs</a>, <a href='http://vladimiralexiev.github.io/pres/20160514-rdfpuml/'>rdfpuml</a>.</p><p class='center'>Or use <a href='index-full.html'>normal continuous HTML</a></p><p class='center'></p>
+
+* FP7 Multisensor
+Partners:
+| CERTH (GR)                     | coordinator, image/video annot |
+| UPF (ES)                       | NLP, FrameNet summarization,   |
+| Barcelona Media (ES)           | annotation                     |
+| LinguaTec (DE)                 | NER, translation               |
+| EVERIS (ES)                    | system integration             |
+| Ontotext (BG)                  | semantics, storage, reasoning  |
+| Deutsche Welle Innovation (DE) | UC1 Journalism                 |
+| pressrelations (DE)            | UC2 Press Monitoring           |
+| PIMEC (ES)                     | UC3 Decision Support           |
+
+Goals:
+- content distillation of heterogeneous multimedia and multilingual data;
+- sentiment and context analysis of content and social interactions;
+- semantic integration of heterogeneous multimedia and multilingual data;
+- semantic reasoning and intelligent decision support;
+- multilingual and multimodal summarization and presentation of the information to the user.
+
+** Scope
+Analyze and extract data from mass- and social media documents, including text, images and video, across several languages.
+
+Uses a number of ontologies for representing that data:
+- NIF and OLIA for linguistic info,
+- ITSRDF and NERD for NER,
+- DBpedia and Babelnet for entities and concepts,
+- MARL for sentiment,
+- OA for image, video, cross-article annotations
+- FrameNet for lexical frames (embedded in NIF)
+[[http://vladimiralexiev.github.io/Multisensor/20141008-Linguistic-LD][Linguistic Linked Data]], Multisensor presentation, 2014-11, Bonn
+
+- Still working on an "RDF Application Profile" for Multisensor, part of
+D5.4 "Final semantic infrastructure and decision support system"
+
+** Linguistic Linked Data
+:PROPERTIES: 
+:REVEAL_EXTRA_ATTR: tagcloud
+:END:
+#+BEGIN_HTML
+Text Annotation
+Lexical Resources
+Corpora
+Semantic Annotation
+Opinion/Sentiment Analysis
+Working Groups:
+OLWG
+OntoLex
+LD4LT
+BPMLOD
+Projects: 
+MultilingualWeb
+LIDER
+FALCON
+Multisensor
+FREME
+XML schemas:
+GRaF
+ITS2
+LAF
+LMF
+UBY
+Linguistic Ontologies:
+FISE
+ITS2
+MARL
+NERD
+NIF
+NLP2RDF
+OLIA
+OntoLing
+OntoTag
+Penn
+Stanford
+FrameNet
+Lexical Ontologies/thesauri:
+LEMON
+LIME
+OntoLex
+GOLD
+ISOcat
+NERD
+Lexical resources:
+BabelNet
+FrameNet
+LemonUBY
+OmegaNet
+VerbNet
+Wiktionary2RDF
+WordNetRDF
+Corpora:
+Multitext
+MASC
+#+END_HTML
+
+
+* Text Annotation (Article and ASR Transcript)
+#+ATTR_HTML: :class stretch :style width:340px
+[[./img/NIF-ASR.png]]
+
+* Media Annotation: Image, Fusion to Text Annotation
+#+ATTR_HTML: :class stretch :style width:820px
+[[./img/SIMMO-annot-image.png]]
+
+** Media Annotation: Video Frame
+#+ATTR_HTML: :class stretch :style width:680px
+[[./img/SIMMO-annot-frame.png]]
+
+* Social Media: Influence
+#+ATTR_HTML: :class stretch :style width:800px
+[[./img/SMAP-example.png]]
+
+* Decision Support: Trade
+[[http://comtrade.un.org/][UN ComTrade]] data on commercial trade volumes
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/stat-comtrade.png]]
+
+** Decision Support: Distance
+Google data on distances and travel time (between capitals)
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/stat-distance.png]]
+
+* FrameNet Annotation
+[[http://vladimiralexiev.github.io/Multisensor/FrameNet/paper.pdf][FN goes NIF: Integrating FrameNet in the NLP Interchange Format]], LREC 2016
+#+ATTR_HTML: :class stretch :style width:790px
+[[./img/fn-nif.png]]
+** Real FN Data (Part 1)
+#+ATTR_HTML: :class stretch :style width:1100px
+[[./img/MS-Frame-complex-part1.png]]
+** Real FN Data (Part 2)
+#+ATTR_HTML: :class stretch :style width:1100px
+[[./img/MS-Frame-complex-part2.png]]
+
+* Data Quality
+W3C [[https://www.w3.org/TR/vocab-dqv/][Data Quality Vocabulary]] ~dqv:~, [[https://www.w3.org/TR/vocab-dqv/#DimensionsofZaveri][Linked Data Quality Dimensions]] ~ldqd:~
+#+BEGIN_SRC Turtle
+ms:accuracy a dqv:Metric;
+  skos:prefLabel "Accuracy"@en;
+  skos:definition "Degree to which SIMMO data correctly represents real world facts."@en;
+  dqv:inDimension ldqd:semanticAccuracy;
+  dqv:expectedDataType ms:Accuracy.
+
+ms:Accuracy a owl:Class, skos:ConceptScheme;
+  rdfs:label "Accuracy values"@en.
+ms:accuracy-low a ms:Accuracy, skos:Concept; skos:inScheme ms:Accuracy;
+  skos:prefLabel "Low accuracy"@en.
+ms:accuracy-medium a ms:Accuracy, skos:Concept; skos:inScheme ms:Accuracy;
+  skos:prefLabel "Medium accuracy"@en.
+ms:accuracy-high a ms:Accuracy, skos:Concept; skos:inScheme ms:Accuracy;
+  skos:prefLabel "High accuracy"@en.
+ms:accuracy-curated a ms:Accuracy, skos:Concept; skos:inScheme ms:Accuracy;
+  skos:prefLabel "Manually curated"@en;
+  skos:note "Highest accuracy"@en.
+#+END_SRC
+
+** QualityAnnotation (Right) vs QualityMeasurement (Wrong) 
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/quality.png]]
+
+** RDFUnit Validation
+#+ATTR_HTML: :class stretch :style width:1100px
+[[./img/RDFunit-NIF-tests.png]]
+
+* Content Alignment
+#+ATTR_HTML: :class stretch :style width:1000px
+[[./img/CAP.png]]
+
+** Content Translation
+#+ATTR_HTML: :class stretch :style width:700px
+[[./img/translation.png]]
+
+* rdfpuml
+All diagrams made with rdfpuml from *actual Turtle*
+- "[[http://vladimiralexiev.github.io/pres/20160514-rdfpuml/][Making True RDF Diagrams with rdfpuml]]", Ontotext presentation (2016-05)
+- "rdfpuml for True RDF Diagrams and R2RML Generation", SWIB 2016 (2016-11), upcoming
+
+Eg this last diagram was made from Turtle, with these extra triples:
+#+BEGIN_SRC Turtle
+bibo:translationOf   puml:arrow puml:left.
+dct:source           puml:arrow puml:up.
+nif:sourceUrl        puml:arrow puml:up.
+nif:referenceContext puml:arrow puml:up.
+<http://babelfy.org/>  a puml:Inline.
+
+ms-content:156e0d          puml:stereotype "<<(S,green)Spanish>>".
+<156e0d#char=1199,1224>    puml:stereotype "<<(S,green)Spanish>>".
+<156e0d#char=0,2131>       puml:stereotype "<<(S,green)Spanish>>".
+ms-content:156e0d-en       puml:stereotype "<<(E,red)English>>".
+<156e0d-en#char=0,1800>    puml:stereotype "<<(E,red)English>>".
+<156e0d-en#char=1100,1119> puml:stereotype "<<(E,red)English>>".
+#+END_SRC

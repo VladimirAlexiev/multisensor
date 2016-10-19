@@ -1,0 +1,1818 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Multisensor Validation Log</title>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Vladimir Alexiev" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<style type='text/css'> h1,h2,h3,h4,h5,h6,h7 {font-family: Arial} .author, .date, .creator {-webkit-margin-before: 0em; -webkit-margin-after: 0em} .abstract {margin: 1em; padding: 1em; border: 1px solid black} .abstract:before {content: 'Abstract: '; font-weight: bold} #preamble p {font-size: 110%%; margin-left: auto; margin-right: auto; text-align: center} th.left {text-align:left} th.right {text-align:right} th, td {line-height: 1em; border-width: 1px; border-style: solid solid; border-spacing: 2px 2px; padding: 2px 1px} .CANCELED {color: blue} .MAYBE {color: blue} .POSTPONED {color: blue} .APPLIED {color: orange} .FOLLOW {color: orange} .INPROGRESS {color: orange} .NEXT {color: orange} .IER {color: orange}.underline {text-decoration:underline} </style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Multisensor Validation Log</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Intro</a>
+<ul>
+<li><a href="#sec-1-1">Queries</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">Validation</a>
+<ul>
+<li><a href="#sec-2-1">Context Extraction Service</a>
+<ul>
+<li><a href="#sec-2-1-1"><span class="todo TODO">TODO</span> Crawler to decode HTML entities</a></li>
+<li><a href="#sec-2-1-2"><span class="done DONE">DONE</span> Keywords vs Category</a></li>
+<li><a href="#sec-2-1-3"><span class="done DONE">DONE</span> Ingest Timestamp</a></li>
+<li><a href="#sec-2-1-4"><span class="done DONE">DONE</span> SIMMO Quality</a>
+<ul>
+<li><a href="#sec-2-1-4-1"><span class="done CANCEL">CANCEL</span> Represent as QualityMeasurement</a></li>
+<li><a href="#sec-2-1-4-2"><span class="done DONE">DONE</span> Represent as QualityAnnotation</a></li>
+<li><a href="#sec-2-1-4-3">Quality Queries</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-1-5"><span class="done CANCEL">CANCEL</span> Missing Authors</a></li>
+<li><a href="#sec-2-1-6"><span class="done CANCEL">CANCEL</span> Genre (Type)</a></li>
+<li><a href="#sec-2-1-7"><span class="done DONE">DONE</span> Wrong prefix for Text Characteristics</a></li>
+<li><a href="#sec-2-1-8"><span class="done DONE">DONE</span> Refresh Prefixes</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-2">Entity Linking Service</a>
+<ul>
+<li><a href="#sec-2-2-1"><span class="todo TODO">TODO</span> Underscores to Spaces</a></li>
+<li><a href="#sec-2-2-2"><span class="todo QUE">QUE</span> Remove Disambiguation Labels?</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-3">Entity Alignment Service</a>
+<ul>
+<li><a href="#sec-2-3-1"><span class="done DONE">DONE</span> Also remove taIdentConf, taIdentProv</a></li>
+<li><a href="#sec-2-3-2"><span class="done DONE">DONE</span> Leave Dependency Links</a></li>
+<li><a href="#sec-2-3-3"><span class="todo TODO">TODO</span> Use Prefixes in alignment.log</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-4">Summarization Service</a>
+<ul>
+<li><a href="#sec-2-4-1"><span class="done DONE">DONE</span> nif:anchorOf</a></li>
+<li><a href="#sec-2-4-2"><span class="todo TODO">TODO</span> Why nif-ann:taIdentConf is 0?</a></li>
+<li><a href="#sec-2-4-3"><span class="done CANCEL">CANCEL</span> ms:GenericConcept vs ms:SpecificConcept</a></li>
+<li><a href="#sec-2-4-4"><span class="done DONE">DONE</span> Optimize Summarization Queries</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-5">Content Alignment</a>
+<ul>
+<li><a href="#sec-2-5-1">CAP Old Model</a></li>
+<li><a href="#sec-2-5-2"><span class="done DONE">DONE</span> One Annotation Per Pair&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Babis">Babis</span></span></a></li>
+<li><a href="#sec-2-5-3"><span class="todo TODO">TODO</span> Use ms:score not fise:confidence for CAP</a></li>
+<li><a href="#sec-2-5-4"><span class="todo TODO">TODO</span> Add to Ontology&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Vladimir">Vladimir</span></span></a></li>
+<li><a href="#sec-2-5-5">CAP Query</a></li>
+<li><a href="#sec-2-5-6"><span class="done CANCEL">CANCEL</span> Other CAP Queries</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-6"><span class="done DONE">DONE</span> Content Translation</a>
+<ul>
+<li><a href="#sec-2-6-1"><span class="todo TODO">TODO</span> BabelNet Multilingual Labels</a></li>
+<li><a href="#sec-2-6-2"><span class="done CANCEL">CANCEL</span> Add Spanish BabelNet Labels</a></li>
+<li><a href="#sec-2-6-3">Translated-content Queries</a>
+<ul>
+<li><a href="#sec-2-6-3-1">Find Entities</a></li>
+<li><a href="#sec-2-6-3-2">Select Single Label</a></li>
+<li><a href="#sec-2-6-3-3">Find Translations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="https://github.com/VladimirAlexiev/VladimirAlexiev.github.io/blob/master/Multisensor/validation.org">Github Source</a>, <a href="http://VladimirAlexiev.github.io/Multisensor/validation.html">HTML Rendered version</a>
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Intro</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+From now until the end of the project I'll keep a detailed log of what I validated and defects I found.
+I'll use Org-mode mechanisms to track the defects (tags TODO, DONE, CANCELED) and try to monitor email conversation to keep this up to date.
+The numbers in brackets after a section name show the resolved vs total defects.
+Whenever a defect is posted in Jira, I'll track the issue number.
+</p>
+
+<p>
+Please contact me on skype://valexiev1 for corrections/additions.
+Even better, you could <a href="https://github.com/VladimirAlexiev/VladimirAlexiev.github.io/edit/master/Multisensor/validation.org">edit this file on github</a> (it's a plain text file!) and send me a pull request.
+</p>
+<ul class="org-ul">
+<li>Mistakes or imprecise info (eg the scope of a particular service is described wrong, or a particular issue is in fact a non-issue)
+</li>
+<li>When an issue is resolved
+</li>
+<li>When an issue should be canceled
+</li>
+</ul>
+<p>
+I'll also attend weekly calls related to RDF data and validation, and update this.
+</p>
+
+<p>
+IMPORTANT: Just because an issue is listed in the section for a particular service, doesn't necessarily mean that service created the defect!
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Queries</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Below I also track questions related to queries.
+But when agreed, they should be moved to gdoc <a href="https://docs.google.com/document/d/1FfkiiTYvrLzHJ5P5j34NRVGPbXml0ndpNtiNbH2osRw/edit">Multisensor SPARQL Queries</a>.
+</p>
+
+<p>
+Or we could simply use the doc:
+if you need a new query, or a query needs optimization, please write a comment in red,
+and notify me in a gdoc comment (add +vladimir@sirma.bg to the comment).
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Validation</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">Context Extraction Service</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-sec-2-1-1" class="outline-4">
+<h4 id="sec-2-1-1"><span class="todo TODO">TODO</span> Crawler to decode HTML entities</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+It would be good if the crawler decodes HTML entities before storing in dc:subject (possibly also dc:title, dc:description). Eg:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #228b22;">dc:</span>subject
+  <span style="color: #8b2252;">"Europ&amp;auml;ische Union, ISIN_FR0003500008, Brexit, Erholungskurs, Europa, Paris, Gro&amp;szlig;britannien"</span> ,
+  <span style="color: #8b2252;">"Economy, Business &amp; Finance"</span> ;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-2" class="outline-4">
+<h4 id="sec-2-1-2"><span class="done DONE">DONE</span> Keywords vs Category</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<p>
+Victor: both of the following fields extracted by the crawler are mapped to dc:subject:
+</p>
+<ul class="org-ul">
+<li><b>category</b>: eg "Economy, Business &amp; Finance" 
+</li>
+<li><b>keywords</b>: eg "Europaische Union, ISIN_FR0003500008, Brexit, Erholungskurs, Europa, Paris, Grossbritannien"
+</li>
+</ul>
+<p>
+Should we separate them in different properties?
+</p>
+
+<p>
+Vladimir: 
+<a href="https://iptc.org">IPTC</a> is the <a href="https://iptc.org/about-iptc/">Global Standards Body</a> of the News Media industry. 
+<a href="https://iptc.org/standards/media-topics/">IPTC Media Topics</a> is a list of 1100 <a href="http://cv.iptc.org/newscodes/mediatopic">Media Topics</a> developed as an extension from earlier IPTC <a href="http://cv.iptc.org/newscodes/subjectcode">Subject Codes</a>.
+You can <a href="http://show.newscodes.org/index.html?newscodes=medtop&lang=en-GB&startTo=Show">explore interactively</a> and will see that Multisensor <b>categories</b> are similar to these topics/subjects; 
+so we'll continue to map them to <code>dc:subject</code>.
+</p>
+
+<p>
+On the other hand, Multisensor <b>keywords</b> are free keywords that describe a lot more specific things.
+We'll map them to <code>schema:keywords</code>, defined as 
+"Keywords or tags used to describe the content. Multiple entries in a keywords list are typically delimited by commas":
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #228b22;">dc:</span><span style="color: #008b8b;">subject</span> <span style="color: #8b2252;">"Economy, Business &amp; Finance"</span><span style="color: #228b22;">;</span>
+<span style="color: #228b22;">schema:</span><span style="color: #008b8b;">keywords</span> <span style="color: #8b2252;">"Europaische Union, ISIN_FR0003500008, Brexit, Erholungskurs, Europa, Paris, Grossbritannien"</span>;
+</pre>
+</div>
+
+<p>
+It would be nice to:
+</p>
+<ul class="org-ul">
+<li>Split keywords on ", " and and emit as separate values
+<ul class="org-ul">
+<li>(don't split categories, since the 3 words really represent one category)
+</li>
+</ul>
+</li>
+<li>Map our categories to IPTC Media Topics. This is quite harder
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-3" class="outline-4">
+<h4 id="sec-2-1-3"><span class="done DONE">DONE</span> Ingest Timestamp</h4>
+<div class="outline-text-4" id="text-2-1-3">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-07-20 Wed&gt;</span></span> Almost done, only the datatype is missing.
+</p>
+
+<p>
+Victor: introduce the date when the article have been processed in RDF. 
+In order to keep track of which and when the “curated selected data” have been processed,
+and match them with the current version of the CEP service.
+</p>
+
+<p>
+Vladimir: we can use <code>dct:issued</code> for this purpose:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #228b22;">ms-content:</span>b3f35
+  <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">date</span>    <span style="color: #8b2252;">"2016-06-20T18:45:07.000+02:00"</span><span style="color: #008b8b;">^^xsd:dateTime</span> ; <span style="color: #b22222;"># date crawled</span>
+  <span style="color: #228b22;">dct:</span><span style="color: #008b8b;">issued</span> <span style="color: #8b2252;">"2016-06-30T12:34:56.000+02:00"</span><span style="color: #008b8b;">^^xsd:dateTime</span> ; <span style="color: #b22222;"># date processed by pipeline and ingested to GDB</span>
+</pre>
+</div>
+<p>
+Boyan will add this second timestamp in the POST method.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-4" class="outline-4">
+<h4 id="sec-2-1-4"><span class="done DONE">DONE</span> SIMMO Quality</h4>
+<div class="outline-text-4" id="text-2-1-4">
+<p>
+Status:
+</p>
+<ul class="org-ul">
+<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-07-18&gt;</span></span> DONE: initial implementation
+</li>
+<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-07-20&gt;</span></span> DONE: make dqv:value nominal (eg ms:accuracy-low) instead of numeric (eg 1)
+</li>
+<li><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-07-26&gt;</span></span> DONE: use QualityAnnotation instead of QualityMeasurement
+</li>
+</ul>
+
+<p>
+Victor: the field "c_quality" is sent now. Values can be:
+</p>
+<ul class="org-ul">
+<li>0 = no quality assigned
+</li>
+<li>1 = high quality
+</li>
+<li>2 = medium quality
+</li>
+<li>3 = low quality
+</li>
+<li>5 = curated
+</li>
+</ul>
+<p>
+Vladimir:
+</p>
+<ul class="org-ul">
+<li>Instead of a numeric scale (which is not monotonically increasing), let's use a nominal (symbolic) scale.
+</li>
+<li>Instead of 0, we should omit the statement
+</li>
+<li>There is no value 4
+</li>
+<li>About value 5: do we have metadata who &amp; when curated it? Should we record in RDF something more than the number? 
+The selected quality ontology (DQV, see below) allows to record a lot of detail: who, when, according to what methodology&#x2026;
+<ul class="org-ul">
+<li>Leszek (skype:letschke): we do not provide any additional meta data.
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+Vladimir: I searched for a <a href="http://lov.okfn.org/dataset/lov/terms?q=quality&type=property&page=2">quality property on LOV</a>, couldn't find anything really appropriate:
+</p>
+<ul class="org-ul">
+<li><a href="http://www.w3.org/ns/dcat#dataQuality">http://www.w3.org/ns/dcat#dataQuality</a>: this is about datasets, but is deprecated: 
+"This should not be used to describe the data collection characteristics, other more specialized statistical properties can be used instead". 
+But I don't see such statistical properties
+</li>
+<li><a href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#dataQualityInfo">http://def.seegrid.csiro.au/isotc211/iso19115/2003/metadata#dataQualityInfo</a>:
+this is about ISO 19115 "Geographic information — metadata"
+<a href="http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality">http://def.seegrid.csiro.au/isotc211/iso19115/2003/dataquality</a> is a whole separate module on Quality
+</li>
+<li><a href="http://purl.oclc.org/NET/ssnx/ssn#qualityOfObservation">http://purl.oclc.org/NET/ssnx/ssn#qualityOfObservation</a>: this is about Semantic Sensor Networks.
+It makes reference to resultQuality in <a href="http://portal.opengeospatial.org/files/?artifact_id=41579">ISO 19156</a> "Geographic information — Observations and measurements"
+</li>
+</ul>
+
+<p>
+Finally from a link at Europeana DQC, I found the 
+W3C <a href="https://www.w3.org/TR/vocab-dqv/">Data Quality Vocabulary</a> <code>dqv:</code>. 
+We'll use that vocabulary, and the <a href="https://www.w3.org/TR/vocab-dqv/#DimensionsofZaveri">Linked Data Quality Dimensions</a> <code>ldqd:</code> by Zaveri.
+</p>
+</div>
+
+<div id="outline-container-sec-2-1-4-1" class="outline-5">
+<h5 id="sec-2-1-4-1"><span class="done CANCEL">CANCEL</span> Represent as QualityMeasurement</h5>
+<div class="outline-text-5" id="text-2-1-4-1">
+<p>
+Initially I tried this representation. 
+But after discussion at <a href="mailto:public-dwbp-comments@w3.org">mailto:public-dwbp-comments@w3.org</a>, it was clarified that QualityMeasurement can only be used with literal values, so this is WRONG.
+See next section for the correct representation.
+</p>
+
+<p>
+First we add a <code>dqv:Metric</code> to the Multisensor ontology:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #a020f0;">@prefix</span> <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;"> </span> <span style="color: #0000ff;">&lt;http://www.w3.org/ns/dqv#&gt;</span><span style="color: #b22222;"> .</span>
+<span style="color: #a020f0;">@prefix</span> <span style="color: #228b22;">ldqd:</span><span style="color: #008b8b;"> </span><span style="color: #0000ff;">&lt;http://www.w3.org/2016/05/ldqd#&gt;</span><span style="color: #b22222;"> </span><span style="color: #228b22;">.</span>
+
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;">Metric</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"Accuracy"</span>@en;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">definition</span> <span style="color: #8b2252;">"Degree to which SIMMO data correctly represents real world facts."</span>@en;
+  <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;">inDimension</span> <span style="color: #228b22;">ldqd:</span><span style="color: #008b8b;">semanticAccuracy</span>;
+  <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;">expectedDataType</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span><span style="color: #228b22;">.</span>
+
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">owl:</span><span style="color: #008b8b;">Class,</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">ConceptScheme</span>;
+  <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">label</span> <span style="color: #8b2252;">"Accuracy values"</span><span style="color: #228b22;">@en.</span>
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy-low</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy,</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">Concept</span>; <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">inScheme</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"Low accuracy"</span><span style="color: #228b22;">@en.</span>
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy-medium</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy,</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">Concept</span>; <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">inScheme</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"Medium accuracy"</span><span style="color: #228b22;">@en.</span>
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy-high</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy,</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">Concept</span>; <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">inScheme</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"High accuracy"</span><span style="color: #228b22;">@en.</span>
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy-curated</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy,</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">Concept</span>; <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">inScheme</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"Manually curated"</span>@en;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">note</span> <span style="color: #8b2252;">"Highest accuracy"</span>@en.
+</pre>
+</div>
+
+<p>
+Then for each SIMMO that has a quality rating (SIMMOS that don't have a rating get no extra statements):
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">b3f35</span> <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;">hasQualityMeasurement</span> <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">b3f35-quality</span><span style="color: #228b22;">.</span>
+
+<span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">b3f35-quality</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;">QualityMeasurement</span> ;
+   <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;">isMeasurementOf</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy</span>; <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;">value</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy-curated</span>.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-4-2" class="outline-5">
+<h5 id="sec-2-1-4-2"><span class="done DONE">DONE</span> Represent as QualityAnnotation</h5>
+<div class="outline-text-5" id="text-2-1-4-2">
+<p>
+The correct way to use nominal values is to use QualityAnnotation instead of QualityMeasurement.
+</p>
+
+<p>
+First we define the nominal values in the ontology:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #a020f0;">@prefix</span> <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;"> </span> <span style="color: #0000ff;">&lt;http://www.w3.org/ns/dqv#&gt;</span><span style="color: #b22222;"> .</span>
+<span style="color: #a020f0;">@prefix</span> <span style="color: #228b22;">ldqd:</span><span style="color: #008b8b;"> </span><span style="color: #0000ff;">&lt;http://www.w3.org/2016/05/ldqd#&gt;</span><span style="color: #b22222;"> </span><span style="color: #228b22;">.</span>
+
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">ConceptScheme</span>;
+  <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">label</span> <span style="color: #8b2252;">"Accuracy values"</span><span style="color: #228b22;">@en.</span>
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy-low</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">Concept</span>; <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">inScheme</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"Low accuracy"</span><span style="color: #228b22;">@en.</span>
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy-medium</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">Concept</span>; <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">inScheme</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"Medium accuracy"</span><span style="color: #228b22;">@en.</span>
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy-high</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">Concept</span>; <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">inScheme</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"High accuracy"</span><span style="color: #228b22;">@en.</span>
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy-curated</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">Concept</span>; <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">inScheme</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">Accuracy</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"Manually curated"</span>@en;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">note</span> <span style="color: #8b2252;">"Highest accuracy"</span>@en.
+</pre>
+</div>
+
+<p>
+Then for every SIMMO with a quality rating:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">b3f35</span> <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;">hasQualityAnnotation</span> <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">b3f35-quality</span><span style="color: #228b22;">.</span>
+<span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">b3f35-quality</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;">QualityAnnotation</span>;
+  <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;">inDimension</span> <span style="color: #228b22;">ldqd:</span><span style="color: #008b8b;">semanticAccuracy</span>;
+  <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">motivatedBy</span> <span style="color: #228b22;">dqv:</span><span style="color: #008b8b;">qualityAssessment</span>;
+  <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">hasTarget</span> <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">b3f35</span>;
+  <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">hasBody</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">accuracy-curated</span>.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-4-3" class="outline-5">
+<h5 id="sec-2-1-4-3">Quality Queries</h5>
+<div class="outline-text-5" id="text-2-1-4-3">
+<p>
+Querying for SIMMOs with quality is easy:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sparql"><span style="color: #a020f0;">select</span> * {
+  <span style="color: #a0522d;">?simmo</span> a foaf:Document; dqv:hasQualityAnnotation/oa:hasBody <span style="color: #a0522d;">?quality</span>}
+</pre>
+</div>
+
+<p>
+An update query to migrate old QualityMeasurement data to the new QualityAnnotation representation:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sparql"><span style="color: #a020f0;">delete</span> {
+  <span style="color: #a020f0;">graph</span> <span style="color: #a0522d;">?graph</span> {
+    <span style="color: #a0522d;">?simmo</span> dqv:hasQualityMeasurement <span style="color: #a0522d;">?quality</span>.
+    <span style="color: #a0522d;">?quality</span> <span style="color: #a0522d;">?p</span> <span style="color: #a0522d;">?v</span>}}
+<span style="color: #a020f0;">insert</span> {
+  <span style="color: #a020f0;">graph</span> <span style="color: #a0522d;">?graph</span> {
+    <span style="color: #a0522d;">?simmo</span> dqv:hasQualityAnnotation <span style="color: #a0522d;">?quality</span>.
+    <span style="color: #a0522d;">?quality</span> a dqv:QualityAnnotation;
+      dqv:inDimension ldqd:semanticAccuracy;
+      oa:motivatedBy dqv:qualityAssessment;
+      oa:hasTarget <span style="color: #a0522d;">?simmo</span>;
+      oa:hasBody <span style="color: #a0522d;">?value</span>}}
+<span style="color: #a020f0;">where</span> {
+  <span style="color: #a020f0;">graph</span> <span style="color: #a0522d;">?graph</span> {
+    <span style="color: #a0522d;">?simmo</span> dqv:hasQualityMeasurement <span style="color: #a0522d;">?quality</span>.
+    <span style="color: #a0522d;">?quality</span> dqv:value <span style="color: #a0522d;">?value</span>}}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-5" class="outline-4">
+<h4 id="sec-2-1-5"><span class="done CANCEL">CANCEL</span> Missing Authors</h4>
+<div class="outline-text-4" id="text-2-1-5">
+<div class="org-src-container">
+
+<pre class="src src-sparql"><span style="color: #a020f0;">select</span> * {<span style="color: #a0522d;">?x</span> a foaf:Document} 
+<span style="color: #b22222;"># 112k SIMMOs</span>
+<span style="color: #a020f0;">select</span> * {<span style="color: #a0522d;">?x</span> a foaf:Document; dc:creator <span style="color: #a0522d;">?y</span>}
+<span style="color: #b22222;"># 10.5k authors, only 9.4%</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Can we get more authors?
+</li>
+</ul>
+<p>
+Discussion <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-07-08 Fri&gt;</span></span> <a href="https://quark.everis.com/jira/browse/MULTISENSO-186">MULTISENSO-186</a>:
+</p>
+<ul class="org-ul">
+<li>Andrey:  Interest in the "genre", “author” feature if available (not always retrievable by the context extraction service)
+</li>
+<li>Ioannis: The genre and author information can only be extracted when they are available in the HTML content of the scrapped page, otherwise we cannot infer it. To this end, there is not much we can do.
+It was quite obvious on the planning stage that not all articles have mentioned fields in HTML tags, and it could be foreseen, maybe with additional parsing methods since not always html tags do have this information, but normally all news articles have for example Author info in the body of the article. So this part can be closed, as "it" will not going to happen.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-6" class="outline-4">
+<h4 id="sec-2-1-6"><span class="done CANCEL">CANCEL</span> Genre (Type)</h4>
+<div class="outline-text-4" id="text-2-1-6">
+<p>
+Vladimir &amp; Ioannis: by <b>Genre</b>, do you mean dc:type? We assume so below.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sparql"><span style="color: #a020f0;">select</span> * {<span style="color: #a0522d;">?x</span> a foaf:Document; dc:type <span style="color: #a0522d;">?y</span>} 
+<span style="color: #b22222;"># 20k, that's 17.9%</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>Q: Can we get more genres?
+</li>
+<li>A: Same comments as in the previous section apply.
+</li>
+</ul>
+
+<p>
+Distribution of Genre:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sparql"><span style="color: #a020f0;">select</span> <span style="color: #a0522d;">?y</span> (count(*) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?c</span>)
+{<span style="color: #a0522d;">?x</span> a foaf:Document; dc:type <span style="color: #a0522d;">?y</span>}
+<span style="color: #a020f0;">group</span> <span style="color: #a020f0;">by</span> <span style="color: #a0522d;">?y</span> <span style="color: #a020f0;">order</span> <span style="color: #a020f0;">by</span> <span style="color: #a020f0;">desc</span>(<span style="color: #a0522d;">?c</span>)
+</pre>
+</div>
+<table border="1" cellspacing="0" cellpadding="2" rules="all" frame="box">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Genre/Type</th>
+<th scope="col" class="right">Count</th>
+<th scope="col" class="left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">article</td>
+<td class="right">14768</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">music</td>
+<td class="right">2886</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">website</td>
+<td class="right">1087</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">speech</td>
+<td class="right">813</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">sound</td>
+<td class="right">407</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">food</td>
+<td class="right">83</td>
+<td class="left">?? Maybe "recipe"</td>
+</tr>
+
+<tr>
+<td class="left">video</td>
+<td class="right">25</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Article</td>
+<td class="right">25</td>
+<td class="left">normalize to "article"</td>
+</tr>
+
+<tr>
+<td class="left">single</td>
+<td class="right">11</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">song</td>
+<td class="right">11</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Speech</td>
+<td class="right">11</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Ogg</td>
+<td class="right">11</td>
+<td class="left">normalize to "sound"</td>
+</tr>
+
+<tr>
+<td class="left">video.other</td>
+<td class="right">7</td>
+<td class="left">normalize to "video"</td>
+</tr>
+
+<tr>
+<td class="left">news</td>
+<td class="right">6</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">ARTICLE</td>
+<td class="right">4</td>
+<td class="left">normalize to "article"</td>
+</tr>
+
+<tr>
+<td class="left">media</td>
+<td class="right">2</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">blog</td>
+<td class="right">1</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">slideshow</td>
+<td class="right">1</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">video.movie</td>
+<td class="right">1</td>
+<td class="left">normalize to "video"</td>
+</tr>
+
+<tr>
+<td class="left">tumblr-feed:entry</td>
+<td class="right">1</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-07-08 Fri&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>Vladimir: it would be nice to normalize some values, and reduce this from 20 to say 10 rows
+</li>
+<li>Ioannis: the code to extract "type" was written over a year ago, so this would not be so simple
+</li>
+<li>Vladimir and Ioannis: the first 5 types catch 90%, so it's only the "long tail" would need normalization&#x2026; This is not so important
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-7" class="outline-4">
+<h4 id="sec-2-1-7"><span class="done DONE">DONE</span> Wrong prefix for Text Characteristics</h4>
+<div class="outline-text-4" id="text-2-1-7">
+<p>
+Advanced Context Extraction adds new Text Characteristics properties (<code>ms:technicality, ms:fluency, ms:richness</code>) 
+to the context (property definitions omitted for brevity).
+</p>
+
+<p>
+Example (this particular text is fluent, but is neither rich nor technical, so we set values 5, 1, 1 respectively):
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle">@base <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/9e9c304&gt;</span>.
+
+<span style="color: #0000ff;">&lt;#char=0,2000&gt;</span><span style="color: #b22222;"> </span><span style="color: #a020f0;">a</span><span style="color: #b22222;"> </span><span style="color: #228b22;">nif:</span><span style="color: #008b8b;">Context</span><span style="color: #b22222;">;</span>
+  <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">isString</span> <span style="color: #8b2252;">"This is the whole text of the SIMMO.\n It should continue for 2000 chars but I'll stop here"</span>@en;
+  <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">fluency</span>      5.0;
+  <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">richness</span>     1.0;
+  <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">technicality</span> 1.0.
+</pre>
+</div>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-06-23 Thu&gt;</span></span>: checked <a href="http://grinder1.multisensorproject.eu/cepfiles/rdf_validation/context_extraction_validation/0e6b24-CONTEXT_EXTRACTION-22-6-2016.ttl">0e6b24-CONTEXT_EXTRACTION-22-6-2016.ttl</a> and Text Characteristics (technicality, fluency, richness):
+</p>
+<ul class="org-ul">
+<li>currently use <a href="http://data.multisensor.eu/ontology#">http://data.multisensor.eu/ontology#</a>
+</li>
+<li>but the correct prefix is <a href="http://data.multisensorproject.eu/ontology#">http://data.multisensorproject.eu/ontology#</a>
+</li>
+</ul>
+<p>
+Victor <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-06-30 Thu&gt;</span></span>: updated the prefix
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-8" class="outline-4">
+<h4 id="sec-2-1-8"><span class="done DONE">DONE</span> Refresh Prefixes</h4>
+<div class="outline-text-4" id="text-2-1-8">
+<p>
+I've added <a href="http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-annotation">http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-annotation</a># to <a href="./img/prefixes.ttl">./img/prefixes.ttl</a> (committed <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-06-30 Thu&gt;</span></span>)
+Please refresh from <a href="./img/prefixes.ttl">./img/prefixes.ttl</a>, so new validation files use this prefix.
+</p>
+
+<p>
+Gerard: what exactly are we suppposed to do with the prefixes file.
+</p>
+<ul class="org-ul">
+<li>Once loaded in the repo (Boyan's job), we can make queries without mentioning the prefixes.
+</li>
+</ul>
+<p>
+Should we load it into Sesame somehow so that triples are generated with prefixes? 
+If so, could you give us some code showing how to do it?
+</p>
+<ul class="org-ul">
+<li>I think the validation files use prefixes, because prefixes.ttl is prepended, then passed through RIOT.
+I think Victor made that script. The other prefixes are there, so it's just a matter of refreshing
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">Entity Linking Service</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><span class="todo TODO">TODO</span> Underscores to Spaces</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+The EL service emits Babelnet entity labels in up to 4 languages, eg
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #228b22;">bn:</span><span style="color: #008b8b;">s00088614v</span>  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span>  <span style="color: #8b2252;">"zu_befriedigen"</span>@de , <span style="color: #8b2252;">"satisfacer"</span>@es , <span style="color: #8b2252;">"satisfaire"</span>@fr , <span style="color: #8b2252;">"&#1079;&#1072;&#1076;&#1086;&#1074;&#1086;&#1083;&#1080;"</span>@bg <span style="color: #228b22;">.</span>
+<span style="color: #228b22;">bn:</span><span style="color: #008b8b;">s00014609n</span>  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span>  <span style="color: #8b2252;">"Kuchen"</span>@de , <span style="color: #8b2252;">"Pastel_(gastronom&#237;a)"</span>@es , <span style="color: #8b2252;">"G&#226;teau"</span>@fr , <span style="color: #8b2252;">"&#1058;&#1086;&#1088;&#1090;&#1072;"</span>@bg <span style="color: #228b22;">.</span>
+<span style="color: #228b22;">bn:</span><span style="color: #008b8b;">s01718102n</span>  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span>  <span style="color: #8b2252;">"I_do_not_want_what_I_haven't_got"</span>@es , <span style="color: #8b2252;">"I_Don't_Want_What_I_Haven't_Got"</span>@en , <span style="color: #8b2252;">"I_Do_Not_Want_What_I_Haven't_Got"</span>@fr <span style="color: #228b22;">.</span>
+<span style="color: #228b22;">bn:</span><span style="color: #008b8b;">s02229586n</span>  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span>  <span style="color: #8b2252;">"UHC_Hamburg"</span>@en , <span style="color: #8b2252;">"Uhlenhorster_HC"</span>@fr .
+</pre>
+</div>
+<p>
+For reasons unknown, Babelnet uses underscores (eg see <a href="http://babelnet.org/rdf/page/UHC_Hamburg_n_EN">UHC_Hamburg_n_EN</a>).
+I think we should convert the underscores to spaces to make the label more natural.
+</p>
+
+<ul class="org-ul">
+<li>Can be fixed in the repo with a query like this
+<ul class="org-ul">
+<li>However this doesn't find Babelnet <b>broader</b> entities imported by ONTO. We have a list of all Babelnet entities, maybe better to use this somehow
+</li>
+</ul>
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-sparql"><span style="color: #a020f0;">delete</span> {<span style="color: #a0522d;">?x</span> skos:prefLabel <span style="color: #a0522d;">?lab</span>}
+<span style="color: #a020f0;">insert</span> {<span style="color: #a0522d;">?x</span> skos:prefLabel <span style="color: #a0522d;">?lab1</span>}
+<span style="color: #a020f0;">where</span> {
+    <span style="color: #a0522d;">?x</span> skos:prefLabel <span style="color: #a0522d;">?lab</span>
+    <span style="color: #a020f0;">filter</span> <span style="color: #a020f0;">exists</span> {[its:taIdentRef <span style="color: #a0522d;">?x</span>; nif-ann:taIdentProv <span style="color: #008b8b;">&lt;http://babelfy.org/&gt;</span>]}
+    <span style="color: #a020f0;">filter</span>(regex(<span style="color: #a0522d;">?lab</span>,<span style="color: #8b2252;">"_"</span>))
+    <span style="color: #a020f0;">bind</span>(replace(<span style="color: #a0522d;">?lab</span>,<span style="color: #8b2252;">"_"</span>," ") <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?lab1</span>)
+}
+</pre>
+</div>
+<ul class="org-ul">
+<li>UPF code that brings in new Babelnet enrichments should be fixed too.
+Gerard: DONE <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-07-20 Wed&gt;</span></span>
+      Entitly Linking: Translations obtained from BabelNet are now issued as literals of skos:prefLabel triples without underscores.
+</li>
+<li>UPF code that creates <code>nif:lemma</code> should be fixed, eg this node has lemma "basic_data"
+<a href="http://multisensor.ontotext.com/resource/ms-content/00a17bdb91543c45349f42378caeecd434c1a8f4#char=281,291">http://multisensor.ontotext.com/resource/ms-content/00a17bdb91543c45349f42378caeecd434c1a8f4#char=281,291</a>
+Gerard: DONE <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-07-20 Wed&gt;</span></span>.
+      Dependency parsing: lemmas are also emitted as literals of nif:lemma triples without underscores
+</li>
+<li>IMPORTANT <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-08-12 Fri&gt;</span></span> Now we have two labels per BN concept per language. Must remove the superfluous ones. Eg:
+<ul class="org-ul">
+<li>bn:s03113558n: "Royal Ordnance Factories F.C."@en and "Royal_Ordnance_Factories_F.C."@en
+</li>
+<li>bn:s00124949n: "Prefijo del Segmento de Programa"@es and "Prefijo_del_Segmento_de_Programa"@es
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="todo QUE">QUE</span> Remove Disambiguation Labels?</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+Should we also remove disambiguations, which are trailing parenthesized parts, eg "Pastel_(gastronomía)" -&gt; "Pastel"?
+Since these labels are not used for NLP tasks, and the disambiguations are very useful for understanding what the entity is, I vote to leave them.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">Entity Alignment Service</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-06-28 Tue&gt;</span></span>: checked <a href="http://grinder1.multisensorproject.eu/cepfiles/rdf_validation/entity_alignment/0181e1-ENTITY_ALIGNMENT-21-6-2016.ttl">0181e1-ENTITY_ALIGNMENT-21-6-2016.ttl</a> and alignment.log (by email)
+</p>
+
+<p>
+The log has 90 actions. I checked these 4 actions:
+</p>
+<pre class="example">
+2016-06-21 16:22:18 INFO  Alignment:42 - Comparing &lt;#char=1453,1461&gt; and &lt;#char=1444,1461&gt;
+2016-06-21 16:22:18 INFO  Alignment:138 - Removed: (#char=1453,1461, rdf:type, nif:Phrase)
+2016-06-21 16:22:18 INFO  Alignment:152 - Removed: (#char=1453,1461, itsrdf:taClassRef, null)
+2016-06-21 16:22:18 INFO  Alignment:156 - Removed: (#char=1453,1461, itsrdf:taIdentRef, null)
+</pre>
+
+<p>
+This corresponds to two annotations:
+</p>
+<ul class="org-ul">
+<li>&lt;#char=1444,1461&gt; found by Named Entity Recognition: "Margaret Thatcher" detected as the politician, with link to DBpedia (longer; correct)
+</li>
+<li>&lt;#char=1453,1461&gt; found by Entity Linking: "Thatcher" detected as a "roof builder" with link to Bbelnet (shorter; incorrect)
+</li>
+</ul>
+
+<p>
+The Entity Alignment service prefers the longer annotation, and removes 3 properties from the shorter annotation.
+What is left in the RDF is this:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #0000ff;">&lt;#char=1453,1461&gt;</span>
+        <span style="color: #a020f0;">a</span>                     <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">Word</span> ;
+        <span style="color: #0000ff;">&lt;http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-annotation#taIdentConf&gt;</span>
+                <span style="color: #8b2252;">"0.0"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ;
+        <span style="color: #0000ff;">&lt;http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-annotation#taIdentProv&gt;</span>
+                <span style="color: #0000ff;">&lt;http://babelfy.org/&gt;</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">anchorOf</span>          <span style="color: #8b2252;">"Thatcher"</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">beginIndex</span>        <span style="color: #8b2252;">"1453"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">endIndex</span>          <span style="color: #8b2252;">"1461"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">referenceContext</span>  <span style="color: #0000ff;">&lt;#char=0,2898&gt;</span><span style="color: #b22222;"> .</span>
+
+<span style="color: #0000ff;">&lt;#char=1444,1461&gt;</span>
+        <span style="color: #a020f0;">a</span>                     <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">Phrase</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">anchorOf</span>          <span style="color: #8b2252;">"Margaret Thatcher"</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">beginIndex</span>        <span style="color: #8b2252;">"1444"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">endIndex</span>          <span style="color: #8b2252;">"1461"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">referenceContext</span>  <span style="color: #0000ff;">&lt;#char=0,2898&gt;</span><span style="color: #b22222;"> ;</span>
+        <span style="color: #228b22;">its:</span><span style="color: #008b8b;">taClassRef</span>        <span style="color: #228b22;">nerd:</span><span style="color: #008b8b;">Person</span> ;
+        <span style="color: #228b22;">its:</span><span style="color: #008b8b;">taIdentRef</span>        <span style="color: #228b22;">dbr:</span><span style="color: #008b8b;">Margaret_Thatcher</span> <span style="color: #228b22;">.</span>
+
+<span style="color: #228b22;">dbr:</span>Margaret_Thatcher
+        <span style="color: #a020f0;">a</span>          <span style="color: #228b22;">foaf:</span><span style="color: #008b8b;">Person</span> , <span style="color: #228b22;">dbo:</span><span style="color: #008b8b;">Person</span> , <span style="color: #228b22;">nerd:</span><span style="color: #008b8b;">Person</span> ;
+        <span style="color: #228b22;">foaf:</span><span style="color: #008b8b;">name</span>  <span style="color: #8b2252;">"Margaret Thatcher"</span> .
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1"><span class="done DONE">DONE</span> Also remove taIdentConf, taIdentProv</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+In the example above, <code>taClassRef</code> and <code>taIdentRef</code> were removed. 
+This makes the other two props <code>nif-ann:taIdentConf</code> and <code>nif-ann:taIdentProv</code> useless.
+Remove them too.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3-2" class="outline-4">
+<h4 id="sec-2-3-2"><span class="done DONE">DONE</span> Leave Dependency Links</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+Entity Alignment also seems to remove the dependency links, eg:
+</p>
+<pre class="example">
+&lt;#char=1444,1452&gt; nif:dependency          &lt;#char=1453,1461&gt;
+&lt;#char=1444,1452&gt; upf-deep:deepDependency &lt;#char=1453,1461&gt;
+</pre>
+
+<p>
+However, this can make the dependency and FrameNet graphs disconnected. So leave the dependencies alone.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3-3" class="outline-4">
+<h4 id="sec-2-3-3"><span class="todo TODO">TODO</span> Use Prefixes in alignment.log</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<p>
+I shortened the excerpt from alignment.log above to improve readability:
+substituted the defined prefixes, and used the SIMMO URL as base (i.e. used relative URLs starting with hash)
+It would be very useful if alignment.log uses the same shortenings to improve readability.
+</p>
+
+<p>
+This is a completely cosmetic issue, we can cancel it.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">Summarization Service</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-06-28 Tue&gt;</span></span> looked at <a href="http://grinder1.multisensorproject.eu/cepfiles/rdf_validation/concept_with_scores_16_06_2016/2c9d5c-CONCEPT_EXTRACTION-16-6-2016.ttl">2c9d5c-CONCEPT_EXTRACTION-16-6-2016.ttl</a> (concept_with_scores)
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #0000ff;">&lt;#char=0,11&gt;</span>
+        <span style="color: #a020f0;">a</span>                        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">Phrase</span> ;
+        <span style="color: #0000ff;">&lt;http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-annotation#taIdentConf&gt;</span>
+                <span style="color: #8b2252;">"0.0"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ;
+        <span style="color: #0000ff;">&lt;http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-annotation#taIdentProv&gt;</span>
+                <span style="color: #0000ff;">&lt;http://babelfy.org/&gt;</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">beginIndex</span>           <span style="color: #8b2252;">"0"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">dependency</span>           <span style="color: #0000ff;">&lt;#char=29,38&gt;</span><span style="color: #b22222;"> ;</span>
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">endIndex</span>             <span style="color: #8b2252;">"11"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">lemma</span>                <span style="color: #8b2252;">"open_source"</span> ;
+        <span style="color: #228b22;">nif:</span>literalAnnotation
+          <span style="color: #8b2252;">"surf=spos=NN"</span> ,
+          <span style="color: #8b2252;">"rel==dpos=NN|end_string=11|start_string=0|id0=1|number=SG|word=open_source|connect_check=OK|vn=open_source"</span> ,
+          <span style="color: #8b2252;">"deep=spos=NN"</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">oliaLink</span>             <span style="color: #228b22;">upf-dep-syn:</span><span style="color: #008b8b;">NAME</span> , <span style="color: #228b22;">upf-deep:</span><span style="color: #008b8b;">NAME</span> , <span style="color: #0000ff;">&lt;#char=0,11_fe&gt;</span><span style="color: #b22222;"> , </span><span style="color: #228b22;">penn:</span><span style="color: #008b8b;">NNP</span><span style="color: #b22222;"> ;</span>
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">referenceContext</span>     <span style="color: #0000ff;">&lt;#char=0,5625&gt;</span><span style="color: #b22222;"> ;</span>
+        <span style="color: #228b22;">upf-deep:</span><span style="color: #008b8b;">deepDependency</span>  <span style="color: #0000ff;">&lt;#char=29,38&gt;</span><span style="color: #b22222;"> ;</span>
+        <span style="color: #228b22;">its:</span><span style="color: #008b8b;">taClassRef</span>           <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">GenericConcept</span> ;
+        <span style="color: #228b22;">its:</span><span style="color: #008b8b;">taIdentRef</span>           <span style="color: #228b22;">bn:</span><span style="color: #008b8b;">s01157392n</span> .
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4-1" class="outline-4">
+<h4 id="sec-2-4-1"><span class="done DONE">DONE</span> nif:anchorOf</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+I've been saying all along to skip <code>nif:anchorOf</code> so as not to create too many literals.
+But with the number of SIMMOs loaded, it has not been too taxing for GDB.
+<code>nif:anchorOf</code> has been instrumental in debugging, eg of the UTF-8 and offset mismatch issues.
+</p>
+
+<p>
+<code>nif:literalAnnotation</code> and <code>nif:lemma</code> provide sufficient info about the phrase, 
+so maybe we don't need <code>nif:anchorOf</code>. We could cancel this issue.
+</p>
+<ul class="org-ul">
+<li>Gerard: If they can be sustained by GraphDB, I vote in favor of keeping them as they help <b>a lot</b> when debugging. 
+</li>
+<li>Vladimir: so decided: if the Entity Lookup makes a new node, add <code>nif:anchorOf</code> to it.
+</li>
+</ul>
+
+<p>
+Some nodes  are missing <code>nif:anchorOf</code>, eg see
+<a href="http://multisensor.ontotext.com/resource/ms-content/00a17bdb91543c45349f42378caeecd434c1a8f4#char=281,291">http://multisensor.ontotext.com/resource/ms-content/00a17bdb91543c45349f42378caeecd434c1a8f4#char=281,291</a>.
+This has nif:lemma "basic_data" but not nif:anchorOf.
+</p>
+
+<p>
+Gerard <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-07-20 Wed&gt;</span></span> NIFUtils: new annotations created by services using this library will now emit anchors. This affects EL mostly
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4-2" class="outline-4">
+<h4 id="sec-2-4-2"><span class="todo TODO">TODO</span> Why nif-ann:taIdentConf is 0?</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<p>
+In the above example, <code>nif-ann:taIdentConf</code> is 0. 
+In many other examples it's a good number, eg see below.
+Is 0 some sort of bug, or does Babelfy actually return 0 confidence for some concepts?
+</p>
+<ul class="org-ul">
+<li>Gerard: I think it's an error, I'll get back to you as soon as as I've figured out what's causing it.
+</li>
+<li>Vladimir <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-09-05 Mon&gt;</span></span> Still occurs, eg
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #0000ff;">&lt;3c361-de#char=8190,8198&gt;</span>
+      <span style="color: #a020f0;">a</span>                      <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">Phrase</span> , <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">Word</span> ;
+      <span style="color: #228b22;">nif-ann:</span><span style="color: #008b8b;">taIdentConf</span>    <span style="color: #8b2252;">"0.0"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ;
+      <span style="color: #228b22;">nif-ann:</span><span style="color: #008b8b;">taIdentProv</span>    <span style="color: #0000ff;">&lt;http://babelfy.org/&gt;</span> ;
+      <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">anchorOf</span>           <span style="color: #8b2252;">"Zugleich"</span> ;
+</pre>
+</div>
+</li>
+</ul>
+
+<p>
+<a href="http://grinder1.multisensorproject.eu/cepfiles/rdf_validation/concept_with_scores_16_06_2016/bf6fe4-CONCEPT_EXTRACTION-16-6-2016.ttl">bf6fe4-CONCEPT_EXTRACTION-16-6-2016.ttl</a>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle">@base <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/bf6fe48b8d88c1d11d5086863f4c3ad26286bda9&gt;</span>.
+
+<span style="color: #0000ff;">&lt;#char=1814,1822&gt;</span>
+        <span style="color: #a020f0;">a</span>                        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">Word</span> ;
+        <span style="color: #228b22;">nif-anno:</span><span style="color: #008b8b;">taIdentConf</span>     <span style="color: #8b2252;">"0.7619547411890493"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ;
+        <span style="color: #228b22;">nif-anno:</span><span style="color: #008b8b;">taIdentProv</span>     <span style="color: #0000ff;">&lt;http://babelfy.org/&gt;</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">anchorOf</span>             <span style="color: #8b2252;">"pastries"</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">beginIndex</span>           <span style="color: #8b2252;">"1814"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">dependency</span>           <span style="color: #0000ff;">&lt;#char=1806,1812&gt;</span><span style="color: #b22222;"> ;</span>
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">endIndex</span>             <span style="color: #8b2252;">"1822"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">lemma</span>                <span style="color: #8b2252;">"pastry"</span> ;
+        <span style="color: #228b22;">nif:</span>literalAnnotation
+          <span style="color: #8b2252;">"deep=spos=NN"</span> , 
+          <span style="color: #8b2252;">"rel==member=A2|dpos=NN|end_string=1822|start_string=1814|id0=29|word=pastry|number=PL|connect_check=OK|fn=Food"</span> , 
+          <span style="color: #8b2252;">"surf=spos=NN"</span> ;
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">oliaLink</span>             <span style="color: #228b22;">upf-deep:</span><span style="color: #008b8b;">COORD</span> , <span style="color: #228b22;">penn:</span><span style="color: #008b8b;">NNS</span> , <span style="color: #0000ff;">&lt;#char=1814,1822_fe&gt;</span><span style="color: #b22222;"> , </span><span style="color: #228b22;">upf-dep-syn:</span><span style="color: #008b8b;">COORD</span><span style="color: #b22222;"> ;</span>
+        <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">referenceContext</span>     <span style="color: #0000ff;">&lt;#char=0,12793&gt;</span><span style="color: #b22222;"> ;</span>
+        <span style="color: #228b22;">upf-deep:</span><span style="color: #008b8b;">deepDependency</span>  <span style="color: #0000ff;">&lt;#char=1806,1812&gt;</span><span style="color: #b22222;"> ;</span>
+        <span style="color: #228b22;">its:</span><span style="color: #008b8b;">taClassRef</span>           <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">GenericConcept</span> ;
+        <span style="color: #228b22;">its:</span><span style="color: #008b8b;">taIdentRef</span>           <span style="color: #228b22;">bn:</span><span style="color: #008b8b;">s00060957n</span> .
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4-3" class="outline-4">
+<h4 id="sec-2-4-3"><span class="done CANCEL">CANCEL</span> ms:GenericConcept vs ms:SpecificConcept</h4>
+<div class="outline-text-4" id="text-2-4-3">
+<ul class="org-ul">
+<li>Gerard (about the last example): A 'generic' concept produced by Babelfy. 
+But annotations of concepts produced by the concept extraction service should contain triples pointing to <code>ms:SpecificConcept</code>.
+</li>
+<li>Vladimir: also seems to me that concepts like "open source" and "pastry" are <code>ms:SpecificConcept</code>.
+</li>
+<li>Gerard: problems regarding the quality of the annotations shouldn't be part of the RDF validation.
+</li>
+<li>Vladimir: agree, but this log is for the project as a whole, not just syntactic validity. (Which doesn't mean I'm determining priorities!)
+</li>
+<li>Gerard: we'll be releasing updates to the concept extraction service, so expect improvements into what is considered a specific concept.
+</li>
+<li>How is this used in the UI? Gerard thinks that only Specific concepts are (or <b>should be</b>) shown in the SIMMO's tag cloud
+</li>
+</ul>
+
+<p>
+Gerard <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-07-20 Wed&gt;</span></span> This should become a non issue after recent changes are incorporated to the concept service
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4-4" class="outline-4">
+<h4 id="sec-2-4-4"><span class="done DONE">DONE</span> Optimize Summarization Queries</h4>
+<div class="outline-text-4" id="text-2-4-4">
+<p>
+Gerard wrote some of the Summarization queries are slow.
+Please mark which ones need optimization, and provide <code>$graph</code> for testing.
+</p>
+<ul class="org-ul">
+<li>Used the standard notation <code>$param</code> to indicate an input parameter, rather than <code>__PARAM__</code>
+</li>
+<li>Moved <code>FILTER</code> inside <code>GRAPH</code>, and a few more minor changes
+</li>
+<li>The problem was that the prop path <code>p1?/p2</code> is slow, since <code>p1?</code> connects <b>any</b> node to itself.
+Replaced with <code>p1/p2|p2</code>, which is fast
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5">Content Alignment</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+The Content Alignment Pipeline (CAP) is a service that executes on KB data and finds articles that are similar or contradictory to the source article.
+It is <b>not</b> executed as part of the SIMMO pipeline, but periodically.
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-07-20 Wed&gt;</span></span>: selected repo <b>multisensor-test</b> and checked <a href="http://multisensor.ontotext.com/resource?uri=http://data.multisensorproject.eu/CAP/7b91365a-af00-4518-a7e7-f187f3cd44c1">http://multisensor.ontotext.com/resource?uri=http://data.multisensorproject.eu/CAP/7b91365a-af00-4518-a7e7-f187f3cd44c1</a> 
+</p>
+<ul class="org-ul">
+<li>Everything's done except "ms:score instead of fise:confidence" (Babis) and "add to Ontology" (Vladimir).
+</li>
+<li>Checked there are motivations of both kinds:
+<div class="org-src-container">
+
+<pre class="src src-sparql"><span style="color: #a020f0;">select</span> <span style="color: #a0522d;">?mot</span> (count(*) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?c</span>) <span style="color: #a020f0;">where</span> { 
+ <span style="color: #a020f0;">graph</span> <span style="color: #008b8b;">&lt;http://data.multisensorproject.eu/CAP&gt;</span> {<span style="color: #a0522d;">?x</span> oa:motivatedBy <span style="color: #a0522d;">?mot</span>}
+} <span style="color: #a020f0;">group</span> <span style="color: #a020f0;">by</span> <span style="color: #a0522d;">?mot</span>
+</pre>
+</div>
+<p>
+ms:linking-similar: 828, ms:linking-contradictory: 860
+</p>
+</li>
+<li>one contradictory CAP annotation is <a href="http://multisensor.ontotext.com/resource?uri=http://data.multisensorproject.eu/CAP/007e1c1e-85b4-481a-a838-0e242c2afb8c">CAP/007e1c1e-85b4-481a-a838-0e242c2afb8c</a>
+  It talks about these two:
+<div class="org-src-container">
+
+<pre class="src src-sparql"><span style="color: #a020f0;">PREFIX</span> dc: <span style="color: #008b8b;">&lt;http://purl.org/dc/elements/1.1/&gt;</span>
+<span style="color: #a020f0;">PREFIX</span> nif: <span style="color: #008b8b;">&lt;http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#&gt;</span>
+<span style="color: #a020f0;">select</span> <span style="color: #a0522d;">?desc</span> <span style="color: #a0522d;">?text</span> {
+    <span style="color: #a020f0;">values</span> <span style="color: #a0522d;">?x</span> {
+        <span style="color: #008b8b;">&lt;http://data.multisensorproject.eu/content/7d76ef5e787e830b081d149d05359c21cc5a9835&gt;</span>
+        <span style="color: #008b8b;">&lt;http://data.multisensorproject.eu/content/d2b116e9c5422fda256da2913738ac000ba7b30c&gt;</span>
+    }
+    <span style="color: #a0522d;">?x</span> dc:description <span style="color: #a0522d;">?desc</span>.
+    <span style="color: #a0522d;">?y</span> nif:sourceUrl <span style="color: #a0522d;">?x</span>; nif:isString <span style="color: #a0522d;">?text</span>
+}
+</pre>
+</div>
+<ul class="org-ul">
+<li>One is about "How an Apple Watch can ruin your life"
+</li>
+<li>The other about "Employees and executives win mobility and flexibility with the SH10 TaskBook of SOREDI Touch Systems GmbH"
+</li>
+</ul>
+<p>
+Guess this is sort of contradictory: one hates one IT product, the other one praises another IT product :-)
+</p>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-2-5-1" class="outline-4">
+<h4 id="sec-2-5-1">CAP Old Model</h4>
+<div class="outline-text-4" id="text-2-5-1">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-06-28 Tue&gt;</span></span> checked <a href="http://mklab2.iti.gr/multisensor/index.php/CAP:_Specification_of_the_service">CAP:_Specification_of_the_service</a>. It proposes the following model:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304#similarArticles&gt;</span>
+  <span style="color: #a020f0;">a</span> <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">Annotation</span> ;
+  <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">hasTarget</span> <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304&gt;</span> ;
+  <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">hasBody</span>        
+    <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304#similarArticle-1&gt;</span><span style="color: #b22222;"> ,</span>
+    <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304#similarArticle-2&gt;</span><span style="color: #b22222;"> ;</span>
+  <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">motivatedBy</span> <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">tagging</span> ;
+  <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">annotatedBy</span> <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/agent/CAPAgent&gt;</span> ;
+  <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">annotatedAt</span> <span style="color: #8b2252;">"2016-01-11T12:00:00"</span><span style="color: #008b8b;">^^xsd:dateTime</span> <span style="color: #228b22;">.</span>
+
+<span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304#similarArticle-1&gt;</span>
+  <span style="color: #a020f0;">a</span> <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">SemanticTag</span> ;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">related</span> <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/ca34bb35770bfa55434a0689d64e1e6a60611047&gt;</span> ;
+  <span style="color: #228b22;">fise:</span><span style="color: #008b8b;">confidence</span> 0.862 <span style="color: #228b22;">.</span>
+
+<span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304#similarArticle-2&gt;</span>
+  <span style="color: #a020f0;">a</span> <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">SemanticTag</span> ;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">related</span> <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/57e07befbda355c2eca2ee521926071ee9f5c719&gt;</span> ;
+  <span style="color: #228b22;">fise:</span><span style="color: #008b8b;">confidence</span> 0.795 <span style="color: #228b22;">.</span>
+
+<span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/agent/CAPAgent&gt;</span>
+  <span style="color: #a020f0;">a</span> <span style="color: #228b22;">prov:</span><span style="color: #008b8b;">SoftwareAgent</span> ;
+  <span style="color: #228b22;">foaf:</span><span style="color: #008b8b;">name</span> <span style="color: #8b2252;">"Content Alignment Pipeline v1.0"</span> .
+</pre>
+</div>
+
+<p>
+Each annotation is symmetric, so it's written twice: in the SIMMO graphs of each of the two SIMMOs.
+This complicates data management, because both of these graphs need to be updated.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5-2" class="outline-4">
+<h4 id="sec-2-5-2"><span class="done DONE">DONE</span> One Annotation Per Pair&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Babis">Babis</span></span></h4>
+<div class="outline-text-4" id="text-2-5-2">
+<p>
+After consultation with Babis, we decided to change the representation as follows:
+</p>
+<ul class="org-ul">
+<li>Write annotations in their own graph <a href="http://data.multisensorproject.eu/CAP">http://data.multisensorproject.eu/CAP</a>, outside of any SIMMO graph.
+The CAP service will be called periodically, search globally in the SIMMO DB, and overwrite the similarity graph.
+</li>
+<li>Write one annotation per pair
+</li>
+<li>Use custom <code>oa:motivatedBy</code>: <code>ms:linking-similar</code> vs <code>ms:linking-contradictory</code> to express similarity vs contradiction
+</li>
+</ul>
+
+<p>
+In the previous example, assume that the first related article is <b>similar</b> but the second is <b>contradictory</b>.
+We restructure it as follows, where <code>similarity/123</code> and <code>similarity/124</code> are GUIDs or some other way to generate unique URLs.
+Please note that the representation is completely symmetric regarding the two SIMMOs being linked, 
+so there's no need to repeat for the other SIMMO.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-Turtle">graph <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/CAP&gt;</span> {
+  <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/CAP/123&gt;</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">Annotation</span>;
+    <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">hasBody</span>        
+      <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304&gt;</span>,
+      <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/ca34bb35770bfa55434a0689d64e1e6a60611047&gt;</span>;
+    <span style="color: #228b22;">fise:</span><span style="color: #008b8b;">confidence</span> 0.862;
+    <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">motivatedBy</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">linking-similar</span>;
+    <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">annotatedBy</span> <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/agent/CAP&gt;</span>;
+    <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">annotatedAt</span> <span style="color: #8b2252;">"2016-01-11T12:00:00"</span><span style="color: #008b8b;">^^xsd:dateTime</span> .
+
+  <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/CAP/124&gt;</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">Annotation</span>;
+    <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">hasBody</span>        
+      <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/53a0938bc4770c6ba0e7d7b9ca88a637f9e9c304&gt;</span>,
+      <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/57e07befbda355c2eca2ee521926071ee9f5c719&gt;</span>;
+    <span style="color: #228b22;">fise:</span><span style="color: #008b8b;">confidence</span> 0.795;
+    <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">motivatedBy</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">linking-contradictory</span>;
+    <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">annotatedBy</span> <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/agent/CAP&gt;</span>;
+    <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">annotatedAt</span> <span style="color: #8b2252;">"2016-01-12T12:00:00"</span><span style="color: #008b8b;">^^xsd:dateTime</span> .
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5-3" class="outline-4">
+<h4 id="sec-2-5-3"><span class="todo TODO">TODO</span> Use ms:score not fise:confidence for CAP</h4>
+<div class="outline-text-4" id="text-2-5-3">
+<p>
+In an example sent by Babis, I see fise:confidence=1.6439653807554948. 
+But confidence is the probability that something is true, so it should be &lt;=1.
+Guess this is some other sort of <b>score</b>, and maybe it's better to use our own property?
+</p>
+
+<p>
+Decided with Babis to use a custom property <code>ms:score</code> (see next).
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5-4" class="outline-4">
+<h4 id="sec-2-5-4"><span class="todo TODO">TODO</span> Add to Ontology&#xa0;&#xa0;&#xa0;<span class="tag"><span class="Vladimir">Vladimir</span></span></h4>
+<div class="outline-text-4" id="text-2-5-4">
+<p>
+The following will be in <a href="./img/ontology.ttl">./img/ontology.ttl</a>, so they don't need to be repeated by CAP for every similarity link.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/agent/CAP&gt;</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">prov:</span><span style="color: #008b8b;">SoftwareAgent</span>;
+  <span style="color: #228b22;">foaf:</span><span style="color: #008b8b;">name</span> <span style="color: #8b2252;">"Content Alignment Pipeline v1.0"</span><span style="color: #228b22;">.</span>
+
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">linking-similar</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">owl:</span><span style="color: #008b8b;">NamedIndividual,</span> <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">Motivation</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">inScheme</span> <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">motivationScheme</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">broader</span> <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">linking</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"linking-similar"</span>@en;
+  <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">comment</span> <span style="color: #8b2252;">"Motivation that represents a symmetric link between two *similar* articles"</span>@en;
+  <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">isDefinedBy</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;"> </span><span style="color: #228b22;">.</span>
+
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">linking-contradictory</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">owl:</span><span style="color: #008b8b;">NamedIndividual,</span> <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">Motivation</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">inScheme</span> <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">motivationScheme</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">broader</span> <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">linking</span>;
+  <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"linking-contradictory"</span>@en;
+  <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">comment</span> <span style="color: #8b2252;">"Motivation that represents a symmetric link between two *contradictory* articles"</span>@en;
+  <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">isDefinedBy</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;"> </span><span style="color: #228b22;">.</span>
+
+<span style="color: #228b22;">ms:</span><span style="color: #008b8b;">score</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">owl:</span><span style="color: #008b8b;">DatatypeProperty</span>;
+  <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">domain</span> <span style="color: #228b22;">oa:</span><span style="color: #008b8b;">Annotation</span>;
+  <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">range</span>  <span style="color: #228b22;">xsd:</span><span style="color: #008b8b;">decimal</span>;
+  <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">label</span> <span style="color: #8b2252;">"score"</span>@en;
+  <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">comment</span> <span style="color: #8b2252;">"Strength of an Annotation, eg the link between two entities"</span>@en;
+  <span style="color: #228b22;">rdfs:</span><span style="color: #008b8b;">isDefinedBy</span> <span style="color: #228b22;">ms:</span><span style="color: #008b8b;"> </span>.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5-5" class="outline-4">
+<h4 id="sec-2-5-5">CAP Query</h4>
+<div class="outline-text-4" id="text-2-5-5">
+<p>
+Given a <code>$simmo</code>, find similar or contradictory articles, and their similarity/contradiction scores.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sparql"><span style="color: #a020f0;">select</span> <span style="color: #a0522d;">?article</span> <span style="color: #a0522d;">?motivation</span> <span style="color: #a0522d;">?score</span> {
+  [a oa:Annotation;
+   oa:annotatedBy <span style="color: #008b8b;">&lt;http://data.multisensorproject.eu/agent/CAP&gt;</span>;
+   oa:hasBody <span style="color: #a0522d;">$simmo</span>, <span style="color: #a0522d;">?article</span>;
+   ms:score <span style="color: #a0522d;">?score</span>;
+   oa:motivatedBy <span style="color: #a0522d;">?motivation</span>
+  ]
+  <span style="color: #a020f0;">filter</span> (<span style="color: #a0522d;">$simmo</span> != <span style="color: #a0522d;">?article</span>)
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5-6" class="outline-4">
+<h4 id="sec-2-5-6"><span class="done CANCEL">CANCEL</span> Other CAP Queries</h4>
+<div class="outline-text-4" id="text-2-5-6">
+<p>
+The gdoc maybe has 2 queries related to CAP. Not sure I'm looking at the right section. Maybe we should just delete them.
+</p>
+<ul class="org-ul">
+<li>2.8 "Retrieve the concepts in the SIMMO (Select)": wrote something simple
+</li>
+<li>2.9 "Retrieve the concepts in the SIMMO (Construct)": don't know what is needed
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6"><span class="done DONE">DONE</span> Content Translation</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+Scenario: we have a SIMMO in original language ES that is machine-translated to EN &amp; DE. 
+</p>
+<ul class="org-ul">
+<li>All textual elements are translated: title, description, body.
+<ul class="org-ul">
+<li>The example below also shows subject &amp; keywords in different languages. If you can only produce them in EN, that's fine
+</li>
+</ul>
+</li>
+<li>However, video ASR text is not translated.
+</li>
+<li>Both original and translations are annotated with NIF.
+</li>
+</ul>
+<p>
+We want to record all NIF information against original and translated separately, so there's no confusion.
+If the article includes multimedia, we want to attach it only to the original, to avoid data duplication.
+</p>
+
+<p>
+Solution: we need separate roots (foaf:Document), so we store the original and translation(s) in separate named graphs.
+</p>
+<ul class="org-ul">
+<li>the translated-content graph has language-specific suffix; the original-content graph does not have such suffix
+</li>
+<li>the translated content has link <code>bibo:translationOf</code> to the original
+</li>
+</ul>
+
+<p>
+Root:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #b22222;"># ES original</span>
+graph <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d</span> {
+  <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">foaf:</span><span style="color: #008b8b;">Document</span> ;
+    <span style="color: #228b22;">dbp:</span><span style="color: #008b8b;">countryCode</span>  <span style="color: #8b2252;">"ES"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">creator</span>       <span style="color: #8b2252;">"Alberto Iglesias Fraga"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">date</span>          <span style="color: #8b2252;">"2016-07-28T23:45:07.000+02:00"</span><span style="color: #008b8b;">^^xsd:dateTime</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">description</span>   <span style="color: #8b2252;">"SONY ha iniciado negociaciones con Murata Manufacturing para la venta de su negocio de bater&#237;as. La operaci&#243;n culminar&#225; en marzo de 2017..."</span>;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">language</span>      <span style="color: #8b2252;">"es"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">source</span>        <span style="color: #8b2252;">"cloud.ticbeat.com"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">subject</span>       <span style="color: #8b2252;">"Econom&#237;a, Negocios y Finanzas"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">title</span>         <span style="color: #8b2252;">"SONY se desprender&#225; de su negocio de bater&#237;as"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">type</span>          <span style="color: #8b2252;">"article"</span> ;
+    <span style="color: #228b22;">schema:</span><span style="color: #008b8b;">keywords</span>  <span style="color: #8b2252;">"Sony, bater&#237;as, Murata Manufacturing"</span>;
+    <span style="color: #228b22;">dct:</span><span style="color: #008b8b;">source</span>       <span style="color: #0000ff;">&lt;http://feedproxy.google.com/~r/rwwes/~3/z2KuGYx6FiY/&gt;</span> .
+
+<span style="color: #b22222;"># EN translation</span>
+graph <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d-en</span> {
+  <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d-en</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">foaf:</span><span style="color: #008b8b;">Document</span> ;
+    <span style="color: #228b22;">bibo:</span><span style="color: #008b8b;">translationOf</span> <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d</span>; <span style="color: #b22222;"># IMPORTANT!</span>
+    <span style="color: #228b22;">dbp:</span><span style="color: #008b8b;">countryCode</span>   <span style="color: #8b2252;">"ES"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">creator</span>        <span style="color: #8b2252;">"Alberto Iglesias Fraga"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">date</span>           <span style="color: #8b2252;">"2016-07-28T23:45:07.000+02:00"</span><span style="color: #008b8b;">^^xsd:dateTime</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">description</span>    <span style="color: #8b2252;">"SONY has begun negotiations with Murata Manufacturing for the sale of its battery business. The operation will culminate in March 2017 ..."</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">language</span>       <span style="color: #8b2252;">"en"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">source</span>         <span style="color: #8b2252;">"cloud.ticbeat.com"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">subject</span>        <span style="color: #8b2252;">"Economy, Business &amp; Finance"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">title</span>          <span style="color: #8b2252;">"SONY is clear from its battery business"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">type</span>           <span style="color: #8b2252;">"article"</span> ;
+    <span style="color: #228b22;">schema:</span><span style="color: #008b8b;">keywords</span>   <span style="color: #8b2252;">"Sony, batteries, Murata Manufacturing"</span>;
+    <span style="color: #228b22;">dct:</span><span style="color: #008b8b;">source</span>        <span style="color: #0000ff;">&lt;http://feedproxy.google.com/~r/rwwes/~3/z2KuGYx6FiY/&gt;</span> .
+}
+
+<span style="color: #b22222;"># DE translation</span>
+graph <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d-de</span> {
+  <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d-de</span> <span style="color: #a020f0;">a</span> <span style="color: #228b22;">foaf:</span><span style="color: #008b8b;">Document</span> ;
+    <span style="color: #228b22;">bibo:</span><span style="color: #008b8b;">translationOf</span> <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d</span>; <span style="color: #b22222;"># IMPORTANT!</span>
+    <span style="color: #228b22;">dbp:</span><span style="color: #008b8b;">countryCode</span>   <span style="color: #8b2252;">"ES"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">creator</span>        <span style="color: #8b2252;">"Alberto Iglesias Fraga"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">date</span>           <span style="color: #8b2252;">"2016-07-28T23:45:07.000+02:00"</span><span style="color: #008b8b;">^^xsd:dateTime</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">description</span>    <span style="color: #8b2252;">"SONY hat die Verhandlungen mit Murata Manufacturing f&#252;r den Verkauf seiner Batterie-Gesch&#228;ft begonnen. Die Operation wird M&#228;rz 2017 gipfeln ..."</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">language</span>       <span style="color: #8b2252;">"de"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">source</span>         <span style="color: #8b2252;">"cloud.ticbeat.com"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">subject</span>        <span style="color: #8b2252;">"Economy, Business &amp; Finanzen"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">title</span>          <span style="color: #8b2252;">"SONY ist klar von seiner Batteriegesch&#228;ft"</span> ;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">type</span>           <span style="color: #8b2252;">"article"</span> ;
+    <span style="color: #228b22;">schema:</span><span style="color: #008b8b;">keywords</span>   <span style="color: #8b2252;">"Sony, Batterien, Murata Manufacturing"</span>;
+    <span style="color: #228b22;">dct:</span><span style="color: #008b8b;">source</span>        <span style="color: #0000ff;">&lt;http://feedproxy.google.com/~r/rwwes/~3/z2KuGYx6FiY/&gt;</span> .
+}
+</pre>
+</div>
+
+<p>
+Context:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #b22222;"># ES original</span>
+graph <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d</span> {
+  <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/156e0d#char=0,2131&gt;</span><span style="color: #b22222;"> </span><span style="color: #a020f0;">a</span><span style="color: #b22222;"> </span><span style="color: #228b22;">nif:</span><span style="color: #008b8b;">Context</span><span style="color: #b22222;"> ;</span>
+    <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">fluency</span>       <span style="color: #8b2252;">"1.22"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ;
+    <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">richness</span>      <span style="color: #8b2252;">"1.86"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ;
+    <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">technicality</span>  <span style="color: #8b2252;">"2.78"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">beginIndex</span>   <span style="color: #8b2252;">"0"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">endIndex</span>     <span style="color: #8b2252;">"2131"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">isString</span>     <span style="color: #8b2252;">"SONY se desprender&#225; de su negocio de bater&#237;as\n\nSONY sigue inmersa en la profunda reestructuraci&#243;n..."</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">sourceUrl</span>    <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">b156e0d</span> .
+}
+
+<span style="color: #b22222;"># EN translation</span>
+graph <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d-en</span> {
+  <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/156e0d-en#char=0,1800&gt;</span><span style="color: #b22222;"> </span><span style="color: #a020f0;">a</span><span style="color: #b22222;"> </span><span style="color: #228b22;">nif:</span><span style="color: #008b8b;">Context</span><span style="color: #b22222;"> ;</span>
+    <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">fluency</span>       <span style="color: #8b2252;">"1.25"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ; <span style="color: #b22222;"># hopefully will be similar to original, but won't be identical</span>
+    <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">richness</span>      <span style="color: #8b2252;">"1.81"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ;
+    <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">technicality</span>  <span style="color: #8b2252;">"2.70"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">beginIndex</span>   <span style="color: #8b2252;">"0"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">endIndex</span>     <span style="color: #8b2252;">"1800"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ; <span style="color: #b22222;"># Assuming EN comes out shorter than ES</span>
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">isString</span>     <span style="color: #8b2252;">"SONY is clear from its battery business\n\nSONY still immersed in deep restructuring ..."</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">sourceUrl</span>    <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">b156e0d-en</span> .
+}
+
+<span style="color: #b22222;"># EN translation</span>
+graph <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d-de</span> {
+  <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/156e0d-de#char=0,2200&gt;</span><span style="color: #b22222;"> </span><span style="color: #a020f0;">a</span><span style="color: #b22222;"> </span><span style="color: #228b22;">nif:</span><span style="color: #008b8b;">Context</span><span style="color: #b22222;"> ;</span>
+    <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">fluency</span>       <span style="color: #8b2252;">"1.12"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ; <span style="color: #b22222;"># hopefully will be similar to original, but won't be identical</span>
+    <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">richness</span>      <span style="color: #8b2252;">"1.56"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ;
+    <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">technicality</span>  <span style="color: #8b2252;">"2.41"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">beginIndex</span>   <span style="color: #8b2252;">"0"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">endIndex</span>     <span style="color: #8b2252;">"2200"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ; <span style="color: #b22222;"># Assuming DE comes out longer than ES</span>
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">isString</span>     <span style="color: #8b2252;">"SONY ist von seiner Batterie-Gesch&#228;ft\n\nSONY klar immer noch in einer tiefen Umstrukturierung getaucht ..."</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">sourceUrl</span>    <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">b156e0d-de</span> .
+}
+</pre>
+</div>
+
+<p>
+Some NIF annotations:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle"><span style="color: #b22222;"># ES original</span>
+graph <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d</span> {
+  <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/156e0d#char=1199,1224&gt;</span><span style="color: #b22222;"> </span><span style="color: #a020f0;">a</span><span style="color: #b22222;"> </span><span style="color: #228b22;">nif:</span><span style="color: #008b8b;">Phrase</span><span style="color: #b22222;"> ;</span>
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">anchorOf</span>           <span style="color: #8b2252;">"bater&#237;a de iones de litio"</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">beginIndex</span>         <span style="color: #8b2252;">"1199"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">endIndex</span>           <span style="color: #8b2252;">"1224"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">referenceContext</span>   <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/b156e0d#char=0,2131&gt;</span><span style="color: #b22222;"> ;</span>
+    <span style="color: #228b22;">nif-ann:</span><span style="color: #008b8b;">taIdentConf</span>    <span style="color: #8b2252;">"1.0"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ;
+    <span style="color: #228b22;">nif-ann:</span><span style="color: #008b8b;">taIdentProv</span>    <span style="color: #0000ff;">&lt;http://babelfy.org/&gt;</span> ;
+    <span style="color: #228b22;">its:</span><span style="color: #008b8b;">taClassRef</span>         <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">GenericConcept</span> ;
+    <span style="color: #228b22;">its:</span><span style="color: #008b8b;">taIdentRef</span>         <span style="color: #228b22;">bn:</span><span style="color: #008b8b;">s01289274n</span> .
+}
+
+<span style="color: #b22222;"># The BN labels are submitted in the SIMMO graph but stored in the default graph, thus the same for all languages</span>
+<span style="color: #228b22;">bn:</span><span style="color: #008b8b;">s01289274n</span> <span style="color: #228b22;">skos:</span><span style="color: #008b8b;">prefLabel</span> <span style="color: #8b2252;">"LiIon"</span>@de, <span style="color: #8b2252;">"Li-ion cell"</span>@en, <span style="color: #8b2252;">"Batteries lithium-ion"</span>@fr, <span style="color: #8b2252;">"&#1051;&#1080;&#1090;&#1080;&#1077;&#1074;&#1086;-&#1081;&#1086;&#1085;&#1085;&#1072; &#1073;&#1072;&#1090;&#1077;&#1088;&#1080;&#1103;"</span>@bg .
+
+<span style="color: #b22222;"># EN translation</span>
+graph <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d-en</span> {
+  <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/156e0d-en#char=1100,1119&gt;</span><span style="color: #b22222;"> </span><span style="color: #a020f0;">a</span><span style="color: #b22222;"> </span><span style="color: #228b22;">nif:</span><span style="color: #008b8b;">Phrase</span><span style="color: #b22222;"> ;</span>
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">anchorOf</span>           <span style="color: #8b2252;">"lithium ion battery"</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">beginIndex</span>         <span style="color: #8b2252;">"1100"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">endIndex</span>           <span style="color: #8b2252;">"1119"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">referenceContext</span>   <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/b156e0d-en#char=0,1800&gt;</span><span style="color: #b22222;"> ;</span>
+    <span style="color: #228b22;">nif-ann:</span><span style="color: #008b8b;">taIdentConf</span>    <span style="color: #8b2252;">"1.0"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ;
+    <span style="color: #228b22;">nif-ann:</span><span style="color: #008b8b;">taIdentProv</span>    <span style="color: #0000ff;">&lt;http://babelfy.org/&gt;</span> ;
+    <span style="color: #228b22;">its:</span><span style="color: #008b8b;">taClassRef</span>         <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">GenericConcept</span> ;
+    <span style="color: #228b22;">its:</span><span style="color: #008b8b;">taIdentRef</span>         <span style="color: #228b22;">bn:</span><span style="color: #008b8b;">s01289274n</span> .
+}
+
+<span style="color: #b22222;"># DE translation</span>
+graph <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d-de</span> {
+  <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/156e0d-en#char=1200,1218&gt;</span><span style="color: #b22222;"> </span><span style="color: #a020f0;">a</span><span style="color: #b22222;"> </span><span style="color: #228b22;">nif:</span><span style="color: #008b8b;">Phrase</span><span style="color: #b22222;"> ;</span>
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">anchorOf</span>           <span style="color: #8b2252;">"Lithium-Ionen-Akku"</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">beginIndex</span>         <span style="color: #8b2252;">"1200"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">endIndex</span>           <span style="color: #8b2252;">"1218"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">nonNegativeInteger</span> ;
+    <span style="color: #228b22;">nif:</span><span style="color: #008b8b;">referenceContext</span>   <span style="color: #0000ff;">&lt;http://data.multisensorproject.eu/content/b156e0d-de#char=0,2200&gt;</span><span style="color: #b22222;"> ;</span>
+    <span style="color: #228b22;">nif-ann:</span><span style="color: #008b8b;">taIdentConf</span>    <span style="color: #8b2252;">"1.0"</span><span style="color: #228b22;">^^xsd:</span><span style="color: #008b8b;">double</span> ;
+    <span style="color: #228b22;">nif-ann:</span><span style="color: #008b8b;">taIdentProv</span>    <span style="color: #0000ff;">&lt;http://babelfy.org/&gt;</span> ;
+    <span style="color: #228b22;">its:</span><span style="color: #008b8b;">taClassRef</span>         <span style="color: #228b22;">ms:</span><span style="color: #008b8b;">GenericConcept</span> ;
+    <span style="color: #228b22;">its:</span><span style="color: #008b8b;">taIdentRef</span>         <span style="color: #228b22;">bn:</span><span style="color: #008b8b;">s01289274n</span> .
+}
+</pre>
+</div>
+
+<p>
+Multimedia is only present in the original-content graph:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Turtle">graph <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d</span> {
+  <span style="color: #228b22;">ms-content:</span><span style="color: #008b8b;">156e0d</span> <span style="color: #228b22;">dct:</span><span style="color: #008b8b;">hasPart</span> 
+    <span style="color: #0000ff;">&lt;http://cloud.ticbeat.com/2016/07/sony-bater&#237;as-explosi&#243;n.mp4&gt;</span>,
+    <span style="color: #0000ff;">&lt;http://cloud.ticbeat.com/2016/07/sony-bater&#237;a.jpg&gt;</span> 
+
+  <span style="color: #0000ff;">&lt;http://cloud.ticbeat.com/2016/07/sony-bater&#237;as-explosi&#243;n.mp4&gt;</span> 
+    <span style="color: #a020f0;">a</span> <span style="color: #228b22;">dctype:</span><span style="color: #008b8b;">MovingImage</span>;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">format</span> <span style="color: #8b2252;">"video/mp4"</span>.
+
+  <span style="color: #0000ff;">&lt;http://cloud.ticbeat.com/2016/07/sony-bater&#237;a.jpg&gt;</span> 
+    <span style="color: #a020f0;">a</span> <span style="color: #228b22;">dctype:</span><span style="color: #008b8b;">StillImage</span>;
+    <span style="color: #228b22;">dc:</span><span style="color: #008b8b;">format</span> <span style="color: #8b2252;">"image/jpeg"</span>.
+}
+</pre>
+</div>
+
+<p>
+Files:
+</p>
+<ul class="org-ul">
+<li>old: <a href="http://grinder1.multisensorproject.eu/cepfiles/multiTest/validated/">http://grinder1.multisensorproject.eu/cepfiles/multiTest/validated/</a>
+</li>
+<li>new: <a href="http://grinder1.multisensorproject.eu/cepfiles/multiTest/41d28d-GERMAN_SIMMMO-5-9-2016.ttl">http://grinder1.multisensorproject.eu/cepfiles/multiTest/41d28d-GERMAN_SIMMMO-5-9-2016.ttl</a> and <a href="http://grinder1.multisensorproject.eu/cepfiles/multiTest/41d28d-CONTEXT_EXTRACTION-5-9-2016.ttl">http://grinder1.multisensorproject.eu/cepfiles/multiTest/41d28d-CONTEXT_EXTRACTION-5-9-2016.ttl</a>
+</li>
+</ul>
+
+<p>
+Checking:
+</p>
+<ul class="org-ul">
+<li>added prefixes <code>bibo: upf-pos-spa: upf-dep-deu: upf-pos-deu:</code>
+  (before we only had <code>upf-dep-spa:</code>). Please update.
+</li>
+<li>Would also be nice to translate <code>schema:keywords</code>
+  (currently is "preisportal, vergleich, check24, verivox, billiger, idealo, geizhals, tricks, betrug, geld" in both DE original and EN translation)
+</li>
+<li>All the rest is ok
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-2-6-1" class="outline-4">
+<h4 id="sec-2-6-1"><span class="todo TODO">TODO</span> BabelNet Multilingual Labels</h4>
+<div class="outline-text-4" id="text-2-6-1">
+<p>
+The Entity Linking Service can find BN concepts in any language, because BN concepts have multilingual labels.
+This is unrelated to whether the SIMMO is translated to another language or not.
+It's up to the UI to filter BN labels and show only labels in the selected language.
+</p>
+
+<p>
+However, not all BN concepts have labels in all MS languages.
+Therefore the UI should implement some <b>language fall-back</b> logic:
+</p>
+<ul class="org-ul">
+<li>if no label in the selected language is available, show the EN label
+</li>
+<li>TODO Boyan: check whether all BN concepts have EN labels.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-6-2" class="outline-4">
+<h4 id="sec-2-6-2"><span class="done CANCEL">CANCEL</span> Add Spanish BabelNet Labels</h4>
+<div class="outline-text-4" id="text-2-6-2">
+<p>
+Gerard, as we saw above, Babelfy recognizes "batería de iones de litio" 
+but bn:s01289274n does not have ES label (has EN, FR, DE, BG).
+This concept has <a href="http://babelnet.org/synset?word=Batería+de+ion+de+litio&lang=ES&details=1&orig=Batería+de+ion+de+litio">ES representation on the BN site</a>. 
+Do you need to add Spanish labels?
+</p>
+<ul class="org-ul">
+<li>Gerard <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-09-01&gt;</span></span>: The EL service is using the 2.5.1 release of BabelNet to fetch the translations, as these cannot be retrieved using Babelfy's API, so it is possible that some synset senses have translations in the latest version online (suppose it matches 3.7) which aren't found in 2.5.1.
+</li>
+<li>Vladimir: When we got complete BN data (for the concepts found by you plus their ancestors), we used BN online.
+</li>
+</ul>
+<p>
+So <a href="http://babelnet.org/rdf/s01157392n">http://babelnet.org/rdf/s01157392n</a> should include all needed labels.
+(But right now it is down: "Error parsing configuration file <a href="file://c:/home/debian/storage/apache-tomcat-7.0.65/webapps/rdf/WEB-INF/config.ttl">file://c:/home/debian/storage/apache-tomcat-7.0.65/webapps/rdf/WEB-INF/config.ttl</a>: Error making the query, see cause for details")
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-6-3" class="outline-4">
+<h4 id="sec-2-6-3">Translated-content Queries</h4>
+<div class="outline-text-4" id="text-2-6-3">
+</div><div id="outline-container-sec-2-6-3-1" class="outline-5">
+<h5 id="sec-2-6-3-1">Find Entities</h5>
+<div class="outline-text-5" id="text-2-6-3-1">
+<p>
+All queries for a single language (eg find concepts) won't change. 
+Eg here is how to find entities in the original and translated SIMMOs (hopefully the same entities will be recognized).
+We just change the graph:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-SPARQL"><span style="color: #b22222;"># ES Original</span>
+<span style="color: #a020f0;">select</span> <span style="color: #a020f0;">distinct</span> <span style="color: #a0522d;">?concept</span> <span style="color: #a0522d;">?label</span> {
+  <span style="color: #a020f0;">graph</span> ms-content:156e0d {[] itsrdf:taIdentRef <span style="color: #a0522d;">?entity</span>}.
+  <span style="color: #a0522d;">?entity</span> skos:prefLabel <span style="color: #a0522d;">?label</span>
+}
+
+<span style="color: #b22222;"># EN Translation</span>
+<span style="color: #a020f0;">select</span> <span style="color: #a020f0;">distinct</span> <span style="color: #a0522d;">?concept</span> <span style="color: #a0522d;">?label</span> {
+  <span style="color: #a020f0;">graph</span> ms-content:156e0d-en {[] itsrdf:taIdentRef <span style="color: #a0522d;">?entity</span>}.
+  <span style="color: #a0522d;">?entity</span> skos:prefLabel <span style="color: #a0522d;">?label</span>
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-6-3-2" class="outline-5">
+<h5 id="sec-2-6-3-2">Select Single Label</h5>
+<div class="outline-text-5" id="text-2-6-3-2">
+<p>
+We can filter to entity labels in the selected language, implementing "language fall-back".
+<code>coalesce()</code> picks the first bound variable.
+We don't need it for EN since we assume all BN concepts have EN.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-SPARQL"><span style="color: #b22222;"># ES Original</span>
+<span style="color: #a020f0;">select</span> <span style="color: #a020f0;">distinct</span> <span style="color: #a0522d;">?concept</span> (coalesce(<span style="color: #a0522d;">?labelEs</span>,<span style="color: #a0522d;">?labelEn</span>) <span style="color: #a020f0;">as</span> <span style="color: #a0522d;">?label</span>) {
+  <span style="color: #a020f0;">graph</span> ms-content:156e0d {[] itsrdf:taIdentRef <span style="color: #a0522d;">?entity</span>}.
+  <span style="color: #a0522d;">?entity</span> skos:prefLabel <span style="color: #a0522d;">?labelEn</span> <span style="color: #a020f0;">filter</span>(lang(<span style="color: #a0522d;">?labelEn</span>)=<span style="color: #8b2252;">"en"</span>)
+  <span style="color: #a020f0;">optional</span> {<span style="color: #a0522d;">?entity</span> skos:prefLabel <span style="color: #a0522d;">?labelEs</span> <span style="color: #a020f0;">filter</span>(lang(<span style="color: #a0522d;">?labelEn</span>)=<span style="color: #8b2252;">"es"</span>)}
+}
+
+<span style="color: #b22222;"># EN Translation</span>
+<span style="color: #a020f0;">select</span> <span style="color: #a020f0;">distinct</span> * {
+  <span style="color: #a020f0;">graph</span> ms-content:156e0d-en {[] itsrdf:taIdentRef <span style="color: #a0522d;">?entity</span>}.
+  <span style="color: #a0522d;">?entity</span> skos:prefLabel <span style="color: #a0522d;">?label</span> <span style="color: #a020f0;">filter</span>(lang(<span style="color: #a0522d;">?labelEn</span>)=<span style="color: #8b2252;">"en"</span>)
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-6-3-3" class="outline-5">
+<h5 id="sec-2-6-3-3">Find Translations</h5>
+<div class="outline-text-5" id="text-2-6-3-3">
+<p>
+To find all translations of a SIMMO we make a query across graphs (i.e. in the default graph, which is a union of all graphs).
+Remember that <code>$</code> indicates a query paramter (while <code>?</code> indicates a free variable):
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sparql"><span style="color: #a020f0;">select</span> * {
+  <span style="color: #a0522d;">?translatedSIMMO</span> bibo:translationOf <span style="color: #a0522d;">$SIMMO</span>; dc:language <span style="color: #a0522d;">?translatedLang</span>}
+</pre>
+</div>
+
+<p>
+To find all translations in a given language:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sparql"><span style="color: #a020f0;">select</span> * {
+  <span style="color: #a0522d;">?translatedSIMMO</span> bibo:translationOf <span style="color: #a0522d;">?SIMMO</span>; dc:language <span style="color: #a0522d;">$lang</span>}
+</pre>
+</div>
+
+<p>
+To find all original SIMMOs (not translations):
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sparql"><span style="color: #a020f0;">select</span> * {<span style="color: #a0522d;">?simmo</span> <span style="color: #a020f0;">filter</span> <span style="color: #a020f0;">not</span> <span style="color: #a020f0;">exists</span> {<span style="color: #a0522d;">?simmo</span> bibo:translationOf []}}
+</pre>
+</div>
+
+<p>
+To check whether a given SIMMO is a translation:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sparql"><span style="color: #a020f0;">ask</span> {<span style="color: #a0522d;">$simmo</span> bibo:translationOf []}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-09-05&gt;</span></span></p>
+<p class="author">Author: Vladimir Alexiev</p>
+<p class="creator">Emacs 25.0.50.1 (Org mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

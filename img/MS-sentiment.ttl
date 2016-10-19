@@ -1,0 +1,35 @@
+
+@base <http://data.multisensorproject.eu/content/9e9c304>.
+
+<#char=0,2000>
+  nif:opinion <#char=0,2000-sentiment>.
+<#char=100,200-sentiment>
+  a marl:Opinion;
+  marl:minPolarityValue    -5.0; # sentiment range: minimum
+  marl:maxPolarityValue     5.0; # sentiment range: maximum
+  ms:negativePolarityValue -3.5; # most negative sentiment
+  ms:positivePolarityValue  2.0; # most positive sentiment
+  marl:polarityValue       -1.5; # sum of the two polar opinions (what's the average sentiment)
+  ms:sentimentalityValue    5.5. # difference of the two polar opinions (how strong is the sentiment)
+
+<#char=100,200> a nif:Sentence;
+  nif:referenceContext <#char=0,2000>;
+  nif:opinion <#char=100,200-sentiment>.
+
+<#char=100,200-sentiment>
+  a marl:Opinion;
+  marl:minPolarityValue    -5.0;
+  marl:maxPolarityValue     5.0;
+  ms:negativePolarityValue -3.5;
+  ms:positivePolarityValue  2.0;
+  marl:polarityValue       -1.5;
+  ms:sentimentalityValue    5.5.
+
+<#char=200,300>
+  a <#char=200,300-sentiment>.
+  
+<#char=200,300-sentiment>
+  a marl:Opinion;
+  marl:minPolarityValue    -5.0;
+  marl:maxPolarityValue     5.0;
+  ms:sentimentalityValue    0.0.

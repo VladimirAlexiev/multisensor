@@ -1,0 +1,537 @@
+@prefix :      <http://purl.org/olia/stanford.owl#> .
+@prefix olia_system: <http://purl.org/olia/system.owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.org/olia/stanford.owl>
+        a                 owl:Ontology ;
+        rdfs:comment      "OLiA Annotation Model of Stanford Parser dependency labels (de Marneffe and Manning 2011)\n\nUnless specified otherwise, all comments are taken from de Marneffe and Manning (2011)\n\nReferences:\nMarie-Catherine de Marneffe and Christopher D. Manning (2011), Stanford typed dependencies manual, September 2008, revised for Stanford Parser v. 1.6.9 in September 2011, http://nlp.stanford.edu/software/dependencies_manual.pdf"^^xsd:string ;
+        rdfs:isDefinedBy  "http://nlp.stanford.edu/software/dependencies_manual.pdf"^^xsd:string ;
+        owl:imports       <http://purl.org/olia/system.owl> ;
+        owl:versionInfo   "2010-01-05 created by Sebastian Hellmann (RDF) \n2010-01-12 OWL/DL conversion, integration with OLiA ontologies\n2011-11-30 update for Stanford Parser v.1.6.9, added PrepositionalClausalModifier, MultiWordExpression, NounPhraseAsAdverbialModifier; support for collapsed edge labels (prepc_, prep_, conj_)\n2012-01-16 encoding errors fixed\n\nChristian Chiarcos, chiarcos@uni-potsdam.de"^^xsd:string .
+
+:AbbreviationModifier
+        a                owl:Class ;
+        rdfs:comment     "An abbreviation modifier of an NP is a parenthesized NP that serves to abbreviate the NP (or to define an abbreviation).\n\n\"The Australian Broadcasting Corporation (ABC)\" \nabbrev(Corporation, ABC)" ;
+        rdfs:label       "abbreviation modifier"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:AdjectivalComplement
+        a                owl:Class ;
+        rdfs:comment     "An adjectival complement of a verb is an adjectival phrase which functions as the complement (like an object of the verb).\n\n\"She looks very beautiful\"\nacomp(looks, beautiful)" ;
+        rdfs:label       "adjectival complement"^^xsd:string ;
+        rdfs:subClassOf  :Complement .
+
+:AdjectivalModifier  a   owl:Class ;
+        rdfs:comment     "An adjectival modifier of an NP is any adjectival phrase that serves to modify the meaning of the NP.\n\n\"Sam eats red meat\" \namod(meat, red)" ;
+        rdfs:label       "adjectival modifier"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:AdverbialClauseModifier
+        a                owl:Class ;
+        rdfs:comment     "An adverbial clause modifier of a VP or S is a clause modifying the verb (temporal clause, consequence, conditional clause, etc.).\n\n\"The accident happened as the night was falling\" \nadvcl(happened, falling)\n\n\"If you know who did it, you should tell the teacher\"\nadvcl(tell, know)" ;
+        rdfs:label       "adverbial clause modifier"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:AdverbialModifier  a    owl:Class ;
+        rdfs:comment     "An adverbial modifier of a word is a (non-clausal) adverb or adverbial phrase (ADVP) that serves to modify the meaning of the word.\n\n\"Genetically modified food\" \nadvmod(modified, genetically)\n\n\"less often\" \nadvmod(often, less)" ;
+        rdfs:label       "adverbial modifier"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:Agent  a                owl:Class ;
+        rdfs:comment     "An agent is the complement of a passive verb which is introduced by the preposition \"by\" and does the action.\n\n\"The man has been killed by the police\" \nagent(killed, police)\n\n\"Effects caused by the protein are important\" \nagent(caused, protein)" ;
+        rdfs:label       "agent"^^xsd:string ;
+        rdfs:subClassOf  :Argument .
+
+:AppositionalModifier
+        a                owl:Class ;
+        rdfs:comment     "An appositional modifier of an NP is an NP immediately to the right of the first NP that serves to define or modify that NP. It includes parenthesized examples.\n\n\"Sam, my brother\" \nappos(Sam, brother)\n\n\"Bill (John's cousin)\" \nappos(Bill, cousin)" ;
+        rdfs:label       "appositional modifier"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:Argument  a             owl:Class ;
+        rdfs:label       "argument"^^xsd:string ;
+        rdfs:subClassOf  :Dependent .
+
+:Attributive  a          owl:Class ;
+        rdfs:comment     "An attributive is a WHNP complement of a copular verb such as \"to be\", \"to seem\", \"to appear\".\n\n\"What is that?\" \nattr (is, What)" ;
+        rdfs:label       "attributive"^^xsd:string ;
+        rdfs:subClassOf  :Complement .
+
+:Auxiliary  a            owl:Class ;
+        rdfs:comment     "An auxiliary of a clause is a non-main verb of the clause, e.g. modal auxiliary, \"be\" and \"have\" in a composed tense.\n\n\"Reagan has died\" \naux(died, has)\n\n\"He should leave\" \naux(leave, should)" ;
+        rdfs:label       "auxiliary"^^xsd:string ;
+        rdfs:subClassOf  :Dependent .
+
+:ClausalComplementWithExternalSubject
+        a                owl:Class ;
+        rdfs:comment     "An open clausal complement (xcomp) of a VP or an ADJP is a clausal complement without its own subject, whose reference is determined by an external subject. These complements are always non-finite. The name xcomp is borrowed from Lexical-Functional Grammar. \n\n\"He says that you like to swim\" \nxcomp(like, swim)\n\n\"I am ready to leave\" \nxcomp(ready, leave)" ;
+        rdfs:label       "clausal complement with external subject"^^xsd:string , "open clausal complement" ;
+        rdfs:subClassOf  :Complement .
+
+:ClausalComplementWithInternalSubject
+        a                owl:Class ;
+        rdfs:comment     "A clausal complement of a verb or adjective is a dependent clause with an internal subject which functions like an object of the verb, or adjective. Clausal complements for nouns are limited to complement clauses with a subset of nouns like \"fact\" or \"report\". We analyze them the same (parallel to the analysis of this class as \"content clauses\" in Huddleston and Pullum 2002). Such clausal complements are usually finite (though there are occasional remnant English subjunctives).\n\n\"He says that you like to swim\" \nccomp(says, like)\n\n\"I am certain that he did it\" \nccomp(certain, did)\n\n\"I admire the fact that you are honest\" \nccomp(fact, honest)" ;
+        rdfs:label       "clausal complement with internal subject"^^xsd:string ;
+        rdfs:subClassOf  :Complement .
+
+:ClausalSubject  a       owl:Class ;
+        rdfs:comment     "A clausal subject is a clausal syntactic subject of a clause, i.e., the subject is itself a clause. The governor of this relation might not always be a verb: when the verb is a copular verb, the root of the clause is the complement of the copular verb. In the two following examples, \"what she said\" is the subject.\n\n\"What she said makes sense\" \ncsubj (makes, said)\n\n\"What she said is not true\" \ncsubj (true, said)" ;
+        rdfs:label       "clausal subject"^^xsd:string ;
+        rdfs:subClassOf  :Subject .
+
+:Complement  a           owl:Class ;
+        rdfs:label       "complement"^^xsd:string ;
+        rdfs:subClassOf  :Argument .
+
+:Complementizer  a       owl:Class ;
+        rdfs:comment     "A complementizer of a clausal complement (ccomp) is the word introducing it. It will be the subordinating conjunction \"that\" or \"whether\".\n\n\"He says that you like to swim\" \ncomplm(like, that)" ;
+        rdfs:label       "complementizer"^^xsd:string ;
+        rdfs:subClassOf  :Complement .
+
+:CompountNumberElement
+        a                owl:Class ;
+        rdfs:comment     "An element of compound number is a part of a number phrase or currency amount.\n\n\"I lost $ 3.2 billion\" \nnumber($, billion)" ;
+        rdfs:label       "element of compound number"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:Conjunct  a             owl:Class ;
+        rdfs:comment     "A conjunct is the relation between two elements connected by a coordinating conjunction, such as \"and\", \"or\", etc. We treat conjunctions asymmetrically: The head of the relation is the first\nconjunct and other conjunctions depend on it via the conj relation.\n\n\"Bill is big and honest\" \nconj (big, honest)\n\n\"They either ski or snowboard\" \nconj (ski, snowboard)" ;
+        rdfs:label       "conjunct"^^xsd:string ;
+        rdfs:subClassOf  :Dependent .
+
+:ControllingSubject  a   owl:Class ;
+        rdfs:comment     "A controlling subject is the relation between the head of a open clausal complement (xcomp) and the external subject of that clause.\n\n\"Tom likes to eat fish\" \nxsubj (eat, Tom)" ;
+        rdfs:label       "controlling subject"^^xsd:string ;
+        rdfs:subClassOf  :SemanticDependent .
+
+:Coordination  a         owl:Class ;
+        rdfs:comment     "A coordination is the relation between an element of a conjunct and the coordinating conjunction word of the conjunct. (Note: different dependency grammars have different treatments of coordination. We take one conjunct of a conjunction (normally the first) as the head of the conjunction.)\n\n\"Bill is big and honest\" \ncc(big, and)\n\n\"They either ski or snowboard\" \ncc(ski, or)" ;
+        rdfs:label       "coordination"^^xsd:string ;
+        rdfs:subClassOf  :Dependent .
+
+:Copula  a               owl:Class ;
+        rdfs:comment     "A copula is the relation between the complement of a copular verb and the copular verb. (We normally take a copula as a dependent of its complement.)\n\n\"Bill is big\" \ncop(big, is)\n\n\"Bill is an honest man\" \ncop(man, is)" ;
+        rdfs:label       "copula"^^xsd:string ;
+        rdfs:subClassOf  :Auxiliary .
+
+:DependencyLabel  a      owl:Class ;
+        rdfs:subClassOf  olia_system:Feature .
+
+:DependencyRelation  a   owl:Class ;
+        rdfs:subClassOf  olia_system:Relation  ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:onProperty      olia_system:hasSource ;
+                           owl:someValuesFrom  :Token
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:onProperty      olia_system:hasTarget ;
+                           owl:someValuesFrom  :Token
+                         ] .
+
+:Dependent  a            owl:Class ;
+        rdfs:comment     "Dependencies are established between tokens, i.e., exactly those entities that are subject to part of speech annotation.\n\nA dependency is labeled as dep when the system is unable to determine a more precise dependency relation between two words. This may be because of a weird grammatical construction, a limitation in the Stanford Dependency conversion software, a parser error, or because of an unresolved long distance dependency.\n\n\"Then, as if to show that he could, . . . \" \ndep(show, if)"^^xsd:string ;
+        rdfs:label       "dependent"^^xsd:string ;
+        rdfs:subClassOf  :DependencyLabel ;
+        rdfs:subClassOf  [ a               owl:Restriction ;
+                           owl:hasValue    "stanford"^^xsd:string ;
+                           owl:onProperty  olia_system:hasTier
+                         ] ;
+        owl:versionInfo  "TODO: check tier (layer/level) identifier for stanford dependencies"^^xsd:string .
+
+:Determiner  a           owl:Class ;
+        rdfs:comment     "A determiner is the relation between the head of an NP and its determiner.\n\n\"The man is here\" \ndet(man, the)\n\n\"Which book do you prefer?\" \ndet(book, which)" ;
+        rdfs:label       "determiner"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:DirectObject  a         owl:Class ;
+        rdfs:comment     "The direct object of a VP is the noun phrase which is the (accusative) object of the verb.\n\n\"She gave me a raise\" \ndobj (gave, raise)\n\n\"They win the lottery\" \ndobj (win, lottery)" ;
+        rdfs:label       "direct object"^^xsd:string ;
+        rdfs:subClassOf  :Object .
+
+:Expletive  a            owl:Class ;
+        rdfs:comment     "This relation captures an existential \"there\". The main verb of the clause is the governor.\n\n\"There is a ghost in the room\" \nexpl(is, There)" ;
+        rdfs:label       "expletive (expletive “there”)"^^xsd:string ;
+        rdfs:subClassOf  :Dependent .
+
+:IndirectObject  a       owl:Class ;
+        rdfs:comment     "The indirect object of a VP is the noun phrase which is the (dative) object of the verb.\n\n\"She gave me a raise\"\niobj (gave, me)" ;
+        rdfs:label       "indirect object"^^xsd:string ;
+        rdfs:subClassOf  :Object .
+
+:InfinitivalModifier  a  owl:Class ;
+        rdfs:comment     "An infinitival modifier of an NP is an infinitive that serves to modify the meaning of the NP.\n\n\"Points to establish are . . . \" \ninfmod(points, establish)\n\n\"I don't have anything to say\" \ninfmod(anything, say)" ;
+        rdfs:label       "infinitival modifier"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:Marker  a               owl:Class ;
+        rdfs:comment     "A marker of an adverbial clausal complement (advcl) is the word introducing it. It will be a subordinating conjunction different from \"that\" or \"whether\": e.g. \"because\", \"when\", \"although\", etc.\n\n\"Forces engaged in fighting after insurgents attacked\" \nmark(attacked, after)" ;
+        rdfs:label       "marker (word introducing an advcl )"^^xsd:string ;
+        rdfs:subClassOf  :Complement .
+
+:MeasurePhraseModifier
+        a                owl:Class ;
+        rdfs:label       "measure-phrase modifier"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:Modifier  a             owl:Class ;
+        rdfs:label       "modifier"^^xsd:string ;
+        rdfs:subClassOf  :Dependent .
+
+:MultiWordExpression  a  owl:Class ;
+        rdfs:comment     "The multi-word expression (modifier) relation is used for certain multi-word idioms that behave like a single function word. It is used for a closed set of dependencies between words in common multi-word expressions for which it seems difficult or unclear to assign any other relationships.\nAt present, this relation is used inside the following expressions: rather than, as well as, instead of, such as, because of, instead of, in addition to, all but, such as, because of, instead of, due to.\nThe boundaries of this class are unclear; it could grow or shrink a little over time.\n\n\"I like dogs as well as cats\" \nmwe(well, as)\nmwe(well, as)\n\n\"He cried because of you\" \nmwe(of, because)" ;
+        rdfs:subClassOf  :Modifier .
+
+:NegationModifier  a     owl:Class ;
+        rdfs:comment     "The negation modifier is the relation between a negation word and the word it modifies. \n\n\"Bill is not a scientist\" \nneg(scientist, not)\n\n\"Bill doesn't drive\" \nneg(drive, n't)" ;
+        rdfs:label       "negation modifier"^^xsd:string ;
+        rdfs:subClassOf  :AdverbialModifier .
+
+:NominalSubject  a       owl:Class ;
+        rdfs:comment     "A nominal subject is a noun phrase which is the syntactic subject of a clause. The governor of this relation might not always be a verb: when the verb is a copular verb, the root of the clause is the complement of the copular verb, which can be an adjective or noun.\n\n\"Clinton defeated Dole\" \nnsubj (defeated, Clinton)\n\n\"The baby is cute\" \nnsubj (cute, baby)" ;
+        rdfs:label       "nominal subject"^^xsd:string ;
+        rdfs:subClassOf  :Subject .
+
+:NounCompoundModifier
+        a                owl:Class ;
+        rdfs:comment     "A noun compound modifier of an NP is any noun that serves to modify the head noun. (Note that in the current system for dependency extraction, all nouns modify the rightmost noun of the NP -- there is no intelligent noun compound analysis. This is likely to be fixed once the\nPenn Treebank represents the branching structure of NPs.)\n\n\"Oil price futures\" \nnn(futures, oil)\nnn(futures, price)" ;
+        rdfs:label       "noun compound modifier"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:NounPhraseAsAdverbialModifier
+        a                owl:Class ;
+        rdfs:comment     "This relation captures various places where something syntactically a noun phrase (NP) is used as an adverbial modifier in a sentence. These usages include: (i) a measure phrase, which is the relation between the head of an ADJP/ADVP/PP and the head of a measure phrase modifying the ADJP/ADVP; (ii) noun phrases giving an extent inside a VP which are not objects; (iii) financial constructions involving an adverbial or PP-like NP, notably the following construction $5 a share, where the second NP means \"per share\"; (iv) floating reflexives; and (v) certain other absolutive NP constructions. A temporal modifier (tmod) is a subclass of npadvmod which is distinguished as a separate relation.\n\n\"The director is 65 years old\" \nnpadvmod(old, years)\n\n\"6 feet long\" \nnpadvmod(long, feet)\n\n\"Shares eased a fraction\" \nnpadvmod(eased, fraction)\n\n\"IBM earned $ 5 a share\" \nnpadvmod($, share)\n\n\"The silence is itself significant\" \nnpadvmod(significant, itself)\n\n\"90% of Australians like him, the most of any country\" \nnpadvmod(like, most)" ;
+        rdfs:label       "noun phrase as adverbial modifier" ;
+        rdfs:subClassOf  :Modifier .
+
+:NumericModifier  a      owl:Class ;
+        rdfs:comment     "A numeric modifier of a noun is any number phrase that serves to modify the meaning of the noun.\n\n\"Sam eats 3 sheep\" \nnum(sheep, 3)" ;
+        rdfs:label       "numeric modifier"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:Object  a               owl:Class ;
+        rdfs:label       "object"^^xsd:string ;
+        rdfs:subClassOf  :Complement .
+
+:ObjectOfPreposition  a  owl:Class ;
+        rdfs:comment     "The object of a preposition is the head of a noun phrase following the preposition, or the adverbs \"here\" and \"there\". (The preposition in turn may be modifying a noun, verb, etc.) Unlike the Penn Treebank, we here define cases of VBG quasi-prepositions like \"including\", \"concerning\", etc. as instances of pobj. (The preposition can be called a FW for \"pace\", \"versus\", etc. It can also be called a CC -- but we don't currently handle that and would need to distinguish from conjoined prepositions.) In the case of preposition stranding, the object can precede the preposition (e.g., \"What does CPR stand for?\").\n\n\"I sat on the chair\" \npobj (on, chair)" ;
+        rdfs:label       "object of preposition"^^xsd:string ;
+        rdfs:subClassOf  :Object .
+
+:Parataxis  a            owl:Class ;
+        rdfs:comment     "The parataxis relation (from Greek for \"place side by side\") is a relation between the main verb of a clause and other sentential elements, such as a sentential parenthetical, or a clause after a \":\" or a \";\".\n\n\"The guy, John said, left early in the morning\" \nparataxis(left, said)" ;
+        rdfs:label       "parataxis"^^xsd:string ;
+        rdfs:subClassOf  :Dependent .
+
+:ParticipalModifier  a   owl:Class ;
+        rdfs:comment     "A participial modifier of an NP or VP or sentence is a participial verb form that serves to modify the meaning of a noun phrase or sentence.\n\n\"Truffles picked during the spring are tasty\" \npartmod(truffles, picked)\n\n\"Bill tried to shoot demonstrating his incompetence\" \npartmod(shoot, demonstrating)" ;
+        rdfs:label       "participial modifier"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:PassiveAuxiliary  a     owl:Class ;
+        rdfs:comment     "A passive auxiliary of a clause is a non-main verb of the clause which contains the passive information.\n\n\"Kennedy has been killed\" \nauxpass(killed, been)\naux(killed,has)\n\n\"Kennedy was/got killed\" \nauxpass(killed, was/got)" ;
+        rdfs:label       "passive auxiliary"^^xsd:string ;
+        rdfs:subClassOf  :Auxiliary .
+
+:PassiveClausalSubject
+        a                owl:Class ;
+        rdfs:comment     "A clausal passive subject is a clausal syntactic subject of a passive clause. In the example below, \"that she lied\" is the subject.\n\n\"That she lied was suspected by everyone\" \ncsubjpass(suspected, lied)" ;
+        rdfs:label       "passive clausal subject"^^xsd:string , "clausal passive subject" ;
+        rdfs:subClassOf  :ClausalSubject .
+
+:PassiveNominalSubject
+        a                owl:Class ;
+        rdfs:comment     "A passive nominal subject is a noun phrase which is the syntactic subject of a passive clause.\n\n\"Dole was defeated by Clinton\" \nnsubjpass(defeated, Dole)" ;
+        rdfs:label       "passive nominal subject"^^xsd:string ;
+        rdfs:subClassOf  :NominalSubject .
+
+:PhrasalVerbParticle  a  owl:Class ;
+        rdfs:comment     "The phrasal verb particle relation identifies a phrasal verb, and holds between the verb and its particle.\n\n\"They shut down the station\" \nprt(shut, down)" ;
+        rdfs:label       "phrasal verb particle"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:PossessionModifier  a   owl:Class ;
+        rdfs:comment     "The possession modifier relation holds between the head of an NP and its possessive determiner, or a genitive 's complement.\n\n\"their offices\" \nposs(offices, their)\n\n\"Bill's clothes\" \nposs(clothes, Bill)" ;
+        rdfs:label       "possession modifier"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:PossessiveModifier  a   owl:Class ;
+        rdfs:comment     "The possessive modifier relation appears between the head of an NP and the genitive 's.\n\n\"Bill's clothes\" \npossessive(John, 's)" ;
+        rdfs:label       "possessive modifier (’s)"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:Preconjunct  a          owl:Class ;
+        rdfs:comment     "A preconjunct is the relation between the head of an NP and a word that appears at the beginning bracketing a conjunction (and puts emphasis on it), such as \"either\", \"both\", \"neither\").\n\n\"Both the boys and the girls are here\" \npreconj (boys, both)" ;
+        rdfs:label       "preconjunct"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:Predeterminer  a        owl:Class ;
+        rdfs:comment     "A predeterminer is the relation between the head of an NP and a word that precedes and modifies the meaning of the NP determiner.\n\n\"All the boys are here\" \npredet(boys, all)" ;
+        rdfs:label       "predeterminer"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:PrepositionalClausalModifier
+        a                owl:Class ;
+        rdfs:comment     "In the collapsed representation, a prepositional clausal modifier of a verb, adjective, or noun is a clause introduced by a preposition which serves to modify the meaning of the verb, adjective, or noun.\n\n\"He purchased it without paying a premium\" \nprepc_without(purchased, paying)" ;
+        rdfs:subClassOf  :PrepositionalModifier ;
+        owl:versionInfo  "missing in the taxonomy of de Maneffe & Manning (2011, §3)" .
+
+:PrepositionalComplement
+        a                owl:Class ;
+        rdfs:comment     "This is used when the complement of a preposition is a clause or prepositional phrase (or occasionally, an adverbial phrase). The prepositional complement of a preposition is the head of a clause following the preposition, or the preposition head of the following PP.\n\n\"We have no information on whether users are at risk\" \npcomp(on, are)\n\n\"They heard about you missing classes\"\npcomp(about, missing)" ;
+        rdfs:label       "prepositional complement" ;
+        rdfs:subClassOf  :Complement ;
+        owl:versionInfo  "missing from the taxonomy de Maneffe & Manning (2011, §4)" .
+
+:PrepositionalModifier
+        a                owl:Class ;
+        rdfs:comment     "A prepositional modifier of a verb, adjective, or noun is any prepositional phrase that serves to modify the meaning of the verb, adjective, noun, or even another prepositon. In the collapsed representation, this is used only for prepositions with NP complements.\n\n\"I saw a cat in a hat\"\nprep(cat, in)\n\n\"I saw a cat with a telescope\" \nprep(saw, with)\n\n\"He is responsible for meals\" \nprep(responsible, for)" ;
+        rdfs:label       "prepositional modifier"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:Punctuation  a          owl:Class ;
+        rdfs:comment     "This is used for any piece of punctuation in a clause, if punctuation is being retained in the typed dependencies. By default, punctuation is not retained in the output.\n\n\"Go home!\" \npunct(Go, !)" ;
+        rdfs:label       "punctuation"^^xsd:string ;
+        rdfs:subClassOf  :Dependent .
+
+:PurposeClauseModifier
+        a                owl:Class ;
+        rdfs:comment     "A purpose clause modifier of a VP is a clause headed by \"(in order) to\" specifying a purpose. At present the system only recognizes ones that have \"in order to\" as otherwise the system is unable to distinguish from the surface representations between these and open clausal complements (xcomp). It can also recognize fronted \"to\" purpose clauses in sentences.\n\n\"He talked to him in order to secure the account\" \npurpcl(talked, secure)" ;
+        rdfs:label       "purpose clause modifier"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:QuantifierModifier  a   owl:Class ;
+        rdfs:comment     "A quantifier modifier is an element modifying the head of a QP constituent. (These are modifiers in complex numeric quantifiers, not other types of \"quantification\". Quantifiers like \"all\" become det.)\n\n\"About 200 people came to the party\" \nquantmod(200, About)" ;
+        rdfs:label       "quantifier modifier"^^xsd:string , "quantifier phrase modifier" ;
+        rdfs:subClassOf  :Modifier .
+
+:Referent  a             owl:Class ;
+        rdfs:comment     "A referent of the head of an NP is the relative word introducing the relative clause modifying the NP.\n\n\"I saw the book which you bought\" \nref (book, which)" ;
+        rdfs:label       "referent"^^xsd:string ;
+        rdfs:subClassOf  :Dependent .
+
+:Relative  a             owl:Class ;
+        rdfs:comment     "A relative of a relative clause is the head word of the WH-phrase introducing it. This analysis is used only for relative words which are not the subject of the relative clause. Relative words which act as the subject of a relative clause are analyzed as a nsubj.\n\n\"I saw the man whose wife you love\" \nrel (love, wife)" ;
+        rdfs:label       "relative (word introducing a rcmod )"^^xsd:string ;
+        rdfs:subClassOf  :Complement .
+
+:RelativeClauseModifier
+        a                owl:Class ;
+        rdfs:comment     "A relative clause modifier of an NP is a relative clause modifying the NP. The relation points from the head noun of the NP to the head of the relative clause, normally a verb.\n\n\"I saw the man you love\"\nrcmod(man, love)\n\n\"I saw the book which you bought\" \nrcmod(book,bought)" ;
+        rdfs:label       "relative clause modifier"^^xsd:string ;
+        rdfs:subClassOf  :Modifier .
+
+:Root   a                owl:Class ;
+        rdfs:comment     "The root grammatical relation points to the root of the sentence. A fake node \"ROOT\" is used as the governor. The ROOT node is indexed with \"0\", since the indexation of real words in the sentence starts at 1.\n\n\"I love French fries.\" \nroot(ROOT, love)\n\n\"Bill is an honest man\" \nroot(ROOT, man)" ;
+        rdfs:subClassOf  :DependencyLabel .
+
+:SemanticDependent  a    owl:Class ;
+        rdfs:label       "semantic dependent"^^xsd:string ;
+        rdfs:subClassOf  :Dependent .
+
+:Subject  a              owl:Class ;
+        rdfs:label       "subject"^^xsd:string ;
+        rdfs:subClassOf  :Argument .
+
+:TemporalModifier  a     owl:Class ;
+        rdfs:comment     "A temporal modifier (of a VP, NP, or an ADJP is a bare noun phrase constituent that serves to modify the meaning of the constituent by specifying a time. (Other temporal modifiers are prepositional phrases and are introduced as prep.)\n\n\"Last night, I swam in the pool\" \ntmod(swam, night)" ;
+        rdfs:label       "temporal modifier"^^xsd:string ;
+        rdfs:subClassOf  :NounPhraseAsAdverbialModifier .
+
+:Token  a                owl:Class ;
+        rdfs:subClassOf  olia_system:UnitOfAnnotation .
+
+:abbrev  a                  owl:NamedIndividual , :AbbreviationModifier ;
+        olia_system:hasTag  "abbrev"^^xsd:string .
+
+:acomp  a                   owl:NamedIndividual , :AdjectivalComplement ;
+        olia_system:hasTag  "acomp"^^xsd:string .
+
+:advcl  a                   owl:NamedIndividual , :AdverbialClauseModifier ;
+        olia_system:hasTag  "advcl"^^xsd:string .
+
+:advmod  a                  owl:NamedIndividual , :AdverbialModifier ;
+        olia_system:hasTag  "advmod"^^xsd:string .
+
+:agent  a                   owl:NamedIndividual , :Agent ;
+        olia_system:hasTag  "agent"^^xsd:string .
+
+:amod   a                   owl:NamedIndividual , :AdjectivalModifier ;
+        olia_system:hasTag  "amod"^^xsd:string .
+
+:appos  a                   owl:NamedIndividual , :AppositionalModifier ;
+        olia_system:hasTag  "appos"^^xsd:string .
+
+:arg    a                   owl:NamedIndividual , :Argument ;
+        olia_system:hasTag  "arg"^^xsd:string .
+
+:attr   a                   owl:NamedIndividual , :Attributive ;
+        olia_system:hasTag  "attr"^^xsd:string .
+
+:aux    a                   owl:NamedIndividual , :Auxiliary ;
+        olia_system:hasTag  "aux"^^xsd:string .
+
+:auxpass  a                 owl:NamedIndividual , :PassiveAuxiliary ;
+        olia_system:hasTag  "auxpass"^^xsd:string .
+
+:cc     a                   owl:NamedIndividual , :Coordination ;
+        olia_system:hasTag  "cc"^^xsd:string .
+
+:ccomp  a                   owl:NamedIndividual , :ClausalComplementWithInternalSubject ;
+        olia_system:hasTag  "ccomp"^^xsd:string .
+
+:comp   a                   owl:NamedIndividual , :Complement ;
+        olia_system:hasTag  "comp"^^xsd:string .
+
+:compl  a                   owl:NamedIndividual , :Complementizer ;
+        olia_system:hasTag  "compl"^^xsd:string .
+
+:complm  a                  owl:NamedIndividual , :Complementizer ;
+        olia_system:hasTag  "complm" .
+
+:conj   a                   owl:NamedIndividual , :Conjunct ;
+        olia_system:hasTag  "conj"^^xsd:string .
+
+:conj_  a                               owl:NamedIndividual , :Conjunct ;
+        olia_system:hasTagStartingWith  "conj_" .
+
+:cop    a                   owl:NamedIndividual , :Copula ;
+        olia_system:hasTag  "cop"^^xsd:string .
+
+:csubj  a                   owl:NamedIndividual , :ClausalSubject ;
+        olia_system:hasTag  "csubj"^^xsd:string .
+
+:csubjpass  a               owl:NamedIndividual , :PassiveClausalSubject ;
+        olia_system:hasTag  "csubjpass"^^xsd:string .
+
+:dep    a                   owl:NamedIndividual , :Dependent ;
+        olia_system:hasTag  "dep"^^xsd:string .
+
+:det    a                   owl:NamedIndividual , :Determiner ;
+        olia_system:hasTag  "det"^^xsd:string .
+
+:dobj   a                   owl:NamedIndividual , :DirectObject ;
+        olia_system:hasTag  "dobj"^^xsd:string .
+
+:expl   a                   owl:NamedIndividual , :Expletive ;
+        olia_system:hasTag  "expl"^^xsd:string .
+
+:infmod  a                  owl:NamedIndividual , :InfinitivalModifier ;
+        olia_system:hasTag  "infmod"^^xsd:string .
+
+:iobj   a                   owl:NamedIndividual , :IndirectObject ;
+        olia_system:hasTag  "iobj"^^xsd:string .
+
+:mark   a                   owl:NamedIndividual , :Marker ;
+        olia_system:hasTag  "mark"^^xsd:string .
+
+:measure  a                 owl:NamedIndividual , :MeasurePhraseModifier ;
+        olia_system:hasTag  "measure"^^xsd:string .
+
+:mod    a                   owl:NamedIndividual , :Modifier ;
+        olia_system:hasTag  "mod"^^xsd:string .
+
+:mwe    a                   owl:NamedIndividual , :MultiWordExpression ;
+        olia_system:hasTag  "mwe" .
+
+:neg    a                   owl:NamedIndividual , :NegationModifier ;
+        olia_system:hasTag  "neg"^^xsd:string .
+
+:nn     a                   owl:NamedIndividual , :NounCompoundModifier ;
+        olia_system:hasTag  "nn"^^xsd:string .
+
+:npadvmod  a                owl:NamedIndividual , :NounPhraseAsAdverbialModifier ;
+        olia_system:hasTag  "npadvmod" .
+
+:nsubj  a                   owl:NamedIndividual , :NominalSubject ;
+        olia_system:hasTag  "nsubj"^^xsd:string .
+
+:nsubjpass  a               owl:NamedIndividual , :PassiveNominalSubject ;
+        olia_system:hasTag  "nsubjpass"^^xsd:string .
+
+:num    a                   owl:NamedIndividual , :NumericModifier ;
+        olia_system:hasTag  "num"^^xsd:string .
+
+:number  a                  owl:NamedIndividual , :CompountNumberElement ;
+        olia_system:hasTag  "number"^^xsd:string .
+
+:obj    a                   owl:NamedIndividual , :Object ;
+        olia_system:hasTag  "obj"^^xsd:string .
+
+:parataxis  a               owl:NamedIndividual , :Parataxis ;
+        olia_system:hasTag  "parataxis"^^xsd:string .
+
+:partmod  a                 owl:NamedIndividual , :ParticipalModifier ;
+        olia_system:hasTag  "partmod"^^xsd:string .
+
+:pcomp  a                   owl:NamedIndividual , :PrepositionalComplement ;
+        olia_system:hasTag  "pcomp" .
+
+:pobj   a                   owl:NamedIndividual , :ObjectOfPreposition ;
+        olia_system:hasTag  "pobj"^^xsd:string .
+
+:poss   a                   owl:NamedIndividual , :PossessionModifier ;
+        olia_system:hasTag  "poss"^^xsd:string .
+
+:possessive  a              owl:NamedIndividual , :PossessiveModifier ;
+        olia_system:hasTag  "possessive"^^xsd:string .
+
+:preconj  a                 owl:NamedIndividual , :Preconjunct ;
+        olia_system:hasTag  "preconj"^^xsd:string .
+
+:predet  a                  owl:NamedIndividual , :Predeterminer ;
+        olia_system:hasTag  "predet"^^xsd:string .
+
+:prep   a                   owl:NamedIndividual , :PrepositionalModifier ;
+        olia_system:hasTag  "prep"^^xsd:string .
+
+:prep_  a                               owl:NamedIndividual , :PrepositionalModifier ;
+        olia_system:hasTagStartingWith  "prep_" .
+
+:prepc  a                   owl:NamedIndividual , :PrepositionalClausalModifier ;
+        olia_system:hasTag  "prepc" .
+
+:prepc_  a                              owl:NamedIndividual , :PrepositionalClausalModifier ;
+        olia_system:hasTagStartingWith  "prepc_" .
+
+:prt    a                   owl:NamedIndividual , :PhrasalVerbParticle ;
+        olia_system:hasTag  "prt"^^xsd:string .
+
+:punct  a                   owl:NamedIndividual , :Punctuation ;
+        olia_system:hasTag  "punct"^^xsd:string .
+
+:purpcl  a                  owl:NamedIndividual , :PurposeClauseModifier ;
+        olia_system:hasTag  "purpcl"^^xsd:string .
+
+:quantmod  a                owl:NamedIndividual , :QuantifierModifier ;
+        olia_system:hasTag  "quantmod"^^xsd:string .
+
+:rcmod  a                   owl:NamedIndividual , :RelativeClauseModifier ;
+        olia_system:hasTag  "rcmod"^^xsd:string .
+
+:ref    a                   owl:NamedIndividual , :Referent ;
+        olia_system:hasTag  "ref"^^xsd:string .
+
+:rel    a                   owl:NamedIndividual , :Relative ;
+        olia_system:hasTag  "rel"^^xsd:string .
+
+:root   a                   owl:NamedIndividual , :Root ;
+        olia_system:hasTag  "root" .
+
+:sdep   a                   owl:NamedIndividual , :SemanticDependent ;
+        olia_system:hasTag  "sdep"^^xsd:string .
+
+:subj   a                   owl:NamedIndividual , :Subject ;
+        olia_system:hasTag  "subj"^^xsd:string .
+
+:tmod   a                   owl:NamedIndividual , :TemporalModifier ;
+        olia_system:hasTag  "tmod"^^xsd:string .
+
+:xcomp  a                   owl:NamedIndividual , :ClausalComplementWithExternalSubject ;
+        olia_system:hasTag  "xcomp"^^xsd:string .
+
+:xsubj  a                   owl:NamedIndividual , :ControllingSubject ;
+        olia_system:hasTag  "xsubj"^^xsd:string .

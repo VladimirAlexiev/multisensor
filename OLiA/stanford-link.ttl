@@ -1,0 +1,234 @@
+@prefix :      <http://purl.org/olia/stanford-link.rdf#> .
+@prefix olia:  <http://purl.org/olia/olia.owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix stanford-syntax: <http://purl.org/olia/stanford.owl#> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+olia:Quantifier  a  owl:Class .
+
+stanford-syntax:Argument
+        a                owl:Class ;
+        rdfs:subClassOf  olia:SyntacticArgument .
+
+stanford-syntax:Complementizer
+        a             owl:Class ;
+        rdfs:comment  "???"^^xsd:string .
+
+stanford-syntax:Relative
+        a             owl:Class ;
+        rdfs:comment  "???"^^xsd:string .
+
+stanford-syntax:NumericModifier
+        a                owl:Class ;
+        rdfs:comment     "part of a numeral ?"^^xsd:string ;
+        rdfs:subClassOf  olia:Numeral .
+
+stanford-syntax:Subject
+        a                owl:Class ;
+        rdfs:subClassOf  olia:SyntacticSubject .
+
+olia:Modifier  a  owl:Class .
+
+stanford-syntax:DirectObject
+        a                owl:Class ;
+        rdfs:subClassOf  olia:DirectObject .
+
+stanford-syntax:Punctuation
+        a                owl:Class ;
+        rdfs:subClassOf  olia:Punctuation .
+
+stanford-syntax:IndirectObject
+        a                owl:Class ;
+        rdfs:subClassOf  olia:IndirectObject .
+
+stanford-syntax:Preconjunct
+        a             owl:Class ;
+        rdfs:comment  "???"^^xsd:string .
+
+stanford-syntax:AppositionalModifier
+        a                owl:Class ;
+        rdfs:subClassOf  olia:Apposition .
+
+stanford-syntax:InfinitivalModifier
+        a             owl:Class ;
+        rdfs:comment  "???"^^xsd:string .
+
+stanford-syntax:CompountNumberElement
+        a                owl:Class ;
+        rdfs:comment     "part of a complex number"^^xsd:string ;
+        rdfs:subClassOf  olia:Numeral .
+
+stanford-syntax:Complement
+        a                owl:Class ;
+        rdfs:subClassOf  olia:SyntacticComplement .
+
+stanford-syntax:Predeterminer
+        a             owl:Class ;
+        rdfs:comment  "???"^^xsd:string .
+
+stanford-syntax:ClausalComplementWithInternalSubject
+        a                owl:Class ;
+        rdfs:comment     "subordinate relative clause ???"^^xsd:string ;
+        rdfs:subClassOf  olia:SubordinateClause .
+
+stanford-syntax:Auxiliary
+        a                owl:Class ;
+        rdfs:subClassOf  olia:AuxiliaryVerb .
+
+stanford-syntax:AdjectivalModifier
+        a                owl:Class ;
+        rdfs:comment     "???"^^xsd:string ;
+        rdfs:subClassOf  olia:Adjective .
+
+stanford-syntax:AdverbialModifier
+        a                owl:Class ;
+        rdfs:subClassOf  olia:Adverb , olia:Modifier .
+
+stanford-syntax:Expletive
+        a                owl:Class ;
+        rdfs:subClassOf  olia:ExpletivePronoun .
+
+olia:PossessorRole  a  owl:Class .
+
+stanford-syntax:Parataxis
+        a                owl:Class ;
+        rdfs:subClassOf  olia:Coordination .
+
+stanford-syntax:Agent
+        a                owl:Class ;
+        rdfs:comment     "This seems to be the AGENT of a passive clause, i.e. demoted subject. candidate"^^xsd:string ;
+        rdfs:subClassOf  olia:SyntacticAdjunct , olia:ActorMacroRole , olia:AgentRole .
+
+stanford-syntax:Copula
+        a                owl:Class ;
+        rdfs:subClassOf  olia:Copula .
+
+stanford-syntax:Marker
+        a             owl:Class ;
+        rdfs:comment  "???"^^xsd:string .
+
+stanford-syntax:ClausalComplementWithExternalSubject
+        a             owl:Class ;
+        rdfs:comment  "???"^^xsd:string .
+
+stanford-syntax:SemanticDependent
+        a                owl:Class ;
+        rdfs:subClassOf  <http://purl.org/olia/olia-top.owl#SemanticRole> .
+
+stanford-syntax:Determiner
+        a                owl:Class ;
+        rdfs:subClassOf  olia:Determiner .
+
+stanford-syntax:PassiveClausalSubject
+        a                owl:Class ;
+        rdfs:subClassOf  olia:UndergoerMacroRole .
+
+stanford-syntax:ClausalSubject
+        a                owl:Class ;
+        rdfs:subClassOf  olia:Clause .
+
+stanford-syntax:PassiveNominalSubject
+        a                owl:Class ;
+        rdfs:subClassOf  olia:UndergoerMacroRole .
+
+stanford-syntax:NominalSubject
+        a                owl:Class ;
+        rdfs:comment     "In dependency syntax, of course, this is not a noun phrase, but the head of a subtree that would be a noun phrase in a constituent grammar."^^xsd:string ;
+        rdfs:subClassOf  olia:NounPhrase .
+
+stanford-syntax:AdverbialClauseModifier
+        a             owl:Class ;
+        rdfs:comment  "???"^^xsd:string .
+
+stanford-syntax:QuantifierModifier
+        a                owl:Class ;
+        rdfs:subClassOf  [ a                   owl:Class ;
+                           owl:intersectionOf  ( olia:Quantifier olia:Modifier )
+                         ] .
+
+stanford-syntax:NegationModifier
+        a                owl:Class ;
+        rdfs:subClassOf  olia:Negation .
+
+stanford-syntax:AbbreviationModifier
+        a                owl:Class ;
+        rdfs:comment     "abbreviation ?"^^xsd:string ;
+        rdfs:subClassOf  olia:Abbreviation .
+
+stanford-syntax:PhrasalVerbParticle
+        a                owl:Class ;
+        rdfs:subClassOf  olia:Unique .
+
+stanford-syntax:MeasurePhraseModifier
+        a                owl:Class ;
+        rdfs:subClassOf  olia:MeasureArgument .
+
+stanford-syntax:Coordination
+        a                owl:Class ;
+        rdfs:subClassOf  olia:Coordination .
+
+stanford-syntax:Modifier
+        a                owl:Class ;
+        rdfs:subClassOf  olia:Modifier .
+
+stanford-syntax:Token
+        a                owl:Class ;
+        rdfs:subClassOf  <http://purl.org/olia/olia-top.owl#Word> .
+
+stanford-syntax:TemporalModifier
+        a                owl:Class ;
+        rdfs:comment     "time-related semantic roles ?"^^xsd:string ;
+        rdfs:subClassOf  olia:TimeRole .
+
+<http://purl.org/olia/stanford-link.rdf>
+        a             owl:Ontology ;
+        rdfs:comment  "2010/02/18 provisional linking\nChristian Chiarcos, chiarcos@uni-potsdam.de"^^xsd:string ;
+        owl:imports   <http://purl.org/olia/olia.owl> , <http://purl.org/olia/stanford.owl> .
+
+stanford-syntax:ParticipalModifier
+        a                owl:Class ;
+        rdfs:comment     "???"^^xsd:string ;
+        rdfs:subClassOf  olia:Participle .
+
+stanford-syntax:PrepositionalModifier
+        a                owl:Class ;
+        rdfs:comment     "???"^^xsd:string ;
+        rdfs:subClassOf  olia:Preposition .
+
+stanford-syntax:PossessiveModifier
+        a                owl:Class ;
+        rdfs:subClassOf  olia:MorphologicalParticle .
+
+stanford-syntax:RelativeClauseModifier
+        a                owl:Class ;
+        rdfs:subClassOf  olia:RelativeClause .
+
+stanford-syntax:Conjunct
+        a                owl:Class ;
+        rdfs:subClassOf  olia:Conjunct .
+
+stanford-syntax:NounCompoundModifier
+        a                owl:Class ;
+        rdfs:comment     "part of a complex noun ?"^^xsd:string ;
+        rdfs:subClassOf  olia:Noun .
+
+stanford-syntax:PossessionModifier
+        a                owl:Class ;
+        rdfs:comment     "semantic role possessor ?"^^xsd:string ;
+        rdfs:subClassOf  olia:PossessorRole .
+
+stanford-syntax:PurposeClauseModifier
+        a                owl:Class ;
+        rdfs:comment     "semantic role \"purpose\" ?"^^xsd:string ;
+        rdfs:subClassOf  olia:PurposeRole .
+
+stanford-syntax:Attributive
+        a             owl:Class ;
+        rdfs:comment  "???"^^xsd:string .
+
+stanford-syntax:Referent
+        a             owl:Class ;
+        rdfs:comment  "semantic argument ???"^^xsd:string .

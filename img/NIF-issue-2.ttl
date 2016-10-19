@@ -1,0 +1,24 @@
+# https://github.com/NLP2RDF/specification/issues/2
+# itsrdf vs fise properties
+
+</char=0,7> a nif:Word;
+  nif:anchorOf "Germany".
+
+# If you have one NER tool and one annotation (not multiple candidates), NIF says use itsrdf properties.
+</char=0,7>
+  itsrdf:taClassRef nerd:Country;
+  itsrdf:taIdentRef dbp:Germany;
+  itsrdf:taAnnotatorsRef "some tool";
+  itsrdf:confidence 0.9.
+
+# If you have multiple annotations, you need to use fise properties (the NIF Stanbol profile), and node per annotation
+</char=0,7/enrichment=1> a fise:EntityAnnotation;
+  fise:extracted-from <#char=0,7>;
+  fise:entity-type nerd:Country;
+  fise:entity-reference dbp:Germany;
+  dc:creator "some tool";
+  fise:confidence "0.9"^^xsd:float.
+
+
+# I think it's a very bad practice to use two completely different property sets for these two situations.
+# Just because in the second case there's an intermediate node for the annotation, doesn't mean the properties should be completely different.

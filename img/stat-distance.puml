@@ -1,0 +1,32 @@
+@startuml
+hide empty methods
+hide empty attributes
+hide circle
+skinparam classAttributeIconSize 0
+class ms_distance_dat_ES_BE as "ms-distance-dat:ES-BE"
+ms_distance_dat_ES_BE : a qb:Observation
+class ms_distance_google_distance as "ms-distance:google-distance"
+ms_distance_dat_ES_BE -up-> ms_distance_google_distance : qb:dataSet
+class eugeo_BE as "eugeo:BE"
+ms_distance_dat_ES_BE --> eugeo_BE : prop:partner
+class eugeo_ES as "eugeo:ES"
+ms_distance_dat_ES_BE --> eugeo_ES : prop:geo
+class ms_distance_ES_BE_1580489 as "ms-distance:ES-BE-1580489"
+ms_distance_dat_ES_BE --> ms_distance_ES_BE_1580489 : ms:distance
+class ms_distance_ES_AT_2401185 as "ms-distance:ES-AT-2401185"
+ms_distance_ES_AT_2401185 : ms:distance 2401185
+ms_distance_ES_AT_2401185 : ms:duration 79722
+ms_distance_ES_AT_2401185 : ms:durationLabel "22 hours 9 mins"
+ms_distance_ES_AT_2401185 : rdfs:label "2,401 km"
+class ms_distance_dat_ES_AT as "ms-distance-dat:ES-AT"
+ms_distance_dat_ES_AT : a qb:Observation
+ms_distance_dat_ES_AT -up-> ms_distance_google_distance : qb:dataSet
+class eugeo_AT as "eugeo:AT"
+ms_distance_dat_ES_AT --> eugeo_AT : prop:partner
+ms_distance_dat_ES_AT --> eugeo_ES : prop:geo
+ms_distance_dat_ES_AT --> ms_distance_ES_AT_2401185 : ms:distance
+ms_distance_ES_BE_1580489 : ms:distance 1580489
+ms_distance_ES_BE_1580489 : ms:duration 52262
+ms_distance_ES_BE_1580489 : ms:durationLabel "14 hours 31 mins"
+ms_distance_ES_BE_1580489 : rdfs:label "1,580 km"
+@enduml

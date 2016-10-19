@@ -1,0 +1,46 @@
+# https://github.com/NLP2RDF/specification/issues/1
+# nif:opinion vs marl:extractedFrom
+
+@base <http://example.com/blog/1/>
+
+# assume theres's a blog post at the base URL, and some comments about it
+<> a sioc:Post
+  sioc:content "Germany is the work horse of the European Union".
+<comment/1> a sioc:Post; # sic: there's no sioc:Comment, they are simply a sort of sioc:Post
+  sioc:reply_of <>;
+  sioc:has_creator <http://example.com/users/Hans>;
+  sioc:content "Yes, we Germans are the hardest-working people in the world".
+<comment/2> a sioc:Post;
+  sioc:reply_of <>;
+  sioc:has_creator <http://example.com/users/Dimitrios>;
+  sioc:content "Bullshit! We Greeks are harder-working".
+
+# The MARL example http://marl.gi2mo.org/0.2/ns.html#s32 represents the opinions like this:
+<opinion/1> a marl:Opinion;
+  marl:extractedFrom <comment/1>;
+  marl:describesObject <>;
+  marl:opinionText "Yes";
+  marl:polarityValue 0.9;
+  marl:minPolarityValue -1;
+  marl:maxPolarityValue 1;
+  marl:hasPolarity marl:Positive.
+<opinion/2> a marl:Opinion;
+  marl:extractedFrom <comment/2>;
+  marl:describesObject <>;
+  marl:opinionText "Bullshit!";
+  marl:polarityValue -1;
+  marl:minPolarityValue -1;
+  marl:maxPolarityValue 1;
+  marl:hasPolarity marl:Negative.
+
+# NIF integrates MARL using property nif:opinion from nif:String to marl:Opinion.
+# But that's declared inverseOf marl:extractedFrom, which in the MARL example points to sioc:Post (not the nif:String content of the post).
+# So something doesn't mesh here. We could mix sioc and nif properties on <comment/1>, but nif:sourceUrl points to itself...
+<comment/1> a nif:Context; 
+  nif:sourceUrl <comment/1>;
+  nif:isString "Yes, we Germans are the hardest-working people in the world";
+  nif:opinion <opinion/1>.
+<comment/2> a nif:Context;
+  nif:sourceUrl <comment/2>;
+  nif:isString "Bullshit! We Greeks are harder-working";
+  nif:opinion <opinion/2>.
