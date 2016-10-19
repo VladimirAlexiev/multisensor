@@ -2284,7 +2284,9 @@ Sum of the absolute values of the most positive and most negative polarity of an
 #+END_SRC
 
 ** Sentiment of SIMMO and Sentence
-The sentiment of the whole SIMMO is represented as follows:
+The sentiment of the whole SIMMO is represented as follows.
+
+[[./img/MS-sentiment.ttl]]
 #+BEGIN_SRC Turtle :tangle ./img/MS-sentiment.ttl
 @base <http://data.multisensorproject.eu/content/9e9c304>.
 
@@ -2333,7 +2335,7 @@ and a neutral ~sentimentalityValue~.
 ** Sentiment About Named Entity
 We can represent the sentiment about a NE as follows
 
-[[./MS-sentiment-NE.ttl]]
+[[./img/MS-sentiment-NE.ttl]]
 #+BEGIN_SRC Turtle :tangle ./img/MS-sentiment-NE.ttl
 @base <http://data.multisensorproject.eu/content/9e9c304>.
 
