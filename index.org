@@ -1,5 +1,5 @@
 #+TITLE: Multisensor RDF Application Profile
-#+DATE: <2016-10-17>
+#+DATE: <2016-10-19>
 #+AUTHOR: Vladimir Alexiev
 #+EMAIL: vladimir.alexiev@ontotext.com
 #+OPTIONS: ':nil *:t -:t ::t <:t H:5 \n:nil ^:{} arch:headline author:t c:nil
@@ -13,7 +13,7 @@
 #+LANGUAGE: en
 #+STARTUP: showeverything
 
-[[http://rawgit.com/VladimirAlexiev/multisensor/][HTML Rendered version]]
+[[http://rawgit.com/VladimirAlexiev/multisensor/master/][HTML Rendered version]]
 
 * Table of Contents                                 :TOC:
  - [[#intro][Intro]]
@@ -94,7 +94,7 @@
    - [[#content-alignment-diagram][Content Alignment Diagram]]
  - [[#multisensor-social-data][Multisensor Social Data]]
    - [[#topic-based-on-single-keywords][Topic Based on Single Keywords]]
-     - [[#single-keywords-diagram-][Single Keywords Diagram ]]
+     - [[#single-keywords-diagram][Single Keywords Diagram]]
    - [[#topic-based-on-multiple-hashtags][Topic Based on Multiple Hashtags]]
      - [[#multiple-hashtags-diagram][Multiple Hashtags Diagram]]
    - [[#tweets-related-to-article][Tweets Related to Article]]
