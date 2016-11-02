@@ -1,5 +1,5 @@
 #+TITLE: Multisensor RDF Application Profile
-#+DATE: <2016-10-19>
+#+DATE: <2016-11-02>
 #+AUTHOR: Vladimir Alexiev
 #+EMAIL: vladimir.alexiev@ontotext.com
 #+OPTIONS: ':nil *:t -:t ::t <:t H:5 \n:nil ^:{} arch:headline author:t c:nil
@@ -106,8 +106,12 @@
  - [[#simmo-quality][SIMMO Quality]]
    - [[#simmo-quality-diagram][SIMMO Quality Diagram]]
  - [[#statistical-data-for-decision-support][Statistical Data for Decision Support]]
+   - [[#eurostat-statistics][EuroStat Statistics]]
+   - [[#worldbank-statistics][WorldBank Statistics]]
    - [[#comtrade-statistics][ComTrade Statistics]]
      - [[#comtrade-diagram][ComTrade Diagram]]
+     - [[#comtrade-derived-indicators][ComTrade Derived Indicators]]
+     - [[#comtrade-indicators-and-commodities][ComTrade Indicators and Commodities]]
    - [[#distance-data][Distance Data]]
      - [[#distance-data-diagram][Distance Data Diagram]]
 
@@ -2468,11 +2472,55 @@ It employs various statistical data, including:
 - UN ComTrade statistics on inter-country trade
 - Google info on distances between country capitals
 This data is used to rank potential export countries.
+The full set of indicators is described in [[https://docs.google.com/document/d/1gW4R4VMI34eMMkknTXIbfDTzfSVQ4dn_d5doW5MjxZk/edit#heading%3Dh.rs1e5482rcvj][MULTISENSOR Export trading Decison Support System specification]].
 
 We use the W3C CUBE ontology to describe all of these.
-Since EuroStat and WorldBank statistics are better known, we'll describe below the ComTrade and Distance data.
+** EuroStat Statistics
+We obtained EuroStat data from http://eurostat.linked-statistics.org/.
+
+Eg below is the representation of a data point about indicator *teibs10* "Economic Sentiment" for Cyprus for Oct 2014.
+#+BEGIN_SRC Turtle
+<http://eurostat.linked-statistics.org/data/teibs010#M,CY,2014M10>
+  a qb:Observation ;
+  qb:dataSet eudata:teibs010 ;
+  sdmx-dimension:freq sdmx-code:freq-M ;
+  sdmx-dimension:timePeriod "2014-10-01"^^xsd:date ;
+  property:geo eugeo:CY ;
+  sdmx-measure:obsValue 98.8 ;
+  ms:normalized 0.45 .
+#+END_SRC
+~ms:normalized~ represents a normalized value from 0 to 1, taking into account the maximum value for that indicator.
+It is used to make different indicators comparable when displayed on a single chart.
+
+** WorldBank Statistics
+We obtained WorldBank data from http://worldbank.270a.info.
+
+Eg below is the representation of a data point about indicator [[http://worldbank.270a.info/classification/indicator/IC.BUS.EASE.XQ.html][IC.BUS.EASE.XQ]] "Ease of doing business".
+It ranks economies from 1 to 189, with first place being the best. 
+A low numerical rank means that the regulatory environment is conducive to business operation.
+The value below means that Spain was in 44th place for 2012.
+
+#+BEGIN_SRC Turtle
+<http://worldbank.270a.info/dataset/world-bank-indicators/IC.BUS.EASE.XQ/ES/2012>
+  a qb:Observation ;
+  qb:dataSet <http://worldbank.270a.info/dataset/IC.BUS.EASE.XQ> ;
+  property:indicator indicator:IC.BUS.EASE.XQ .
+  sdmx-dimension:refArea country:ES ;
+  sdmx-dimension:refPeriod <http://reference.data.gov.uk/id/year/2012> ;
+  property:decimal 0.0 ;
+  sdmx-measure:obsValue 44.0 ;
+  ms:normalized 0.233 .
+#+END_SRC
+Compared to EuroStat, WorldBank uses:
+- Different property names for geographic area and time period
+- Different URLs for geographic areas
+- URLs instead of XSD dates/years for time periods (as defined by data.gov.uk), which necessitates extracting the value from the URL
+These differences are easily 
 
 ** ComTrade Statistics
+We extracted ComTrade data as CSV from http://comtrade.un.org/data/, modeled it similar to EuroStat data and converted it like this.
+The observations below describe Import/Export volume between Austri and Belgium for 2012 and commodity code 2 "Meat and edible meat offal", in Kilograms and USD.
+
 [[./img/stat-comtrade.ttl]]
 #+BEGIN_SRC Turtle :tangle ./img/stat-comtrade.ttl
 # Import
@@ -2524,10 +2572,89 @@ eugeo:BE a puml:Inline.
 #unit:KG a puml:Inline.
 
 #+END_SRC
+
 *** ComTrade Diagram
 [[./img/stat-comtrade.png]]
 
+*** ComTrade Derived Indicators
+We also calculate Total Trade Volume and Balance of Trade using simple SPARQL Update queries like this:
+#+BEGIN_SRC sparql
+insert {
+  ?total a qb:Observation;
+    qb:dataSet ms-comtr-dat: ;
+    sdmx-dimension:timePeriod ?time;
+    sdmx-dimension:freq ?freq;
+    ms-comtr:indic ms-comtr-indic:TOT;
+    ms-comtr:commod ?commod;
+    prop:geo ?geo;
+    prop:partner ?partner;
+    prop:unit ?unit;
+    sdmx-measure:obsValue ?tot.
+  ?balance a qb:Observation;
+    qb:dataSet ms-comtr-dat: ;
+    sdmx-dimension:timePeriod ?time;
+    sdmx-dimension:freq ?freq;
+    ms-comtr:indic ms-comtr-indic:BAL;
+    ms-comtr:commod ?commod;
+    prop:geo ?geo;
+    prop:partner ?partner;
+    prop:unit ?unit;
+    sdmx-measure:obsValue ?bal
+} where {
+  ?export a qb:Observation;
+    qb:dataSet ms-comtr-dat: ;
+    sdmx-dimension:timePeriod ?time;
+    sdmx-dimension:freq ?freq;
+    ms-comtr:indic ms-comtr-indic:EXP;
+    ms-comtr:commod ?commod;
+    prop:geo ?geo;
+    prop:partner ?partner;
+    prop:unit ?unit;
+    sdmx-measure:obsValue ?exp.
+  ?import a qb:Observation;
+    qb:dataSet ms-comtr-dat: ;
+    sdmx-dimension:timePeriod ?time;
+    sdmx-dimension:freq ?freq;
+    ms-comtr:indic ms-comtr-indic:IMP;
+    ms-comtr:commod ?commod;
+    prop:geo ?geo;
+    prop:partner ?partner;
+    prop:unit ?unit;
+    sdmx-measure:obsValue ?imp.
+  bind (replace(?export,"-EXP-","-TOT-") as ?total)
+  bind (replace(?export,"-EXP-","-BAL-") as ?balance)
+  bind (?exp + ?imp as ?tot).
+  bind (?exp - ?imp as ?bal).
+}
+#+END_SRC
+
+*** ComTrade Indicators and Commodities
+The 4 trade indicators are described as skos:Concepts:
+#+BEGIN_SRC Turtle
+ms-comtr-indic: a skos:ConceptScheme;
+  rdfs:label "UN ComTrade indicators: import, export, total, balance".
+
+ms-comtr-indic:IMP a skos:Concept; skos:inScheme ms-comtr-indic:; skos:prefLabel "Import".
+ms-comtr-indic:EXP a skos:Concept; skos:inScheme ms-comtr-indic:; skos:prefLabel "Export".
+ms-comtr-indic:TOT a skos:Concept; skos:inScheme ms-comtr-indic:; skos:prefLabel "Total";  
+  skos:scopeNote "Total trade volume = Export + Import".
+ms-comtr-indic:BAL a skos:Concept; skos:inScheme ms-comtr-indic:; skos:prefLabel "Balance";
+  skos:scopeNote "Balance of trade   = Export - Import".
+#+END_SRC
+
+Finally, we obtain commodity codes from the ComTrade data API and convert them to skos:Concepts using the following pattern:
+#+BEGIN_SRC Turtle
+ms-comtr-commod: a skos:ConceptScheme;
+  rdfs:label "ComTrade HS Commodity Codes at level 1".
+ms-comtr-commod:2 a skos:Concept; skos:inScheme ms-comtr-commod:;
+  skos:prefLabel "Meat and edible meat offal".
+#+END_SRC
+
 ** Distance Data
+We obtained distance and travel time data from the Google Maps API, then converted it according to the model below.
+Eg the first record shows that the distance by road from Spain to Austria (in fact between the capitals: [[https://www.google.com/maps/dir/madrid/vienna/@44.2360789,1.8589184,6z/data%3D!3m1!4b1!4m14!4m13!1m5!1m1!1s0xd422997800a3c81:0xc436dec1618c2269!2m2!1d-3.7037902!2d40.4167754!1m5!1m1!1s0x476d079e5136ca9f:0xfdc2e58a51a25b46!2m2!1d16.3738189!2d48.2081743!3e0][from Madrid to Vienna]])
+is 2401km, and the travel time is 22:09h (79722sec):
+
 [[./img/stat-distance.ttl]]
 #+BEGIN_SRC Turtle :tangle ./img/stat-distance.ttl
 ms-distance-dat:ES-AT a qb:Observation;
