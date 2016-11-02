@@ -9,38 +9,52 @@ class ms_comtr_dat_2012_EXP_AU_BE_2_USD as "ms-comtr-dat:2012-EXP-AU-BE-2-USD"
 class ms_comtr_dat_2012_EXP_AU_BE_2_USD <<Export USD>>
 class ms_comtr_dat_2012_IMP_AU_BE_2_KG as "ms-comtr-dat:2012-IMP-AU-BE-2-KG"
 class ms_comtr_dat_2012_IMP_AU_BE_2_KG <<Import KG>>
-ms_comtr_dat_2012_EXP_AU_BE_2_USD : a qb:Observation
-class ms_comtr_indic_EXP as "ms-comtr-indic:EXP"
-ms_comtr_dat_2012_EXP_AU_BE_2_USD --> ms_comtr_indic_EXP : ms-comtr:indic
-class ms_comtr_dat_ as "ms-comtr-dat:"
-ms_comtr_dat_2012_EXP_AU_BE_2_USD -up-> ms_comtr_dat_ : qb:dataSet
-class unit_USD as "unit:USD"
-ms_comtr_dat_2012_EXP_AU_BE_2_USD --> unit_USD : prop:unit
-ms_comtr_dat_2012_EXP_AU_BE_2_USD : ms-comtr:commod ms-comtr-commod:2
-ms_comtr_dat_2012_EXP_AU_BE_2_USD : prop:geo eugeo:AT
-ms_comtr_dat_2012_EXP_AU_BE_2_USD : prop:partner eugeo:BE
-ms_comtr_dat_2012_EXP_AU_BE_2_USD : sdmx-dimension:freq sdmx-code:freq-A
-ms_comtr_dat_2012_EXP_AU_BE_2_USD : sdmx-dimension:timePeriod "2012"^^xsd:gYear
-ms_comtr_dat_2012_EXP_AU_BE_2_USD : sdmx-measure:obsValue 456
-ms_comtr_dat_2012_IMP_AU_BE_2_KG : a qb:Observation
 class ms_comtr_indic_IMP as "ms-comtr-indic:IMP"
+ms_comtr_indic_IMP : a skos:Concept
+class ms_comtr_indic_ as "ms-comtr-indic:"
+ms_comtr_indic_IMP --> ms_comtr_indic_ : skos:inScheme
+ms_comtr_indic_IMP : skos:prefLabel "Import"
+ms_comtr_dat_2012_IMP_AU_BE_2_KG : a qb:Observation
 ms_comtr_dat_2012_IMP_AU_BE_2_KG --> ms_comtr_indic_IMP : ms-comtr:indic
-class unit_KG as "unit:KG"
-ms_comtr_dat_2012_IMP_AU_BE_2_KG --> unit_KG : prop:unit
+class ms_comtr_dat_ as "ms-comtr-dat:"
 ms_comtr_dat_2012_IMP_AU_BE_2_KG -up-> ms_comtr_dat_ : qb:dataSet
-ms_comtr_dat_2012_IMP_AU_BE_2_KG : ms-comtr:commod ms-comtr-commod:2
+class ms_comtr_commod_2 as "ms-comtr-commod:2"
+ms_comtr_dat_2012_IMP_AU_BE_2_KG --> ms_comtr_commod_2 : ms-comtr:commod
 ms_comtr_dat_2012_IMP_AU_BE_2_KG : prop:geo eugeo:AT
 ms_comtr_dat_2012_IMP_AU_BE_2_KG : prop:partner eugeo:BE
+ms_comtr_dat_2012_IMP_AU_BE_2_KG : prop:unit unit:KG
 ms_comtr_dat_2012_IMP_AU_BE_2_KG : sdmx-dimension:freq sdmx-code:freq-A
 ms_comtr_dat_2012_IMP_AU_BE_2_KG : sdmx-dimension:timePeriod "2012"^^xsd:gYear
 ms_comtr_dat_2012_IMP_AU_BE_2_KG : sdmx-measure:obsValue 12.3
+class ms_comtr_indic_EXP as "ms-comtr-indic:EXP"
+ms_comtr_indic_EXP : a skos:Concept
+ms_comtr_indic_EXP --> ms_comtr_indic_ : skos:inScheme
+ms_comtr_indic_EXP : skos:prefLabel "Export"
+ms_comtr_commod_2 : a skos:Concept
+class ms_comtr_commod_ as "ms-comtr-commod:"
+ms_comtr_commod_2 --> ms_comtr_commod_ : skos:inScheme
+ms_comtr_commod_2 : skos:prefLabel "Meat and edible meat offal"
+ms_comtr_indic_ : a skos:ConceptScheme
+ms_comtr_indic_ : rdfs:label "UN ComTrade indicators: import, export, total, balance"
+ms_comtr_commod_ : a skos:ConceptScheme
+ms_comtr_commod_ : rdfs:label "ComTrade HS Commodity Codes at level 1"
+ms_comtr_dat_2012_EXP_AU_BE_2_USD : a qb:Observation
+ms_comtr_dat_2012_EXP_AU_BE_2_USD -up-> ms_comtr_dat_ : qb:dataSet
+ms_comtr_dat_2012_EXP_AU_BE_2_USD --> ms_comtr_commod_2 : ms-comtr:commod
+ms_comtr_dat_2012_EXP_AU_BE_2_USD --> ms_comtr_indic_EXP : ms-comtr:indic
+ms_comtr_dat_2012_EXP_AU_BE_2_USD : prop:geo eugeo:AT
+ms_comtr_dat_2012_EXP_AU_BE_2_USD : prop:partner eugeo:BE
+ms_comtr_dat_2012_EXP_AU_BE_2_USD : prop:unit unit:USD
+ms_comtr_dat_2012_EXP_AU_BE_2_USD : sdmx-dimension:freq sdmx-code:freq-A
+ms_comtr_dat_2012_EXP_AU_BE_2_USD : sdmx-dimension:timePeriod "2012"^^xsd:gYear
+ms_comtr_dat_2012_EXP_AU_BE_2_USD : sdmx-measure:obsValue 456
 ms_comtr_dat_2012_IMP_AU_BE_2_USD : a qb:Observation
-ms_comtr_dat_2012_IMP_AU_BE_2_USD --> unit_USD : prop:unit
-ms_comtr_dat_2012_IMP_AU_BE_2_USD -up-> ms_comtr_dat_ : qb:dataSet
 ms_comtr_dat_2012_IMP_AU_BE_2_USD --> ms_comtr_indic_IMP : ms-comtr:indic
-ms_comtr_dat_2012_IMP_AU_BE_2_USD : ms-comtr:commod ms-comtr-commod:2
+ms_comtr_dat_2012_IMP_AU_BE_2_USD -up-> ms_comtr_dat_ : qb:dataSet
+ms_comtr_dat_2012_IMP_AU_BE_2_USD --> ms_comtr_commod_2 : ms-comtr:commod
 ms_comtr_dat_2012_IMP_AU_BE_2_USD : prop:geo eugeo:AT
 ms_comtr_dat_2012_IMP_AU_BE_2_USD : prop:partner eugeo:BE
+ms_comtr_dat_2012_IMP_AU_BE_2_USD : prop:unit unit:USD
 ms_comtr_dat_2012_IMP_AU_BE_2_USD : sdmx-dimension:freq sdmx-code:freq-A
 ms_comtr_dat_2012_IMP_AU_BE_2_USD : sdmx-dimension:timePeriod "2012"^^xsd:gYear
 ms_comtr_dat_2012_IMP_AU_BE_2_USD : sdmx-measure:obsValue 123

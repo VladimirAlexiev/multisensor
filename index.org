@@ -111,7 +111,6 @@
    - [[#comtrade-statistics][ComTrade Statistics]]
      - [[#comtrade-diagram][ComTrade Diagram]]
      - [[#comtrade-derived-indicators][ComTrade Derived Indicators]]
-     - [[#comtrade-indicators-and-commodities][ComTrade Indicators and Commodities]]
    - [[#distance-data][Distance Data]]
      - [[#distance-data-diagram][Distance Data Diagram]]
 
@@ -2515,11 +2514,33 @@ Compared to EuroStat, WorldBank uses:
 - Different property names for geographic area and time period
 - Different URLs for geographic areas
 - URLs instead of XSD dates/years for time periods (as defined by data.gov.uk), which necessitates extracting the value from the URL
-These differences are easily 
+These differences are accommodated easily with appropriate queries.
 
 ** ComTrade Statistics
-We extracted ComTrade data as CSV from http://comtrade.un.org/data/, modeled it similar to EuroStat data and converted it like this.
-The observations below describe Import/Export volume between Austri and Belgium for 2012 and commodity code 2 "Meat and edible meat offal", in Kilograms and USD.
+We extracted ComTrade data as numerous CSV from http://comtrade.un.org/data/ 
+(that API imposes restrictions on the number of records that can be fetched at one time).
+
+We obtain commodity codes from the ComTrade data API and convert them to skos:Concepts using the following pattern:
+#+BEGIN_SRC Turtle :tangle ./img/stat-comtrade.ttl
+ms-comtr-commod: a skos:ConceptScheme;
+  rdfs:label "ComTrade HS Commodity Codes at level 1".
+ms-comtr-commod:2 a skos:Concept; skos:inScheme ms-comtr-commod:;
+  skos:prefLabel "Meat and edible meat offal".
+
+#+END_SRC
+
+We describe relevant trade indicators as skos:Concepts:
+#+BEGIN_SRC Turtle :tangle ./img/stat-comtrade.ttl
+ms-comtr-indic: a skos:ConceptScheme;
+  rdfs:label "UN ComTrade indicators: import, export, total, balance".
+
+ms-comtr-indic:IMP a skos:Concept; skos:inScheme ms-comtr-indic:; skos:prefLabel "Import".
+ms-comtr-indic:EXP a skos:Concept; skos:inScheme ms-comtr-indic:; skos:prefLabel "Export".
+
+#+END_SRC
+
+We model statistical data similar to EuroStat.
+Eg the observations below describe Import/Export volume between Austria and Belgium for 2012 for commodity code 2 "Meat and edible meat offal", in Kilograms and USD:
 
 [[./img/stat-comtrade.ttl]]
 #+BEGIN_SRC Turtle :tangle ./img/stat-comtrade.ttl
@@ -2565,19 +2586,25 @@ ms-comtr-dat:2012-EXP-AU-BE-2-USD puml:stereotype "Export USD".
 ms-comtr-dat:2012-IMP-AU-BE-2-KG  puml:stereotype "Import KG".
 qb:dataSet puml:arrow puml:up.
 sdmx-code:freq-A a puml:Inline.
-ms-comtr-commod:2 a puml:Inline.
 eugeo:AT a puml:Inline.
 eugeo:BE a puml:Inline.
-#ms-comtr-indic:IMP a puml:Inline.
-#unit:KG a puml:Inline.
-
+unit:KG a puml:Inline.
+unit:USD a puml:Inline.
 #+END_SRC
 
 *** ComTrade Diagram
 [[./img/stat-comtrade.png]]
 
 *** ComTrade Derived Indicators
-We also calculate Total Trade Volume and Balance of Trade using simple SPARQL Update queries like this:
+We define two derived indicators:
+#+BEGIN_SRC Turtle
+ms-comtr-indic:TOT a skos:Concept; skos:inScheme ms-comtr-indic:; skos:prefLabel "Total";  
+  skos:scopeNote "Total trade volume = Export + Import".
+ms-comtr-indic:BAL a skos:Concept; skos:inScheme ms-comtr-indic:; skos:prefLabel "Balance";
+  skos:scopeNote "Balance of trade   = Export - Import".
+#+END_SRC
+
+We calculate them from source ComTrade indicators using simple SPARQL Update queries like this:
 #+BEGIN_SRC sparql
 insert {
   ?total a qb:Observation;
@@ -2626,28 +2653,6 @@ insert {
   bind (?exp + ?imp as ?tot).
   bind (?exp - ?imp as ?bal).
 }
-#+END_SRC
-
-*** ComTrade Indicators and Commodities
-The 4 trade indicators are described as skos:Concepts:
-#+BEGIN_SRC Turtle
-ms-comtr-indic: a skos:ConceptScheme;
-  rdfs:label "UN ComTrade indicators: import, export, total, balance".
-
-ms-comtr-indic:IMP a skos:Concept; skos:inScheme ms-comtr-indic:; skos:prefLabel "Import".
-ms-comtr-indic:EXP a skos:Concept; skos:inScheme ms-comtr-indic:; skos:prefLabel "Export".
-ms-comtr-indic:TOT a skos:Concept; skos:inScheme ms-comtr-indic:; skos:prefLabel "Total";  
-  skos:scopeNote "Total trade volume = Export + Import".
-ms-comtr-indic:BAL a skos:Concept; skos:inScheme ms-comtr-indic:; skos:prefLabel "Balance";
-  skos:scopeNote "Balance of trade   = Export - Import".
-#+END_SRC
-
-Finally, we obtain commodity codes from the ComTrade data API and convert them to skos:Concepts using the following pattern:
-#+BEGIN_SRC Turtle
-ms-comtr-commod: a skos:ConceptScheme;
-  rdfs:label "ComTrade HS Commodity Codes at level 1".
-ms-comtr-commod:2 a skos:Concept; skos:inScheme ms-comtr-commod:;
-  skos:prefLabel "Meat and edible meat offal".
 #+END_SRC
 
 ** Distance Data

@@ -1,4 +1,15 @@
 
+ms-comtr-commod: a skos:ConceptScheme;
+  rdfs:label "ComTrade HS Commodity Codes at level 1".
+ms-comtr-commod:2 a skos:Concept; skos:inScheme ms-comtr-commod:;
+  skos:prefLabel "Meat and edible meat offal".
+
+ms-comtr-indic: a skos:ConceptScheme;
+  rdfs:label "UN ComTrade indicators: import, export, total, balance".
+
+ms-comtr-indic:IMP a skos:Concept; skos:inScheme ms-comtr-indic:; skos:prefLabel "Import".
+ms-comtr-indic:EXP a skos:Concept; skos:inScheme ms-comtr-indic:; skos:prefLabel "Export".
+
 # Import
 ms-comtr-dat:2012-IMP-AU-BE-2-USD a qb:Observation;
   qb:dataSet ms-comtr-dat: ;
@@ -41,8 +52,7 @@ ms-comtr-dat:2012-EXP-AU-BE-2-USD puml:stereotype "Export USD".
 ms-comtr-dat:2012-IMP-AU-BE-2-KG  puml:stereotype "Import KG".
 qb:dataSet puml:arrow puml:up.
 sdmx-code:freq-A a puml:Inline.
-ms-comtr-commod:2 a puml:Inline.
 eugeo:AT a puml:Inline.
 eugeo:BE a puml:Inline.
-#ms-comtr-indic:IMP a puml:Inline.
-#unit:KG a puml:Inline.
+unit:KG a puml:Inline.
+unit:USD a puml:Inline.
