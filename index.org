@@ -17,6 +17,7 @@
 
 * Table of Contents                                 :TOC:
  - [[#intro][Intro]]
+   - [[#sparql-queries][SPARQL Queries]]
    - [[#links][Links]]
    - [[#references][References]]
  - [[#linguistic-linked-data][Linguistic Linked Data]]
@@ -133,12 +134,19 @@ We cover the following areas:
 - Social network popularity and influence, etc
 
 A few technical aspects (eg Graph Normalization) are also covered.
-The companion document [[https://docs.google.com/document/d/1FfkiiTYvrLzHJ5P5j34NRVGPbXml0ndpNtiNbH2osRw/edit][Multisensor SPARQL Queries]] describes various queries used by the system.
 
 The document is developed in Emacs Org-mode using a Literate Programming style.
 Illustrative code and ontology fragments use RDF Turtle, and are assembled ("tangled") using Org Babel support to the [[./img]] folder.
 
 Figures are made with the [[http://vladimiralexiev.github.io/pres/20160514-rdfpuml/][rdfpuml]] tool from actual Turtle. This not only saves time, but also guarantees consistency of the figures with the examples and the ontology.
+
+** SPARQL Queries
+Two companion documents describe various queries used by the system:
+- [[https://docs.google.com/document/d/1FfkiiTYvrLzHJ5P5j34NRVGPbXml0ndpNtiNbH2osRw/edit][Multisensor SPARQL Queries]] is the main document. 
+- [[https://docs.google.com/document/d/1jXPT3HbI9tEQrxjzBGC5Fbggpu42GXMBC_5rzX2k1uA/edit][Statistical Indicator Queries]] describe additional queries for the statistical data in sec. [[*Statistical Data for Decision Support]].
+The queries can be tried against the SPARQL endpoint http://multisensor.ontotext.com/sparql:
+- most data is in repository *ms-final-prototype*
+- statistical data is in repository *multisensor-dbpedia*
 
 ** Links
 - [[./img/prefixes.ttl]]: all prefixes used by the project
